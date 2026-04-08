@@ -7,6 +7,7 @@ const { t } = useI18n()
 const props = defineProps<{
   packageName: string
   version: string
+  packageSize?: InstallSizeResult | null
   dependencies?: Record<string, string>
   peerDependencies?: Record<string, string>
   peerDependenciesMeta?: Record<string, { optional?: boolean }>
@@ -35,6 +36,11 @@ function getVulnerableDepInfo(depName: string) {
 function getDeprecatedDepInfo(depName: string) {
   if (!vulnTree.value) return null
   return vulnTree.value.deprecatedPackages.find(p => p.name === depName && p.depth === 'direct')
+}
+
+// Get dependency size (only direct deps)
+function getSizeDepInfo(depName: string) {
+  return props.packageSize?.dependencies?.find(p => p.name === depName)?.size ?? null
 }
 
 // Sort dependencies alphabetically
@@ -103,6 +109,7 @@ const {
 } = useVisibleItems(sortedOptionalDependencies, 10)
 
 const numberFormatter = useNumberFormatter()
+const bytesFormatter = useBytesFormatter()
 </script>
 
 <template>
@@ -189,6 +196,28 @@ const numberFormatter = useNumberFormatter()
             >
               {{ version }}
             </LinkBase>
+            <TooltipApp
+              v-if="getSizeDepInfo(dep)"
+              class="shrink-0"
+              :class="getVersionClass(undefined)"
+              :text="
+                $t('package.stats.size_tooltip.unpacked', {
+                  size: bytesFormatter.format(getSizeDepInfo(dep)!),
+                })
+              "
+            >
+              <button
+                type="button"
+                class="inline-flex items-center justify-center p-2 -m-2"
+                :aria-label="
+                  $t('package.stats.size_tooltip.unpacked', {
+                    size: bytesFormatter.format(getSizeDepInfo(dep)!),
+                  })
+                "
+              >
+                <span class="i-lucide:info w-3 h-3" aria-hidden="true" />
+              </button>
+            </TooltipApp>
             <span v-if="outdatedDeps[dep]" class="sr-only">
               ({{ getOutdatedTooltip(outdatedDeps[dep], $t) }})
             </span>

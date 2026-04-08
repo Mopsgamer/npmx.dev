@@ -996,6 +996,7 @@ const showSkeleton = shallowRef(false)
               v-if="hasDependencies && resolvedVersion && displayVersion"
               :package-name="pkg.name"
               :version="resolvedVersion"
+              :package-size="installSize"
               :dependencies="displayVersion.dependencies"
               :peer-dependencies="displayVersion.peerDependencies"
               :peer-dependencies-meta="displayVersion.peerDependenciesMeta"
