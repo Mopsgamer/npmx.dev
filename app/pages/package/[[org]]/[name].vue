@@ -1001,6 +1001,9 @@ const showSkeleton = shallowRef(false)
               :peer-dependencies="displayVersion.peerDependencies"
               :peer-dependencies-meta="displayVersion.peerDependenciesMeta"
               :optional-dependencies="displayVersion.optionalDependencies"
+              :bundled-dependencies="
+                displayVersion.bundleDependencies || displayVersion.bundledDependencies
+              "
             />
 
             <!-- Keywords -->
