@@ -70,7 +70,7 @@ const sortedOptionalDependencies = computed(() => {
 })
 
 // Fetch size information for dependencies that require it
-const { data: serverSizes, pending: sizesLoading } = await useAsyncData(
+const { data: sizereqData, pending: sizereqLoading } = await useAsyncData(
   `sizes:${props.packageName}:${props.version}`,
   async (_app, { signal }) => {
     const entries = sortedDependencies.value
@@ -113,11 +113,12 @@ const { data: serverSizes, pending: sizesLoading } = await useAsyncData(
   },
   {
     watch: [sortedDependencies],
+    server: false,
   },
 )
 
 // Minimum percentage to be shown as an individual slice
-const THRESHOLD_PERCENT = 10
+const THRESHOLD_PERCENT = 2
 
 type Sizereq = {
   info: InstallSizeResult
@@ -132,44 +133,45 @@ const sortedSizereqDependecies = computed(() => {
     return { visible: [], others: [], totalOthersSize: 0, othersPercentage: 0 }
   }
 
-  const total = props.packageSize.totalSize
-
-  // 1. Map everything first, preserving the 'bundled' flag from the source
-  const allMapped = props.packageSize.dependencies
-    .map(depSize => {
-      const bundled = !sortedDependencies.value.some(([name]) => name === depSize.name)
-      const percent = props.packageSize ? (depSize.size / props.packageSize.totalSize) * 100 : 0
-      const serverData = serverSizes.value?.[depSize.name]
-      const error = serverData?.kind === 'error' ? serverData.error : null
-      return {
-        info:
-          serverData?.kind === 'success'
-            ? {
-                package: depSize.name,
-                totalSize: serverData.packageSize?.totalSize ?? depSize.size,
-                selfSize: serverData.packageSize?.selfSize ?? depSize.size,
-              }
-            : {
-                package: depSize.name,
-                totalSize: depSize.size,
-                selfSize: depSize.size,
-              },
-        error,
-        bundled,
-        percent,
-      } as Sizereq
-    })
-    .sort((a, b) => {
-      // Bundled first
-      if (a.bundled !== b.bundled) return a.bundled ? -1 : 1
-      return b.info.totalSize - a.info.totalSize
-    })
+  const allMapped = props.packageSize.dependencies.map(depSize => {
+    let bundled: boolean = false
+    switch (typeof props.bundledDependencies) {
+      case 'boolean':
+        bundled = props.bundledDependencies
+        break
+      case 'object':
+        bundled = props.bundledDependencies.some(name => name === depSize.name)
+        break
+    }
+    const percent = props.packageSize ? (depSize.size / props.packageSize.totalSize) * 100 : 0
+    const serverData = sizereqData.value?.[depSize.name]
+    const error = serverData?.kind === 'error' ? serverData.error : null
+    return {
+      info:
+        serverData?.kind === 'success' && serverData.packageSize
+          ? {
+              package: depSize.name,
+              version: depSize.version,
+              totalSize: serverData.packageSize.totalSize,
+              selfSize: serverData.packageSize.selfSize,
+            }
+          : {
+              package: depSize.name,
+              version: depSize.version,
+              totalSize: depSize.size,
+              selfSize: depSize.size,
+            },
+      error,
+      bundled,
+      percent,
+    } as Sizereq
+  })
 
   const visible: Sizereq[] = []
   const others: Sizereq[] = []
 
   for (const dep of allMapped) {
-    const percentage = (dep.info.totalSize / total) * 100
+    const percentage = (dep.info.selfSize / props.packageSize.totalSize) * 100
     if (percentage >= THRESHOLD_PERCENT) {
       visible.push({ ...dep, percent: percentage })
     } else {
@@ -177,16 +179,20 @@ const sortedSizereqDependecies = computed(() => {
     }
   }
 
-  const totalOthersSize = others.reduce((acc, d) => acc + d.info.totalSize, 0)
-  const othersPercentage = (totalOthersSize / total) * 100
+  const othersSelfSize = others.reduce((acc, d) => acc + d.info.selfSize, 0)
+  const othersPercentage = (othersSelfSize / props.packageSize.totalSize) * 100
 
-  if (othersPercentage < THRESHOLD_PERCENT || others.length === 1) {
-    visible.push(others[0]!)
-    others.length = 0
-    visible.sort((a, b) => b.info.totalSize - a.info.totalSize)
-  }
+  //   if (others.length === 1) {
+  //     visible.push(others[0]!)
+  //     others.length = 0
+  //     visible.sort((a, b) => b.info.totalSize - a.info.totalSize)
+  //   } else if (others.length > 1 && othersPercentage < THRESHOLD_PERCENT) {
+  //     visible.push(...others)
+  //     others.length = 0
+  //     visible.sort((a, b) => b.info.totalSize - a.info.totalSize)
+  //   }
 
-  return { visible, others, totalOthersSize, othersPercentage }
+  return { visible, others, totalOthersSize: othersSelfSize, othersPercentage }
 })
 
 const othersTooltip = computed(() => {
@@ -220,12 +226,11 @@ const remainingWidth = computed(() => {
   const total = props.packageSize?.totalSize
   if (!total) return 100
 
-  // Sum up everything we actually HAVE data for
   const self = props.packageSize.selfSize || 0
   const depsSum = [
     ...sortedSizereqDependecies.value.visible,
     ...sortedSizereqDependecies.value.others,
-  ].reduce((acc, d) => acc + d.info.totalSize, 0)
+  ].reduce((acc, d) => acc + d.info.selfSize, 0)
 
   const width = ((total - (self + depsSum)) / total) * 100
   return Math.max(0, width)
@@ -325,7 +330,7 @@ const bytesFormatter = useBytesFormatter()
               size: bytesFormatter.format(props.packageSize?.selfSize || 0),
             })
           "
-          class="h-full bg-blue-500"
+          class="h-full bg-accent"
           :style="{ width: selfSizeWidth + '%' }"
         />
 
@@ -333,9 +338,14 @@ const bytesFormatter = useBytesFormatter()
           <TooltipApp
             :text="`${dep.info.package}\n${getDepSizeTooltip(dep.info.package)}`"
             class="h-full"
-            :class="dep.bundled ? 'bg-blue-500' : 'bg-fg'"
+            :class="dep.bundled ? 'bg-accent' : 'bg-fg'"
             :style="{ width: dep.percent + '%' }"
-          />
+          >
+            <RouterLink
+              :to="packageRoute(dep.info.package, dep.info.version)"
+              class="block w-full h-full"
+            />
+          </TooltipApp>
         </template>
 
         <TooltipApp
@@ -434,7 +444,7 @@ const bytesFormatter = useBytesFormatter()
                 <span
                   class="i-lucide:info w-3 h-3 opacity-50 transition-opacity hover:opacity-100"
                   :class="{
-                    'i-svg-spinners:ring-resize': sizesLoading && !serverSizes?.[dep],
+                    'i-svg-spinners:ring-resize': sizereqLoading && !sizereqData?.[dep],
                   }"
                   aria-hidden="true"
                 />
