@@ -70,201 +70,17 @@ const sortedOptionalDependencies = computed(() => {
 })
 
 // Fetch size information for dependencies that require it
-const { data: sizereqData, pending: sizereqLoading } = await useAsyncData(
-  `sizes:${props.packageName}:${props.version}`,
-  async (_app, { signal }) => {
-    const entries = sortedDependencies.value
-
-    const results = await Promise.all(
-      entries.map<
-        Promise<
-          { kind: 'success'; packageSize: InstallSizeResult } | { kind: 'error'; error: NuxtError }
-        >
-      >(async ([name, version]) => {
-        try {
-          const { data: resolvedVersion, error } = await useResolvedVersion(name, version)
-
-          if (error.value || !resolvedVersion.value) return { kind: 'error', error: error.value! }
-
-          return {
-            kind: 'success',
-            packageSize: await $fetch<InstallSizeResult>(
-              `/api/registry/install-size/${name}/v/${encodeURIComponent(resolvedVersion.value)}`,
-              { signal },
-            ),
-          }
-        } catch (err) {
-          return { kind: 'error', error: (err as Ref<NuxtError>)?.value }
-        }
-      }),
-    )
-
-    return results.reduce(
-      (acc, curr) => {
-        if (curr.kind === 'error') return acc
-        acc[curr.packageSize.package] = curr
-        return acc
-      },
-      {} as Record<
-        string,
-        { kind: 'success'; packageSize: InstallSizeResult } | { kind: 'error'; error: NuxtError }
-      >,
-    )
-  },
-  {
-    watch: [sortedDependencies],
-    server: false,
-  },
+const { data: sizereqData, pending: sizereqLoading } = usePackageDependencySizes(
+  () => props.packageName,
+  () => props.version,
+  () => props.dependencies,
 )
 
-// Minimum percentage to be shown as an individual slice
-const THRESHOLD_PERCENT = 2
-
-type Sizereq = {
-  info: InstallSizeResult
-  bundled: boolean
-  percent: number
-  error: NuxtError | null
-}
-
-// Process dependencies for size visualization
-const sortedSizereqDependecies = computed(() => {
-  if (!props.packageSize?.totalSize || !props.packageSize.dependencies) {
-    return { visible: [], others: [], totalOthersSize: 0, othersPercentage: 0 }
-  }
-
-  const allMapped = props.packageSize.dependencies.map(depSize => {
-    let bundled: boolean = false
-    switch (typeof props.bundledDependencies) {
-      case 'boolean':
-        bundled = props.bundledDependencies
-        break
-      case 'object':
-        bundled = props.bundledDependencies.some(name => name === depSize.name)
-        break
-    }
-    const percent = props.packageSize ? (depSize.size / props.packageSize.totalSize) * 100 : 0
-    const serverData = sizereqData.value?.[depSize.name]
-    const error = serverData?.kind === 'error' ? serverData.error : null
-    return {
-      info:
-        serverData?.kind === 'success' && serverData.packageSize
-          ? {
-              package: depSize.name,
-              version: depSize.version,
-              totalSize: serverData.packageSize.totalSize,
-              selfSize: serverData.packageSize.selfSize,
-            }
-          : {
-              package: depSize.name,
-              version: depSize.version,
-              totalSize: depSize.size,
-              selfSize: depSize.size,
-            },
-      error,
-      bundled,
-      percent,
-    } as Sizereq
-  })
-
-  const visible: Sizereq[] = []
-  const others: Sizereq[] = []
-
-  for (const dep of allMapped) {
-    const percentage = (dep.info.selfSize / props.packageSize.totalSize) * 100
-    if (percentage >= THRESHOLD_PERCENT) {
-      visible.push({ ...dep, percent: percentage })
-    } else {
-      others.push(dep)
-    }
-  }
-
-  const othersSelfSize = others.reduce((acc, d) => acc + d.info.selfSize, 0)
-  const othersPercentage = (othersSelfSize / props.packageSize.totalSize) * 100
-
-  //   if (others.length === 1) {
-  //     visible.push(others[0]!)
-  //     others.length = 0
-  //     visible.sort((a, b) => b.info.totalSize - a.info.totalSize)
-  //   } else if (others.length > 1 && othersPercentage < THRESHOLD_PERCENT) {
-  //     visible.push(...others)
-  //     others.length = 0
-  //     visible.sort((a, b) => b.info.totalSize - a.info.totalSize)
-  //   }
-
-  return { visible, others, totalOthersSize: othersSelfSize, othersPercentage }
-})
-
-const othersTooltip = computed(() => {
-  const others = sortedSizereqDependecies.value.others
-  if (others.length === 0) return ''
-
-  const MAX_VISIBLE_IN_TOOLTIP = 0
-  const visiblePart = others.slice(0, MAX_VISIBLE_IN_TOOLTIP)
-  const remainingCount = others.length - MAX_VISIBLE_IN_TOOLTIP
-
-  const lines = [
-    bytesFormatter.format(sortedSizereqDependecies.value.totalOthersSize),
-    numberFormatter.value.format(sortedSizereqDependecies.value.othersPercentage),
-    '',
-    ...visiblePart.flatMap(size => [size.info.package, getDepSizeTooltipText(size), '']),
-  ]
-
-  if (remainingCount > 0) {
-    lines.push(t('package.size_increase.deps', { count: remainingCount }))
-  }
-
-  return lines.join('\n')
-})
-
-const selfSizeWidth = computed(() => {
-  if (!props.packageSize?.selfSize || !props.packageSize?.totalSize) return 0
-  return (props.packageSize.selfSize / props.packageSize.totalSize) * 100
-})
-
-const remainingWidth = computed(() => {
-  const total = props.packageSize?.totalSize
-  if (!total) return 100
-
-  const self = props.packageSize.selfSize || 0
-  const depsSum = [
-    ...sortedSizereqDependecies.value.visible,
-    ...sortedSizereqDependecies.value.others,
-  ].reduce((acc, d) => acc + d.info.selfSize, 0)
-
-  const width = ((total - (self + depsSum)) / total) * 100
-  return Math.max(0, width)
-})
-
-// Get dependency size tooltip
-function getDepSizeTooltip(dep: string): string | undefined {
-  const size = [
-    ...sortedSizereqDependecies.value.visible,
-    ...sortedSizereqDependecies.value.others,
-  ].find(d => d.info.package === dep)
-  return size && getDepSizeTooltipText(size)
-}
-
-function getDepSizeTooltipText(size: Sizereq): string {
-  const packageSize = size?.error ? undefined : size?.info
-  const percent = size?.percent
-  return [
-    size?.error?.message,
-    percent && numberFormatter.value.format(percent),
-    packageSize &&
-      packageSize?.totalSize !== packageSize?.selfSize &&
-      t('package.stats.size_tooltip.unpacked', {
-        size: bytesFormatter.format(packageSize.selfSize!),
-      }),
-    packageSize?.totalSize &&
-      t('package.stats.size_tooltip.total', {
-        count: packageSize.dependencyCount,
-        size: bytesFormatter.format(packageSize.totalSize),
-      }),
-  ]
-    .filter(Boolean)
-    .join('\n')
-}
+const { getTooltipText: getDepSizeTooltip } = usePackageDependencySizeTooltip(
+  sizereqData,
+  () => props.packageSize,
+  t,
+)
 
 // Get version tooltip
 function getDepVersionTooltip(dep: string, version: string) {
@@ -313,7 +129,7 @@ const bytesFormatter = useBytesFormatter()
       v-if="sortedDependencies.length > 0"
       id="dependencies"
       :title="
-        $t(
+        t(
           'package.dependencies.title',
           {
             count: numberFormatter.format(sortedDependencies.length),
@@ -322,46 +138,13 @@ const bytesFormatter = useBytesFormatter()
         )
       "
     >
-      <div class="gap-0.5 flex flex-row h-6 w-full bg-fg-muted/10 overflow-hidden rounded-md">
-        <TooltipApp
-          v-if="selfSizeWidth > 0"
-          :text="
-            t('package.stats.size_tooltip.unpacked', {
-              size: bytesFormatter.format(props.packageSize?.selfSize || 0),
-            })
-          "
-          class="h-full bg-accent"
-          :style="{ width: selfSizeWidth + '%' }"
-        />
-
-        <template v-for="dep in sortedSizereqDependecies.visible" :key="dep.info.package">
-          <TooltipApp
-            :text="`${dep.info.package}\n${getDepSizeTooltip(dep.info.package)}`"
-            class="h-full"
-            :class="dep.bundled ? 'bg-accent' : 'bg-fg'"
-            :style="{ width: dep.percent + '%' }"
-          >
-            <RouterLink
-              :to="packageRoute(dep.info.package, dep.info.version)"
-              class="block w-full h-full"
-            />
-          </TooltipApp>
-        </template>
-
-        <TooltipApp
-          v-if="sortedSizereqDependecies.others.length > 0"
-          :text="othersTooltip"
-          class="h-full bg-fg flex items-center justify-center"
-          :style="{ width: sortedSizereqDependecies.othersPercentage + '%' }"
-        >
-          <span class="i-lucide:layers-2 w-3 h-3 text-bg" aria-hidden="true" />
-        </TooltipApp>
-
-        <div
-          v-if="remainingWidth > 0"
-          class="h-full bg-bg-elevated animate-skeleton-pulse flex-1"
-        />
-      </div>
+      <PackageSizeBar
+        :package-name="props.packageName"
+        :version="props.version"
+        :package-size="props.packageSize"
+        :dependencies="props.dependencies"
+        :bundled-dependencies="props.bundledDependencies"
+      />
       <ul class="space-y-1 list-none m-0" :aria-label="$t('package.dependencies.list_label')">
         <li
           v-for="[dep, version] in visibleDeps"
@@ -376,12 +159,12 @@ const bytesFormatter = useBytesFormatter()
               v-if="outdatedDeps[dep]"
               class="shrink-0"
               :class="getVersionClass(outdatedDeps[dep])"
-              :text="getOutdatedTooltip(outdatedDeps[dep], $t)"
+              :text="getOutdatedTooltip(outdatedDeps[dep], t)"
             >
               <button
                 type="button"
                 class="inline-flex items-center justify-center p-2 -m-2"
-                :aria-label="getOutdatedTooltip(outdatedDeps[dep], $t)"
+                :aria-label="getOutdatedTooltip(outdatedDeps[dep], t)"
               >
                 <span class="i-lucide:circle-alert w-3 h-3" aria-hidden="true" />
               </button>
@@ -451,7 +234,7 @@ const bytesFormatter = useBytesFormatter()
               </button>
             </TooltipApp>
             <span v-if="outdatedDeps[dep]" class="sr-only">
-              ({{ getOutdatedTooltip(outdatedDeps[dep], $t) }})
+              ({{ getOutdatedTooltip(outdatedDeps[dep], t) }})
             </span>
             <span v-if="getVulnerableDepInfo(dep)" class="sr-only">
               ({{
@@ -470,7 +253,7 @@ const bytesFormatter = useBytesFormatter()
         @click="expandDeps"
       >
         {{
-          $t(
+          t(
             'package.dependencies.show_all',
             {
               count: numberFormatter.format(sortedDependencies.length),
@@ -525,7 +308,7 @@ const bytesFormatter = useBytesFormatter()
         @click="expandPeerDeps"
       >
         {{
-          $t(
+          t(
             'package.peer_dependencies.show_all',
             {
               count: numberFormatter.format(sortedPeerDependencies.length),
@@ -541,7 +324,7 @@ const bytesFormatter = useBytesFormatter()
       v-if="sortedOptionalDependencies.length > 0"
       id="optional-dependencies"
       :title="
-        $t(
+        t(
           'package.optional_dependencies.title',
           {
             count: numberFormatter.format(sortedOptionalDependencies.length),
@@ -579,7 +362,7 @@ const bytesFormatter = useBytesFormatter()
         @click="expandOptionalDeps"
       >
         {{
-          $t(
+          t(
             'package.optional_dependencies.show_all',
             {
               count: numberFormatter.format(sortedOptionalDependencies.length),
