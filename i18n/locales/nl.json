@@ -20,7 +20,10 @@
     "chat": "chat",
     "builders_chat": "bouwers",
     "keyboard_shortcuts": "toetsenbordnavigatie",
-    "brand": "merk"
+    "brand": "merk",
+    "resources": "EN TEXT TO REPLACE: Resources",
+    "features": "EN TEXT TO REPLACE: Features",
+    "other": "EN TEXT TO REPLACE: Other"
   },
   "shortcuts": {
     "section": {
@@ -42,7 +45,9 @@
     "open_docs": "Open documentatie",
     "disable_shortcuts": "U kunt toetsenbordnavigatie uitschakelen in {instellingen}.",
     "open_main": "Open pakket overzicht",
-    "open_diff": "Open versie verschillen"
+    "open_diff": "Open versie verschillen",
+    "open_timeline": "EN TEXT TO REPLACE: Open timeline",
+    "open_sizes": "EN TEXT TO REPLACE: Open sizes"
   },
   "search": {
     "label": "Zoek npm pakketten",
@@ -149,7 +154,8 @@
       "code": "Code",
       "diff": "Verschillen",
       "compare": "Vergelijk dit pakket",
-      "download": "Download tarball"
+      "download": "Download tarball",
+      "sizes": "EN TEXT TO REPLACE: Sizes"
     },
     "package_actions": {
       "copy_run": "Kopieer uitvoor command"
@@ -280,7 +286,8 @@
       "black": "Zwart"
     },
     "keyboard_shortcuts_enabled": "toetsenbordnavigatie inschakelen",
-    "keyboard_shortcuts_enabled_description": "toetsenbordnavigatie kan worden uitgeschakeld als ze conflicteren met andere sneltoetsen van de browser of het systeem."
+    "keyboard_shortcuts_enabled_description": "toetsenbordnavigatie kan worden uitgeschakeld als ze conflicteren met andere sneltoetsen van de browser of het systeem.",
+    "enable_code_ligatures": "EN TEXT TO REPLACE: Enable ligatures in code"
   },
   "i18n": {
     "missing_keys": "{count} ontbrekende vertaling | {count} ontbrekende vertalingen",
@@ -318,6 +325,7 @@
       "role": "rol",
       "members": "leden"
     },
+    "sort_by": "EN TEXT TO REPLACE: Sort by",
     "scroll_to_top": "Naar boven scrollen",
     "cancel": "Annuleer",
     "save": "Opslaan",
@@ -372,6 +380,14 @@
       "version": "Deze versie wordt afgeraden.",
       "no_reason": "Geen reden gegeven"
     },
+    "sizes": {
+      "title": "EN TEXT TO REPLACE: Sizes",
+      "columns": {
+        "self_size": "EN TEXT TO REPLACE: Self Size",
+        "total_size": "EN TEXT TO REPLACE: Total Size",
+        "percentage": "EN TEXT TO REPLACE: %"
+      }
+    },
     "size_increase": {
       "title_size": "Aanzienlijke toenamen in grootte sinds v{version}",
       "title_deps": "Aanzienlijke toename van het aantal dependencies sinds versie {version}",
@@ -381,7 +397,9 @@
     },
     "replacement": {
       "title": "U heeft waarschijnlijk dit niet nodig",
+      "example": "EN TEXT TO REPLACE: Example:",
       "native": "Dit kan vervangen worden door {replacement}, Beschikbaar sinds node {nodeVersion}.",
+      "native_no_version": "EN TEXT TO REPLACE: This package can be replaced with {replacement}.",
       "simple": "De {community} heeft dit pakket als overbodig gemarkeerd, met het advies: {replacement}.",
       "documented": "De {community} heeft aangegeven dat er voor dit pakket beter presterende alternatieven zijn.",
       "none": "Dit pakket is gemarkeerd als overbodig en de functionaliteit ervan is waarschijnlijk standaard beschikbaar in alle omgevingen.",
@@ -399,6 +417,11 @@
       "published_tooltip": "Datum waarop {package}{'@'}{version} is gepubliceerd",
       "view_dependency_graph": "Dependency grafiek bekijken",
       "inspect_dependency_tree": "Dependency structuur inspecteren",
+      "view_all_sizes": "EN TEXT TO REPLACE: View all sizes",
+      "load_dependency_sizes": "EN TEXT TO REPLACE: Load dependency total sizes",
+      "size": {
+        "total": "EN TEXT TO REPLACE: Total size: {size}"
+      },
       "size_tooltip": {
         "unpacked": "{size} uitgepakte grootte (dit pakket)",
         "total": "totale grootte na uitpakken (inclusief {count} dependencies voor linux-x64)"
@@ -432,6 +455,7 @@
       "docs": "docs",
       "fund": "Steunen",
       "compare": "vergelijk",
+      "timeline": "EN TEXT TO REPLACE: timeline",
       "compare_this_package": "Vergelijk dit pakket"
     },
     "likes": {
@@ -477,7 +501,8 @@
         "warning": "Waarschuwing",
         "caution": "Let op"
       },
-      "copy_as_markdown": "kopieer README als Markdown"
+      "copy_as_markdown": "kopieer README als Markdown",
+      "error_loading": "EN TEXT TO REPLACE: Failed to load README details"
     },
     "provenance_section": {
       "title": "Herkomst verificatie gegevens",
@@ -556,9 +581,27 @@
       "current_tags": "Huidige tags",
       "no_match_filter": "Geen versies die voldoen aan {filter}"
     },
+    "timeline": {
+      "load_more": "EN TEXT TO REPLACE: Load more",
+      "load_error": "EN TEXT TO REPLACE: Failed to load timeline. Please try again later.",
+      "size_increase": "EN TEXT TO REPLACE: Install size increased by {percent}% ({size})",
+      "size_decrease": "EN TEXT TO REPLACE: Install size decreased by {percent}% ({size})",
+      "dep_increase": "EN TEXT TO REPLACE: {count} dependencies added",
+      "dep_decrease": "EN TEXT TO REPLACE: {count} dependencies removed",
+      "license_change": "EN TEXT TO REPLACE: License changed from {from} to {to}",
+      "esm_added": "EN TEXT TO REPLACE: Module type changed to ESM",
+      "esm_removed": "EN TEXT TO REPLACE: Module type changed from ESM to CJS",
+      "types_added": "EN TEXT TO REPLACE: TypeScript types added",
+      "types_removed": "EN TEXT TO REPLACE: TypeScript types removed",
+      "trusted_publisher_added": "EN TEXT TO REPLACE: Trusted publishing enabled",
+      "trusted_publisher_removed": "EN TEXT TO REPLACE: Trusted publishing removed",
+      "provenance_added": "EN TEXT TO REPLACE: Provenance enabled",
+      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed"
+    },
     "dependencies": {
       "title": "Dependency ({count}) | Dependencies ({count})",
       "list_label": "Pakket dependencies",
+      "empty": "EN TEXT TO REPLACE: No dependencies",
       "show_all": "toon {count} dep | toon alle {count} deps",
       "optional": "optioneel",
       "view_vulnerabilities": "Bekijk kwetsbaarheden",
@@ -1236,7 +1279,15 @@
       "add_hint": "Voeg tenminste 2 pakketten toe om te vergelijken"
     },
     "scatter_chart": {
-      "copy_alt": {}
+      "title": "EN TEXT TO REPLACE: Compare {x} vs {y}",
+      "freshness_score": "EN TEXT TO REPLACE: Freshness score",
+      "copy_alt": {
+        "analysis": "EN TEXT TO REPLACE: {package} : {x_name} ({x_value}) and {y_name} ({y_value})",
+        "description": "EN TEXT TO REPLACE: Scatter plot chart mapping {x_name} versus {y_name} for the {packages} packages. {analysis}. {watermark}"
+      },
+      "filename": "EN TEXT TO REPLACE: {x}-vs-{y}-scatter-chart",
+      "x_axis": "EN TEXT TO REPLACE: X-AXIS ↦",
+      "y_axis": "EN TEXT TO REPLACE: Y-AXIS ↥"
     },
     "no_dependency": {
       "label": "(Geen dependency)",
@@ -1317,9 +1368,18 @@
           "label": "Kwetsbaarheden",
           "description": "Bekende beveiliging kwetsbaarheden"
         },
-        "githubStars": {},
-        "githubIssues": {},
-        "createdAt": {}
+        "githubStars": {
+          "label": "EN TEXT TO REPLACE: GitHub Stars",
+          "description": "EN TEXT TO REPLACE: Number of stars on the GitHub repository"
+        },
+        "githubIssues": {
+          "label": "EN TEXT TO REPLACE: GitHub Issues",
+          "description": "EN TEXT TO REPLACE: Number of issues on the GitHub repository"
+        },
+        "createdAt": {
+          "label": "EN TEXT TO REPLACE: Created At",
+          "description": "EN TEXT TO REPLACE: When the package was created"
+        }
       },
       "values": {
         "any": "Alle",
@@ -1420,18 +1480,83 @@
   },
   "privacy_policy": {
     "title": "privacy beleid",
+    "last_updated": "EN TEXT TO REPLACE: Last updated: {date}",
+    "welcome": "EN TEXT TO REPLACE: Welcome to {app}. We are committed to protecting your privacy. This policy explains what data we collect, how we use it, and your rights regarding your information.",
     "cookies": {
-      "what_are": {},
-      "types": {},
-      "local_storage": {},
-      "management": {}
+      "what_are": {
+        "title": "EN TEXT TO REPLACE: What are cookies?",
+        "p1": "EN TEXT TO REPLACE: Cookies are small text files stored on your device when you visit a website. Their purpose is to enhance your browsing experience by remembering certain preferences and settings."
+      },
+      "types": {
+        "title": "EN TEXT TO REPLACE: What cookies do we use?",
+        "p1": "EN TEXT TO REPLACE: We only use {bold} for purposes strictly necessary for the site's functionality. We do not use third-party or advertising cookies.",
+        "bold": "EN TEXT TO REPLACE: essential technical cookies",
+        "li1": "EN TEXT TO REPLACE: {li11}{separator} {li12}",
+        "li2": "EN TEXT TO REPLACE: {li21}{separator} {li22}",
+        "separator": "EN TEXT TO REPLACE: :",
+        "cookie_vdpl": "EN TEXT TO REPLACE: __vdpl",
+        "cookie_vdpl_desc": "EN TEXT TO REPLACE: This cookie is used by our hosting provider (Vercel) for skew protection. It ensures you fetch assets from the correct deployment version if a new update is released while you are browsing. It does not track you.",
+        "cookie_h3": "EN TEXT TO REPLACE: h3",
+        "cookie_h3_desc": "EN TEXT TO REPLACE: This is our secure session cookie. It stores the OAuth access token when you connect your Atmosphere account. It is essential for maintaining your authenticated session."
+      },
+      "local_storage": {
+        "title": "EN TEXT TO REPLACE: Local storage",
+        "p1": "EN TEXT TO REPLACE: In addition to session cookies, we use your browser's {bold} to save your display preferences. This allows us to remember the theme (light/dark) and some other {settings} you have selected, so you don't have to reconfigure them on each visit.",
+        "bold": "EN TEXT TO REPLACE: Local Storage",
+        "p2": "EN TEXT TO REPLACE: This information is purely functional, stored only on your device, and {bold2}. We use it exclusively to improve your experience on our website.",
+        "bold2": "EN TEXT TO REPLACE: contains no personal data nor is it used to track you",
+        "settings": "EN TEXT TO REPLACE: settings"
+      },
+      "management": {
+        "title": "EN TEXT TO REPLACE: Managing cookies",
+        "p1": "EN TEXT TO REPLACE: You can configure your browser to accept, reject, or delete cookies according to your preferences. However, please note that {bold}.",
+        "bold": "EN TEXT TO REPLACE: rejecting essential cookies may prevent full access to the application",
+        "p2": "EN TEXT TO REPLACE: Below are links with instructions for cookie management in the most commonly used browsers:",
+        "chrome": "EN TEXT TO REPLACE: Google Chrome (opens in a new window)",
+        "firefox": "EN TEXT TO REPLACE: Mozilla Firefox (opens in a new window)",
+        "edge": "EN TEXT TO REPLACE: Microsoft Edge (opens in a new window)"
+      }
     },
-    "analytics": {},
-    "authenticated": {},
-    "data_retention": {},
-    "your_rights": {},
-    "contact": {},
-    "changes": {}
+    "analytics": {
+      "title": "EN TEXT TO REPLACE: Analytics",
+      "p1": "EN TEXT TO REPLACE: We use {bold} to understand how visitors use our website. This helps us improve the user experience and identify issues.",
+      "bold": "EN TEXT TO REPLACE: Vercel Web Analytics",
+      "p2": "EN TEXT TO REPLACE: Vercel Analytics is designed with privacy in mind:",
+      "li1": "EN TEXT TO REPLACE: It does not use cookies",
+      "li2": "EN TEXT TO REPLACE: It does not collect personal identifiers",
+      "li3": "EN TEXT TO REPLACE: It does not track users across websites",
+      "li4": "EN TEXT TO REPLACE: All data is aggregated and anonymised",
+      "p3": "EN TEXT TO REPLACE: The only information collected includes: page URLs, referrer, country/region, device type, browser, and operating system. This data cannot be used to identify individual users."
+    },
+    "authenticated": {
+      "title": "EN TEXT TO REPLACE: Authenticated users",
+      "p1": "EN TEXT TO REPLACE: When you connect your {bold} account to npmx, we store your OAuth access token in a secure, HTTP-only session cookie. This token is used solely to authenticate requests on your behalf.",
+      "bold": "EN TEXT TO REPLACE: Atmosphere",
+      "p2": "EN TEXT TO REPLACE: We do not store your credentials, and we do not access any data beyond what is necessary to provide the features you use. You can disconnect your account at any time from the {settings} page.",
+      "settings": "EN TEXT TO REPLACE: settings"
+    },
+    "data_retention": {
+      "title": "EN TEXT TO REPLACE: Data retention",
+      "p1": "EN TEXT TO REPLACE: Session cookies are automatically deleted when you close your browser or after a period of inactivity. Local storage preferences remain on your device until you clear your browser data. Analytics data is retained in aggregate form and cannot be linked to individual users."
+    },
+    "your_rights": {
+      "title": "EN TEXT TO REPLACE: Your rights",
+      "p1": "EN TEXT TO REPLACE: You have the right to:",
+      "li1": "EN TEXT TO REPLACE: Access information about what data we collect",
+      "li2": "EN TEXT TO REPLACE: Clear your local storage and cookies at any time",
+      "li3": "EN TEXT TO REPLACE: Disconnect your authenticated session",
+      "li4": "EN TEXT TO REPLACE: Request information about our data practices",
+      "p2": "EN TEXT TO REPLACE: Since we do not collect personal data, there is typically no personal information to delete or export."
+    },
+    "contact": {
+      "title": "EN TEXT TO REPLACE: Contact us",
+      "p1": "EN TEXT TO REPLACE: For any questions or concerns about this privacy policy, you can contact us by opening an issue on our {link}.",
+      "link": "EN TEXT TO REPLACE: GitHub repository"
+    },
+    "changes": {
+      "title": "EN TEXT TO REPLACE: Changes to this policy",
+      "p1": "EN TEXT TO REPLACE: We may update this privacy policy from time to time. Any changes will be published on this page with an updated revision date."
+    }
   },
   "a11y": {
     "title": "toegankelijkheid",
@@ -1487,11 +1612,37 @@
     }
   },
   "vacations": {
-    "what": {},
-    "meantime": {},
-    "return": {},
+    "title": "EN TEXT TO REPLACE: on vacation",
+    "meta_description": "EN TEXT TO REPLACE: The npmx team was recharging. Discord reopened after a week.",
+    "heading": "EN TEXT TO REPLACE: recharging",
+    "subtitle": "EN TEXT TO REPLACE: we were building npmx at a pace that was costing {some} of us sleep. we didn't want that to be the norm! so we took a week off. together.",
+    "illustration_alt": "EN TEXT TO REPLACE: a single row of cosy icons",
+    "poke_log": "EN TEXT TO REPLACE: Poke the campfire",
+    "what": {
+      "title": "EN TEXT TO REPLACE: what happened",
+      "p1": "EN TEXT TO REPLACE: discord was closed {dates}.",
+      "dates": "EN TEXT TO REPLACE: February 14 – 21",
+      "p2": "EN TEXT TO REPLACE: all invite links were gone and channels were locked – except {garden}, which stayed open for folks who wanted to keep hanging out.",
+      "garden": "EN TEXT TO REPLACE: #garden"
+    },
+    "meantime": {
+      "title": "EN TEXT TO REPLACE: in the meantime",
+      "p1": "EN TEXT TO REPLACE: {site} and {repo} stayed open – people still dug in, filed some issues, opened a few PRs, but mainly everyone spent time somewhere near a cosy fireplace.",
+      "repo_link": "EN TEXT TO REPLACE: the repo"
+    },
+    "return": {
+      "title": "EN TEXT TO REPLACE: we came back!",
+      "p1": "EN TEXT TO REPLACE: we came back recharged and ready for the final push to March 3rd. {social} for updates.",
+      "social_link": "EN TEXT TO REPLACE: follow us on Bluesky"
+    },
     "stats": {
-      "subtitle": {}
+      "contributors": "EN TEXT TO REPLACE: Contributors",
+      "commits": "EN TEXT TO REPLACE: Commits",
+      "pr": "EN TEXT TO REPLACE: PRs Merged",
+      "subtitle": {
+        "some": "EN TEXT TO REPLACE: some",
+        "all": "EN TEXT TO REPLACE: all"
+      }
     }
   },
   "action_bar": {

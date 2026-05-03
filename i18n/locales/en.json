@@ -46,7 +46,8 @@
     "disable_shortcuts": "You can disable keyboard shortcuts in {settings}.",
     "open_main": "Open main information",
     "open_diff": "Open version differences",
-    "open_timeline": "Open timeline"
+    "open_timeline": "Open timeline",
+    "open_sizes": "Open sizes"
   },
   "search": {
     "label": "Search npm packages",
@@ -153,7 +154,8 @@
       "code": "Code",
       "diff": "Diff",
       "compare": "Compare this package",
-      "download": "Download tarball"
+      "download": "Download tarball",
+      "sizes": "Sizes"
     },
     "package_actions": {
       "copy_run": "Copy run command"
@@ -324,6 +326,7 @@
       "role": "role",
       "members": "members"
     },
+    "sort_by": "Sort by",
     "scroll_to_top": "Scroll to top",
     "cancel": "Cancel",
     "save": "Save",
@@ -378,6 +381,14 @@
       "version": "This version has been deprecated.",
       "no_reason": "No reason provided"
     },
+    "sizes": {
+      "title": "Sizes",
+      "columns": {
+        "self_size": "Self size",
+        "total_size": "Total size",
+        "percentage": "%"
+      }
+    },
     "size_increase": {
       "title_size": "Significant size increase since v{version}",
       "title_deps": "Significant dependency count increase since v{version}",
@@ -414,6 +425,11 @@
       "published_tooltip": "Date {package}{'@'}{version} was published",
       "view_dependency_graph": "View dependency graph",
       "inspect_dependency_tree": "Inspect dependency tree",
+      "view_all_sizes": "View all sizes",
+      "load_dependency_sizes": "Load dependency total sizes",
+      "size": {
+        "total": "Total size: {size}"
+      },
       "size_tooltip": {
         "unpacked": "{size} unpacked size (this package)",
         "total": "{size} total unpacked size (including {count} dependency for linux-x64) | {size} total unpacked size (including all {count} dependencies for linux-x64)"
@@ -596,6 +612,7 @@
     "dependencies": {
       "title": "Dependency ({count}) | Dependencies ({count})",
       "list_label": "Package dependencies",
+      "empty": "No dependencies",
       "show_all": "show {count} dep | show all {count} deps",
       "optional": "optional",
       "view_vulnerabilities": "View vulnerabilities",

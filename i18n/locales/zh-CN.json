@@ -20,7 +20,10 @@
     "chat": "聊天",
     "builders_chat": "构建者",
     "keyboard_shortcuts": "键盘快捷键",
-    "brand": "品牌"
+    "brand": "品牌",
+    "resources": "EN TEXT TO REPLACE: Resources",
+    "features": "EN TEXT TO REPLACE: Features",
+    "other": "EN TEXT TO REPLACE: Other"
   },
   "shortcuts": {
     "section": {
@@ -42,7 +45,9 @@
     "open_docs": "打开文档",
     "disable_shortcuts": "你可以在{settings}中禁用快捷键。",
     "open_main": "查看主要信息",
-    "open_diff": "查看版本差异"
+    "open_diff": "查看版本差异",
+    "open_timeline": "EN TEXT TO REPLACE: Open timeline",
+    "open_sizes": "EN TEXT TO REPLACE: Open sizes"
   },
   "search": {
     "label": "搜索 npm 包",
@@ -149,7 +154,8 @@
       "code": "代码",
       "diff": "差异",
       "compare": "比较此包",
-      "download": "下载 tarball"
+      "download": "下载 tarball",
+      "sizes": "EN TEXT TO REPLACE: Sizes"
     },
     "package_actions": {
       "copy_run": "复制运行命令"
@@ -319,6 +325,7 @@
       "role": "角色",
       "members": "成员"
     },
+    "sort_by": "EN TEXT TO REPLACE: Sort by",
     "scroll_to_top": "回到顶部",
     "cancel": "取消",
     "save": "保存",
@@ -373,6 +380,14 @@
       "version": "此版本已废弃。",
       "no_reason": "未提供原因"
     },
+    "sizes": {
+      "title": "EN TEXT TO REPLACE: Sizes",
+      "columns": {
+        "self_size": "EN TEXT TO REPLACE: Self Size",
+        "total_size": "EN TEXT TO REPLACE: Total Size",
+        "percentage": "EN TEXT TO REPLACE: %"
+      }
+    },
     "size_increase": {
       "title_size": "自 v{version} 以来体积显著增加",
       "title_deps": "自 v{version} 以来依赖项数量显著增加",
@@ -382,7 +397,9 @@
     },
     "replacement": {
       "title": "你可能不需要这个依赖。",
+      "example": "EN TEXT TO REPLACE: Example:",
       "native": "该功能自 Node.js {nodeVersion} 起已被内置，可直接使用 {replacement} 替代。",
+      "native_no_version": "EN TEXT TO REPLACE: This package can be replaced with {replacement}.",
       "simple": "社区标记此包为冗余，建议替换为：{replacement}。",
       "documented": "社区标记此包存在性能更优的替代方案",
       "none": "此包已被标记为不再需要，其功能很可能已由所有引擎原生提供。",
@@ -400,6 +417,11 @@
       "published_tooltip": "日期 {package}{'@'}{version} 发布",
       "view_dependency_graph": "查看依赖图",
       "inspect_dependency_tree": "查看依赖树",
+      "view_all_sizes": "EN TEXT TO REPLACE: View all sizes",
+      "load_dependency_sizes": "EN TEXT TO REPLACE: Load dependency total sizes",
+      "size": {
+        "total": "EN TEXT TO REPLACE: Total size: {size}"
+      },
       "size_tooltip": {
         "unpacked": "未打包大小（当前包)：{size}",
         "total": "总未打包大小（包括 {count} 个依赖项）：{size}"
@@ -433,6 +455,7 @@
       "docs": "文档",
       "fund": "资助",
       "compare": "比较",
+      "timeline": "EN TEXT TO REPLACE: timeline",
       "compare_this_package": "比较此包"
     },
     "likes": {
@@ -478,7 +501,8 @@
         "warning": "警告",
         "caution": "当心"
       },
-      "copy_as_markdown": "复制为 Markdown"
+      "copy_as_markdown": "复制为 Markdown",
+      "error_loading": "EN TEXT TO REPLACE: Failed to load README details"
     },
     "provenance_section": {
       "title": "来源",
@@ -557,9 +581,27 @@
       "current_tags": "当前标签",
       "no_match_filter": "没有与“{filter}”匹配的版本"
     },
+    "timeline": {
+      "load_more": "EN TEXT TO REPLACE: Load more",
+      "load_error": "EN TEXT TO REPLACE: Failed to load timeline. Please try again later.",
+      "size_increase": "EN TEXT TO REPLACE: Install size increased by {percent}% ({size})",
+      "size_decrease": "EN TEXT TO REPLACE: Install size decreased by {percent}% ({size})",
+      "dep_increase": "EN TEXT TO REPLACE: {count} dependencies added",
+      "dep_decrease": "EN TEXT TO REPLACE: {count} dependencies removed",
+      "license_change": "EN TEXT TO REPLACE: License changed from {from} to {to}",
+      "esm_added": "EN TEXT TO REPLACE: Module type changed to ESM",
+      "esm_removed": "EN TEXT TO REPLACE: Module type changed from ESM to CJS",
+      "types_added": "EN TEXT TO REPLACE: TypeScript types added",
+      "types_removed": "EN TEXT TO REPLACE: TypeScript types removed",
+      "trusted_publisher_added": "EN TEXT TO REPLACE: Trusted publishing enabled",
+      "trusted_publisher_removed": "EN TEXT TO REPLACE: Trusted publishing removed",
+      "provenance_added": "EN TEXT TO REPLACE: Provenance enabled",
+      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed"
+    },
     "dependencies": {
       "title": "依赖（{count} 个）",
       "list_label": "包依赖",
+      "empty": "EN TEXT TO REPLACE: No dependencies",
       "show_all": "显示全部 {count} 个依赖",
       "optional": "可选",
       "view_vulnerabilities": "查看漏洞",

@@ -106,6 +106,23 @@ export function useCommandPalettePackageCommands(
             },
           },
         },
+        {
+          id: 'package-sizes',
+          group: 'package',
+          label: t('command_palette.package.sizes'),
+          keywords: [resolvedContext.packageName, t('shortcuts.open_sizes')],
+          iconClass: 'i-lucide:list-tree',
+          active: route.name === 'package-sizes',
+          activeLabel: activeLabel(route.name === 'package-sizes', t('command_palette.here')),
+          to: {
+            name: 'package-sizes',
+            params: {
+              org: org || undefined,
+              packageName: name,
+              version: resolvedContext.resolvedVersion,
+            },
+          },
+        },
       ]
 
       if (resolvedContext.tarballUrl) {

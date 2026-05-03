@@ -1,8 +1,26 @@
-import type { NuxtError } from '#app'
+import type { AsyncData, NuxtError } from '#app'
 import type { InstallSizeResult } from '#shared/types/install-size'
 import type { MaybeRefOrGetter, Ref } from 'vue'
-import { computed, toValue } from 'vue'
+import { toValue } from 'vue'
 import { useAsyncData, useNumberFormatter, useBytesFormatter } from '#imports'
+
+export const usePackageSize = (
+  packageName: MaybeRefOrGetter<string>,
+  version: MaybeRefOrGetter<string>,
+  options: any = {},
+) => {
+  return useAsyncData(
+    () => `install-size:${toValue(packageName)}:${toValue(version)}`,
+    () =>
+      $fetch<InstallSizeResult>(
+        `/api/registry/install-size/${toValue(packageName)}/v/${toValue(version)}`,
+      ),
+    {
+      watch: [() => toValue(packageName), () => toValue(version)],
+      ...options,
+    },
+  )
+}
 
 /**
  * Fetches size information for all dependencies of a package.
@@ -10,18 +28,19 @@ import { useAsyncData, useNumberFormatter, useBytesFormatter } from '#imports'
 export function usePackageDependencySizes(
   packageName: MaybeRefOrGetter<string>,
   version: MaybeRefOrGetter<string>,
-  dependencies: MaybeRefOrGetter<Record<string, string> | undefined>,
-) {
-  const sortedDependencies = computed(() => {
-    const deps = toValue(dependencies)
-    if (!deps) return []
-    return Object.entries(deps).sort(([a], [b]) => a.localeCompare(b))
-  })
-
+  dependencies?: MaybeRefOrGetter<DependencySize[] | undefined>,
+): AsyncData<
+  | Record<
+      string,
+      { kind: 'success'; packageSize: InstallSizeResult } | { kind: 'error'; error: NuxtError }
+    >
+  | undefined,
+  NuxtError<unknown> | undefined
+> {
   return useAsyncData(
-    `sizes:${toValue(packageName)}:${toValue(version)}`,
+    `install-size:${toValue(packageName)}:${toValue(version)}`,
     async (_app, { signal }) => {
-      const entries = sortedDependencies.value
+      const entries = toValue(dependencies) ?? []
 
       const results = await Promise.all(
         entries.map<
@@ -29,7 +48,7 @@ export function usePackageDependencySizes(
             | { kind: 'success'; packageSize: InstallSizeResult }
             | { kind: 'error'; error: NuxtError }
           >
-        >(async ([name, depVersion]) => {
+        >(async ({ name, version: depVersion }) => {
           try {
             const { data: resolvedVersion, error } = await useResolvedVersion(name, depVersion)
 
@@ -61,7 +80,6 @@ export function usePackageDependencySizes(
       )
     },
     {
-      watch: [sortedDependencies],
       server: false,
     },
   )

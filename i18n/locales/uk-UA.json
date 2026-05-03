@@ -20,7 +20,10 @@
     "chat": "чат",
     "builders_chat": "розробники",
     "keyboard_shortcuts": "гарячі клавіші",
-    "brand": "бренд"
+    "brand": "бренд",
+    "resources": "EN TEXT TO REPLACE: Resources",
+    "features": "EN TEXT TO REPLACE: Features",
+    "other": "EN TEXT TO REPLACE: Other"
   },
   "shortcuts": {
     "section": {
@@ -28,6 +31,9 @@
       "search": "Пошук",
       "package": "Пакет"
     },
+    "ctrl_key": "EN TEXT TO REPLACE: Ctrl",
+    "command_palette": "EN TEXT TO REPLACE: Open command palette",
+    "command_palette_description": "EN TEXT TO REPLACE: Use the command palette to jump between pages, package views, settings, and external links without leaving the keyboard. On macOS, press ⌘K. On Windows and Linux, press {ctrlKey}+K.",
     "focus_search": "Фокус на пошуку",
     "show_kbd_hints": "Підсвітити підказки клавіатури",
     "settings": "Відкрити налаштування",
@@ -39,7 +45,9 @@
     "open_docs": "Відкрити документацію",
     "disable_shortcuts": "Ви можете вимкнути гарячі клавіші в {settings}.",
     "open_main": "Відкрити основну інформацію",
-    "open_diff": "Відкрити порівняння версій"
+    "open_diff": "Відкрити порівняння версій",
+    "open_timeline": "EN TEXT TO REPLACE: Open timeline",
+    "open_sizes": "EN TEXT TO REPLACE: Open sizes"
   },
   "search": {
     "label": "Пошук пакетів npm",
@@ -75,6 +83,114 @@
     "instant_search_turn_on": "увімкнути",
     "instant_search_turn_off": "вимкнути",
     "instant_search_advisory": "{label} {state} — {action}"
+  },
+  "command_palette": {
+    "title": "EN TEXT TO REPLACE: command palette",
+    "quick_actions": "EN TEXT TO REPLACE: jump to...",
+    "subtitle": "EN TEXT TO REPLACE: navigate across npmx and switch settings quickly",
+    "subtitle_languages": "EN TEXT TO REPLACE: choose a language or help improve translations",
+    "instructions": "EN TEXT TO REPLACE: Type to filter commands. Use the arrow keys to move through results and Enter to run a command.",
+    "input_label": "EN TEXT TO REPLACE: Command palette search",
+    "results_label": "EN TEXT TO REPLACE: Command results",
+    "placeholder": "EN TEXT TO REPLACE: type a command...",
+    "back": "EN TEXT TO REPLACE: Back",
+    "empty": "EN TEXT TO REPLACE: No matching commands",
+    "empty_search_hint": "EN TEXT TO REPLACE: Press Enter to search for \"{query}\".",
+    "current": "EN TEXT TO REPLACE: current",
+    "here": "EN TEXT TO REPLACE: you are here",
+    "connected": "EN TEXT TO REPLACE: connected",
+    "state": {
+      "on": "EN TEXT TO REPLACE: on",
+      "off": "EN TEXT TO REPLACE: off"
+    },
+    "groups": {
+      "actions": "EN TEXT TO REPLACE: Actions",
+      "help": "EN TEXT TO REPLACE: Help",
+      "language": "EN TEXT TO REPLACE: Language",
+      "connections": "EN TEXT TO REPLACE: Connections",
+      "navigation": "EN TEXT TO REPLACE: Navigation",
+      "links": "EN TEXT TO REPLACE: Links",
+      "npmx": "EN TEXT TO REPLACE: npmx",
+      "package": "EN TEXT TO REPLACE: Package",
+      "package_with_name": "EN TEXT TO REPLACE: Package ({name})",
+      "versions": "EN TEXT TO REPLACE: Versions",
+      "versions_with_name": "EN TEXT TO REPLACE: Versions of {name}"
+    },
+    "actions": {
+      "search": "EN TEXT TO REPLACE: Search",
+      "search_for": "EN TEXT TO REPLACE: Search for \"{query}\"",
+      "keyboard_shortcuts": "EN TEXT TO REPLACE: Keyboard shortcuts",
+      "help_translate": "EN TEXT TO REPLACE: Help translate"
+    },
+    "connections": {
+      "npm_connect": "EN TEXT TO REPLACE: Connect to npm CLI",
+      "npm_connected": "EN TEXT TO REPLACE: npm CLI (~{username})",
+      "npm_disconnect": "EN TEXT TO REPLACE: Disconnect npm CLI",
+      "atmosphere_connect": "EN TEXT TO REPLACE: Connect to Atmosphere",
+      "atmosphere_connected": "EN TEXT TO REPLACE: atmosphere ({'@'}{handle})",
+      "atmosphere_disconnect": "EN TEXT TO REPLACE: Disconnect Atmosphere"
+    },
+    "navigation": {
+      "home": "EN TEXT TO REPLACE: home",
+      "packages": "EN TEXT TO REPLACE: packages (~{username})",
+      "orgs": "EN TEXT TO REPLACE: orgs (~{username})",
+      "profile": "EN TEXT TO REPLACE: profile ({'@'}{handle})"
+    },
+    "links": {
+      "external": "EN TEXT TO REPLACE: External link"
+    },
+    "package_links": {
+      "stars": "EN TEXT TO REPLACE: Repository stars",
+      "forks": "EN TEXT TO REPLACE: Repository forks"
+    },
+    "theme": {
+      "system": "EN TEXT TO REPLACE: Use system theme",
+      "light": "EN TEXT TO REPLACE: Use light theme",
+      "dark": "EN TEXT TO REPLACE: Use dark theme"
+    },
+    "package": {
+      "main": "EN TEXT TO REPLACE: Package page",
+      "docs": "EN TEXT TO REPLACE: Docs",
+      "code": "EN TEXT TO REPLACE: Code",
+      "diff": "EN TEXT TO REPLACE: Diff",
+      "compare": "EN TEXT TO REPLACE: Compare this package",
+      "download": "EN TEXT TO REPLACE: Download tarball",
+      "sizes": "EN TEXT TO REPLACE: Sizes"
+    },
+    "package_actions": {
+      "copy_run": "EN TEXT TO REPLACE: Copy run command"
+    },
+    "code": {
+      "copy_file": "EN TEXT TO REPLACE: Copy file contents"
+    },
+    "diff": {
+      "merge_modified_lines": "EN TEXT TO REPLACE: Merge modified lines",
+      "word_wrap": "EN TEXT TO REPLACE: Word wrap"
+    },
+    "version": {
+      "label": "EN TEXT TO REPLACE: {version}"
+    },
+    "status": {
+      "available_in_context": "EN TEXT TO REPLACE: {context}. No commands available | {context}. 1 command available | {context}. {count} commands available",
+      "matching_in_context": "EN TEXT TO REPLACE: {context}. No matching commands | {context}. 1 matching command | {context}. {count} matching commands",
+      "no_matches_search_in_context": "EN TEXT TO REPLACE: {context}. No matching commands. Press Enter to search for \"{query}\"."
+    },
+    "announcements": {
+      "language_changed": "EN TEXT TO REPLACE: Language set to {language}.",
+      "relative_dates_on": "EN TEXT TO REPLACE: Relative dates on.",
+      "relative_dates_off": "EN TEXT TO REPLACE: Relative dates off.",
+      "theme_changed": "EN TEXT TO REPLACE: Theme set to {theme}.",
+      "accent_color_changed": "EN TEXT TO REPLACE: Accent color set to {color}.",
+      "background_theme_changed": "EN TEXT TO REPLACE: Background shade set to {theme}.",
+      "download_started": "EN TEXT TO REPLACE: Downloading {package} tarball.",
+      "copied_to_clipboard": "EN TEXT TO REPLACE: Copied to clipboard.",
+      "npm_disconnected": "EN TEXT TO REPLACE: npm CLI disconnected.",
+      "atmosphere_disconnected": "EN TEXT TO REPLACE: Atmosphere disconnected.",
+      "facets_all_selected": "EN TEXT TO REPLACE: All facets selected.",
+      "facets_all_deselected": "EN TEXT TO REPLACE: All facets deselected.",
+      "view_switched": "EN TEXT TO REPLACE: Switched to {view} view.",
+      "setting_toggled": "EN TEXT TO REPLACE: {setting} {state}."
+    }
   },
   "nav": {
     "main_navigation": "Головна",
@@ -151,6 +267,7 @@
     "translation_status": "Переглянути глобальний статус перекладу",
     "accent_colors": {
       "label": "Колірні акценти",
+      "neutral": "EN TEXT TO REPLACE: Neutral",
       "sky": "Небесний",
       "coral": "Коралевий",
       "amber": "Бурштиновий",
@@ -169,7 +286,8 @@
       "black": "Чорний"
     },
     "keyboard_shortcuts_enabled": "Увімкнути гарячі клавіші",
-    "keyboard_shortcuts_enabled_description": "Гарячі клавіші можна вимкнути, якщо вони конфліктують з налаштуваннями браузера або системи"
+    "keyboard_shortcuts_enabled_description": "Гарячі клавіші можна вимкнути, якщо вони конфліктують з налаштуваннями браузера або системи",
+    "enable_code_ligatures": "EN TEXT TO REPLACE: Enable ligatures in code"
   },
   "i18n": {
     "missing_keys": "Відсутній 1 переклад | Відсутні {count} переклади",
@@ -207,6 +325,7 @@
       "role": "роль",
       "members": "учасники"
     },
+    "sort_by": "EN TEXT TO REPLACE: Sort by",
     "scroll_to_top": "Прокрутити наверх",
     "cancel": "Скасувати",
     "save": "Зберегти",
@@ -223,11 +342,14 @@
       "gitea": "Переглянути на Gitea",
       "gitee": "Переглянути на Gitee",
       "radicle": "Переглянути на Radicle",
+      "socket_dev": "EN TEXT TO REPLACE: View on socket.dev",
       "sourcehut": "Переглянути на SourceHut",
       "tangled": "Переглянути на Tangled"
     },
     "collapse": "Згорнути",
-    "expand": "Розгорнути"
+    "collapse_with_name": "EN TEXT TO REPLACE: Collapse {name}",
+    "expand": "Розгорнути",
+    "expand_with_name": "EN TEXT TO REPLACE: Expand {name}"
   },
   "profile": {
     "display_name": "Відображуване ім'я",
@@ -258,6 +380,14 @@
       "version": "Ця версія більше не підтримується.",
       "no_reason": "Причину не вказано"
     },
+    "sizes": {
+      "title": "EN TEXT TO REPLACE: Sizes",
+      "columns": {
+        "self_size": "EN TEXT TO REPLACE: Self Size",
+        "total_size": "EN TEXT TO REPLACE: Total Size",
+        "percentage": "EN TEXT TO REPLACE: %"
+      }
+    },
     "size_increase": {
       "title_size": "Значне збільшення розміру починаючи з v{version}",
       "title_deps": "Значне збільшення кількості залежностей починаючи з v{version}",
@@ -267,7 +397,9 @@
     },
     "replacement": {
       "title": "Можливо вам не потрібна ця залежність.",
+      "example": "EN TEXT TO REPLACE: Example:",
       "native": "Це можна замінити на {replacement}, доступне з Node {nodeVersion}.",
+      "native_no_version": "EN TEXT TO REPLACE: This package can be replaced with {replacement}.",
       "simple": "Спільнота позначила цей пакет як надлишковий із рекомендацією: {replacement}.",
       "documented": "Спільнота позначила цей пакет як такий, що має більш ефективні альтернативи.",
       "none": "Цей пакет було позначено як більше не необхідний, і його функціональність, ймовірно, доступна в усіх системах.",
@@ -285,6 +417,11 @@
       "published_tooltip": "Дата публікації {package}{'@'}{version}",
       "view_dependency_graph": "Переглянути граф залежностей",
       "inspect_dependency_tree": "Дослідити дерево залежностей",
+      "view_all_sizes": "EN TEXT TO REPLACE: View all sizes",
+      "load_dependency_sizes": "EN TEXT TO REPLACE: Load dependency total sizes",
+      "size": {
+        "total": "EN TEXT TO REPLACE: Total size: {size}"
+      },
       "size_tooltip": {
         "unpacked": "{size} розпаковано розмір (цей пакет)",
         "total": "{size} загальний розпаковано розмір (включаючи всі {count} залежностей для linux-x64)"
@@ -318,6 +455,7 @@
       "docs": "документація",
       "fund": "спонсорство",
       "compare": "порівняти",
+      "timeline": "EN TEXT TO REPLACE: timeline",
       "compare_this_package": "порівняти цей пакет"
     },
     "likes": {
@@ -363,7 +501,8 @@
         "warning": "Попередження",
         "caution": "Увага"
       },
-      "copy_as_markdown": "Скопіювати файл README як Markdown"
+      "copy_as_markdown": "Скопіювати файл README як Markdown",
+      "error_loading": "EN TEXT TO REPLACE: Failed to load README details"
     },
     "provenance_section": {
       "title": "Походження",
@@ -442,9 +581,27 @@
       "current_tags": "Поточні теги",
       "no_match_filter": "Версій за фільтром \"{filter}\" не знайдено"
     },
+    "timeline": {
+      "load_more": "EN TEXT TO REPLACE: Load more",
+      "load_error": "EN TEXT TO REPLACE: Failed to load timeline. Please try again later.",
+      "size_increase": "EN TEXT TO REPLACE: Install size increased by {percent}% ({size})",
+      "size_decrease": "EN TEXT TO REPLACE: Install size decreased by {percent}% ({size})",
+      "dep_increase": "EN TEXT TO REPLACE: {count} dependencies added",
+      "dep_decrease": "EN TEXT TO REPLACE: {count} dependencies removed",
+      "license_change": "EN TEXT TO REPLACE: License changed from {from} to {to}",
+      "esm_added": "EN TEXT TO REPLACE: Module type changed to ESM",
+      "esm_removed": "EN TEXT TO REPLACE: Module type changed from ESM to CJS",
+      "types_added": "EN TEXT TO REPLACE: TypeScript types added",
+      "types_removed": "EN TEXT TO REPLACE: TypeScript types removed",
+      "trusted_publisher_added": "EN TEXT TO REPLACE: Trusted publishing enabled",
+      "trusted_publisher_removed": "EN TEXT TO REPLACE: Trusted publishing removed",
+      "provenance_added": "EN TEXT TO REPLACE: Provenance enabled",
+      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed"
+    },
     "dependencies": {
       "title": "Залежності ({count})",
       "list_label": "Залежності пакета",
+      "empty": "EN TEXT TO REPLACE: No dependencies",
       "show_all": "показати всі {count} залежностей",
       "optional": "опціонально",
       "view_vulnerabilities": "Переглянути вразливості",
@@ -486,6 +643,9 @@
         "table_available": "Таблиця даних для цього графіка доступна нижче.",
         "table_caption": "Таблиця даних графіка"
       },
+      "chart_view_toggle": "EN TEXT TO REPLACE: Toggle view",
+      "chart_view_combined": "EN TEXT TO REPLACE: Combined view",
+      "chart_view_split": "EN TEXT TO REPLACE: Split view",
       "granularity": "Деталізація",
       "granularity_daily": "Щоденні",
       "granularity_weekly": "Щотижневі",
@@ -822,8 +982,12 @@
     "lines": "{count} рядків",
     "toggle_tree": "Переключити дерево файлів",
     "close_tree": "Закрити дерево файлів",
+    "copy_content": "EN TEXT TO REPLACE: Copy file content",
     "copy_link": "Копіювати посилання",
     "view_raw": "Переглянути необроблений файл",
+    "toggle_container": "EN TEXT TO REPLACE: Toggle code container width",
+    "open_raw_file": "EN TEXT TO REPLACE: Open raw file",
+    "open_path_dropdown": "EN TEXT TO REPLACE: Open path segments dropdown",
     "file_too_large": "Файл занадто великий для попереду",
     "file_size_warning": "{size} перевищує ліміт 500KB для виділення синтаксису",
     "failed_to_load": "Не вдалося завантажити файл",
@@ -1101,6 +1265,7 @@
       "empty_description": "Знайдіть та додайте щонайменше 2 пакети вище, щоб побачити порівняння їх метрик.",
       "table_view": "Таблиця",
       "charts_view": "Діаграми",
+      "no_chartable_data": "EN TEXT TO REPLACE: No chartable data available for the selected facets.",
       "bar_chart_nav_hint": "Використовуйте ↑ ↓",
       "line_chart_nav_hint": "Використовуйте ← →"
     },
@@ -1112,6 +1277,17 @@
       "remove_package": "Видалити {package}",
       "packages_selected": "Вибрано {count}/{max} пакетів.",
       "add_hint": "Додайте щонайменше 2 пакети для порівняння."
+    },
+    "scatter_chart": {
+      "title": "EN TEXT TO REPLACE: Compare {x} vs {y}",
+      "freshness_score": "EN TEXT TO REPLACE: Freshness score",
+      "copy_alt": {
+        "analysis": "EN TEXT TO REPLACE: {package} : {x_name} ({x_value}) and {y_name} ({y_value})",
+        "description": "EN TEXT TO REPLACE: Scatter plot chart mapping {x_name} versus {y_name} for the {packages} packages. {analysis}. {watermark}"
+      },
+      "filename": "EN TEXT TO REPLACE: {x}-vs-{y}-scatter-chart",
+      "x_axis": "EN TEXT TO REPLACE: X-AXIS ↦",
+      "y_axis": "EN TEXT TO REPLACE: Y-AXIS ↥"
     },
     "no_dependency": {
       "label": "(Без залежності)",
@@ -1191,6 +1367,18 @@
         "vulnerabilities": {
           "label": "Вразливості",
           "description": "Відомі вразливості безпеки"
+        },
+        "githubStars": {
+          "label": "EN TEXT TO REPLACE: GitHub Stars",
+          "description": "EN TEXT TO REPLACE: Number of stars on the GitHub repository"
+        },
+        "githubIssues": {
+          "label": "EN TEXT TO REPLACE: GitHub Issues",
+          "description": "EN TEXT TO REPLACE: Number of issues on the GitHub repository"
+        },
+        "createdAt": {
+          "label": "EN TEXT TO REPLACE: Created At",
+          "description": "EN TEXT TO REPLACE: When the package was created"
         }
       },
       "values": {
@@ -1512,5 +1700,6 @@
       "message": "Доступність важлива для нас і ми хотіли б, щоб ви поділяли цю позицію. Використовуючи зазначені матеріали, переконайтеся, що є достатній контраст із фоном, і не зменшуйте розмір менше 24px. Якщо вам потрібні інші ресурси або додаткова інформація про проєкт, зв'яжіться з нами за посиланням {link}.",
       "discord_link_text": "chat.npmx.dev"
     }
-  }
+  },
+  "alt_logo_kawaii": "EN TEXT TO REPLACE: A cute, rounded, and colorful version of the npmx logo."
 }

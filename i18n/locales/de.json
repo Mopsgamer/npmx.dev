@@ -20,7 +20,10 @@
     "chat": "chat",
     "builders_chat": "builders chat",
     "keyboard_shortcuts": "tastaturkürzel",
-    "brand": "marke"
+    "brand": "marke",
+    "resources": "EN TEXT TO REPLACE: Resources",
+    "features": "EN TEXT TO REPLACE: Features",
+    "other": "EN TEXT TO REPLACE: Other"
   },
   "shortcuts": {
     "section": {
@@ -42,7 +45,9 @@
     "open_docs": "Dokumentation öffnen",
     "disable_shortcuts": "Tastaturkürzel deaktivieren",
     "open_main": "Hauptansicht öffnen",
-    "open_diff": "Diff-Ansicht öffnen"
+    "open_diff": "Diff-Ansicht öffnen",
+    "open_timeline": "EN TEXT TO REPLACE: Open timeline",
+    "open_sizes": "EN TEXT TO REPLACE: Open sizes"
   },
   "search": {
     "label": "npm-Pakete durchsuchen",
@@ -149,7 +154,8 @@
       "code": "Code",
       "diff": "Diff",
       "compare": "Dieses Paket vergleichen",
-      "download": "Tarball herunterladen"
+      "download": "Tarball herunterladen",
+      "sizes": "EN TEXT TO REPLACE: Sizes"
     },
     "package_actions": {
       "copy_run": "Befehl zum Ausführen kopieren"
@@ -280,7 +286,8 @@
       "black": "Schwarz"
     },
     "keyboard_shortcuts_enabled": "Tastenkombinationen aktivieren",
-    "keyboard_shortcuts_enabled_description": "Tastenkombinationen können deaktiviert werden, wenn sie mit anderen Browser- oder Systemkürzeln in Konflikt stehen"
+    "keyboard_shortcuts_enabled_description": "Tastenkombinationen können deaktiviert werden, wenn sie mit anderen Browser- oder Systemkürzeln in Konflikt stehen",
+    "enable_code_ligatures": "EN TEXT TO REPLACE: Enable ligatures in code"
   },
   "i18n": {
     "missing_keys": "{count} fehlende Übersetzung | {count} fehlende Übersetzungen",
@@ -318,6 +325,7 @@
       "role": "Rolle",
       "members": "Mitglieder"
     },
+    "sort_by": "EN TEXT TO REPLACE: Sort by",
     "scroll_to_top": "Nach oben scrollen",
     "cancel": "Abbrechen",
     "save": "Speichern",
@@ -372,6 +380,14 @@
       "version": "Diese Version ist veraltet.",
       "no_reason": "Kein Grund angegeben"
     },
+    "sizes": {
+      "title": "EN TEXT TO REPLACE: Sizes",
+      "columns": {
+        "self_size": "EN TEXT TO REPLACE: Self Size",
+        "total_size": "EN TEXT TO REPLACE: Total Size",
+        "percentage": "EN TEXT TO REPLACE: %"
+      }
+    },
     "size_increase": {
       "title_size": "Deutlicher Größenanstieg seit v{version}",
       "title_deps": "Deutlich mehr Abhängigkeiten seit v{version}",
@@ -381,7 +397,9 @@
     },
     "replacement": {
       "title": "Du brauchst diese Abhängigkeit vielleicht nicht.",
+      "example": "EN TEXT TO REPLACE: Example:",
       "native": "Dies kann durch {replacement} ersetzt werden, verfügbar seit Node {nodeVersion}.",
+      "native_no_version": "EN TEXT TO REPLACE: This package can be replaced with {replacement}.",
       "simple": "Die {community} hat dieses Paket als überflüssig markiert und empfiehlt: {replacement}.",
       "documented": "Die {community} hat leistungsstärkere Alternativen für dieses Paket aufgezeigt.",
       "none": "Dieses Paket wurde als nicht mehr nötig markiert, und seine Funktionalität ist wahrscheinlich in allen Engines nativ verfügbar.",
@@ -399,6 +417,11 @@
       "published_tooltip": "Datum, an dem {package}{'@'}{version} veröffentlicht wurde",
       "view_dependency_graph": "Abhängigkeitsgraph anzeigen",
       "inspect_dependency_tree": "Abhängigkeitsbaum untersuchen",
+      "view_all_sizes": "EN TEXT TO REPLACE: View all sizes",
+      "load_dependency_sizes": "EN TEXT TO REPLACE: Load dependency total sizes",
+      "size": {
+        "total": "EN TEXT TO REPLACE: Total size: {size}"
+      },
       "size_tooltip": {
         "unpacked": "{size} Größe nach dem Entpacken (dieses Paket)",
         "total": "{size} Gesamtgröße nach dem Entpacken (inklusive {count} Abhängigkeit für linux-x64) | {size} Gesamtgröße nach dem Entpacken (inklusive aller {count} Abhängigkeiten für linux-x64)"
@@ -432,6 +455,7 @@
       "docs": "Dokumentation",
       "fund": "Spenden",
       "compare": "Vergleichen",
+      "timeline": "EN TEXT TO REPLACE: timeline",
       "compare_this_package": "Dieses Paket vergleichen"
     },
     "likes": {
@@ -477,7 +501,8 @@
         "warning": "Warnung",
         "caution": "Vorsicht"
       },
-      "copy_as_markdown": "README als Markdown kopieren"
+      "copy_as_markdown": "README als Markdown kopieren",
+      "error_loading": "EN TEXT TO REPLACE: Failed to load README details"
     },
     "provenance_section": {
       "title": "Herkunftsnachweis",
@@ -556,9 +581,27 @@
       "current_tags": "Aktuelle Tags",
       "no_match_filter": "Keine Versionen entsprechen {filter}"
     },
+    "timeline": {
+      "load_more": "EN TEXT TO REPLACE: Load more",
+      "load_error": "EN TEXT TO REPLACE: Failed to load timeline. Please try again later.",
+      "size_increase": "EN TEXT TO REPLACE: Install size increased by {percent}% ({size})",
+      "size_decrease": "EN TEXT TO REPLACE: Install size decreased by {percent}% ({size})",
+      "dep_increase": "EN TEXT TO REPLACE: {count} dependencies added",
+      "dep_decrease": "EN TEXT TO REPLACE: {count} dependencies removed",
+      "license_change": "EN TEXT TO REPLACE: License changed from {from} to {to}",
+      "esm_added": "EN TEXT TO REPLACE: Module type changed to ESM",
+      "esm_removed": "EN TEXT TO REPLACE: Module type changed from ESM to CJS",
+      "types_added": "EN TEXT TO REPLACE: TypeScript types added",
+      "types_removed": "EN TEXT TO REPLACE: TypeScript types removed",
+      "trusted_publisher_added": "EN TEXT TO REPLACE: Trusted publishing enabled",
+      "trusted_publisher_removed": "EN TEXT TO REPLACE: Trusted publishing removed",
+      "provenance_added": "EN TEXT TO REPLACE: Provenance enabled",
+      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed"
+    },
     "dependencies": {
       "title": "Abhängigkeit ({count}) | Abhängigkeiten ({count})",
       "list_label": "Paketabhängigkeiten",
+      "empty": "EN TEXT TO REPLACE: No dependencies",
       "show_all": "{count} Abhängigkeit anzeigen | alle {count} Abhängigkeiten anzeigen",
       "optional": "optional",
       "view_vulnerabilities": "Sicherheitslücken anzeigen",
@@ -1236,7 +1279,15 @@
       "add_hint": "Füge mindestens 2 Pakete zum Vergleichen hinzu."
     },
     "scatter_chart": {
-      "copy_alt": {}
+      "title": "EN TEXT TO REPLACE: Compare {x} vs {y}",
+      "freshness_score": "EN TEXT TO REPLACE: Freshness score",
+      "copy_alt": {
+        "analysis": "EN TEXT TO REPLACE: {package} : {x_name} ({x_value}) and {y_name} ({y_value})",
+        "description": "EN TEXT TO REPLACE: Scatter plot chart mapping {x_name} versus {y_name} for the {packages} packages. {analysis}. {watermark}"
+      },
+      "filename": "EN TEXT TO REPLACE: {x}-vs-{y}-scatter-chart",
+      "x_axis": "EN TEXT TO REPLACE: X-AXIS ↦",
+      "y_axis": "EN TEXT TO REPLACE: Y-AXIS ↥"
     },
     "no_dependency": {
       "label": "(Keine Abhängigkeit)",
@@ -1316,6 +1367,18 @@
         "vulnerabilities": {
           "label": "Sicherheitslücken",
           "description": "Bekannte Sicherheitsrisiken"
+        },
+        "githubStars": {
+          "label": "EN TEXT TO REPLACE: GitHub Stars",
+          "description": "EN TEXT TO REPLACE: Number of stars on the GitHub repository"
+        },
+        "githubIssues": {
+          "label": "EN TEXT TO REPLACE: GitHub Issues",
+          "description": "EN TEXT TO REPLACE: Number of issues on the GitHub repository"
+        },
+        "createdAt": {
+          "label": "EN TEXT TO REPLACE: Created At",
+          "description": "EN TEXT TO REPLACE: When the package was created"
         }
       },
       "values": {

@@ -144,6 +144,9 @@
         },
         "open_timeline": {
           "type": "string"
+        },
+        "open_sizes": {
+          "type": "string"
         }
       },
       "additionalProperties": false
@@ -464,6 +467,9 @@
               "type": "string"
             },
             "download": {
+              "type": "string"
+            },
+            "sizes": {
               "type": "string"
             }
           },
@@ -976,6 +982,9 @@
           },
           "additionalProperties": false
         },
+        "sort_by": {
+          "type": "string"
+        },
         "scroll_to_top": {
           "type": "string"
         },
@@ -1138,6 +1147,30 @@
           },
           "additionalProperties": false
         },
+        "sizes": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "columns": {
+              "type": "object",
+              "properties": {
+                "self_size": {
+                  "type": "string"
+                },
+                "total_size": {
+                  "type": "string"
+                },
+                "percentage": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
         "size_increase": {
           "type": "object",
           "properties": {
@@ -1245,6 +1278,21 @@
             },
             "inspect_dependency_tree": {
               "type": "string"
+            },
+            "view_all_sizes": {
+              "type": "string"
+            },
+            "load_dependency_sizes": {
+              "type": "string"
+            },
+            "size": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "size_tooltip": {
               "type": "object",
@@ -1790,6 +1838,9 @@
               "type": "string"
             },
             "list_label": {
+              "type": "string"
+            },
+            "empty": {
               "type": "string"
             },
             "show_all": {

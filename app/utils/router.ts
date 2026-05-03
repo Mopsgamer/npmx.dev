@@ -30,6 +30,19 @@ export function packageRoute(
   }
 }
 
+/** Full package-sizes page (`/package-sizes/{name}/v/{ver}`) */
+export function getSizeRoute(name: string, ver: string): RouteLocationRaw {
+  const { org, name: pkgName } = splitPackageName(name)
+  return {
+    name: 'package-sizes',
+    params: {
+      org: org || undefined,
+      packageName: pkgName,
+      version: ver,
+    },
+  }
+}
+
 /** Full version history page (`/package/.../versions`) */
 export function packageVersionsRoute(packageName: string): RouteLocationRaw {
   const [org, name = ''] = packageName.startsWith('@') ? packageName.split('/') : ['', packageName]

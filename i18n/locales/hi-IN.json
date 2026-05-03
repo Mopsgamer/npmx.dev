@@ -19,7 +19,11 @@
     "social": "सोशल",
     "chat": "चैट",
     "builders_chat": "बिल्डर्स",
-    "keyboard_shortcuts": "कीबोर्ड शॉर्टकट"
+    "keyboard_shortcuts": "कीबोर्ड शॉर्टकट",
+    "brand": "EN TEXT TO REPLACE: brand",
+    "resources": "EN TEXT TO REPLACE: Resources",
+    "features": "EN TEXT TO REPLACE: Features",
+    "other": "EN TEXT TO REPLACE: Other"
   },
   "shortcuts": {
     "section": {
@@ -27,6 +31,9 @@
       "search": "खोज",
       "package": "पैकेज"
     },
+    "ctrl_key": "EN TEXT TO REPLACE: Ctrl",
+    "command_palette": "EN TEXT TO REPLACE: Open command palette",
+    "command_palette_description": "EN TEXT TO REPLACE: Use the command palette to jump between pages, package views, settings, and external links without leaving the keyboard. On macOS, press ⌘K. On Windows and Linux, press {ctrlKey}+K.",
     "focus_search": "खोज पर फ़ोकस करें",
     "show_kbd_hints": "कीबोर्ड संकेत हाइलाइट करें",
     "settings": "सेटिंग्स खोलें",
@@ -38,7 +45,9 @@
     "open_docs": "दस्तावेज़ खोलें",
     "disable_shortcuts": "आप {settings} में कीबोर्ड शॉर्टकट बंद कर सकते हैं।",
     "open_main": "मुख्य जानकारी खोलें",
-    "open_diff": "संस्करण अंतर खोलें"
+    "open_diff": "संस्करण अंतर खोलें",
+    "open_timeline": "EN TEXT TO REPLACE: Open timeline",
+    "open_sizes": "EN TEXT TO REPLACE: Open sizes"
   },
   "search": {
     "label": "npm पैकेज खोजें",
@@ -74,6 +83,114 @@
     "instant_search_turn_on": "चालू करें",
     "instant_search_turn_off": "बंद करें",
     "instant_search_advisory": "{label} {state} — {action}"
+  },
+  "command_palette": {
+    "title": "EN TEXT TO REPLACE: command palette",
+    "quick_actions": "EN TEXT TO REPLACE: jump to...",
+    "subtitle": "EN TEXT TO REPLACE: navigate across npmx and switch settings quickly",
+    "subtitle_languages": "EN TEXT TO REPLACE: choose a language or help improve translations",
+    "instructions": "EN TEXT TO REPLACE: Type to filter commands. Use the arrow keys to move through results and Enter to run a command.",
+    "input_label": "EN TEXT TO REPLACE: Command palette search",
+    "results_label": "EN TEXT TO REPLACE: Command results",
+    "placeholder": "EN TEXT TO REPLACE: type a command...",
+    "back": "EN TEXT TO REPLACE: Back",
+    "empty": "EN TEXT TO REPLACE: No matching commands",
+    "empty_search_hint": "EN TEXT TO REPLACE: Press Enter to search for \"{query}\".",
+    "current": "EN TEXT TO REPLACE: current",
+    "here": "EN TEXT TO REPLACE: you are here",
+    "connected": "EN TEXT TO REPLACE: connected",
+    "state": {
+      "on": "EN TEXT TO REPLACE: on",
+      "off": "EN TEXT TO REPLACE: off"
+    },
+    "groups": {
+      "actions": "EN TEXT TO REPLACE: Actions",
+      "help": "EN TEXT TO REPLACE: Help",
+      "language": "EN TEXT TO REPLACE: Language",
+      "connections": "EN TEXT TO REPLACE: Connections",
+      "navigation": "EN TEXT TO REPLACE: Navigation",
+      "links": "EN TEXT TO REPLACE: Links",
+      "npmx": "EN TEXT TO REPLACE: npmx",
+      "package": "EN TEXT TO REPLACE: Package",
+      "package_with_name": "EN TEXT TO REPLACE: Package ({name})",
+      "versions": "EN TEXT TO REPLACE: Versions",
+      "versions_with_name": "EN TEXT TO REPLACE: Versions of {name}"
+    },
+    "actions": {
+      "search": "EN TEXT TO REPLACE: Search",
+      "search_for": "EN TEXT TO REPLACE: Search for \"{query}\"",
+      "keyboard_shortcuts": "EN TEXT TO REPLACE: Keyboard shortcuts",
+      "help_translate": "EN TEXT TO REPLACE: Help translate"
+    },
+    "connections": {
+      "npm_connect": "EN TEXT TO REPLACE: Connect to npm CLI",
+      "npm_connected": "EN TEXT TO REPLACE: npm CLI (~{username})",
+      "npm_disconnect": "EN TEXT TO REPLACE: Disconnect npm CLI",
+      "atmosphere_connect": "EN TEXT TO REPLACE: Connect to Atmosphere",
+      "atmosphere_connected": "EN TEXT TO REPLACE: atmosphere ({'@'}{handle})",
+      "atmosphere_disconnect": "EN TEXT TO REPLACE: Disconnect Atmosphere"
+    },
+    "navigation": {
+      "home": "EN TEXT TO REPLACE: home",
+      "packages": "EN TEXT TO REPLACE: packages (~{username})",
+      "orgs": "EN TEXT TO REPLACE: orgs (~{username})",
+      "profile": "EN TEXT TO REPLACE: profile ({'@'}{handle})"
+    },
+    "links": {
+      "external": "EN TEXT TO REPLACE: External link"
+    },
+    "package_links": {
+      "stars": "EN TEXT TO REPLACE: Repository stars",
+      "forks": "EN TEXT TO REPLACE: Repository forks"
+    },
+    "theme": {
+      "system": "EN TEXT TO REPLACE: Use system theme",
+      "light": "EN TEXT TO REPLACE: Use light theme",
+      "dark": "EN TEXT TO REPLACE: Use dark theme"
+    },
+    "package": {
+      "main": "EN TEXT TO REPLACE: Package page",
+      "docs": "EN TEXT TO REPLACE: Docs",
+      "code": "EN TEXT TO REPLACE: Code",
+      "diff": "EN TEXT TO REPLACE: Diff",
+      "compare": "EN TEXT TO REPLACE: Compare this package",
+      "download": "EN TEXT TO REPLACE: Download tarball",
+      "sizes": "EN TEXT TO REPLACE: Sizes"
+    },
+    "package_actions": {
+      "copy_run": "EN TEXT TO REPLACE: Copy run command"
+    },
+    "code": {
+      "copy_file": "EN TEXT TO REPLACE: Copy file contents"
+    },
+    "diff": {
+      "merge_modified_lines": "EN TEXT TO REPLACE: Merge modified lines",
+      "word_wrap": "EN TEXT TO REPLACE: Word wrap"
+    },
+    "version": {
+      "label": "EN TEXT TO REPLACE: {version}"
+    },
+    "status": {
+      "available_in_context": "EN TEXT TO REPLACE: {context}. No commands available | {context}. 1 command available | {context}. {count} commands available",
+      "matching_in_context": "EN TEXT TO REPLACE: {context}. No matching commands | {context}. 1 matching command | {context}. {count} matching commands",
+      "no_matches_search_in_context": "EN TEXT TO REPLACE: {context}. No matching commands. Press Enter to search for \"{query}\"."
+    },
+    "announcements": {
+      "language_changed": "EN TEXT TO REPLACE: Language set to {language}.",
+      "relative_dates_on": "EN TEXT TO REPLACE: Relative dates on.",
+      "relative_dates_off": "EN TEXT TO REPLACE: Relative dates off.",
+      "theme_changed": "EN TEXT TO REPLACE: Theme set to {theme}.",
+      "accent_color_changed": "EN TEXT TO REPLACE: Accent color set to {color}.",
+      "background_theme_changed": "EN TEXT TO REPLACE: Background shade set to {theme}.",
+      "download_started": "EN TEXT TO REPLACE: Downloading {package} tarball.",
+      "copied_to_clipboard": "EN TEXT TO REPLACE: Copied to clipboard.",
+      "npm_disconnected": "EN TEXT TO REPLACE: npm CLI disconnected.",
+      "atmosphere_disconnected": "EN TEXT TO REPLACE: Atmosphere disconnected.",
+      "facets_all_selected": "EN TEXT TO REPLACE: All facets selected.",
+      "facets_all_deselected": "EN TEXT TO REPLACE: All facets deselected.",
+      "view_switched": "EN TEXT TO REPLACE: Switched to {view} view.",
+      "setting_toggled": "EN TEXT TO REPLACE: {setting} {state}."
+    }
   },
   "nav": {
     "main_navigation": "मुख्य",
@@ -150,6 +267,7 @@
     "translation_status": "वैश्विक अनुवाद स्थिति देखें",
     "accent_colors": {
       "label": "एक्सेंट रंग",
+      "neutral": "EN TEXT TO REPLACE: Neutral",
       "sky": "आसमानी",
       "coral": "कोरल",
       "amber": "अंबर",
@@ -168,7 +286,8 @@
       "black": "काला"
     },
     "keyboard_shortcuts_enabled": "कीबोर्ड शॉर्टकट सक्षम करें",
-    "keyboard_shortcuts_enabled_description": "यदि कीबोर्ड शॉर्टकट अन्य ब्राउज़र या सिस्टम शॉर्टकट से टकराते हैं, तो उन्हें बंद किया जा सकता है"
+    "keyboard_shortcuts_enabled_description": "यदि कीबोर्ड शॉर्टकट अन्य ब्राउज़र या सिस्टम शॉर्टकट से टकराते हैं, तो उन्हें बंद किया जा सकता है",
+    "enable_code_ligatures": "EN TEXT TO REPLACE: Enable ligatures in code"
   },
   "i18n": {
     "missing_keys": "{count} अनुवाद गायब है | {count} अनुवाद गायब हैं",
@@ -206,6 +325,7 @@
       "role": "भूमिका",
       "members": "सदस्य"
     },
+    "sort_by": "EN TEXT TO REPLACE: Sort by",
     "scroll_to_top": "शीर्ष पर स्क्रॉल करें",
     "cancel": "रद्द करें",
     "save": "सहेजें",
@@ -222,14 +342,31 @@
       "gitea": "Gitea पर देखें",
       "gitee": "Gitee पर देखें",
       "radicle": "Radicle पर देखें",
+      "socket_dev": "EN TEXT TO REPLACE: View on socket.dev",
       "sourcehut": "SourceHut पर देखें",
       "tangled": "Tangled पर देखें"
     },
     "collapse": "संक्षिप्त करें",
-    "expand": "विस्तृत करें"
+    "collapse_with_name": "EN TEXT TO REPLACE: Collapse {name}",
+    "expand": "विस्तृत करें",
+    "expand_with_name": "EN TEXT TO REPLACE: Expand {name}"
   },
   "profile": {
-    "invite": {}
+    "display_name": "EN TEXT TO REPLACE: Display Name",
+    "description": "EN TEXT TO REPLACE: Description",
+    "no_description": "EN TEXT TO REPLACE: No description",
+    "website": "EN TEXT TO REPLACE: Website",
+    "website_placeholder": "EN TEXT TO REPLACE: https://example.com",
+    "likes": "EN TEXT TO REPLACE: Likes",
+    "seo_title": "EN TEXT TO REPLACE: {handle} - npmx",
+    "seo_description": "EN TEXT TO REPLACE: npmx profile by {handle}",
+    "not_found": "EN TEXT TO REPLACE: Profile Not Found",
+    "not_found_message": "EN TEXT TO REPLACE: The profile for {handle} could not be found.",
+    "invite": {
+      "message": "EN TEXT TO REPLACE: It doesn't look like they're using npmx yet. Want to tell them about it?",
+      "share_button": "EN TEXT TO REPLACE: Share on Bluesky",
+      "compose_text": "EN TEXT TO REPLACE: Hey {'@'}{handle}! Have you checked out npmx.dev yet? It's a browser for the npm registry that's fast, modern, and open-source.\nhttps://npmx.dev"
+    }
   },
   "package": {
     "not_found": "पैकेज नहीं मिला",
@@ -243,6 +380,14 @@
       "version": "यह संस्करण डेप्रीकेट कर दिया गया है।",
       "no_reason": "कोई कारण प्रदान नहीं किया गया"
     },
+    "sizes": {
+      "title": "EN TEXT TO REPLACE: Sizes",
+      "columns": {
+        "self_size": "EN TEXT TO REPLACE: Self Size",
+        "total_size": "EN TEXT TO REPLACE: Total Size",
+        "percentage": "EN TEXT TO REPLACE: %"
+      }
+    },
     "size_increase": {
       "title_size": "v{version} के बाद से आकार में महत्वपूर्ण वृद्धि",
       "title_deps": "v{version} के बाद से निर्भरता संख्या में महत्वपूर्ण वृद्धि",
@@ -252,7 +397,9 @@
     },
     "replacement": {
       "title": "आपको इस निर्भरता की आवश्यकता नहीं हो सकती।",
+      "example": "EN TEXT TO REPLACE: Example:",
       "native": "इसे {replacement} से बदला जा सकता है, जो Node {nodeVersion} से उपलब्ध है।",
+      "native_no_version": "EN TEXT TO REPLACE: This package can be replaced with {replacement}.",
       "simple": "{community} ने इस पैकेज को निरर्थक के रूप में फ़्लैग किया है, सलाह के साथ: {replacement}।",
       "documented": "{community} ने इस पैकेज को अधिक प्रदर्शनकारी विकल्पों के रूप में फ़्लैग किया है।",
       "none": "यह पैकेज अब आवश्यक नहीं होने के रूप में फ़्लैग किया गया है, और इसकी कार्यक्षमता सभी इंजनों में नेटिवली उपलब्ध होने की संभावना है।",
@@ -270,6 +417,11 @@
       "published_tooltip": "{package}{'@'}{version} के प्रकाशित होने की तिथि",
       "view_dependency_graph": "निर्भरता ग्राफ़ देखें",
       "inspect_dependency_tree": "निर्भरता ट्री का निरीक्षण करें",
+      "view_all_sizes": "EN TEXT TO REPLACE: View all sizes",
+      "load_dependency_sizes": "EN TEXT TO REPLACE: Load dependency total sizes",
+      "size": {
+        "total": "EN TEXT TO REPLACE: Total size: {size}"
+      },
       "size_tooltip": {
         "unpacked": "{size} अनपैक्ड साइज़ (यह पैकेज)",
         "total": "{size} कुल अनपैक्ड साइज़ (linux-x64 के लिए सभी {count} निर्भरता सहित)"
@@ -303,6 +455,7 @@
       "docs": "दस्तावेज़",
       "fund": "दान करें",
       "compare": "तुलना करें",
+      "timeline": "EN TEXT TO REPLACE: timeline",
       "compare_this_package": "इस पैकेज की तुलना करें"
     },
     "likes": {
@@ -348,7 +501,8 @@
         "warning": "चेतावनी",
         "caution": "सावधानी"
       },
-      "copy_as_markdown": "README को Markdown के रूप में कॉपी करें"
+      "copy_as_markdown": "README को Markdown के रूप में कॉपी करें",
+      "error_loading": "EN TEXT TO REPLACE: Failed to load README details"
     },
     "provenance_section": {
       "title": "प्रोवेनेंस",
@@ -427,9 +581,27 @@
       "current_tags": "वर्तमान टैग्स",
       "no_match_filter": "कोई संस्करण {filter} से मेल नहीं खाता"
     },
+    "timeline": {
+      "load_more": "EN TEXT TO REPLACE: Load more",
+      "load_error": "EN TEXT TO REPLACE: Failed to load timeline. Please try again later.",
+      "size_increase": "EN TEXT TO REPLACE: Install size increased by {percent}% ({size})",
+      "size_decrease": "EN TEXT TO REPLACE: Install size decreased by {percent}% ({size})",
+      "dep_increase": "EN TEXT TO REPLACE: {count} dependencies added",
+      "dep_decrease": "EN TEXT TO REPLACE: {count} dependencies removed",
+      "license_change": "EN TEXT TO REPLACE: License changed from {from} to {to}",
+      "esm_added": "EN TEXT TO REPLACE: Module type changed to ESM",
+      "esm_removed": "EN TEXT TO REPLACE: Module type changed from ESM to CJS",
+      "types_added": "EN TEXT TO REPLACE: TypeScript types added",
+      "types_removed": "EN TEXT TO REPLACE: TypeScript types removed",
+      "trusted_publisher_added": "EN TEXT TO REPLACE: Trusted publishing enabled",
+      "trusted_publisher_removed": "EN TEXT TO REPLACE: Trusted publishing removed",
+      "provenance_added": "EN TEXT TO REPLACE: Provenance enabled",
+      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed"
+    },
     "dependencies": {
       "title": "निर्भरताएँ ({count})",
       "list_label": "पैकेज निर्भरताएँ",
+      "empty": "EN TEXT TO REPLACE: No dependencies",
       "show_all": "{count} निर्भरता दिखाएं | सभी {count} निर्भरताएँ दिखाएं",
       "optional": "वैकल्पिक",
       "view_vulnerabilities": "कमजोरियाँ देखें",
@@ -471,6 +643,9 @@
         "table_available": "इस चार्ट के लिए नीचे एक डेटा तालिका उपलब्ध है।",
         "table_caption": "चार्ट डेटा तालिका"
       },
+      "chart_view_toggle": "EN TEXT TO REPLACE: Toggle view",
+      "chart_view_combined": "EN TEXT TO REPLACE: Combined view",
+      "chart_view_split": "EN TEXT TO REPLACE: Split view",
       "granularity": "ग्रैन्युलैरिटी",
       "granularity_daily": "दैनिक",
       "granularity_weekly": "साप्ताहिक",
@@ -807,8 +982,12 @@
     "lines": "{count} पंक्तियाँ",
     "toggle_tree": "फ़ाइल ट्री टॉगल करें",
     "close_tree": "फ़ाइल ट्री बंद करें",
+    "copy_content": "EN TEXT TO REPLACE: Copy file content",
     "copy_link": "लिंक कॉपी करें",
     "view_raw": "रॉ फ़ाइल देखें",
+    "toggle_container": "EN TEXT TO REPLACE: Toggle code container width",
+    "open_raw_file": "EN TEXT TO REPLACE: Open raw file",
+    "open_path_dropdown": "EN TEXT TO REPLACE: Open path segments dropdown",
     "file_too_large": "फ़ाइल पूर्वावलोकन के लिए बहुत बड़ी है",
     "file_size_warning": "{size} सिंटैक्स हाइलाइटिंग के लिए 500KB सीमा से अधिक है",
     "failed_to_load": "फ़ाइल लोड करने में विफल",
@@ -1086,6 +1265,7 @@
       "empty_description": "उनके मेट्रिक्स की साथ-साथ तुलना देखने के लिए ऊपर कम से कम 2 पैकेज खोजें और जोड़ें।",
       "table_view": "तालिका",
       "charts_view": "चार्ट्स",
+      "no_chartable_data": "EN TEXT TO REPLACE: No chartable data available for the selected facets.",
       "bar_chart_nav_hint": "↑ ↓ का उपयोग करें",
       "line_chart_nav_hint": "← → का उपयोग करें"
     },
@@ -1097,6 +1277,17 @@
       "remove_package": "{package} हटाएं",
       "packages_selected": "{count}/{max} पैकेज चुने गए।",
       "add_hint": "तुलना करने के लिए कम से कम 2 पैकेज जोड़ें।"
+    },
+    "scatter_chart": {
+      "title": "EN TEXT TO REPLACE: Compare {x} vs {y}",
+      "freshness_score": "EN TEXT TO REPLACE: Freshness score",
+      "copy_alt": {
+        "analysis": "EN TEXT TO REPLACE: {package} : {x_name} ({x_value}) and {y_name} ({y_value})",
+        "description": "EN TEXT TO REPLACE: Scatter plot chart mapping {x_name} versus {y_name} for the {packages} packages. {analysis}. {watermark}"
+      },
+      "filename": "EN TEXT TO REPLACE: {x}-vs-{y}-scatter-chart",
+      "x_axis": "EN TEXT TO REPLACE: X-AXIS ↦",
+      "y_axis": "EN TEXT TO REPLACE: Y-AXIS ↥"
     },
     "no_dependency": {
       "label": "(कोई निर्भरता नहीं)",
@@ -1110,6 +1301,10 @@
     "facets": {
       "all": "सभी",
       "none": "कोई नहीं",
+      "select_all_category_facets": "EN TEXT TO REPLACE: Select all {category} facets",
+      "deselect_all_category_facets": "EN TEXT TO REPLACE: Deselect all {category} facets",
+      "selected_all_category_facets": "EN TEXT TO REPLACE: Selected all {category} facets",
+      "deselected_all_category_facets": "EN TEXT TO REPLACE: Deselected all {category} facets",
       "coming_soon": "जल्द आ रहा है",
       "select_all": "सभी फेसेट्स चुनें",
       "deselect_all": "सभी फेसेट्स अचयनित करें",
@@ -1172,6 +1367,18 @@
         "vulnerabilities": {
           "label": "कमजोरियाँ",
           "description": "ज्ञात सुरक्षा कमजोरियाँ"
+        },
+        "githubStars": {
+          "label": "EN TEXT TO REPLACE: GitHub Stars",
+          "description": "EN TEXT TO REPLACE: Number of stars on the GitHub repository"
+        },
+        "githubIssues": {
+          "label": "EN TEXT TO REPLACE: GitHub Issues",
+          "description": "EN TEXT TO REPLACE: Number of issues on the GitHub repository"
+        },
+        "createdAt": {
+          "label": "EN TEXT TO REPLACE: Created At",
+          "description": "EN TEXT TO REPLACE: When the package was created"
         }
       },
       "values": {
@@ -1444,11 +1651,55 @@
     "shortcut": "क्रियाओं पर फ़ोकस करने के लिए \"{key}\" दबाएँ",
     "button_close_aria_label": "एक्शन बार बंद करें"
   },
-  "logo_menu": {},
+  "logo_menu": {
+    "copy_svg": "EN TEXT TO REPLACE: Copy logo as SVG",
+    "copied": "EN TEXT TO REPLACE: Copied!",
+    "browse_brand": "EN TEXT TO REPLACE: Browse brand kit"
+  },
   "brand": {
-    "logos": {},
-    "customize": {},
-    "typography": {},
-    "guidelines": {}
-  }
+    "title": "EN TEXT TO REPLACE: Brand",
+    "heading": "EN TEXT TO REPLACE: brand",
+    "meta_description": "EN TEXT TO REPLACE: npmx brand guidelines, logos, colors, and typography for use in press and media.",
+    "intro": "EN TEXT TO REPLACE: Resources and guidelines for using the npmx brand in your projects, articles, and media.",
+    "logos": {
+      "title": "EN TEXT TO REPLACE: logos",
+      "description": "EN TEXT TO REPLACE: Download npmx logos in SVG and PNG formats. Use the appropriate variant for your background.",
+      "wordmark": "EN TEXT TO REPLACE: FULL WORDMARK",
+      "wordmark_alt": "EN TEXT TO REPLACE: npmx full wordmark logo with blue slash on dark background",
+      "wordmark_light_alt": "EN TEXT TO REPLACE: npmx full wordmark logo with accent slash on light background",
+      "mark": "EN TEXT TO REPLACE: LOGO MARK",
+      "mark_alt": "EN TEXT TO REPLACE: npmx logo mark with dot and slash on dark background",
+      "mark_light_alt": "EN TEXT TO REPLACE: npmx logo mark with dot and slash on light background",
+      "on_dark": "EN TEXT TO REPLACE: on dark",
+      "on_light": "EN TEXT TO REPLACE: on light",
+      "download_svg": "EN TEXT TO REPLACE: SVG",
+      "download_png": "EN TEXT TO REPLACE: PNG",
+      "download_svg_aria": "EN TEXT TO REPLACE: Download {name} as SVG",
+      "download_png_aria": "EN TEXT TO REPLACE: Download {name} as PNG"
+    },
+    "customize": {
+      "title": "EN TEXT TO REPLACE: customize your logo",
+      "description": "EN TEXT TO REPLACE: Preview the npmx logo with your accent color and background. The preview reflects your current settings — pick a color, toggle the background, and download.",
+      "accent_label": "EN TEXT TO REPLACE: accent",
+      "bg_label": "EN TEXT TO REPLACE: background",
+      "download_svg_aria": "EN TEXT TO REPLACE: Download customized logo as SVG",
+      "download_png_aria": "EN TEXT TO REPLACE: Download customized logo as PNG"
+    },
+    "typography": {
+      "title": "EN TEXT TO REPLACE: typography",
+      "description": "EN TEXT TO REPLACE: npmx uses the Geist font family by Vercel for both interface text and code.",
+      "sans": "EN TEXT TO REPLACE: Geist Sans",
+      "sans_desc": "EN TEXT TO REPLACE: Used for body text and UI elements.",
+      "mono": "EN TEXT TO REPLACE: Geist Mono",
+      "mono_desc": "EN TEXT TO REPLACE: Used for code, headings, and technical content.",
+      "pangram": "EN TEXT TO REPLACE: The quick brown fox jumps over the lazy dog",
+      "numbers": "EN TEXT TO REPLACE: 0123456789"
+    },
+    "guidelines": {
+      "title": "EN TEXT TO REPLACE: just a note",
+      "message": "EN TEXT TO REPLACE: Accessibility matters to us, and we would love you to follow us in this vision. When using mentioned media, ensure there is enough contrast against the background, and don't go smaller than 24px. If you need any other resources or additional information about the project, feel free to reach us at {link}.",
+      "discord_link_text": "EN TEXT TO REPLACE: chat.npmx.dev"
+    }
+  },
+  "alt_logo_kawaii": "EN TEXT TO REPLACE: A cute, rounded, and colorful version of the npmx logo."
 }

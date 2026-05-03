@@ -20,7 +20,10 @@
     "chat": "чат",
     "builders_chat": "разработчики",
     "keyboard_shortcuts": "горячие клавиши",
-    "brand": "бренд"
+    "brand": "бренд",
+    "resources": "EN TEXT TO REPLACE: Resources",
+    "features": "EN TEXT TO REPLACE: Features",
+    "other": "EN TEXT TO REPLACE: Other"
   },
   "shortcuts": {
     "section": {
@@ -43,7 +46,8 @@
     "disable_shortcuts": "Для отключения горячих клавиш загляните в {settings}.",
     "open_main": "Открыть основную информацию",
     "open_diff": "Открыть различия версий",
-    "open_timeline": "Открыть хронологию"
+    "open_timeline": "Открыть хронологию",
+    "open_sizes": "EN TEXT TO REPLACE: Open sizes"
   },
   "search": {
     "label": "Поиск пакетов npm",
@@ -150,7 +154,8 @@
       "code": "Код",
       "diff": "Различия",
       "compare": "Сравнить этот пакет",
-      "download": "Скачать архив"
+      "download": "Скачать архив",
+      "sizes": "EN TEXT TO REPLACE: Sizes"
     },
     "package_actions": {
       "copy_run": "Скопировать команду запуска"
@@ -320,6 +325,7 @@
       "role": "роль",
       "members": "участники"
     },
+    "sort_by": "EN TEXT TO REPLACE: Sort by",
     "scroll_to_top": "Прокрутить наверх",
     "cancel": "Отменить",
     "save": "Сохранить",
@@ -374,6 +380,14 @@
       "version": "Эта версия устарела.",
       "no_reason": "Причина не указана"
     },
+    "sizes": {
+      "title": "EN TEXT TO REPLACE: Sizes",
+      "columns": {
+        "self_size": "EN TEXT TO REPLACE: Self Size",
+        "total_size": "EN TEXT TO REPLACE: Total Size",
+        "percentage": "EN TEXT TO REPLACE: %"
+      }
+    },
     "size_increase": {
       "title_size": "Значительное увеличение размера с версии v{version}",
       "title_deps": "Значительное увеличение количества зависимостей с версии v{version}",
@@ -383,7 +397,9 @@
     },
     "replacement": {
       "title": "Возможно, вам не нужна эта зависимость.",
+      "example": "EN TEXT TO REPLACE: Example:",
       "native": "Это можно заменить на {replacement}, доступный начиная с Node {nodeVersion}.",
+      "native_no_version": "EN TEXT TO REPLACE: This package can be replaced with {replacement}.",
       "simple": "Сообщество отметило этот пакет как избыточный, совет: {replacement}.",
       "documented": "Сообщество отметило, что у этого пакета есть более производительные альтернативы.",
       "none": "Этот пакет был отмечен как ненужный, так как его функциональность, вероятно, доступна нативно во всех движках.",
@@ -401,6 +417,11 @@
       "published_tooltip": "Дата публикации {package}{'@'}{version}",
       "view_dependency_graph": "Посмотреть граф зависимостей",
       "inspect_dependency_tree": "Изучить дерево зависимостей",
+      "view_all_sizes": "EN TEXT TO REPLACE: View all sizes",
+      "load_dependency_sizes": "EN TEXT TO REPLACE: Load dependency total sizes",
+      "size": {
+        "total": "EN TEXT TO REPLACE: Total size: {size}"
+      },
       "size_tooltip": {
         "unpacked": "{size} в распакованном виде (этот пакет)",
         "total": "{size} общий размер в распакованном виде (включая {count} зависимость для linux-x64) | {size} общий размер в распакованном виде (включая {count} зависимости для linux-x64) | {size} общий размер в распакованном виде (включая все {count} зависимостей для linux-x64)"
@@ -580,6 +601,7 @@
     "dependencies": {
       "title": "Зависимости ({count})",
       "list_label": "Зависимости пакета",
+      "empty": "EN TEXT TO REPLACE: No dependencies",
       "show_all": "показать все ({count})",
       "optional": "опционально",
       "view_vulnerabilities": "Посмотреть уязвимости",

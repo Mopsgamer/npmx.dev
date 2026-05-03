@@ -20,7 +20,10 @@
     "chat": "聊天",
     "builders_chat": "開發者聊天",
     "keyboard_shortcuts": "鍵盤快捷鍵",
-    "brand": "品牌"
+    "brand": "品牌",
+    "resources": "EN TEXT TO REPLACE: Resources",
+    "features": "EN TEXT TO REPLACE: Features",
+    "other": "EN TEXT TO REPLACE: Other"
   },
   "shortcuts": {
     "section": {
@@ -42,7 +45,9 @@
     "open_docs": "開啟文件",
     "disable_shortcuts": "你可以在 {settings} 中停用鍵盤快速鍵。",
     "open_main": "開啟主要資訊",
-    "open_diff": "開啟版本差異"
+    "open_diff": "開啟版本差異",
+    "open_timeline": "EN TEXT TO REPLACE: Open timeline",
+    "open_sizes": "EN TEXT TO REPLACE: Open sizes"
   },
   "search": {
     "label": "搜尋 npm 套件",
@@ -149,7 +154,8 @@
       "code": "程式碼",
       "diff": "差異",
       "compare": "比較這個套件",
-      "download": "下載 tarball"
+      "download": "下載 tarball",
+      "sizes": "EN TEXT TO REPLACE: Sizes"
     },
     "package_actions": {
       "copy_run": "複製執行指令"
@@ -280,7 +286,8 @@
       "black": "黑色"
     },
     "keyboard_shortcuts_enabled": "啟用鍵盤快速鍵",
-    "keyboard_shortcuts_enabled_description": "若與其他瀏覽器或系統快捷鍵衝突，可停用鍵盤快速鍵"
+    "keyboard_shortcuts_enabled_description": "若與其他瀏覽器或系統快捷鍵衝突，可停用鍵盤快速鍵",
+    "enable_code_ligatures": "EN TEXT TO REPLACE: Enable ligatures in code"
   },
   "i18n": {
     "missing_keys": "{count} 項缺少翻譯",
@@ -318,6 +325,7 @@
       "role": "角色",
       "members": "成員"
     },
+    "sort_by": "EN TEXT TO REPLACE: Sort by",
     "scroll_to_top": "回到頂端",
     "cancel": "取消",
     "save": "儲存",
@@ -334,6 +342,7 @@
       "gitea": "在 Gitea 上檢視",
       "gitee": "在 Gitee 上檢視",
       "radicle": "在 Radicle 上檢視",
+      "socket_dev": "EN TEXT TO REPLACE: View on socket.dev",
       "sourcehut": "在 SourceHut 上檢視",
       "tangled": "在 Tangled 上檢視"
     },
@@ -371,6 +380,14 @@
       "version": "此版本已被棄用。",
       "no_reason": "未提供原因"
     },
+    "sizes": {
+      "title": "EN TEXT TO REPLACE: Sizes",
+      "columns": {
+        "self_size": "EN TEXT TO REPLACE: Self Size",
+        "total_size": "EN TEXT TO REPLACE: Total Size",
+        "percentage": "EN TEXT TO REPLACE: %"
+      }
+    },
     "size_increase": {
       "title_size": "自 v{version} 起，安裝大小顯著增加",
       "title_deps": "自 v{version} 起，相依套件數量顯著增加",
@@ -380,7 +397,9 @@
     },
     "replacement": {
       "title": "你可能不需要這個相依套件。",
+      "example": "EN TEXT TO REPLACE: Example:",
       "native": "此功能自 Node.js {nodeVersion} 起已內建，可直接使用 {replacement} 取代。",
+      "native_no_version": "EN TEXT TO REPLACE: This package can be replaced with {replacement}.",
       "simple": "社群標記此套件為冗餘，建議改用：{replacement}。",
       "documented": "社群標記此套件有更高效能的替代方案",
       "none": "此套件已被標記為不再需要，其功能很可能已由所有引擎原生提供。",
@@ -398,6 +417,11 @@
       "published_tooltip": "{package}{'@'}{version} 的發布日期",
       "view_dependency_graph": "檢視相依關係圖",
       "inspect_dependency_tree": "檢視相依樹",
+      "view_all_sizes": "EN TEXT TO REPLACE: View all sizes",
+      "load_dependency_sizes": "EN TEXT TO REPLACE: Load dependency total sizes",
+      "size": {
+        "total": "EN TEXT TO REPLACE: Total size: {size}"
+      },
       "size_tooltip": {
         "unpacked": "未壓縮大小（此套件）：{size}",
         "total": "總未壓縮大小（包含 {count} 個相依套件）：{size}"
@@ -431,6 +455,7 @@
       "docs": "文件",
       "fund": "贊助",
       "compare": "比較",
+      "timeline": "EN TEXT TO REPLACE: timeline",
       "compare_this_package": "比較這個套件"
     },
     "likes": {
@@ -476,7 +501,8 @@
         "warning": "警告",
         "caution": "小心"
       },
-      "copy_as_markdown": "複製 README 為 Markdown 格式"
+      "copy_as_markdown": "複製 README 為 Markdown 格式",
+      "error_loading": "EN TEXT TO REPLACE: Failed to load README details"
     },
     "provenance_section": {
       "title": "來源",
@@ -555,9 +581,27 @@
       "current_tags": "當前標籤",
       "no_match_filter": "沒有版本符合 {filter}"
     },
+    "timeline": {
+      "load_more": "EN TEXT TO REPLACE: Load more",
+      "load_error": "EN TEXT TO REPLACE: Failed to load timeline. Please try again later.",
+      "size_increase": "EN TEXT TO REPLACE: Install size increased by {percent}% ({size})",
+      "size_decrease": "EN TEXT TO REPLACE: Install size decreased by {percent}% ({size})",
+      "dep_increase": "EN TEXT TO REPLACE: {count} dependencies added",
+      "dep_decrease": "EN TEXT TO REPLACE: {count} dependencies removed",
+      "license_change": "EN TEXT TO REPLACE: License changed from {from} to {to}",
+      "esm_added": "EN TEXT TO REPLACE: Module type changed to ESM",
+      "esm_removed": "EN TEXT TO REPLACE: Module type changed from ESM to CJS",
+      "types_added": "EN TEXT TO REPLACE: TypeScript types added",
+      "types_removed": "EN TEXT TO REPLACE: TypeScript types removed",
+      "trusted_publisher_added": "EN TEXT TO REPLACE: Trusted publishing enabled",
+      "trusted_publisher_removed": "EN TEXT TO REPLACE: Trusted publishing removed",
+      "provenance_added": "EN TEXT TO REPLACE: Provenance enabled",
+      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed"
+    },
     "dependencies": {
       "title": "相依（{count} 個）",
       "list_label": "套件相依",
+      "empty": "EN TEXT TO REPLACE: No dependencies",
       "show_all": "顯示全部 {count} 個相依套件",
       "optional": "選用",
       "view_vulnerabilities": "檢視漏洞",
@@ -1323,6 +1367,18 @@
         "vulnerabilities": {
           "label": "漏洞",
           "description": "已知安全漏洞"
+        },
+        "githubStars": {
+          "label": "EN TEXT TO REPLACE: GitHub Stars",
+          "description": "EN TEXT TO REPLACE: Number of stars on the GitHub repository"
+        },
+        "githubIssues": {
+          "label": "EN TEXT TO REPLACE: GitHub Issues",
+          "description": "EN TEXT TO REPLACE: Number of issues on the GitHub repository"
+        },
+        "createdAt": {
+          "label": "EN TEXT TO REPLACE: Created At",
+          "description": "EN TEXT TO REPLACE: When the package was created"
         }
       },
       "values": {

@@ -20,7 +20,10 @@
     "chat": "chat",
     "builders_chat": "builders",
     "keyboard_shortcuts": "atajos de teclado",
-    "brand": "marca"
+    "brand": "marca",
+    "resources": "EN TEXT TO REPLACE: Resources",
+    "features": "EN TEXT TO REPLACE: Features",
+    "other": "EN TEXT TO REPLACE: Other"
   },
   "shortcuts": {
     "section": {
@@ -28,6 +31,9 @@
       "search": "Búsqueda",
       "package": "Paquete"
     },
+    "ctrl_key": "EN TEXT TO REPLACE: Ctrl",
+    "command_palette": "EN TEXT TO REPLACE: Open command palette",
+    "command_palette_description": "EN TEXT TO REPLACE: Use the command palette to jump between pages, package views, settings, and external links without leaving the keyboard. On macOS, press ⌘K. On Windows and Linux, press {ctrlKey}+K.",
     "focus_search": "Enfocar búsqueda",
     "show_kbd_hints": "Resaltar atajos de teclado",
     "settings": "Abrir ajustes",
@@ -39,7 +45,9 @@
     "open_docs": "Abrir documentación",
     "disable_shortcuts": "Puedes desactivar los atajos de teclado en {settings}.",
     "open_main": "Abrir información principal",
-    "open_diff": "Abrir diferencias de versión"
+    "open_diff": "Abrir diferencias de versión",
+    "open_timeline": "EN TEXT TO REPLACE: Open timeline",
+    "open_sizes": "EN TEXT TO REPLACE: Open sizes"
   },
   "search": {
     "label": "Buscar paquetes npm",
@@ -75,6 +83,114 @@
     "instant_search_turn_on": "activar",
     "instant_search_turn_off": "desactivar",
     "instant_search_advisory": "{label} {state} — {action}"
+  },
+  "command_palette": {
+    "title": "EN TEXT TO REPLACE: command palette",
+    "quick_actions": "EN TEXT TO REPLACE: jump to...",
+    "subtitle": "EN TEXT TO REPLACE: navigate across npmx and switch settings quickly",
+    "subtitle_languages": "EN TEXT TO REPLACE: choose a language or help improve translations",
+    "instructions": "EN TEXT TO REPLACE: Type to filter commands. Use the arrow keys to move through results and Enter to run a command.",
+    "input_label": "EN TEXT TO REPLACE: Command palette search",
+    "results_label": "EN TEXT TO REPLACE: Command results",
+    "placeholder": "EN TEXT TO REPLACE: type a command...",
+    "back": "EN TEXT TO REPLACE: Back",
+    "empty": "EN TEXT TO REPLACE: No matching commands",
+    "empty_search_hint": "EN TEXT TO REPLACE: Press Enter to search for \"{query}\".",
+    "current": "EN TEXT TO REPLACE: current",
+    "here": "EN TEXT TO REPLACE: you are here",
+    "connected": "EN TEXT TO REPLACE: connected",
+    "state": {
+      "on": "EN TEXT TO REPLACE: on",
+      "off": "EN TEXT TO REPLACE: off"
+    },
+    "groups": {
+      "actions": "EN TEXT TO REPLACE: Actions",
+      "help": "EN TEXT TO REPLACE: Help",
+      "language": "EN TEXT TO REPLACE: Language",
+      "connections": "EN TEXT TO REPLACE: Connections",
+      "navigation": "EN TEXT TO REPLACE: Navigation",
+      "links": "EN TEXT TO REPLACE: Links",
+      "npmx": "EN TEXT TO REPLACE: npmx",
+      "package": "EN TEXT TO REPLACE: Package",
+      "package_with_name": "EN TEXT TO REPLACE: Package ({name})",
+      "versions": "EN TEXT TO REPLACE: Versions",
+      "versions_with_name": "EN TEXT TO REPLACE: Versions of {name}"
+    },
+    "actions": {
+      "search": "EN TEXT TO REPLACE: Search",
+      "search_for": "EN TEXT TO REPLACE: Search for \"{query}\"",
+      "keyboard_shortcuts": "EN TEXT TO REPLACE: Keyboard shortcuts",
+      "help_translate": "EN TEXT TO REPLACE: Help translate"
+    },
+    "connections": {
+      "npm_connect": "EN TEXT TO REPLACE: Connect to npm CLI",
+      "npm_connected": "EN TEXT TO REPLACE: npm CLI (~{username})",
+      "npm_disconnect": "EN TEXT TO REPLACE: Disconnect npm CLI",
+      "atmosphere_connect": "EN TEXT TO REPLACE: Connect to Atmosphere",
+      "atmosphere_connected": "EN TEXT TO REPLACE: atmosphere ({'@'}{handle})",
+      "atmosphere_disconnect": "EN TEXT TO REPLACE: Disconnect Atmosphere"
+    },
+    "navigation": {
+      "home": "EN TEXT TO REPLACE: home",
+      "packages": "EN TEXT TO REPLACE: packages (~{username})",
+      "orgs": "EN TEXT TO REPLACE: orgs (~{username})",
+      "profile": "EN TEXT TO REPLACE: profile ({'@'}{handle})"
+    },
+    "links": {
+      "external": "EN TEXT TO REPLACE: External link"
+    },
+    "package_links": {
+      "stars": "EN TEXT TO REPLACE: Repository stars",
+      "forks": "EN TEXT TO REPLACE: Repository forks"
+    },
+    "theme": {
+      "system": "EN TEXT TO REPLACE: Use system theme",
+      "light": "EN TEXT TO REPLACE: Use light theme",
+      "dark": "EN TEXT TO REPLACE: Use dark theme"
+    },
+    "package": {
+      "main": "EN TEXT TO REPLACE: Package page",
+      "docs": "EN TEXT TO REPLACE: Docs",
+      "code": "EN TEXT TO REPLACE: Code",
+      "diff": "EN TEXT TO REPLACE: Diff",
+      "compare": "EN TEXT TO REPLACE: Compare this package",
+      "download": "EN TEXT TO REPLACE: Download tarball",
+      "sizes": "EN TEXT TO REPLACE: Sizes"
+    },
+    "package_actions": {
+      "copy_run": "EN TEXT TO REPLACE: Copy run command"
+    },
+    "code": {
+      "copy_file": "EN TEXT TO REPLACE: Copy file contents"
+    },
+    "diff": {
+      "merge_modified_lines": "EN TEXT TO REPLACE: Merge modified lines",
+      "word_wrap": "EN TEXT TO REPLACE: Word wrap"
+    },
+    "version": {
+      "label": "EN TEXT TO REPLACE: {version}"
+    },
+    "status": {
+      "available_in_context": "EN TEXT TO REPLACE: {context}. No commands available | {context}. 1 command available | {context}. {count} commands available",
+      "matching_in_context": "EN TEXT TO REPLACE: {context}. No matching commands | {context}. 1 matching command | {context}. {count} matching commands",
+      "no_matches_search_in_context": "EN TEXT TO REPLACE: {context}. No matching commands. Press Enter to search for \"{query}\"."
+    },
+    "announcements": {
+      "language_changed": "EN TEXT TO REPLACE: Language set to {language}.",
+      "relative_dates_on": "EN TEXT TO REPLACE: Relative dates on.",
+      "relative_dates_off": "EN TEXT TO REPLACE: Relative dates off.",
+      "theme_changed": "EN TEXT TO REPLACE: Theme set to {theme}.",
+      "accent_color_changed": "EN TEXT TO REPLACE: Accent color set to {color}.",
+      "background_theme_changed": "EN TEXT TO REPLACE: Background shade set to {theme}.",
+      "download_started": "EN TEXT TO REPLACE: Downloading {package} tarball.",
+      "copied_to_clipboard": "EN TEXT TO REPLACE: Copied to clipboard.",
+      "npm_disconnected": "EN TEXT TO REPLACE: npm CLI disconnected.",
+      "atmosphere_disconnected": "EN TEXT TO REPLACE: Atmosphere disconnected.",
+      "facets_all_selected": "EN TEXT TO REPLACE: All facets selected.",
+      "facets_all_deselected": "EN TEXT TO REPLACE: All facets deselected.",
+      "view_switched": "EN TEXT TO REPLACE: Switched to {view} view.",
+      "setting_toggled": "EN TEXT TO REPLACE: {setting} {state}."
+    }
   },
   "nav": {
     "main_navigation": "Principal",
@@ -151,6 +267,7 @@
     "translation_status": "Comprueba el estado global de las traducciones",
     "accent_colors": {
       "label": "Colores de acento",
+      "neutral": "EN TEXT TO REPLACE: Neutral",
       "sky": "Cielo",
       "coral": "Coral",
       "amber": "Ámbar",
@@ -169,7 +286,8 @@
       "black": "Negro"
     },
     "keyboard_shortcuts_enabled": "Activar atajos de teclado",
-    "keyboard_shortcuts_enabled_description": "Los atajos de teclado pueden desactivarse si entran en conflicto con otros atajos del navegador o del sistema"
+    "keyboard_shortcuts_enabled_description": "Los atajos de teclado pueden desactivarse si entran en conflicto con otros atajos del navegador o del sistema",
+    "enable_code_ligatures": "EN TEXT TO REPLACE: Enable ligatures in code"
   },
   "i18n": {
     "missing_keys": "{count} traducción faltante | {count} traducciones faltantes",
@@ -207,6 +325,7 @@
       "role": "rol",
       "members": "miembros"
     },
+    "sort_by": "EN TEXT TO REPLACE: Sort by",
     "scroll_to_top": "Volver arriba",
     "cancel": "Cancelar",
     "save": "Guardar",
@@ -223,11 +342,14 @@
       "gitea": "Ver en Gitea",
       "gitee": "Ver en Gitee",
       "radicle": "Ver en Radicle",
+      "socket_dev": "EN TEXT TO REPLACE: View on socket.dev",
       "sourcehut": "Ver en SourceHut",
       "tangled": "Ver en Tangled"
     },
     "collapse": "Contraer",
-    "expand": "Expandir"
+    "collapse_with_name": "EN TEXT TO REPLACE: Collapse {name}",
+    "expand": "Expandir",
+    "expand_with_name": "EN TEXT TO REPLACE: Expand {name}"
   },
   "profile": {
     "display_name": "Nombre visible",
@@ -258,6 +380,14 @@
       "version": "Esta versión está obsoleta.",
       "no_reason": "Sin razón proporcionada"
     },
+    "sizes": {
+      "title": "EN TEXT TO REPLACE: Sizes",
+      "columns": {
+        "self_size": "EN TEXT TO REPLACE: Self Size",
+        "total_size": "EN TEXT TO REPLACE: Total Size",
+        "percentage": "EN TEXT TO REPLACE: %"
+      }
+    },
     "size_increase": {
       "title_size": "Aumento significativo del tamaño desde v{version}",
       "title_deps": "Aumento significativo del número de dependencias desde v{version}",
@@ -267,7 +397,9 @@
     },
     "replacement": {
       "title": "Es posible que no necesite esta dependencia.",
+      "example": "EN TEXT TO REPLACE: Example:",
       "native": "Esto se puede reemplazar con {replacement}, disponible desde Node {nodeVersion}.",
+      "native_no_version": "EN TEXT TO REPLACE: This package can be replaced with {replacement}.",
       "simple": "La {community} ha marcado este paquete como redundante, con el siguiente consejo: {replacement}.",
       "documented": "La {community} ha señalado que este paquete tiene alternativas con mejor rendimiento.",
       "none": "Este paquete se ha marcado como ya no necesario y es probable que su funcionalidad esté disponible de forma nativa en todos los motores.",
@@ -285,6 +417,11 @@
       "published_tooltip": "Fecha en que se publicó {package}{'@'}{version}",
       "view_dependency_graph": "Ver gráfico de dependencias",
       "inspect_dependency_tree": "Inspeccionar árbol de dependencias",
+      "view_all_sizes": "EN TEXT TO REPLACE: View all sizes",
+      "load_dependency_sizes": "EN TEXT TO REPLACE: Load dependency total sizes",
+      "size": {
+        "total": "EN TEXT TO REPLACE: Total size: {size}"
+      },
       "size_tooltip": {
         "unpacked": "{size} tamaño desempaquetado (este paquete)",
         "total": "{size} tamaño total desempaquetado (incluidas las {count} dependencias para Linux-x64)"
@@ -318,6 +455,7 @@
       "docs": "documentación",
       "fund": "financiar",
       "compare": "comparar",
+      "timeline": "EN TEXT TO REPLACE: timeline",
       "compare_this_package": "comparar este paquete"
     },
     "likes": {
@@ -363,7 +501,8 @@
         "warning": "Advertencia",
         "caution": "Precaución"
       },
-      "copy_as_markdown": "Copiar README como Markdown"
+      "copy_as_markdown": "Copiar README como Markdown",
+      "error_loading": "EN TEXT TO REPLACE: Failed to load README details"
     },
     "provenance_section": {
       "title": "Procedencia",
@@ -442,9 +581,27 @@
       "current_tags": "Etiquetas actuales",
       "no_match_filter": "Ninguna versión coincide con {filter}"
     },
+    "timeline": {
+      "load_more": "EN TEXT TO REPLACE: Load more",
+      "load_error": "EN TEXT TO REPLACE: Failed to load timeline. Please try again later.",
+      "size_increase": "EN TEXT TO REPLACE: Install size increased by {percent}% ({size})",
+      "size_decrease": "EN TEXT TO REPLACE: Install size decreased by {percent}% ({size})",
+      "dep_increase": "EN TEXT TO REPLACE: {count} dependencies added",
+      "dep_decrease": "EN TEXT TO REPLACE: {count} dependencies removed",
+      "license_change": "EN TEXT TO REPLACE: License changed from {from} to {to}",
+      "esm_added": "EN TEXT TO REPLACE: Module type changed to ESM",
+      "esm_removed": "EN TEXT TO REPLACE: Module type changed from ESM to CJS",
+      "types_added": "EN TEXT TO REPLACE: TypeScript types added",
+      "types_removed": "EN TEXT TO REPLACE: TypeScript types removed",
+      "trusted_publisher_added": "EN TEXT TO REPLACE: Trusted publishing enabled",
+      "trusted_publisher_removed": "EN TEXT TO REPLACE: Trusted publishing removed",
+      "provenance_added": "EN TEXT TO REPLACE: Provenance enabled",
+      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed"
+    },
     "dependencies": {
       "title": "Dependencias ({count})",
       "list_label": "Dependencias del paquete",
+      "empty": "EN TEXT TO REPLACE: No dependencies",
       "show_all": "mostrar {count} dependencia | mostrar todas las {count} dependencias",
       "optional": "opcional",
       "view_vulnerabilities": "Ver vulnerabilidades",
@@ -825,8 +982,12 @@
     "lines": "{count} líneas",
     "toggle_tree": "Alternar árbol de archivos",
     "close_tree": "Cerrar árbol de archivos",
+    "copy_content": "EN TEXT TO REPLACE: Copy file content",
     "copy_link": "Copiar enlace",
     "view_raw": "Ver archivo crudo",
+    "toggle_container": "EN TEXT TO REPLACE: Toggle code container width",
+    "open_raw_file": "EN TEXT TO REPLACE: Open raw file",
+    "open_path_dropdown": "EN TEXT TO REPLACE: Open path segments dropdown",
     "file_too_large": "Archivo demasiado grande para previsualizar",
     "file_size_warning": "{size} excede el límite de 500KB para resaltado de sintaxis",
     "failed_to_load": "Error al cargar archivo",
@@ -1117,6 +1278,17 @@
       "packages_selected": "{count}/{max} paquetes seleccionados.",
       "add_hint": "Añade al menos 2 paquetes para comparar."
     },
+    "scatter_chart": {
+      "title": "EN TEXT TO REPLACE: Compare {x} vs {y}",
+      "freshness_score": "EN TEXT TO REPLACE: Freshness score",
+      "copy_alt": {
+        "analysis": "EN TEXT TO REPLACE: {package} : {x_name} ({x_value}) and {y_name} ({y_value})",
+        "description": "EN TEXT TO REPLACE: Scatter plot chart mapping {x_name} versus {y_name} for the {packages} packages. {analysis}. {watermark}"
+      },
+      "filename": "EN TEXT TO REPLACE: {x}-vs-{y}-scatter-chart",
+      "x_axis": "EN TEXT TO REPLACE: X-AXIS ↦",
+      "y_axis": "EN TEXT TO REPLACE: Y-AXIS ↥"
+    },
     "no_dependency": {
       "label": "(Sin dependencia)",
       "typeahead_title": "¿Qué haría James?",
@@ -1195,6 +1367,18 @@
         "vulnerabilities": {
           "label": "Vulnerabilidades",
           "description": "Vulnerabilidades de seguridad conocidas"
+        },
+        "githubStars": {
+          "label": "EN TEXT TO REPLACE: GitHub Stars",
+          "description": "EN TEXT TO REPLACE: Number of stars on the GitHub repository"
+        },
+        "githubIssues": {
+          "label": "EN TEXT TO REPLACE: GitHub Issues",
+          "description": "EN TEXT TO REPLACE: Number of issues on the GitHub repository"
+        },
+        "createdAt": {
+          "label": "EN TEXT TO REPLACE: Created At",
+          "description": "EN TEXT TO REPLACE: When the package was created"
         }
       },
       "values": {
@@ -1516,5 +1700,6 @@
       "message": "La accesibilidad es importante para nosotros, y nos encantaría que nos acompañaras en esta visión. Cuando uses los medios mencionados, asegúrate de que haya suficiente contraste con el fondo, y no uses un tamaño más pequeño que 24px. Si necesitas algún otro recurso o información adicional sobre el proyecto, no dudes en contactarnos a través de {link}.",
       "discord_link_text": "chat.npmx.dev"
     }
-  }
+  },
+  "alt_logo_kawaii": "EN TEXT TO REPLACE: A cute, rounded, and colorful version of the npmx logo."
 }

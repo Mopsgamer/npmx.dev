@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { NuxtError } from '#app'
 import { SEVERITY_TEXT_COLORS, getHighestSeverity } from '#shared/utils/severity'
 import { getOutdatedTooltip, getVersionClass } from '~/utils/npm/outdated-dependencies'
 
@@ -8,7 +7,7 @@ const { t } = useI18n()
 const props = defineProps<{
   packageName: string
   version: string
-  packageSize?: InstallSizeResult | null
+  packageSize?: InstallSizeResult | undefined
   dependencies?: Record<string, string>
   peerDependencies?: Record<string, string>
   peerDependenciesMeta?: Record<string, { optional?: boolean }>
@@ -69,19 +68,6 @@ const sortedOptionalDependencies = computed(() => {
   return Object.entries(props.optionalDependencies).sort(([a], [b]) => a.localeCompare(b))
 })
 
-// Fetch size information for dependencies that require it
-const { data: sizereqData, pending: sizereqLoading } = usePackageDependencySizes(
-  () => props.packageName,
-  () => props.version,
-  () => props.dependencies,
-)
-
-const { getTooltipText: getDepSizeTooltip } = usePackageDependencySizeTooltip(
-  sizereqData,
-  () => props.packageSize,
-  t,
-)
-
 // Get version tooltip
 function getDepVersionTooltip(dep: string, version: string) {
   const outdated = outdatedDeps.value[dep]
@@ -119,7 +105,6 @@ const {
 } = useVisibleItems(sortedOptionalDependencies, 10)
 
 const numberFormatter = useNumberFormatter()
-const bytesFormatter = useBytesFormatter()
 </script>
 
 <template>
@@ -138,13 +123,20 @@ const bytesFormatter = useBytesFormatter()
         )
       "
     >
-      <PackageSizeBar
-        :package-name="props.packageName"
-        :version="props.version"
-        :package-size="props.packageSize"
-        :dependencies="props.dependencies"
-        :bundled-dependencies="props.bundledDependencies"
-      />
+      <div class="mb-4">
+        <div class="flex items-center justify-between mb-3">
+          <div class="text-xs text-fg-subtle uppercase tracking-wider font-medium">
+            {{ t('package.stats.install_size') }}
+          </div>
+        </div>
+        <PackageSizeBar
+          :package-name="props.packageName"
+          :version="props.version"
+          :package-size="props.packageSize"
+          :dependencies="props.dependencies"
+          :bundled-dependencies="props.bundledDependencies"
+        />
+      </div>
       <ul class="space-y-1 list-none m-0" :aria-label="$t('package.dependencies.list_label')">
         <li
           v-for="[dep, version] in visibleDeps"
@@ -213,26 +205,6 @@ const bytesFormatter = useBytesFormatter()
             >
               {{ version }}
             </LinkBase>
-            <TooltipApp
-              v-if="getDepSizeTooltip(dep)"
-              class="shrink-0"
-              :class="getVersionClass(undefined)"
-              :text="getDepSizeTooltip(dep)"
-            >
-              <button
-                type="button"
-                class="inline-flex items-center justify-center p-2 -m-2 outline-none"
-                :aria-label="getDepSizeTooltip(dep)"
-              >
-                <span
-                  class="i-lucide:info w-3 h-3 opacity-50 transition-opacity hover:opacity-100"
-                  :class="{
-                    'i-svg-spinners:ring-resize': sizereqLoading && !sizereqData?.[dep],
-                  }"
-                  aria-hidden="true"
-                />
-              </button>
-            </TooltipApp>
             <span v-if="outdatedDeps[dep]" class="sr-only">
               ({{ getOutdatedTooltip(outdatedDeps[dep], t) }})
             </span>

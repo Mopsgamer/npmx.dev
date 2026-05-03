@@ -5,6 +5,10 @@ export interface DependencySize {
   tarballUrl: string
   /** True if this is an optional dependency */
   optional?: boolean
+  /** Total unpacked size including all dependencies (bytes) */
+  totalSize?: number
+  /** Number of dependencies (including transitive) */
+  dependencyCount?: number
 }
 
 export interface InstallSizeResult {

@@ -20,7 +20,10 @@
     "chat": "chat",
     "builders_chat": "stavitelé",
     "keyboard_shortcuts": "klávesové zkratky",
-    "brand": "značka"
+    "brand": "značka",
+    "resources": "EN TEXT TO REPLACE: Resources",
+    "features": "EN TEXT TO REPLACE: Features",
+    "other": "EN TEXT TO REPLACE: Other"
   },
   "shortcuts": {
     "section": {
@@ -42,7 +45,9 @@
     "open_docs": "Otevřít dokumentaci",
     "disable_shortcuts": "Klávesové zkratky můžete zakázat v {settings}.",
     "open_main": "Otevřít hlavní informace",
-    "open_diff": "Otevřít rozdíly verzí"
+    "open_diff": "Otevřít rozdíly verzí",
+    "open_timeline": "EN TEXT TO REPLACE: Open timeline",
+    "open_sizes": "EN TEXT TO REPLACE: Open sizes"
   },
   "search": {
     "label": "Hledat npm balíčky",
@@ -149,7 +154,8 @@
       "code": "Kód",
       "diff": "Rozdíl",
       "compare": "Porovnat tento balíček",
-      "download": "Stáhnout tarball"
+      "download": "Stáhnout tarball",
+      "sizes": "EN TEXT TO REPLACE: Sizes"
     },
     "package_actions": {
       "copy_run": "Kopírovat příkaz spuštění"
@@ -319,6 +325,7 @@
       "role": "role",
       "members": "členové"
     },
+    "sort_by": "EN TEXT TO REPLACE: Sort by",
     "scroll_to_top": "Posunout nahoru",
     "cancel": "Zrušit",
     "save": "Uložit",
@@ -373,6 +380,14 @@
       "version": "Tato verze byla označena jako zastaralá.",
       "no_reason": "Bez uvedeného důvodu."
     },
+    "sizes": {
+      "title": "EN TEXT TO REPLACE: Sizes",
+      "columns": {
+        "self_size": "EN TEXT TO REPLACE: Self Size",
+        "total_size": "EN TEXT TO REPLACE: Total Size",
+        "percentage": "EN TEXT TO REPLACE: %"
+      }
+    },
     "size_increase": {
       "title_size": "Významné zvýšení velikosti od verze v{version}",
       "title_deps": "Významné zvýšení počtu závislostí od verze v{version}",
@@ -382,7 +397,9 @@
     },
     "replacement": {
       "title": "Možná tuto závislost nepotřebujete.",
+      "example": "EN TEXT TO REPLACE: Example:",
       "native": "Tento balíček lze nahradit {replacement}, dostupné od Node {nodeVersion}.",
+      "native_no_version": "EN TEXT TO REPLACE: This package can be replaced with {replacement}.",
       "simple": "{community} označila tento balíček jako zbytečný s doporučením: {replacement}.",
       "documented": "{community} označila tento balíček jako mající výkonnější alternativy.",
       "none": "Tento balíček byl označen jako již nepotřebný a jeho funkčnost je pravděpodobně dostupná nativně ve všech enginech.",
@@ -400,6 +417,11 @@
       "published_tooltip": "Datum publikace verze {package}{'@'}{version}",
       "view_dependency_graph": "Zobrazit graf závislostí",
       "inspect_dependency_tree": "Prozkoumat strom závislostí",
+      "view_all_sizes": "EN TEXT TO REPLACE: View all sizes",
+      "load_dependency_sizes": "EN TEXT TO REPLACE: Load dependency total sizes",
+      "size": {
+        "total": "EN TEXT TO REPLACE: Total size: {size}"
+      },
       "size_tooltip": {
         "unpacked": "{size} velikost po rozbalení (tento balíček)",
         "total": "{size} celková velikost po rozbalení (včetně všech závislostí ({count}) pro linux-x64)"
@@ -433,6 +455,7 @@
       "docs": "dokumentace",
       "fund": "financovat",
       "compare": "porovnat",
+      "timeline": "EN TEXT TO REPLACE: timeline",
       "compare_this_package": "porovnat tento balíček"
     },
     "likes": {
@@ -478,7 +501,8 @@
         "warning": "Varování",
         "caution": "Upozornění"
       },
-      "copy_as_markdown": "Zkopírovat ČTI MĚ jako Markdown"
+      "copy_as_markdown": "Zkopírovat ČTI MĚ jako Markdown",
+      "error_loading": "EN TEXT TO REPLACE: Failed to load README details"
     },
     "provenance_section": {
       "title": "Původ",
@@ -557,9 +581,27 @@
       "current_tags": "Aktuální značky",
       "no_match_filter": "Žádné verze neodpovídají {filter}"
     },
+    "timeline": {
+      "load_more": "EN TEXT TO REPLACE: Load more",
+      "load_error": "EN TEXT TO REPLACE: Failed to load timeline. Please try again later.",
+      "size_increase": "EN TEXT TO REPLACE: Install size increased by {percent}% ({size})",
+      "size_decrease": "EN TEXT TO REPLACE: Install size decreased by {percent}% ({size})",
+      "dep_increase": "EN TEXT TO REPLACE: {count} dependencies added",
+      "dep_decrease": "EN TEXT TO REPLACE: {count} dependencies removed",
+      "license_change": "EN TEXT TO REPLACE: License changed from {from} to {to}",
+      "esm_added": "EN TEXT TO REPLACE: Module type changed to ESM",
+      "esm_removed": "EN TEXT TO REPLACE: Module type changed from ESM to CJS",
+      "types_added": "EN TEXT TO REPLACE: TypeScript types added",
+      "types_removed": "EN TEXT TO REPLACE: TypeScript types removed",
+      "trusted_publisher_added": "EN TEXT TO REPLACE: Trusted publishing enabled",
+      "trusted_publisher_removed": "EN TEXT TO REPLACE: Trusted publishing removed",
+      "provenance_added": "EN TEXT TO REPLACE: Provenance enabled",
+      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed"
+    },
     "dependencies": {
       "title": "Závislosti ({count})",
       "list_label": "Závislosti balíčku",
+      "empty": "EN TEXT TO REPLACE: No dependencies",
       "show_all": "zobrazit všechny závislosti ({count})",
       "optional": "volitelné",
       "view_vulnerabilities": "Zobrazit zranitelnosti",
@@ -1236,6 +1278,17 @@
       "packages_selected": "Vybrané balíčky: {count}/{max}.",
       "add_hint": "Přidejte alespoň 2 balíčky ke srovnání."
     },
+    "scatter_chart": {
+      "title": "EN TEXT TO REPLACE: Compare {x} vs {y}",
+      "freshness_score": "EN TEXT TO REPLACE: Freshness score",
+      "copy_alt": {
+        "analysis": "EN TEXT TO REPLACE: {package} : {x_name} ({x_value}) and {y_name} ({y_value})",
+        "description": "EN TEXT TO REPLACE: Scatter plot chart mapping {x_name} versus {y_name} for the {packages} packages. {analysis}. {watermark}"
+      },
+      "filename": "EN TEXT TO REPLACE: {x}-vs-{y}-scatter-chart",
+      "x_axis": "EN TEXT TO REPLACE: X-AXIS ↦",
+      "y_axis": "EN TEXT TO REPLACE: Y-AXIS ↥"
+    },
     "no_dependency": {
       "label": "(Žádná závislost)",
       "typeahead_title": "Co by udělal James?",
@@ -1314,6 +1367,18 @@
         "vulnerabilities": {
           "label": "Zranitelnosti",
           "description": "Známé bezpečnostní zranitelnosti"
+        },
+        "githubStars": {
+          "label": "EN TEXT TO REPLACE: GitHub Stars",
+          "description": "EN TEXT TO REPLACE: Number of stars on the GitHub repository"
+        },
+        "githubIssues": {
+          "label": "EN TEXT TO REPLACE: GitHub Issues",
+          "description": "EN TEXT TO REPLACE: Number of issues on the GitHub repository"
+        },
+        "createdAt": {
+          "label": "EN TEXT TO REPLACE: Created At",
+          "description": "EN TEXT TO REPLACE: When the package was created"
         }
       },
       "values": {

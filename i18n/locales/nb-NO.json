@@ -20,7 +20,10 @@
     "chat": "chat",
     "builders_chat": "utviklere",
     "keyboard_shortcuts": "tastatursnarveier",
-    "brand": "merkevare"
+    "brand": "merkevare",
+    "resources": "EN TEXT TO REPLACE: Resources",
+    "features": "EN TEXT TO REPLACE: Features",
+    "other": "EN TEXT TO REPLACE: Other"
   },
   "shortcuts": {
     "section": {
@@ -42,7 +45,9 @@
     "open_docs": "Åpne dokumentasjon",
     "disable_shortcuts": "Du kan deaktivere tastatursnarveier i {settings}.",
     "open_main": "Åpne hovedinformasjon",
-    "open_diff": "Åpne versjonsforskjeller"
+    "open_diff": "Åpne versjonsforskjeller",
+    "open_timeline": "EN TEXT TO REPLACE: Open timeline",
+    "open_sizes": "EN TEXT TO REPLACE: Open sizes"
   },
   "search": {
     "label": "Søk etter npm-pakker",
@@ -149,7 +154,8 @@
       "code": "Kode",
       "diff": "Diff",
       "compare": "Sammenlign denne pakken",
-      "download": "Last ned tarball"
+      "download": "Last ned tarball",
+      "sizes": "EN TEXT TO REPLACE: Sizes"
     },
     "package_actions": {
       "copy_run": "Kopier kjørekommando"
@@ -280,7 +286,8 @@
       "black": "Svart"
     },
     "keyboard_shortcuts_enabled": "Aktiver tastatursnarveier",
-    "keyboard_shortcuts_enabled_description": "Tastatursnarveier kan deaktiveres hvis de er i konflikt med andre nettleser- eller systemsnarveier"
+    "keyboard_shortcuts_enabled_description": "Tastatursnarveier kan deaktiveres hvis de er i konflikt med andre nettleser- eller systemsnarveier",
+    "enable_code_ligatures": "EN TEXT TO REPLACE: Enable ligatures in code"
   },
   "i18n": {
     "missing_keys": "{count} manglende oversettelse | {count} manglende oversettelser",
@@ -318,6 +325,7 @@
       "role": "rolle",
       "members": "medlemmer"
     },
+    "sort_by": "EN TEXT TO REPLACE: Sort by",
     "scroll_to_top": "Rull til toppen",
     "cancel": "Avbryt",
     "save": "Lagre",
@@ -372,6 +380,14 @@
       "version": "Denne versjonen er utfaset.",
       "no_reason": "Ingen årsak oppgitt"
     },
+    "sizes": {
+      "title": "EN TEXT TO REPLACE: Sizes",
+      "columns": {
+        "self_size": "EN TEXT TO REPLACE: Self Size",
+        "total_size": "EN TEXT TO REPLACE: Total Size",
+        "percentage": "EN TEXT TO REPLACE: %"
+      }
+    },
     "size_increase": {
       "title_size": "Betydelig størrelsesøkning siden v{version}",
       "title_deps": "Betydelig økning i antall avhengigheter siden v{version}",
@@ -381,7 +397,9 @@
     },
     "replacement": {
       "title": "Du trenger kanskje ikke denne avhengigheten.",
+      "example": "EN TEXT TO REPLACE: Example:",
       "native": "Denne kan erstattes med {replacement}, tilgjengelig siden Node {nodeVersion}.",
+      "native_no_version": "EN TEXT TO REPLACE: This package can be replaced with {replacement}.",
       "simple": "{community} har flagget denne pakken som overflødig, med rådet: {replacement}.",
       "documented": "{community} har flagget denne pakken da det finnes alternativer med bedre ytelse.",
       "none": "Denne pakken er flagget som ikke lenger nødvendig, og funksjonaliteten er sannsynligvis tilgjengelig innebygd i alle motorer.",
@@ -399,6 +417,11 @@
       "published_tooltip": "Dato {package}{'@'}{version} ble publisert",
       "view_dependency_graph": "Vis avhengighetsgraf",
       "inspect_dependency_tree": "Inspiser avhengighetstre",
+      "view_all_sizes": "EN TEXT TO REPLACE: View all sizes",
+      "load_dependency_sizes": "EN TEXT TO REPLACE: Load dependency total sizes",
+      "size": {
+        "total": "EN TEXT TO REPLACE: Total size: {size}"
+      },
       "size_tooltip": {
         "unpacked": "{size} utpakket størrelse (denne pakken)",
         "total": "{size} total utpakket størrelse (inkludert {count} avhengighet for linux-x64) | {size} total utpakket størrelse (inkludert alle {count} avhengigheter for linux-x64)"
@@ -432,6 +455,7 @@
       "docs": "dok",
       "fund": "støtt",
       "compare": "sammenlign",
+      "timeline": "EN TEXT TO REPLACE: timeline",
       "compare_this_package": "sammenlign denne pakken"
     },
     "likes": {
@@ -477,7 +501,8 @@
         "warning": "Advarsel",
         "caution": "Forsiktig"
       },
-      "copy_as_markdown": "Kopier README som Markdown"
+      "copy_as_markdown": "Kopier README som Markdown",
+      "error_loading": "EN TEXT TO REPLACE: Failed to load README details"
     },
     "provenance_section": {
       "title": "Opprinnelse",
@@ -556,9 +581,27 @@
       "current_tags": "Nåværende tagger",
       "no_match_filter": "Ingen versjoner matcher {filter}"
     },
+    "timeline": {
+      "load_more": "EN TEXT TO REPLACE: Load more",
+      "load_error": "EN TEXT TO REPLACE: Failed to load timeline. Please try again later.",
+      "size_increase": "EN TEXT TO REPLACE: Install size increased by {percent}% ({size})",
+      "size_decrease": "EN TEXT TO REPLACE: Install size decreased by {percent}% ({size})",
+      "dep_increase": "EN TEXT TO REPLACE: {count} dependencies added",
+      "dep_decrease": "EN TEXT TO REPLACE: {count} dependencies removed",
+      "license_change": "EN TEXT TO REPLACE: License changed from {from} to {to}",
+      "esm_added": "EN TEXT TO REPLACE: Module type changed to ESM",
+      "esm_removed": "EN TEXT TO REPLACE: Module type changed from ESM to CJS",
+      "types_added": "EN TEXT TO REPLACE: TypeScript types added",
+      "types_removed": "EN TEXT TO REPLACE: TypeScript types removed",
+      "trusted_publisher_added": "EN TEXT TO REPLACE: Trusted publishing enabled",
+      "trusted_publisher_removed": "EN TEXT TO REPLACE: Trusted publishing removed",
+      "provenance_added": "EN TEXT TO REPLACE: Provenance enabled",
+      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed"
+    },
     "dependencies": {
       "title": "Avhengighet ({count}) | Avhengigheter ({count})",
       "list_label": "Pakkeavhengigheter",
+      "empty": "EN TEXT TO REPLACE: No dependencies",
       "show_all": "vis {count} avh. | vis alle {count} avh.",
       "optional": "valgfri",
       "view_vulnerabilities": "Vis sårbarheter",
@@ -1235,6 +1278,17 @@
       "packages_selected": "{count}/{max} pakker valgt.",
       "add_hint": "Legg til minst 2 pakker for å sammenligne."
     },
+    "scatter_chart": {
+      "title": "EN TEXT TO REPLACE: Compare {x} vs {y}",
+      "freshness_score": "EN TEXT TO REPLACE: Freshness score",
+      "copy_alt": {
+        "analysis": "EN TEXT TO REPLACE: {package} : {x_name} ({x_value}) and {y_name} ({y_value})",
+        "description": "EN TEXT TO REPLACE: Scatter plot chart mapping {x_name} versus {y_name} for the {packages} packages. {analysis}. {watermark}"
+      },
+      "filename": "EN TEXT TO REPLACE: {x}-vs-{y}-scatter-chart",
+      "x_axis": "EN TEXT TO REPLACE: X-AXIS ↦",
+      "y_axis": "EN TEXT TO REPLACE: Y-AXIS ↥"
+    },
     "no_dependency": {
       "label": "(Ingen avhengighet)",
       "typeahead_title": "Hva ville James gjort?",
@@ -1313,6 +1367,18 @@
         "vulnerabilities": {
           "label": "Sårbarheter",
           "description": "Kjente sikkerhetssårbarheter"
+        },
+        "githubStars": {
+          "label": "EN TEXT TO REPLACE: GitHub Stars",
+          "description": "EN TEXT TO REPLACE: Number of stars on the GitHub repository"
+        },
+        "githubIssues": {
+          "label": "EN TEXT TO REPLACE: GitHub Issues",
+          "description": "EN TEXT TO REPLACE: Number of issues on the GitHub repository"
+        },
+        "createdAt": {
+          "label": "EN TEXT TO REPLACE: Created At",
+          "description": "EN TEXT TO REPLACE: When the package was created"
         }
       },
       "values": {

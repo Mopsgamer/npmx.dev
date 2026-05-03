@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { assertValidPackageName } from '#shared/utils/npm'
 import { getDependencyCount } from '~/utils/npm/dependency-count'
+import { getSizeRoute } from '~/utils/router'
 
 const readmeHeader = useTemplateRef('readmeHeader')
 const isReadmeHeaderPinned = shallowRef(false)
@@ -140,7 +141,7 @@ const {
   data: installSize,
   status: installSizeStatus,
   execute: fetchInstallSize,
-} = useLazyFetch<InstallSizeResult | null>(
+} = useLazyFetch<InstallSizeResult>(
   () => {
     const base = `/api/registry/install-size/${packageName.value}`
     const version = resolvedVersion.value
@@ -685,7 +686,7 @@ const showSkeleton = shallowRef(false)
                   </span>
                 </TooltipApp>
               </dt>
-              <dd class="font-mono text-sm text-fg">
+              <dd class="font-mono text-sm text-fg flex items-center justify-start gap-2">
                 <!-- Package size (greyed out) -->
                 <span class="text-fg-muted" dir="ltr">
                   <span v-if="displayVersion?.dist?.unpackedSize">
@@ -711,6 +712,18 @@ const showSkeleton = shallowRef(false)
                     <span v-else class="text-fg-subtle">(-)</span>
                   </span>
                 </template>
+
+                <ButtonGroup v-if="hasDependencies" class="ms-auto">
+                  <LinkBase
+                    variant="button-secondary"
+                    size="sm"
+                    :to="getSizeRoute(packageName, resolvedVersion!)"
+                    :title="$t('package.stats.view_all_sizes')"
+                    classicon="i-lucide:list-tree"
+                  >
+                    <span class="sr-only">{{ $t('package.stats.view_all_sizes') }}</span>
+                  </LinkBase>
+                </ButtonGroup>
               </dd>
             </div>
 

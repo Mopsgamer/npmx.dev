@@ -20,7 +20,10 @@
     "chat": "espace de discussion",
     "builders_chat": "builders",
     "keyboard_shortcuts": "raccourcis clavier",
-    "brand": "Marque"
+    "brand": "Marque",
+    "resources": "EN TEXT TO REPLACE: Resources",
+    "features": "EN TEXT TO REPLACE: Features",
+    "other": "EN TEXT TO REPLACE: Other"
   },
   "shortcuts": {
     "section": {
@@ -43,7 +46,8 @@
     "disable_shortcuts": "Vous pouvez désactiver les raccourcis clavier dans {settings}.",
     "open_main": "Ouvrir les informations principales",
     "open_diff": "Ouvrir les différences de version",
-    "open_timeline": "Ouvrir l'historique"
+    "open_timeline": "Ouvrir l'historique",
+    "open_sizes": "EN TEXT TO REPLACE: Open sizes"
   },
   "search": {
     "label": "Rechercher des paquets npm",
@@ -150,7 +154,8 @@
       "code": "Code",
       "diff": "Diff",
       "compare": "Comparer ce paquet",
-      "download": "Télécharger le tarball"
+      "download": "Télécharger le tarball",
+      "sizes": "EN TEXT TO REPLACE: Sizes"
     },
     "package_actions": {
       "copy_run": "Copier la commande d'exécution"
@@ -253,7 +258,6 @@
     "hide_platform_packages_description": "Masquer les paquets binaires natifs comme {'@'}esbuild/linux-x64 des résultats",
     "enable_graph_pulse_loop": "Activer la boucle de l'effet de pulsation sur le mini-graphe",
     "enable_graph_pulse_loop_description": "Activer une animation de pulsation continue sur le graphique des téléchargements hebdomadaires. Cette animation peut être gênante pour certaines personnes.",
-    "enable_code_ligatures": "Activer les ligatures de code",
     "theme": "Thème",
     "theme_light": "Clair",
     "theme_dark": "Sombre",
@@ -282,7 +286,8 @@
       "black": "Noir"
     },
     "keyboard_shortcuts_enabled": "Activer les raccourcis clavier",
-    "keyboard_shortcuts_enabled_description": "Les raccourcis clavier peuvent être désactivés s'ils entrent en conflit avec d'autres raccourcis du navigateur ou du système"
+    "keyboard_shortcuts_enabled_description": "Les raccourcis clavier peuvent être désactivés s'ils entrent en conflit avec d'autres raccourcis du navigateur ou du système",
+    "enable_code_ligatures": "Activer les ligatures de code"
   },
   "i18n": {
     "missing_keys": "{count} traduction manquante | {count} traductions manquantes",
@@ -321,6 +326,7 @@
       "role": "rôle",
       "members": "membres"
     },
+    "sort_by": "EN TEXT TO REPLACE: Sort by",
     "scroll_to_top": "Retour en haut",
     "cancel": "Annuler",
     "save": "Enregistrer",
@@ -342,8 +348,8 @@
       "tangled": "Voir sur Tangled"
     },
     "collapse": "Réduire",
-    "expand": "Développer",
     "collapse_with_name": "Réduire {name}",
+    "expand": "Développer",
     "expand_with_name": "Développer {name}"
   },
   "profile": {
@@ -375,6 +381,14 @@
       "version": "Cette version a été dépréciée.",
       "no_reason": "Aucune raison fournie"
     },
+    "sizes": {
+      "title": "EN TEXT TO REPLACE: Sizes",
+      "columns": {
+        "self_size": "EN TEXT TO REPLACE: Self Size",
+        "total_size": "EN TEXT TO REPLACE: Total Size",
+        "percentage": "EN TEXT TO REPLACE: %"
+      }
+    },
     "size_increase": {
       "title_size": "Augmentation significative de la taille depuis la v{version}",
       "title_deps": "Augmentation significative du nombre de dépendances depuis la v{version}",
@@ -384,7 +398,9 @@
     },
     "replacement": {
       "title": "Vous n'avez peut-être pas besoin de cette dépendance.",
+      "example": "EN TEXT TO REPLACE: Example:",
       "native": "Ceci peut être remplacé par {replacement}, disponible depuis Node {nodeVersion}.",
+      "native_no_version": "EN TEXT TO REPLACE: This package can be replaced with {replacement}.",
       "simple": "La {community} a signalé ce paquet comme redondant, avec ce conseil : {replacement}.",
       "documented": "La {community} a signalé que ce paquet a des alternatives plus performantes.",
       "none": "Ce paquet a été signalé comme n'étant plus nécessaire, et sa fonctionnalité est probablement disponible nativement dans tous les moteurs.",
@@ -402,6 +418,11 @@
       "published_tooltip": "Date de publication de {package}{'@'}{version}",
       "view_dependency_graph": "Voir le graphe de dépendances",
       "inspect_dependency_tree": "Inspecter l'arbre de dépendances",
+      "view_all_sizes": "EN TEXT TO REPLACE: View all sizes",
+      "load_dependency_sizes": "EN TEXT TO REPLACE: Load dependency total sizes",
+      "size": {
+        "total": "EN TEXT TO REPLACE: Total size: {size}"
+      },
       "size_tooltip": {
         "unpacked": "{size} taille décompressée (ce paquet)",
         "total": "{size} taille totale décompressée (incluant les {count} dépendances pour linux-x64)"
@@ -584,6 +605,7 @@
     "dependencies": {
       "title": "Dépendances ({count})",
       "list_label": "Dépendances du paquet",
+      "empty": "EN TEXT TO REPLACE: No dependencies",
       "show_all": "afficher les {count} dépendances",
       "optional": "optionnelle",
       "view_vulnerabilities": "Voir les vulnérabilités",
@@ -979,6 +1001,7 @@
     "view_raw": "Voir le fichier brut",
     "toggle_container": "Changer la largeur du conteneur",
     "open_raw_file": "Ouvrir le fichier brut",
+    "open_path_dropdown": "Ouvrir le menu du chemin",
     "file_too_large": "Fichier trop volumineux pour l'aperçu",
     "file_size_warning": "{size} dépasse la limite de 500 Ko pour la coloration syntaxique",
     "failed_to_load": "Échec du chargement du fichier",
@@ -996,7 +1019,6 @@
       "preview": "aperçu",
       "code": "code"
     },
-    "open_path_dropdown": "Ouvrir le menu du chemin",
     "file_path": "Chemin du fichier",
     "binary_file": "Fichier binaire",
     "binary_rendering_warning": "Le type de fichier \"{contentType}\" n'est pas pris en charge pour l'aperçu."

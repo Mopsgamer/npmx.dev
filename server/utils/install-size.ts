@@ -8,7 +8,29 @@
  */
 export const calculateInstallSize = defineCachedFunction(
   async (name: string, version: string): Promise<InstallSizeResult> => {
-    const resolved = await resolveDependencyTree(name, version)
+    const resolved = await resolveDependencyTree(name, version, { trackDepth: true })
+
+    // Helper to calculate subtree info from the resolved paths
+    const getSubtreeInfo = (rootKey: string) => {
+      const rootPkg = resolved.get(rootKey)
+      if (!rootPkg || !rootPkg.path) return { totalSize: 0, dependencyCount: 0 }
+
+      const rootPathPrefix = rootPkg.path.join('|')
+      let totalSize = 0
+      let dependencyCount = 0
+
+      for (const pkg of resolved.values()) {
+        if (!pkg.path) continue
+        const pathStr = pkg.path.join('|')
+        if (pathStr === rootPathPrefix || pathStr.startsWith(rootPathPrefix + '|')) {
+          totalSize += pkg.size
+          if (pathStr !== rootPathPrefix) {
+            dependencyCount++
+          }
+        }
+      }
+      return { totalSize, dependencyCount }
+    }
 
     // Separate self from dependencies
     const selfKey = `${name}@${version}`
@@ -23,12 +45,15 @@ export const calculateInstallSize = defineCachedFunction(
     for (const [key, dep] of resolved) {
       if (key === selfKey) continue
 
+      const subtree = getSubtreeInfo(key)
       dependencies.push({
         name: dep.name,
         version: dep.version,
         size: dep.size,
         tarballUrl: dep.tarballUrl,
         optional: dep.optional || undefined,
+        totalSize: subtree.totalSize,
+        dependencyCount: subtree.dependencyCount,
       })
       totalSize += dep.size
       dependencyCount++
