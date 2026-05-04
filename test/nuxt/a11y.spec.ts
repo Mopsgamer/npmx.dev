@@ -134,6 +134,21 @@ vi.mock('~/composables/useCanGoBack', () => {
   }
 })
 
+vi.mock('~/composables/npm/usePackageSize', () => {
+  return {
+    usePackageDependencySizes: () =>
+      shallowRef({
+        data: ref({}),
+        status: ref('success'),
+      }),
+    usePackageSize: () =>
+      shallowRef({
+        data: ref({}),
+        status: ref('success'),
+      }),
+  }
+})
+
 // Import components from #components where possible
 // For server/client variants, we need to import directly to test the specific variant
 import {
@@ -252,6 +267,10 @@ import {
   PackageSelectionView,
   PackageSelectionCheckbox,
   PackageExternalLinks,
+  PackageSizeBar,
+  PackageSizeCard,
+  PackageSizeList,
+  PackageSizeTable,
   ChartSplitSparkline,
   TabRoot,
   TabList,
@@ -4240,6 +4259,142 @@ describe('component accessibility audits', () => {
       const component = await mountSuspended(Alert, {
         props: { variant: 'warning' },
         slots: { default: 'This is a warning message.' },
+      })
+      const results = await runAxe(component)
+      expect(results.violations).toEqual([])
+    })
+  })
+
+  describe('PackageSizeBar', () => {
+    it('should have no accessibility violations', async () => {
+      const component = await mountSuspended(PackageSizeBar, {
+        props: {
+          packageName: 'vue',
+          version: '3.0.0',
+          packageSize: {
+            package: 'vue',
+            version: '3.0.0',
+            selfSize: 1000,
+            totalSize: 5000,
+            dependencyCount: 10,
+            dependencies: [
+              {
+                name: 'dep1',
+                version: '1.0.0',
+                size: 500,
+                tarballUrl: 'https://example.com/dep1.tgz',
+                totalSize: 500,
+                dependencyCount: 0,
+              },
+            ],
+          },
+        },
+      })
+      const results = await runAxe(component)
+      expect(results.violations).toEqual([])
+    })
+  })
+
+  describe('PackageSizeCard', () => {
+    it('should have no accessibility violations', async () => {
+      const component = await mountSuspended(PackageSizeCard, {
+        props: {
+          entry: {
+            name: 'vue',
+            version: '3.0.0',
+            selfSize: 1000,
+            totalSize: 5000,
+            depCount: 10,
+            percentage: 20,
+          },
+        },
+      })
+      const results = await runAxe(component)
+      expect(results.violations).toEqual([])
+    })
+  })
+
+  describe('PackageSizeList', () => {
+    it('should have no accessibility violations in card view', async () => {
+      const component = await mountSuspended(PackageSizeList, {
+        props: {
+          entries: [
+            {
+              name: 'dep1',
+              version: '1.0.0',
+              selfSize: 500,
+              totalSize: 500,
+              depCount: 0,
+              percentage: 50,
+            },
+            {
+              name: 'dep2',
+              version: '2.0.0',
+              selfSize: 500,
+              totalSize: 500,
+              depCount: 0,
+              percentage: 50,
+            },
+          ],
+          viewMode: 'cards',
+        },
+      })
+      const results = await runAxe(component)
+      expect(results.violations).toEqual([])
+    })
+
+    it('should have no accessibility violations in table view', async () => {
+      const component = await mountSuspended(PackageSizeList, {
+        props: {
+          entries: [
+            {
+              name: 'dep1',
+              version: '1.0.0',
+              selfSize: 500,
+              totalSize: 500,
+              depCount: 0,
+              percentage: 50,
+            },
+            {
+              name: 'dep2',
+              version: '2.0.0',
+              selfSize: 500,
+              totalSize: 500,
+              depCount: 0,
+              percentage: 50,
+            },
+          ],
+          viewMode: 'table',
+        },
+      })
+      const results = await runAxe(component)
+      expect(results.violations).toEqual([])
+    })
+  })
+
+  describe('PackageSizeTable', () => {
+    it('should have no accessibility violations', async () => {
+      const component = await mountSuspended(PackageSizeTable, {
+        props: {
+          entries: [
+            {
+              name: 'dep1',
+              version: '1.0.0',
+              selfSize: 500,
+              totalSize: 500,
+              depCount: 0,
+              percentage: 50,
+            },
+            {
+              name: 'dep2',
+              version: '2.0.0',
+              selfSize: 500,
+              totalSize: 500,
+              depCount: 0,
+              percentage: 50,
+            },
+          ],
+        },
       })
       const results = await runAxe(component)
       expect(results.violations).toEqual([])
