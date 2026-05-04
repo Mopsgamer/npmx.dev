@@ -76,11 +76,7 @@ function toggleSort(col: keyof SizeEntry) {
       </thead>
       <tbody class="divide-y divide-border">
         <template v-if="isLoading && entries.length === 0">
-          <tr
-            v-for="i in 5"
-            :key="`skeleton-${i}`"
-            class="border-b border-border"
-          >
+          <tr v-for="i in 5" :key="`skeleton-${i}`" class="border-b border-border">
             <td class="py-3 px-4" v-for="j in 5" :key="j">
               <div class="h-4 w-full bg-bg-muted rounded animate-pulse" />
             </td>
@@ -124,7 +120,10 @@ function toggleSort(col: keyof SizeEntry) {
                 {{ bytesFormatter.format(entry.totalSize) }}
               </template>
               <template v-else>
-                <div class="inline-block w-3 h-3 border-2 border-fg-muted/20 border-t-accent rounded-full animate-spin" aria-hidden="true" />
+                <div
+                  class="inline-block w-3 h-3 border-2 border-fg-muted/20 border-t-accent rounded-full animate-spin"
+                  aria-hidden="true"
+                />
               </template>
             </td>
             <td class="px-4 py-3 text-end font-mono text-sm text-fg-muted">
@@ -132,7 +131,10 @@ function toggleSort(col: keyof SizeEntry) {
                 {{ numberFormatter.format(entry.depCount) }}
               </template>
               <template v-else>
-                <div class="inline-block w-3 h-3 border-2 border-fg-muted/20 border-t-accent rounded-full animate-spin" aria-hidden="true" />
+                <div
+                  class="inline-block w-3 h-3 border-2 border-fg-muted/20 border-t-accent rounded-full animate-spin"
+                  aria-hidden="true"
+                />
               </template>
             </td>
             <td class="px-4 py-3 text-end font-mono text-sm">
