@@ -43,7 +43,7 @@ const displayDepCount = computed(() => {
 </script>
 
 <template>
-  <div ref="target" class="p-4 border border-border rounded-lg bg-neutral-950/40 transition-colors">
+  <div ref="target" class="p-4 border border-border rounded-lg bg-bg-elevated transition-colors">
     <div class="flex items-start justify-between gap-4">
       <div class="min-w-0 flex-1">
         <div class="flex items-center gap-3 flex-wrap">

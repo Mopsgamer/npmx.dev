@@ -79,7 +79,7 @@ function toggleSort(col: keyof SizeEntry) {
           <tr
             v-for="i in 5"
             :key="`skeleton-${i}`"
-            class="border-b border-border bg-neutral-950/20"
+            class="border-b border-border"
           >
             <td class="py-3 px-4" v-for="j in 5" :key="j">
               <div class="h-4 w-full bg-bg-muted rounded animate-pulse" />
@@ -90,14 +90,14 @@ function toggleSort(col: keyof SizeEntry) {
           <tr
             v-for="entry in props.entries"
             :key="entry.name"
-            class="bg-neutral-950/20 hover:bg-neutral-900/40 transition-colors items-center"
+            class="hover:bg-bg-subtle transition-colors items-center"
           >
             <td class="px-4 py-3 min-w-0">
               <div class="flex items-center gap-3 min-w-0">
                 <div class="flex-1 min-w-0">
                   <LinkBase
                     :to="packageRoute(entry.name, entry.version)"
-                    class="block truncate hover:text-accent transition-colors font-mono text-sm font-medium"
+                    class="block truncate font-mono text-sm font-medium"
                     :title="entry.name"
                   >
                     {{ entry.name }}
@@ -120,10 +120,20 @@ function toggleSort(col: keyof SizeEntry) {
               {{ bytesFormatter.format(entry.selfSize) }}
             </td>
             <td class="px-4 py-3 text-end font-mono text-sm text-fg-muted">
-              {{ bytesFormatter.format(entry.totalSize) }}
+              <template v-if="!Number.isNaN(entry.totalSize)">
+                {{ bytesFormatter.format(entry.totalSize) }}
+              </template>
+              <template v-else>
+                <div class="inline-block w-3 h-3 border-2 border-fg-muted/20 border-t-accent rounded-full animate-spin" aria-hidden="true" />
+              </template>
             </td>
             <td class="px-4 py-3 text-end font-mono text-sm text-fg-muted">
-              {{ numberFormatter.format(entry.depCount) }}
+              <template v-if="!Number.isNaN(entry.depCount)">
+                {{ numberFormatter.format(entry.depCount) }}
+              </template>
+              <template v-else>
+                <div class="inline-block w-3 h-3 border-2 border-fg-muted/20 border-t-accent rounded-full animate-spin" aria-hidden="true" />
+              </template>
             </td>
             <td class="px-4 py-3 text-end font-mono text-sm">
               <div class="flex items-center justify-end gap-2">

@@ -114,7 +114,7 @@ const numberFormatter = useNumberFormatter()
       v-if="sortedDependencies.length > 0"
       id="dependencies"
       :title="
-        t(
+        $t(
           'package.dependencies.title',
           {
             count: numberFormatter.format(sortedDependencies.length),
@@ -126,7 +126,7 @@ const numberFormatter = useNumberFormatter()
       <div class="mb-4">
         <div class="flex items-center justify-between mb-3">
           <div class="text-xs text-fg-subtle uppercase tracking-wider font-medium">
-            {{ t('package.stats.install_size') }}
+            {{ $t('package.stats.install_size') }}
           </div>
         </div>
         <PackageSizeBar
@@ -151,12 +151,12 @@ const numberFormatter = useNumberFormatter()
               v-if="outdatedDeps[dep]"
               class="shrink-0"
               :class="getVersionClass(outdatedDeps[dep])"
-              :text="getOutdatedTooltip(outdatedDeps[dep], t)"
+              :text="getOutdatedTooltip(outdatedDeps[dep], $t)"
             >
               <button
                 type="button"
                 class="inline-flex items-center justify-center p-2 -m-2"
-                :aria-label="getOutdatedTooltip(outdatedDeps[dep], t)"
+                :aria-label="getOutdatedTooltip(outdatedDeps[dep], $t)"
               >
                 <span class="i-lucide:circle-alert w-3 h-3" aria-hidden="true" />
               </button>
@@ -206,7 +206,7 @@ const numberFormatter = useNumberFormatter()
               {{ version }}
             </LinkBase>
             <span v-if="outdatedDeps[dep]" class="sr-only">
-              ({{ getOutdatedTooltip(outdatedDeps[dep], t) }})
+              ({{ getOutdatedTooltip(outdatedDeps[dep], $t) }})
             </span>
             <span v-if="getVulnerableDepInfo(dep)" class="sr-only">
               ({{
@@ -225,7 +225,7 @@ const numberFormatter = useNumberFormatter()
         @click="expandDeps"
       >
         {{
-          t(
+          $t(
             'package.dependencies.show_all',
             {
               count: numberFormatter.format(sortedDependencies.length),
@@ -280,7 +280,7 @@ const numberFormatter = useNumberFormatter()
         @click="expandPeerDeps"
       >
         {{
-          t(
+          $t(
             'package.peer_dependencies.show_all',
             {
               count: numberFormatter.format(sortedPeerDependencies.length),
@@ -296,7 +296,7 @@ const numberFormatter = useNumberFormatter()
       v-if="sortedOptionalDependencies.length > 0"
       id="optional-dependencies"
       :title="
-        t(
+        $t(
           'package.optional_dependencies.title',
           {
             count: numberFormatter.format(sortedOptionalDependencies.length),
@@ -334,7 +334,7 @@ const numberFormatter = useNumberFormatter()
         @click="expandOptionalDeps"
       >
         {{
-          t(
+          $t(
             'package.optional_dependencies.show_all',
             {
               count: numberFormatter.format(sortedOptionalDependencies.length),

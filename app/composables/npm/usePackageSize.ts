@@ -38,7 +38,7 @@ export function usePackageDependencySizes(
   NuxtError<unknown> | undefined
 > {
   return useAsyncData(
-    `install-size:${toValue(packageName)}:${toValue(version)}`,
+    `install-size-deps:${toValue(packageName)}:${toValue(version)}`,
     async (_app, { signal }) => {
       const entries = toValue(dependencies) ?? []
 

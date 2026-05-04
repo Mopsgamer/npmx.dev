@@ -21,15 +21,6 @@ const version = computed(() => route.params.version as string)
 const isScrolled = ref(false)
 const { y } = useWindowScroll()
 
-watch([y, () => tableData.value.length, viewMode], ([newY, count, mode]) => {
-  if (mode !== 'table' && mode !== 'cards') {
-    isScrolled.value = false
-    return
-  }
-  const threshold = mode === 'table' ? 8 : 3
-  isScrolled.value = newY > 0 && count >= threshold
-})
-
 // Fetch total install size
 const {
   data: installSize,
@@ -55,6 +46,12 @@ function compare(a: SizeEntry, b: SizeEntry) {
   return sortDir.value === 'asc' ? comparison : -comparison
 }
 
+const { data: sizereqData } = usePackageDependencySizes(
+  packageName,
+  version,
+  computed(() => installSize.value?.dependencies),
+)
+
 const tableData = computed(() => {
   if (!installSize.value) return []
 
@@ -63,12 +60,21 @@ const tableData = computed(() => {
   // Add dependencies
   if (installSize.value.dependencies) {
     for (const dep of installSize.value.dependencies) {
+      const serverData = sizereqData.value?.[dep.name]
+      const isSuccess = serverData?.kind === 'success'
+
       entries.push({
         name: dep.name,
         version: dep.version,
-        selfSize: dep.size,
-        totalSize: dep.totalSize ?? NaN,
-        depCount: dep.dependencyCount ?? NaN,
+        selfSize: isSuccess && serverData.packageSize ? serverData.packageSize.selfSize : dep.size,
+        totalSize:
+          isSuccess && serverData.packageSize
+            ? serverData.packageSize.totalSize
+            : (dep.totalSize ?? NaN),
+        depCount:
+          isSuccess && serverData.packageSize
+            ? serverData.packageSize.dependencyCount
+            : (dep.dependencyCount ?? NaN),
         percentage: (dep.size / installSize.value.totalSize) * 100,
       })
     }
@@ -77,6 +83,20 @@ const tableData = computed(() => {
   entries.sort(compare)
 
   return entries
+})
+
+const isStickyEnabled = computed(() => {
+  if (viewMode.value !== 'table' && viewMode.value !== 'cards') return false
+  const threshold = viewMode.value === 'table' ? 18 : 8
+  return tableData.value.length >= threshold
+})
+
+watch([y, isStickyEnabled], ([newY, stickyEnabled]) => {
+  if (!stickyEnabled) {
+    isScrolled.value = false
+    return
+  }
+  isScrolled.value = newY > 0
 })
 
 useSeoMeta({
@@ -104,12 +124,13 @@ const bytesFormatter = useBytesFormatter()
     </div>
 
     <header
-      class="sticky top-[55px] z-20 border-b transition-all duration-300"
-      :class="
+      class="z-20 border-b transition-all duration-300"
+      :class="[
+        isStickyEnabled ? 'sticky top-[55px]' : '',
         isScrolled
           ? 'bg-bg/80 backdrop-blur-md pt-2 pb-2 border-border/50 shadow-sm'
-          : 'pt-4 pb-8 border-transparent'
-      "
+          : 'pt-4 pb-8 border-transparent',
+      ]"
     >
       <div class="max-w-4xl mx-auto px-4 sm:px-8">
         <div
@@ -127,10 +148,7 @@ const bytesFormatter = useBytesFormatter()
               class="flex items-center gap-2 text-fg-muted font-mono transition-all duration-300 shrink-0"
               :class="isScrolled ? 'text-xs' : 'text-lg'"
             >
-              <LinkBase
-                :to="packageRoute(packageName, version)"
-                class="hover:text-accent transition-colors"
-              >
+              <LinkBase :to="packageRoute(packageName, version)">
                 {{ packageName }}
               </LinkBase>
               <span>@</span>
@@ -204,7 +222,7 @@ const bytesFormatter = useBytesFormatter()
               :version="version"
               :package-size="installSize"
               class="transition-all duration-300 min-w-[100px]"
-              :class="isScrolled ? 'flex-1' : 'w-full'"
+              :class="isScrolled ? 'flex-1' : ''"
               :height="isScrolled ? 'h-6' : 'h-10'"
             />
 
