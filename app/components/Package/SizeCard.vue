@@ -40,6 +40,19 @@ const displayDepCount = computed(() => {
   if (!isSizeUnknown.value) return props.entry.depCount
   return fetchedSize.value?.dependencies?.length ?? props.entry.depCount
 })
+
+const packageSizeData = computed(() => {
+  return (
+    fetchedSize.value || {
+      package: props.entry.name,
+      version: props.entry.version,
+      selfSize: props.entry.selfSize,
+      totalSize: displayTotalSize.value,
+      dependencyCount: displayDepCount.value,
+      dependencies: [],
+    }
+  )
+})
 </script>
 
 <template>
@@ -110,16 +123,7 @@ const displayDepCount = computed(() => {
           v-if="!Number.isNaN(displayTotalSize)"
           :package-name="entry.name"
           :version="entry.version"
-          :package-size="
-            fetchedSize || {
-              package: entry.name,
-              version: entry.version,
-              selfSize: entry.selfSize,
-              totalSize: displayTotalSize,
-              dependencyCount: displayDepCount,
-              dependencies: [],
-            }
-          "
+          :package-size="packageSizeData"
         />
       </div>
     </div>

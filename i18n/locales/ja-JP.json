@@ -319,6 +319,7 @@
     "warnings": "警告:",
     "go_back_home": "ホームへ戻る",
     "per_week": "/ 週",
+    "per_week_short": "EN TEXT TO REPLACE: /wk",
     "vanity_downloads_hint": "バニティ番号: パッケージが表示されていません|バニティ番号: 表示されているパッケージの数値|バニティ番号: 表示されている {count} 個のパッケージの合計",
     "sort": {
       "name": "名前",
@@ -395,6 +396,13 @@
       "size": "インストールサイズが {percent} 増加（{size} 増）",
       "deps": "依存関係が {count} 件増加"
     },
+    "size_decrease": {
+      "title_size": "EN TEXT TO REPLACE: Package size decreased since v{version}!",
+      "title_deps": "EN TEXT TO REPLACE: Dependency count decreased since v{version}!",
+      "title_both": "EN TEXT TO REPLACE: Package size and dependency count decreased since v{version}!",
+      "size": "EN TEXT TO REPLACE: Install size reduced by {percent} ({size} smaller)",
+      "deps": "EN TEXT TO REPLACE: {count} fewer dependencies"
+    },
     "replacement": {
       "title": "この依存関係は不要な可能性があります。",
       "example": "EN TEXT TO REPLACE: Example:",
@@ -460,7 +468,10 @@
     },
     "likes": {
       "like": "このパッケージをいいねする",
-      "unlike": "このパッケージのいいねを解除する"
+      "unlike": "このパッケージのいいねを解除する",
+      "top_rank_tooltip": "EN TEXT TO REPLACE: This is among the top 10 most liked packages on npmx! (#{rank})",
+      "top_rank_label": "EN TEXT TO REPLACE: #{rank}",
+      "top_rank_link_label": "EN TEXT TO REPLACE: View likes leaderboard. This package is ranked #{rank}."
     },
     "docs": {
       "contents": "EN TEXT TO REPLACE: Contents",
@@ -799,6 +810,16 @@
     "download": {
       "button": "EN TEXT TO REPLACE: Download",
       "tarball": "EN TEXT TO REPLACE: Download Tarball as .tar.gz"
+    }
+  },
+  "leaderboard": {
+    "likes": {
+      "title": "EN TEXT TO REPLACE: Likes Leaderboard",
+      "description": "EN TEXT TO REPLACE: The 10 most liked packages on npmx right now.",
+      "rank": "EN TEXT TO REPLACE: Rank",
+      "likes": "EN TEXT TO REPLACE: Likes",
+      "unavailable_title": "EN TEXT TO REPLACE: No likes leaderboard yet",
+      "unavailable_description": "EN TEXT TO REPLACE: We don't have a likes leaderboard to show right now."
     }
   },
   "connector": {

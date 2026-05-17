@@ -319,6 +319,7 @@
     "warnings": "హెచ్చరికలు:",
     "go_back_home": "హోమ్‌కు వెనక్కి వెళ్లండి",
     "per_week": "/ వారం",
+    "per_week_short": "EN TEXT TO REPLACE: /wk",
     "vanity_downloads_hint": "వానిటీ నంబర్: ప్యాకేజ్ ప్రదర్శించబడలేదు | వానిటీ నంబర్: ప్రదర్శించబడిన ప్యాకేజ్‌కు | వానిటీ నంబర్: {count} ప్రదర్శించబడిన ప్యాకేజ్‌ల మొత్తం",
     "sort": {
       "name": "పేరు",
@@ -395,6 +396,13 @@
       "size": "EN TEXT TO REPLACE: Install size increased by {percent} ({size} larger)",
       "deps": "EN TEXT TO REPLACE: {count} more dependencies"
     },
+    "size_decrease": {
+      "title_size": "EN TEXT TO REPLACE: Package size decreased since v{version}!",
+      "title_deps": "EN TEXT TO REPLACE: Dependency count decreased since v{version}!",
+      "title_both": "EN TEXT TO REPLACE: Package size and dependency count decreased since v{version}!",
+      "size": "EN TEXT TO REPLACE: Install size reduced by {percent} ({size} smaller)",
+      "deps": "EN TEXT TO REPLACE: {count} fewer dependencies"
+    },
     "replacement": {
       "title": "మీకు ఈ డిపెండెన్సీ అవసరం లేకపోవచ్చు.",
       "example": "EN TEXT TO REPLACE: Example:",
@@ -460,7 +468,10 @@
     },
     "likes": {
       "like": "EN TEXT TO REPLACE: Like this package",
-      "unlike": "EN TEXT TO REPLACE: Unlike this package"
+      "unlike": "EN TEXT TO REPLACE: Unlike this package",
+      "top_rank_tooltip": "EN TEXT TO REPLACE: This is among the top 10 most liked packages on npmx! (#{rank})",
+      "top_rank_label": "EN TEXT TO REPLACE: #{rank}",
+      "top_rank_link_label": "EN TEXT TO REPLACE: View likes leaderboard. This package is ranked #{rank}."
     },
     "docs": {
       "contents": "EN TEXT TO REPLACE: Contents",
@@ -799,6 +810,16 @@
     "download": {
       "button": "EN TEXT TO REPLACE: Download",
       "tarball": "EN TEXT TO REPLACE: Download Tarball as .tar.gz"
+    }
+  },
+  "leaderboard": {
+    "likes": {
+      "title": "EN TEXT TO REPLACE: Likes Leaderboard",
+      "description": "EN TEXT TO REPLACE: The 10 most liked packages on npmx right now.",
+      "rank": "EN TEXT TO REPLACE: Rank",
+      "likes": "EN TEXT TO REPLACE: Likes",
+      "unavailable_title": "EN TEXT TO REPLACE: No likes leaderboard yet",
+      "unavailable_description": "EN TEXT TO REPLACE: We don't have a likes leaderboard to show right now."
     }
   },
   "connector": {

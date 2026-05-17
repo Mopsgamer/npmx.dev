@@ -319,6 +319,7 @@
     "warnings": "تحذيرات:",
     "go_back_home": "العودة إلى الصفحة الرئيسية",
     "per_week": "/ أسبوع",
+    "per_week_short": "EN TEXT TO REPLACE: /wk",
     "vanity_downloads_hint": "رقم زخرفي: لا توجد حزم معروضة | رقم زخرفي: للحزمة المعروضة | رقم زخرفي: للحزمتين المعروضتين | رقم زخرفي: مجموع {count} من الحزم المعروضة | رقم زخرفي: مجموع {count} من الحزم المعروضة | رقم زخرفي: مجموع {count} من الحزم المعروضة",
     "sort": {
       "name": "الاسم",
@@ -395,6 +396,13 @@
       "size": "EN TEXT TO REPLACE: Install size increased by {percent} ({size} larger)",
       "deps": "EN TEXT TO REPLACE: {count} more dependencies"
     },
+    "size_decrease": {
+      "title_size": "EN TEXT TO REPLACE: Package size decreased since v{version}!",
+      "title_deps": "EN TEXT TO REPLACE: Dependency count decreased since v{version}!",
+      "title_both": "EN TEXT TO REPLACE: Package size and dependency count decreased since v{version}!",
+      "size": "EN TEXT TO REPLACE: Install size reduced by {percent} ({size} smaller)",
+      "deps": "EN TEXT TO REPLACE: {count} fewer dependencies"
+    },
     "replacement": {
       "title": "قد لا تحتاج إلى هذه التبعية.",
       "example": "EN TEXT TO REPLACE: Example:",
@@ -460,7 +468,10 @@
     },
     "likes": {
       "like": "أعجبتني هذه الحزمة",
-      "unlike": "إلغاء الإعجاب بهذه الحزمة"
+      "unlike": "إلغاء الإعجاب بهذه الحزمة",
+      "top_rank_tooltip": "EN TEXT TO REPLACE: This is among the top 10 most liked packages on npmx! (#{rank})",
+      "top_rank_label": "EN TEXT TO REPLACE: #{rank}",
+      "top_rank_link_label": "EN TEXT TO REPLACE: View likes leaderboard. This package is ranked #{rank}."
     },
     "docs": {
       "contents": "EN TEXT TO REPLACE: Contents",
@@ -799,6 +810,16 @@
     "download": {
       "button": "EN TEXT TO REPLACE: Download",
       "tarball": "EN TEXT TO REPLACE: Download Tarball as .tar.gz"
+    }
+  },
+  "leaderboard": {
+    "likes": {
+      "title": "EN TEXT TO REPLACE: Likes Leaderboard",
+      "description": "EN TEXT TO REPLACE: The 10 most liked packages on npmx right now.",
+      "rank": "EN TEXT TO REPLACE: Rank",
+      "likes": "EN TEXT TO REPLACE: Likes",
+      "unavailable_title": "EN TEXT TO REPLACE: No likes leaderboard yet",
+      "unavailable_description": "EN TEXT TO REPLACE: We don't have a likes leaderboard to show right now."
     }
   },
   "connector": {

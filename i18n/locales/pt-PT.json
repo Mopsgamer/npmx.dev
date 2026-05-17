@@ -46,7 +46,8 @@
     "disable_shortcuts": "Podes desativar os atalhos de teclado em {settings}.",
     "open_main": "Abrir informação principal",
     "open_diff": "Abrir diferença de versões",
-    "open_timeline": "Abrir linha do tempo"
+    "open_timeline": "Abrir linha do tempo",
+    "open_sizes": "EN TEXT TO REPLACE: Open sizes"
   },
   "search": {
     "label": "Pesquisar pacotes npm",
@@ -153,7 +154,8 @@
       "code": "Código",
       "diff": "Diff",
       "compare": "Comparar este pacote",
-      "download": "Transferir tarball"
+      "download": "Transferir tarball",
+      "sizes": "EN TEXT TO REPLACE: Sizes"
     },
     "package_actions": {
       "copy_run": "Copiar comando de execução"
@@ -317,12 +319,14 @@
     "warnings": "Avisos:",
     "go_back_home": "Voltar para a página inicial",
     "per_week": "/ semana",
+    "per_week_short": "EN TEXT TO REPLACE: /wk",
     "vanity_downloads_hint": "Número de vaidade: nenhum pacote apresentado | Número de vaidade: para o pacote apresentado | Número de vaidade: Soma de {count} pacotes apresentados",
     "sort": {
       "name": "nome",
       "role": "função",
       "members": "membros"
     },
+    "sort_by": "EN TEXT TO REPLACE: Sort by",
     "scroll_to_top": "Voltar ao topo",
     "cancel": "Cancelar",
     "save": "Guardar",
@@ -377,6 +381,14 @@
       "version": "Esta versão foi descontinuada.",
       "no_reason": "Nenhum motivo fornecido"
     },
+    "sizes": {
+      "title": "EN TEXT TO REPLACE: sizes",
+      "columns": {
+        "self_size": "EN TEXT TO REPLACE: Self size",
+        "total_size": "EN TEXT TO REPLACE: Total size",
+        "percentage": "EN TEXT TO REPLACE: %"
+      }
+    },
     "size_increase": {
       "title_size": "Aumento significativo de tamanho desde v{version}",
       "title_deps": "Aumento significativo no número de dependências desde v{version}",
@@ -413,6 +425,11 @@
       "published_tooltip": "Data em que {package}{'@'}{version} foi publicado",
       "view_dependency_graph": "Ver gráfico de dependências",
       "inspect_dependency_tree": "Inspecionar árvore de dependências",
+      "view_all_sizes": "EN TEXT TO REPLACE: View all sizes",
+      "load_dependency_sizes": "EN TEXT TO REPLACE: Load dependency total sizes",
+      "size": {
+        "total": "EN TEXT TO REPLACE: Total size: {size}"
+      },
       "size_tooltip": {
         "unpacked": "{size} tamanho descompactado (este pacote)",
         "total": "{size} tamanho total descompactado (incluindo {count} dependência para linux-x64) | {size} tamanho total descompactado (incluindo todas as {count} dependências para linux-x64)"
@@ -451,7 +468,10 @@
     },
     "likes": {
       "like": "Gostar deste pacote",
-      "unlike": "Remover gosto deste pacote"
+      "unlike": "Remover gosto deste pacote",
+      "top_rank_tooltip": "EN TEXT TO REPLACE: This is among the top 10 most liked packages on npmx! (#{rank})",
+      "top_rank_label": "EN TEXT TO REPLACE: #{rank}",
+      "top_rank_link_label": "EN TEXT TO REPLACE: View likes leaderboard. This package is ranked #{rank}."
     },
     "docs": {
       "contents": "Conteúdo",
@@ -592,6 +612,7 @@
     "dependencies": {
       "title": "Dependência ({count}) | Dependências ({count})",
       "list_label": "Dependências do pacote",
+      "empty": "EN TEXT TO REPLACE: No dependencies",
       "show_all": "mostrar {count} dep | mostrar todas as {count} deps",
       "optional": "opcional",
       "view_vulnerabilities": "Ver vulnerabilidades",
@@ -789,6 +810,16 @@
     "download": {
       "button": "Transferir",
       "tarball": "Transferir Tarball como .tar.gz"
+    }
+  },
+  "leaderboard": {
+    "likes": {
+      "title": "EN TEXT TO REPLACE: Likes Leaderboard",
+      "description": "EN TEXT TO REPLACE: The 10 most liked packages on npmx right now.",
+      "rank": "EN TEXT TO REPLACE: Rank",
+      "likes": "EN TEXT TO REPLACE: Likes",
+      "unavailable_title": "EN TEXT TO REPLACE: No likes leaderboard yet",
+      "unavailable_description": "EN TEXT TO REPLACE: We don't have a likes leaderboard to show right now."
     }
   },
   "connector": {

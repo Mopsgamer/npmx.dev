@@ -396,6 +396,13 @@
       "size": "La taille d'installation a augmenté de {percent} ({size} de plus)",
       "deps": "{count} dépendances supplémentaires"
     },
+    "size_decrease": {
+      "title_size": "EN TEXT TO REPLACE: Package size decreased since v{version}!",
+      "title_deps": "EN TEXT TO REPLACE: Dependency count decreased since v{version}!",
+      "title_both": "EN TEXT TO REPLACE: Package size and dependency count decreased since v{version}!",
+      "size": "EN TEXT TO REPLACE: Install size reduced by {percent} ({size} smaller)",
+      "deps": "EN TEXT TO REPLACE: {count} fewer dependencies"
+    },
     "replacement": {
       "title": "Vous n'avez peut-être pas besoin de cette dépendance.",
       "example": "EN TEXT TO REPLACE: Example:",

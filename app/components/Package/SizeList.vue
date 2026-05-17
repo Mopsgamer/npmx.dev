@@ -103,19 +103,15 @@ defineExpose({
           </template>
         </WindowVirtualizer>
       </ClientOnly>
-    </template>
-
-    <!-- Initial loading state for cards -->
-    <div
-      v-if="isLoading && entries.length === 0 && currentViewMode !== 'table'"
-      class="py-12 flex items-center justify-center"
-    >
-      <div class="flex items-center gap-3 text-fg-muted font-mono text-sm">
-        <span
-          class="w-5 h-5 border-2 border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
-        />
-        {{ $t('common.loading') }}
+      <!-- Initial loading state for cards -->
+      <div v-if="isLoading" class="py-12 flex items-center justify-center">
+        <div class="flex items-center gap-3 text-fg-muted font-mono text-sm">
+          <span
+            class="w-5 h-5 border-2 border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
+          />
+          {{ $t('common.loading') }}
+        </div>
       </div>
-    </div>
+    </template>
   </div>
 </template>

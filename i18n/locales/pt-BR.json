@@ -46,7 +46,8 @@
     "disable_shortcuts": "Pode desativar os atalhos do teclado em {settings}.",
     "open_main": "Abrir informação principal",
     "open_diff": "Abrir diferença de versões",
-    "open_timeline": "Abrir linha do tempo"
+    "open_timeline": "Abrir linha do tempo",
+    "open_sizes": "EN TEXT TO REPLACE: Open sizes"
   },
   "search": {
     "label": "Pesquisar pacotes npm",
@@ -318,6 +319,7 @@
     "warnings": "Avisos:",
     "go_back_home": "Voltar para a página inicial",
     "per_week": "/ semana",
+    "per_week_short": "EN TEXT TO REPLACE: /wk",
     "vanity_downloads_hint": "Número de vaidade: nenhum pacote exibido | Número de vaidade: para o pacote exibido | Número de vaidade: Soma de {count} pacotes exibidos",
     "sort": {
       "name": "nome",
@@ -466,7 +468,10 @@
     },
     "likes": {
       "like": "Gosto deste pacote",
-      "unlike": "Não gosto deste pacote"
+      "unlike": "Não gosto deste pacote",
+      "top_rank_tooltip": "EN TEXT TO REPLACE: This is among the top 10 most liked packages on npmx! (#{rank})",
+      "top_rank_label": "EN TEXT TO REPLACE: #{rank}",
+      "top_rank_link_label": "EN TEXT TO REPLACE: View likes leaderboard. This package is ranked #{rank}."
     },
     "docs": {
       "contents": "Conteúdo",
@@ -805,6 +810,16 @@
     "download": {
       "button": "Baixar",
       "tarball": "Baixar Tarball como .tar.gz"
+    }
+  },
+  "leaderboard": {
+    "likes": {
+      "title": "EN TEXT TO REPLACE: Likes Leaderboard",
+      "description": "EN TEXT TO REPLACE: The 10 most liked packages on npmx right now.",
+      "rank": "EN TEXT TO REPLACE: Rank",
+      "likes": "EN TEXT TO REPLACE: Likes",
+      "unavailable_title": "EN TEXT TO REPLACE: No likes leaderboard yet",
+      "unavailable_description": "EN TEXT TO REPLACE: We don't have a likes leaderboard to show right now."
     }
   },
   "connector": {

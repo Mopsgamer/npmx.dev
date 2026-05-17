@@ -319,6 +319,7 @@
     "warnings": "警告：",
     "go_back_home": "回到首頁",
     "per_week": "/ 週",
+    "per_week_short": "EN TEXT TO REPLACE: /wk",
     "vanity_downloads_hint": "顯示下載量：未顯示套件 | 顯示下載量：顯示的套件 | 顯示下載量：顯示的 {count} 個套件總和",
     "sort": {
       "name": "名稱",
@@ -395,6 +396,13 @@
       "size": "安裝大小增加了 {percent}（多出 {size}）",
       "deps": "增加了 {count} 個相依套件"
     },
+    "size_decrease": {
+      "title_size": "EN TEXT TO REPLACE: Package size decreased since v{version}!",
+      "title_deps": "EN TEXT TO REPLACE: Dependency count decreased since v{version}!",
+      "title_both": "EN TEXT TO REPLACE: Package size and dependency count decreased since v{version}!",
+      "size": "EN TEXT TO REPLACE: Install size reduced by {percent} ({size} smaller)",
+      "deps": "EN TEXT TO REPLACE: {count} fewer dependencies"
+    },
     "replacement": {
       "title": "你可能不需要這個相依套件。",
       "example": "EN TEXT TO REPLACE: Example:",
@@ -460,7 +468,10 @@
     },
     "likes": {
       "like": "喜歡這個套件",
-      "unlike": "取消喜歡這個套件"
+      "unlike": "取消喜歡這個套件",
+      "top_rank_tooltip": "EN TEXT TO REPLACE: This is among the top 10 most liked packages on npmx! (#{rank})",
+      "top_rank_label": "EN TEXT TO REPLACE: #{rank}",
+      "top_rank_link_label": "EN TEXT TO REPLACE: View likes leaderboard. This package is ranked #{rank}."
     },
     "docs": {
       "contents": "目錄",
@@ -799,6 +810,16 @@
     "download": {
       "button": "下載",
       "tarball": "下載 Tarball（.tar.gz）"
+    }
+  },
+  "leaderboard": {
+    "likes": {
+      "title": "EN TEXT TO REPLACE: Likes Leaderboard",
+      "description": "EN TEXT TO REPLACE: The 10 most liked packages on npmx right now.",
+      "rank": "EN TEXT TO REPLACE: Rank",
+      "likes": "EN TEXT TO REPLACE: Likes",
+      "unavailable_title": "EN TEXT TO REPLACE: No likes leaderboard yet",
+      "unavailable_description": "EN TEXT TO REPLACE: We don't have a likes leaderboard to show right now."
     }
   },
   "connector": {

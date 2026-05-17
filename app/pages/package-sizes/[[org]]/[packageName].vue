@@ -124,11 +124,11 @@ const bytesFormatter = useBytesFormatter()
     </div>
 
     <header
-      class="z-20 border-b transition-all duration-300"
+      class="z-20 border-b border-border transition-all duration-300 max-w-4xl mx-auto"
       :class="[
-        isStickyEnabled ? 'sticky top-[55px]' : '',
+        isStickyEnabled ? 'sticky top-[56px]' : '',
         isScrolled
-          ? 'bg-bg/80 backdrop-blur-md pt-2 pb-2 border-border/50 shadow-sm'
+          ? 'bg-bg/80 backdrop-blur-md pt-2 pb-2 border-border/50'
           : 'pt-4 pb-8 border-transparent',
       ]"
     >

@@ -382,7 +382,7 @@
       "no_reason": "No reason provided"
     },
     "sizes": {
-      "title": "Sizes",
+      "title": "sizes",
       "columns": {
         "self_size": "Self size",
         "total_size": "Total size",

@@ -319,6 +319,7 @@
     "warnings": "Peringatan:",
     "go_back_home": "Kembali ke Beranda",
     "per_week": "/ minggu",
+    "per_week_short": "EN TEXT TO REPLACE: /wk",
     "vanity_downloads_hint": "Angka statistik: tidak ada paket | Angka statistik: untuk paket yang tampil | Angka statistik: Total dari {count} paket yang tampil",
     "sort": {
       "name": "nama",
@@ -395,6 +396,13 @@
       "size": "Ukuran instalasi meningkat sebesar {percent} ({size} lebih besar)",
       "deps": "{count} lebih banyak dependensi"
     },
+    "size_decrease": {
+      "title_size": "EN TEXT TO REPLACE: Package size decreased since v{version}!",
+      "title_deps": "EN TEXT TO REPLACE: Dependency count decreased since v{version}!",
+      "title_both": "EN TEXT TO REPLACE: Package size and dependency count decreased since v{version}!",
+      "size": "EN TEXT TO REPLACE: Install size reduced by {percent} ({size} smaller)",
+      "deps": "EN TEXT TO REPLACE: {count} fewer dependencies"
+    },
     "replacement": {
       "title": "Mungkin Anda tidak butuh dependensi ini.",
       "example": "EN TEXT TO REPLACE: Example:",
@@ -460,7 +468,10 @@
     },
     "likes": {
       "like": "Sukai paket ini",
-      "unlike": "Batal sukai paket ini"
+      "unlike": "Batal sukai paket ini",
+      "top_rank_tooltip": "EN TEXT TO REPLACE: This is among the top 10 most liked packages on npmx! (#{rank})",
+      "top_rank_label": "EN TEXT TO REPLACE: #{rank}",
+      "top_rank_link_label": "EN TEXT TO REPLACE: View likes leaderboard. This package is ranked #{rank}."
     },
     "docs": {
       "contents": "Daftar Isi",
@@ -799,6 +810,16 @@
     "download": {
       "button": "Unduh",
       "tarball": "Unduh Tarball sebagai .tar.gz"
+    }
+  },
+  "leaderboard": {
+    "likes": {
+      "title": "EN TEXT TO REPLACE: Likes Leaderboard",
+      "description": "EN TEXT TO REPLACE: The 10 most liked packages on npmx right now.",
+      "rank": "EN TEXT TO REPLACE: Rank",
+      "likes": "EN TEXT TO REPLACE: Likes",
+      "unavailable_title": "EN TEXT TO REPLACE: No likes leaderboard yet",
+      "unavailable_description": "EN TEXT TO REPLACE: We don't have a likes leaderboard to show right now."
     }
   },
   "connector": {
