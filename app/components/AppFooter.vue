@@ -36,7 +36,7 @@ const socialLinks = computed(() => [
   },
 ])
 
-const footerSections: Array<{ label: string; links: FooterLink[] }> = [
+const footerSections = computed<Array<{ label: string; links: FooterLink[] }>>(() => [
   {
     label: t('footer.resources'),
     links: [
@@ -47,6 +47,10 @@ const footerSections: Array<{ label: string; links: FooterLink[] }> = [
       {
         name: t('footer.about'),
         href: '/about',
+      },
+      {
+        name: t('footer.brand'),
+        href: '/brand',
       },
       {
         name: t('a11y.footer_title'),
@@ -89,7 +93,7 @@ const footerSections: Array<{ label: string; links: FooterLink[] }> = [
       },
     ],
   },
-]
+])
 </script>
 
 <template>

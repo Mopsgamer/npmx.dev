@@ -2,13 +2,13 @@
   "$schema": "../schema.json",
   "seo": {
     "home": {
-      "title": "npmx - Pakket Browser voor de npm Register",
-      "description": "Een snelle, moderne browser voor het npm register. Zoek, blader en ontdek pakketten met een moderne interface."
+      "title": "npmx - Pakket Browser voor het npm-Register",
+      "description": "Een snelle, moderne browser voor het npm-register. Zoek, blader en ontdek pakketten met een moderne interface."
     }
   },
   "built_at": "gebouwd {0}",
   "alt_logo": "npmx logo",
-  "tagline": "een snelle, moderne browser voor de npm register",
+  "tagline": "een snelle, moderne browser voor het npm-register",
   "non_affiliation_disclaimer": "niet affiliëerd met npm, Inc.",
   "trademark_disclaimer": "npm is een geregisteerd trademark van npm, Inc. Deze website is niet affiliëerd met npm, Inc.",
   "footer": {
@@ -155,6 +155,7 @@
       "diff": "Verschillen",
       "compare": "Vergelijk dit pakket",
       "download": "Download tarball",
+      "changelog": "Wijzigingenoverzicht",
       "sizes": "EN TEXT TO REPLACE: Sizes"
     },
     "package_actions": {
@@ -244,7 +245,7 @@
     "data_source": {
       "label": "Gegevensbron",
       "description": "Kies waar npmx zoekgegevens vandaan haalt. Individuele pakketpagina's gebruiken altijd rechtstreeks het npm-register.",
-      "npm": "npm register",
+      "npm": "npm-register",
       "npm_description": "haalt zoek-, org- en gebruikerslijsten rechtstreeks op uit het officiële npm-register. Betrouwbaar, maar kan trager zijn.",
       "algolia": "Algolia",
       "algolia_description": "Gebruikt Algolia voor snellere zoekopdrachten, organisatie- en gebruikerspagina's."
@@ -287,7 +288,9 @@
     },
     "keyboard_shortcuts_enabled": "toetsenbordnavigatie inschakelen",
     "keyboard_shortcuts_enabled_description": "toetsenbordnavigatie kan worden uitgeschakeld als ze conflicteren met andere sneltoetsen van de browser of het systeem.",
-    "enable_code_ligatures": "EN TEXT TO REPLACE: Enable ligatures in code"
+    "enable_code_ligatures": "Verbonden tekens (ligaturen) in code inschakelen",
+    "enable_changelog_autoscroll": "Automatisch scrollen naar gevraagde versie",
+    "enable_changelog_autoscroll_description": "Automatisch scrollen naar of in de buurt van de gevraagde versie in de Wijzigingenoverzicht van een pakket"
   },
   "i18n": {
     "missing_keys": "{count} ontbrekende vertaling | {count} ontbrekende vertalingen",
@@ -366,7 +369,7 @@
     "invite": {
       "message": "Het lijkt erop dat ze npmx nog niet gebruiken. Wilt u ze hierop wijzen",
       "share_button": "Deel op Bluesky",
-      "compose_text": "Hallo {'@'}{handle}! Hebt u npmx.dev al bekeken? Het is een browser voor het npm register die snel, modern en open source is.\nhttps://npmx.dev"
+      "compose_text": "Hallo {'@'}{handle}! Hebt u npmx.dev al bekeken? Het is een browser voor het npm-register die snel, modern en open source is.\nhttps://npmx.dev"
     }
   },
   "package": {
@@ -382,10 +385,10 @@
       "no_reason": "Geen reden gegeven"
     },
     "sizes": {
-      "title": "EN TEXT TO REPLACE: Sizes",
+      "title": "EN TEXT TO REPLACE: sizes",
       "columns": {
-        "self_size": "EN TEXT TO REPLACE: Self Size",
-        "total_size": "EN TEXT TO REPLACE: Total Size",
+        "self_size": "EN TEXT TO REPLACE: Self size",
+        "total_size": "EN TEXT TO REPLACE: Total size",
         "percentage": "EN TEXT TO REPLACE: %"
       }
     },
@@ -426,7 +429,6 @@
       "view_dependency_graph": "Dependency grafiek bekijken",
       "inspect_dependency_tree": "Dependency structuur inspecteren",
       "view_all_sizes": "EN TEXT TO REPLACE: View all sizes",
-      "load_dependency_sizes": "EN TEXT TO REPLACE: Load dependency total sizes",
       "size": {
         "total": "EN TEXT TO REPLACE: Total size: {size}"
       },
@@ -463,8 +465,9 @@
       "docs": "docs",
       "fund": "Steunen",
       "compare": "vergelijk",
-      "timeline": "EN TEXT TO REPLACE: timeline",
-      "compare_this_package": "Vergelijk dit pakket"
+      "timeline": "tijdlijn",
+      "compare_this_package": "Vergelijk dit pakket",
+      "changelog": "wijzigingenoverzicht"
     },
     "likes": {
       "like": "Dit pakket leuk vinden",
@@ -513,7 +516,7 @@
         "caution": "Let op"
       },
       "copy_as_markdown": "kopieer README als Markdown",
-      "error_loading": "EN TEXT TO REPLACE: Failed to load README details"
+      "error_loading": "Het laden van de README gegevens is mislukt"
     },
     "provenance_section": {
       "title": "Herkomst verificatie gegevens",
@@ -583,6 +586,9 @@
       "filter_help": "Semver bereikfilter hulp",
       "filter_tooltip": "Filter versie bij {link}. bijvoorbeeld, ^3.0.0 laat zien 3.x versies.",
       "filter_tooltip_link": "semver bereik",
+      "license_change_help": "EN TEXT TO REPLACE: License Change Details",
+      "license_change_warning": "EN TEXT TO REPLACE: License changed since previous version.",
+      "license_change_record": "EN TEXT TO REPLACE: The license of this package changed from \"{from}\" to \"{to}\".",
       "no_matches": "Geen versies in dit bereik",
       "copy_alt": {
         "per_version_analysis": "{version} versie was gedownload {downloads} keren",
@@ -607,7 +613,19 @@
       "trusted_publisher_added": "EN TEXT TO REPLACE: Trusted publishing enabled",
       "trusted_publisher_removed": "EN TEXT TO REPLACE: Trusted publishing removed",
       "provenance_added": "EN TEXT TO REPLACE: Provenance enabled",
-      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed"
+      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed",
+      "chart": {
+        "tab_aria_label": "EN TEXT TO REPLACE: Metric selection",
+        "base_scale": "EN TEXT TO REPLACE: start y-axis at zero",
+        "zoom": "EN TEXT TO REPLACE: zoom",
+        "reset_minimap": "EN TEXT TO REPLACE: reset minimap",
+        "ordered_versions": "EN TEXT TO REPLACE: stable only",
+        "copy_alt": {
+          "key_changes": "EN TEXT TO REPLACE: Key changes: {version_events}.",
+          "version_events": "EN TEXT TO REPLACE: version {version}: {events}",
+          "general_description": "EN TEXT TO REPLACE: Line chart showing the {metric} of the {package} package, from version {first} to {last}. The {metric} in version {first} is {first_value}, in version {last} is {last_value} ({overall_progress_percentage}% overall). {key_changes} {watermark}."
+        }
+      }
     },
     "dependencies": {
       "title": "Dependency ({count}) | Dependencies ({count})",
@@ -1150,12 +1168,12 @@
   "about": {
     "title": "Over",
     "heading": "over ons",
-    "meta_description": "npmx is een snelle, moderne browser voor de npm register. Een betere UX/DX om npm-pakketten te ontdekken.",
+    "meta_description": "npmx is een snelle, moderne browser voor het npm-register. Een betere UX/DX om npm-pakketten te ontdekken.",
     "what_we_are": {
       "title": "Wat zijn we",
       "better_ux_dx": "betere UX/DX",
       "admin_ui": "admin UI",
-      "description": "npmx is een {betterUxDx} voor het npm register en bijbehorende hulpmiddelen. We bieden een snelle, moderne interface voor het ontdekken van pakketten, met functies zoals dark mode, toetsenbordnavigatie, code-browsing en koppelingen met alternatieve registers zoals {jsr}.",
+      "description": "npmx is een {betterUxDx} voor het npm-register en bijbehorende hulpmiddelen. We bieden een snelle, moderne interface voor het ontdekken van pakketten, met functies zoals dark mode, toetsenbordnavigatie, code-browsing en koppelingen met alternatieve registers zoals {jsr}.",
       "admin_description": "We streven er ook naar om een betere {adminUi} te bieden voor het beheer van uw pakketten, teams en organisaties — allemaal vanuit de browser, aangedreven door uw lokale npm CLI."
     },
     "what_we_are_not": {
@@ -1390,16 +1408,16 @@
           "description": "Bekende beveiliging kwetsbaarheden"
         },
         "githubStars": {
-          "label": "EN TEXT TO REPLACE: GitHub Stars",
-          "description": "EN TEXT TO REPLACE: Number of stars on the GitHub repository"
+          "label": "GitHub Sterren",
+          "description": "Aantal sterren van een GitHub repository"
         },
         "githubIssues": {
-          "label": "EN TEXT TO REPLACE: GitHub Issues",
-          "description": "EN TEXT TO REPLACE: Number of issues on the GitHub repository"
+          "label": "GitHub Issues",
+          "description": "Aantal issues van een GitHub repository"
         },
         "createdAt": {
-          "label": "EN TEXT TO REPLACE: Created At",
-          "description": "EN TEXT TO REPLACE: When the package was created"
+          "label": "Aangemaakt op",
+          "description": "Wanneer het pakket is aangemaakt"
         }
       },
       "values": {
@@ -1722,5 +1740,16 @@
       "discord_link_text": "chat.npmx.dev"
     }
   },
-  "alt_logo_kawaii": "Een schattige, ronde en kleurrijke versie van het npmx logo."
+  "alt_logo_kawaii": "Een schattige, ronde en kleurrijke versie van het npmx logo.",
+  "changelog": {
+    "pre_release": "Ontwikkelversie",
+    "draft": "Concept",
+    "no_logs": "Sorry dit pakket publiceert geen wijzigingenoverzicht of hun formaat van wijzigingenoverzicht wordt niet ondersteund.",
+    "error": {
+      "p1": "Sorry, de wijzigingenoverzicht van {package} kon niet geladen worden.",
+      "p2": "Probeer later opnieuw of {viewon}"
+    },
+    "rate_limit_ungh": "Sorry, de opvraaglimiet (rate limit) van GitHub is bereikt. Probeer het over een ogenblik opnieuw.",
+    "version_unavailable": "De gevraagde is niet beschikbaar."
+  }
 }

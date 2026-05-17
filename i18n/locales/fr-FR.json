@@ -155,6 +155,7 @@
       "diff": "Diff",
       "compare": "Comparer ce paquet",
       "download": "Télécharger le tarball",
+      "changelog": "Changements",
       "sizes": "EN TEXT TO REPLACE: Sizes"
     },
     "package_actions": {
@@ -287,7 +288,9 @@
     },
     "keyboard_shortcuts_enabled": "Activer les raccourcis clavier",
     "keyboard_shortcuts_enabled_description": "Les raccourcis clavier peuvent être désactivés s'ils entrent en conflit avec d'autres raccourcis du navigateur ou du système",
-    "enable_code_ligatures": "Activer les ligatures de code"
+    "enable_code_ligatures": "Activer les ligatures de code",
+    "enable_changelog_autoscroll": "Scroller automatiquement à la version voulue",
+    "enable_changelog_autoscroll_description": "Scroller automatiquement à — ou près — de la version voulue dans la page des changements"
   },
   "i18n": {
     "missing_keys": "{count} traduction manquante | {count} traductions manquantes",
@@ -382,10 +385,10 @@
       "no_reason": "Aucune raison fournie"
     },
     "sizes": {
-      "title": "EN TEXT TO REPLACE: Sizes",
+      "title": "EN TEXT TO REPLACE: sizes",
       "columns": {
-        "self_size": "EN TEXT TO REPLACE: Self Size",
-        "total_size": "EN TEXT TO REPLACE: Total Size",
+        "self_size": "EN TEXT TO REPLACE: Self size",
+        "total_size": "EN TEXT TO REPLACE: Total size",
         "percentage": "EN TEXT TO REPLACE: %"
       }
     },
@@ -426,7 +429,6 @@
       "view_dependency_graph": "Voir le graphe de dépendances",
       "inspect_dependency_tree": "Inspecter l'arbre de dépendances",
       "view_all_sizes": "EN TEXT TO REPLACE: View all sizes",
-      "load_dependency_sizes": "EN TEXT TO REPLACE: Load dependency total sizes",
       "size": {
         "total": "EN TEXT TO REPLACE: Total size: {size}"
       },
@@ -464,7 +466,8 @@
       "fund": "donner",
       "compare": "comparer",
       "timeline": "historique",
-      "compare_this_package": "comparer ce paquet"
+      "compare_this_package": "comparer ce paquet",
+      "changelog": "changements"
     },
     "likes": {
       "like": "Liker ce paquet",
@@ -583,6 +586,9 @@
       "filter_help": "Infos sur le filtre de plage semver",
       "filter_tooltip": "Filtrer les versions avec une {link}. Par exemple, ^3.0.0 affiche toutes les versions 3.x.",
       "filter_tooltip_link": "plage semver",
+      "license_change_help": "EN TEXT TO REPLACE: License Change Details",
+      "license_change_warning": "EN TEXT TO REPLACE: License changed since previous version.",
+      "license_change_record": "EN TEXT TO REPLACE: The license of this package changed from \"{from}\" to \"{to}\".",
       "no_matches": "Aucune version ne correspond à cette plage",
       "copy_alt": {
         "per_version_analysis": "La version {version} a été téléchargée {downloads} fois",
@@ -607,7 +613,19 @@
       "trusted_publisher_added": "Vérification ajoutée",
       "trusted_publisher_removed": "Vérification enlevée",
       "provenance_added": "Preuve de provenance ajoutée",
-      "provenance_removed": "Preuve de provenance enlevée"
+      "provenance_removed": "Preuve de provenance enlevée",
+      "chart": {
+        "tab_aria_label": "Sélection de métrique",
+        "base_scale": "positionner les ordonnées à zéro",
+        "zoom": "zoom",
+        "reset_minimap": "Réinitialiser la mini-carte",
+        "ordered_versions": "stable uniquement",
+        "copy_alt": {
+          "key_changes": "Principaux changements: {version_events}",
+          "version_events": "version {version}: {events}",
+          "general_description": "Graphique en ligne montrant la métrique {metric} pour le paquet {package}, depuis la version {first} à {last}. La valeur de la métrique {metric} pour la version {first} est {first_value}, et {last_value} pour la version {last} ({overall_progress_percentage}% dans l'ensemble). {key_changes} {watermark}."
+        }
+      }
     },
     "dependencies": {
       "title": "Dépendances ({count})",
@@ -1722,5 +1740,16 @@
       "discord_link_text": "chat.npmx.dev"
     }
   },
-  "alt_logo_kawaii": "Une version mignonne, arrondie et colorée du logo npmx."
+  "alt_logo_kawaii": "Une version mignonne, arrondie et colorée du logo npmx.",
+  "changelog": {
+    "pre_release": "Pré-version",
+    "draft": "Brouillon",
+    "no_logs": "Désolé, ce paquet ne publie pas de changements ou le format de ses changements n'est pas pris en charge.",
+    "error": {
+      "p1": "Désolé, les changements de {package} n'ont pas pu être chargés",
+      "p2": "Veuillez réessayer plus tard ou {viewon}"
+    },
+    "rate_limit_ungh": "Désolé, la limite de requêtes à l'API GitHub a été atteinte, réessayez plus tard",
+    "version_unavailable": "La version demandée n'est pas disponible."
+  }
 }

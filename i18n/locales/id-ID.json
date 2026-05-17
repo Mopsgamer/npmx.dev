@@ -155,6 +155,7 @@
       "diff": "EN TEXT TO REPLACE: Diff",
       "compare": "EN TEXT TO REPLACE: Compare this package",
       "download": "EN TEXT TO REPLACE: Download tarball",
+      "changelog": "EN TEXT TO REPLACE: Changelog",
       "sizes": "EN TEXT TO REPLACE: Sizes"
     },
     "package_actions": {
@@ -287,7 +288,9 @@
     },
     "keyboard_shortcuts_enabled": "Aktifkan pintasan papan ketik",
     "keyboard_shortcuts_enabled_description": "Pintasan papan ketik dapat dinonaktifkan jika bertentangan dengan pintasan peramban atau sistem lainnya.",
-    "enable_code_ligatures": "EN TEXT TO REPLACE: Enable ligatures in code"
+    "enable_code_ligatures": "EN TEXT TO REPLACE: Enable ligatures in code",
+    "enable_changelog_autoscroll": "EN TEXT TO REPLACE: Auto scroll to requested version",
+    "enable_changelog_autoscroll_description": "EN TEXT TO REPLACE: Auto scroll to or close to the requested version at package changelog"
   },
   "i18n": {
     "missing_keys": "{count} belum diterjemahkan | {count} belum diterjemahkan",
@@ -426,7 +429,6 @@
       "view_dependency_graph": "Lihat grafik dependensi",
       "inspect_dependency_tree": "Periksa pohon dependensi",
       "view_all_sizes": "EN TEXT TO REPLACE: View all sizes",
-      "load_dependency_sizes": "EN TEXT TO REPLACE: Load dependency total sizes",
       "size": {
         "total": "EN TEXT TO REPLACE: Total size: {size}"
       },
@@ -464,7 +466,8 @@
       "fund": "donasi",
       "compare": "bandingkan",
       "timeline": "EN TEXT TO REPLACE: timeline",
-      "compare_this_package": "Bandingkan paket ini"
+      "compare_this_package": "Bandingkan paket ini",
+      "changelog": "EN TEXT TO REPLACE: changelog"
     },
     "likes": {
       "like": "Sukai paket ini",
@@ -583,6 +586,9 @@
       "filter_help": "Bantuan filter rentang semver",
       "filter_tooltip": "Saring versi menggunakan {link}. Sebagai contoh, ^3.0.0 menampilkan semua versi 3.x.",
       "filter_tooltip_link": "rentang semver",
+      "license_change_help": "EN TEXT TO REPLACE: License Change Details",
+      "license_change_warning": "EN TEXT TO REPLACE: License changed since previous version.",
+      "license_change_record": "EN TEXT TO REPLACE: The license of this package changed from \"{from}\" to \"{to}\".",
       "no_matches": "Tidak ada versi yang cocok dengan rentang ini",
       "copy_alt": {
         "per_version_analysis": "Versi {version} diunduh {downloads} kali",
@@ -607,7 +613,19 @@
       "trusted_publisher_added": "EN TEXT TO REPLACE: Trusted publishing enabled",
       "trusted_publisher_removed": "EN TEXT TO REPLACE: Trusted publishing removed",
       "provenance_added": "EN TEXT TO REPLACE: Provenance enabled",
-      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed"
+      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed",
+      "chart": {
+        "tab_aria_label": "EN TEXT TO REPLACE: Metric selection",
+        "base_scale": "EN TEXT TO REPLACE: start y-axis at zero",
+        "zoom": "EN TEXT TO REPLACE: zoom",
+        "reset_minimap": "EN TEXT TO REPLACE: reset minimap",
+        "ordered_versions": "EN TEXT TO REPLACE: stable only",
+        "copy_alt": {
+          "key_changes": "EN TEXT TO REPLACE: Key changes: {version_events}.",
+          "version_events": "EN TEXT TO REPLACE: version {version}: {events}",
+          "general_description": "EN TEXT TO REPLACE: Line chart showing the {metric} of the {package} package, from version {first} to {last}. The {metric} in version {first} is {first_value}, in version {last} is {last_value} ({overall_progress_percentage}% overall). {key_changes} {watermark}."
+        }
+      }
     },
     "dependencies": {
       "title": "Dependensi ({count})",
@@ -1722,5 +1740,16 @@
       "discord_link_text": "chat.npmx.dev"
     }
   },
-  "alt_logo_kawaii": "EN TEXT TO REPLACE: A cute, rounded, and colorful version of the npmx logo."
+  "alt_logo_kawaii": "EN TEXT TO REPLACE: A cute, rounded, and colorful version of the npmx logo.",
+  "changelog": {
+    "pre_release": "EN TEXT TO REPLACE: Pre-release",
+    "draft": "EN TEXT TO REPLACE: Draft",
+    "no_logs": "EN TEXT TO REPLACE: Sorry, this package does not publish changelogs or its changelog format is not supported.",
+    "error": {
+      "p1": "EN TEXT TO REPLACE: Sorry, the changelog for {package} couldn't be loaded",
+      "p2": "EN TEXT TO REPLACE: Please try again later or {viewon}"
+    },
+    "rate_limit_ungh": "EN TEXT TO REPLACE: Sorry, Github's rate limit has been hit, try again in a moment",
+    "version_unavailable": "EN TEXT TO REPLACE: The requested version is not available."
+  }
 }
