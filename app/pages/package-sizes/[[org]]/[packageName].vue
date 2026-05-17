@@ -23,8 +23,9 @@ const { y } = useWindowScroll()
 
 // Fetch total install size
 const {
-  data: installSize,
-  status: installSizeStatus,
+  data: size,
+  pending: sizePending,
+  status: sizeStatus,
   refresh,
 } = usePackageSize(packageName, version)
 
@@ -46,38 +47,39 @@ function compare(a: SizeEntry, b: SizeEntry) {
   return sortDir.value === 'asc' ? comparison : -comparison
 }
 
-const { data: sizereqData } = usePackageDependencySizes(
+const dependencies = computed(() => size.value?.dependencies)
+
+const { data: depsizes, pending: depsizesPending } = usePackageDependencySizes(
   packageName,
   version,
-  computed(() => installSize.value?.dependencies),
+  dependencies,
 )
 
 const tableData = computed(() => {
-  if (!installSize.value) return []
+  if (!size.value) return []
+  if (!dependencies.value) return []
 
   const entries: SizeEntry[] = []
 
   // Add dependencies
-  if (installSize.value.dependencies) {
-    for (const dep of installSize.value.dependencies) {
-      const serverData = sizereqData.value?.[dep.name]
-      const isSuccess = serverData?.kind === 'success'
+  for (const dep of dependencies.value) {
+    const serverData = depsizes.value?.[dep.name]
+    const isSuccess = serverData?.kind === 'success'
 
-      entries.push({
-        name: dep.name,
-        version: dep.version,
-        selfSize: isSuccess && serverData.packageSize ? serverData.packageSize.selfSize : dep.size,
-        totalSize:
-          isSuccess && serverData.packageSize
-            ? serverData.packageSize.totalSize
-            : (dep.totalSize ?? NaN),
-        depCount:
-          isSuccess && serverData.packageSize
-            ? serverData.packageSize.dependencyCount
-            : (dep.dependencyCount ?? NaN),
-        percentage: (dep.size / installSize.value.totalSize) * 100,
-      })
-    }
+    entries.push({
+      name: dep.name,
+      version: dep.version,
+      selfSize: isSuccess && serverData.packageSize ? serverData.packageSize.selfSize : dep.size,
+      totalSize:
+        isSuccess && serverData.packageSize
+          ? serverData.packageSize.totalSize
+          : (dep.totalSize ?? NaN),
+      depCount:
+        isSuccess && serverData.packageSize
+          ? serverData.packageSize.dependencyCount
+          : (dep.dependencyCount ?? NaN),
+      percentage: (dep.size / size.value.totalSize) * 100,
+    })
   }
 
   entries.sort(compare)
@@ -124,7 +126,7 @@ const bytesFormatter = useBytesFormatter()
     </div>
 
     <header
-      class="z-20 border-b border-border transition-all duration-300 max-w-4xl mx-auto"
+      class="z-20 border-b border-border max-w-4xl mx-auto"
       :class="[
         isStickyEnabled ? 'sticky top-[56px]' : '',
         isScrolled
@@ -134,13 +136,13 @@ const bytesFormatter = useBytesFormatter()
     >
       <div class="max-w-4xl mx-auto px-4 sm:px-8">
         <div
-          v-if="installSize"
-          class="flex transition-all duration-300"
+          v-if="!sizePending && size"
+          class="flex"
           :class="isScrolled ? 'flex-row items-center gap-6' : 'flex-col gap-6'"
         >
           <!-- Main Info Row -->
           <div
-            class="flex flex-1 transition-all duration-300 min-w-0"
+            class="flex flex-1 min-w-0"
             :class="isScrolled ? 'flex-row items-center gap-6' : 'flex-col gap-6'"
           >
             <!-- Package Identifier -->
@@ -172,7 +174,7 @@ const bytesFormatter = useBytesFormatter()
                   class="font-mono font-medium transition-all duration-300"
                   :class="isScrolled ? 'text-xs' : 'text-3xl'"
                 >
-                  {{ bytesFormatter.format(installSize.selfSize) }}
+                  {{ bytesFormatter.format(size.selfSize) }}
                 </div>
               </div>
 
@@ -188,7 +190,7 @@ const bytesFormatter = useBytesFormatter()
                   class="font-mono font-medium transition-all duration-300"
                   :class="isScrolled ? 'text-xs' : 'text-3xl'"
                 >
-                  {{ bytesFormatter.format(installSize.totalSize) }}
+                  {{ bytesFormatter.format(size.totalSize) }}
                 </div>
               </div>
 
@@ -210,7 +212,7 @@ const bytesFormatter = useBytesFormatter()
                     class="font-mono font-medium transition-all duration-300"
                     :class="isScrolled ? 'text-xs' : 'text-3xl'"
                   >
-                    {{ numberFormatter.format(installSize.dependencyCount) }}
+                    {{ numberFormatter.format(size.dependencyCount) }}
                   </div>
                 </div>
               </div>
@@ -220,7 +222,7 @@ const bytesFormatter = useBytesFormatter()
             <PackageSizeBar
               :package-name="packageName"
               :version="version"
-              :package-size="installSize"
+              :package-size="size"
               class="transition-all duration-300 min-w-[100px]"
               :class="isScrolled ? 'flex-1' : ''"
               :height="isScrolled ? 'h-6' : 'h-10'"
@@ -235,7 +237,7 @@ const bytesFormatter = useBytesFormatter()
         </div>
 
         <!-- Skeleton Loading State -->
-        <div v-else-if="installSizeStatus === 'pending'" class="flex-1 space-y-8">
+        <div v-else class="flex-1 space-y-8">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
             <div v-for="i in 3" :key="i">
               <div class="h-3 w-16 bg-bg-elevated animate-pulse rounded mb-3" />
@@ -248,19 +250,19 @@ const bytesFormatter = useBytesFormatter()
     </header>
 
     <div class="max-w-4xl mx-auto px-4 sm:px-8">
-      <section v-if="tableData.length > 0 || installSizeStatus === 'pending'">
+      <section v-if="tableData.length > 0 || !depsizesPending">
         <PackageSizeList
           :entries="tableData"
           :view-mode="viewMode"
           v-model:sort-column="sortColumn"
           v-model:sort-dir="sortDir"
-          :is-loading="installSizeStatus === 'pending'"
+          :is-loading="depsizesPending"
           :is-scrolled="isScrolled"
           :sticky-offset="isScrolled ? 112 : 260"
         />
       </section>
 
-      <section v-else-if="installSizeStatus === 'success'" class="py-20 text-center">
+      <section v-else-if="sizeStatus === 'success'" class="py-20 text-center">
         <div
           class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-bg-elevated mb-4"
         >
@@ -269,7 +271,7 @@ const bytesFormatter = useBytesFormatter()
         <p class="text-fg-muted">{{ t('package.dependencies.empty') }}</p>
       </section>
 
-      <section v-else-if="installSizeStatus === 'error'" class="py-20 text-center">
+      <section v-else-if="sizeStatus === 'error'" class="py-20 text-center">
         <p class="text-fg-muted">{{ t('compare.packages.error') }}</p>
         <ButtonBase variant="secondary" class="mt-4" @click="refresh">
           {{ t('common.retry') }}
