@@ -2,12 +2,12 @@
 import { WindowVirtualizer } from 'virtua/vue'
 import type { SizeEntry } from '~/types/size'
 import type { ViewMode } from '#shared/types/preferences'
+import type { IconClass } from '~/types'
 
 const props = defineProps<{
   entries: SizeEntry[]
   viewMode?: ViewMode
   isLoading?: boolean
-  stickyOffset?: number
 }>()
 
 const { t } = useI18n()
@@ -23,14 +23,34 @@ function scrollToIndex(index: number, smooth = true) {
   listRef.value?.scrollToIndex(index, { align: 'center', smooth })
 }
 
-type SortOption = { col: keyof SizeEntry; label: string; defaultDir: 'asc' | 'desc' }
+type SortOption = {
+  icon: IconClass | ''
+  col: keyof SizeEntry
+  label: string
+  defaultDir: 'asc' | 'desc'
+}
 
 const sortOptions = computed<SortOption[]>(() => [
-  { col: 'name', label: t('common.sort.name'), defaultDir: 'asc' },
-  { col: 'selfSize', label: t('package.sizes.columns.self_size'), defaultDir: 'desc' },
-  { col: 'totalSize', label: t('package.sizes.columns.total_size'), defaultDir: 'desc' },
-  { col: 'depCount', label: t('package.stats.deps'), defaultDir: 'desc' },
-  { col: 'percentage', label: t('package.sizes.columns.percentage'), defaultDir: 'desc' },
+  { icon: 'i-lucide:tag', col: 'name', label: t('common.sort.name'), defaultDir: 'asc' },
+  {
+    icon: 'i-lucide:package-open',
+    col: 'selfSize',
+    label: t('package.sizes.columns.self_size'),
+    defaultDir: 'desc',
+  },
+  {
+    icon: 'i-lucide:boxes',
+    col: 'totalSize',
+    label: t('package.sizes.columns.total_size'),
+    defaultDir: 'desc',
+  },
+  { icon: 'i-lucide:network', col: 'depCount', label: t('package.stats.deps'), defaultDir: 'desc' },
+  {
+    icon: 'i-lucide:percent',
+    col: 'percentage',
+    label: t('package.sizes.columns.percentage'),
+    defaultDir: 'desc',
+  },
 ])
 
 function toggleSort(col: keyof SizeEntry, defaultDir: 'asc' | 'desc') {
@@ -56,7 +76,6 @@ defineExpose({
         v-model:sort-column="sortColumn"
         v-model:sort-dir="sortDir"
         :is-loading="isLoading"
-        :sticky-offset="stickyOffset"
       />
     </template>
 
@@ -78,6 +97,7 @@ defineExpose({
             "
             @click="toggleSort(opt.col, opt.defaultDir)"
           >
+            <span v-if="opt.icon" class="size-[1em]" :class="opt.icon" />
             {{ opt.label }}
             <span
               v-if="sortColumn === opt.col"

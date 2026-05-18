@@ -132,7 +132,7 @@ const remainingWidth = computed(() => {
       class="h-full bg-fg flex items-center justify-center"
       :style="{ width: sortedSizereqDependecies.othersPercentage + '%' }"
     >
-      <span class="i-lucide:boxes w-3 h-3 text-bg" aria-hidden="true" />
+      <span class="i-lucide:network w-3 h-3 text-bg" aria-hidden="true" />
     </div>
 
     <div v-if="remainingWidth > 0" class="h-full bg-bg-elevated animate-skeleton-pulse flex-1" />

@@ -5,8 +5,6 @@ import { getSizeRoute, packageRoute } from '~/utils/router'
 const props = defineProps<{
   entries: SizeEntry[]
   isLoading?: boolean
-  stickyOffset?: number
-  isScrolled?: boolean
 }>()
 
 const { t } = useI18n()
@@ -27,10 +25,10 @@ function toggleSort(col: keyof SizeEntry) {
 </script>
 
 <template>
-  <div class="overflow-x-auto border border-border rounded-lg bg-bg-elevated overflow-y-visible">
-    <table class="w-full force-text-left border-collapse min-w-[600px]">
-      <thead class="z-20">
-        <tr class="bg-bg-subtle/50">
+  <div class="overflow-x-auto">
+    <table class="w-full text-start">
+      <thead class="border-b border-border">
+        <tr>
           <th
             v-for="col in [
               { key: 'name', label: t('common.sort.name'), align: 'left', width: 'auto' },
@@ -50,7 +48,8 @@ function toggleSort(col: keyof SizeEntry) {
               { key: 'percentage', label: '%', align: 'right', width: '120px' },
             ]"
             :key="col.key"
-            class="z-20 bg-bg-subtle px-4 py-3 text-xs font-semibold uppercase tracking-wider text-fg-subtle cursor-pointer hover:text-fg select-none border-b border-border/50"
+            scope="col"
+            class="py-3 px-3 text-xs text-fg-muted font-mono font-medium uppercase tracking-wider whitespace-nowrap select-none cursor-pointer hover:text-fg transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-fg focus-visible:ring-inset focus-visible:outline-none"
             :class="col.align === 'right' ? 'text-end' : 'text-start'"
             :style="{ width: col.width }"
             tabindex="0"
@@ -59,8 +58,8 @@ function toggleSort(col: keyof SizeEntry) {
             @keydown.enter="toggleSort(col.key as any)"
             @keydown.space.prevent="toggleSort(col.key as any)"
           >
-            <div
-              class="flex items-center gap-1"
+            <span
+              class="inline-flex items-center gap-1"
               :class="col.align === 'right' ? 'justify-end' : ''"
             >
               {{ col.label }}
@@ -68,36 +67,44 @@ function toggleSort(col: keyof SizeEntry) {
                 v-if="sortColumn === col.key"
                 class="i-lucide:chevron-down w-3 h-3"
                 :class="sortDir === 'asc' ? 'rotate-180' : ''"
+                aria-hidden="true"
               />
-              <span v-else class="i-lucide:chevrons-up-down w-3 h-3 opacity-30" />
-            </div>
+              <span
+                v-else
+                class="i-lucide:chevrons-up-down w-3 h-3 opacity-30"
+                aria-hidden="true"
+              />
+            </span>
           </th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-border">
+      <tbody>
+        <!-- Loading skeleton rows -->
         <template v-if="isLoading && entries.length === 0">
           <tr v-for="i in 5" :key="`skeleton-${i}`" class="border-b border-border">
-            <td class="py-3 px-4" v-for="j in 5" :key="j">
+            <td class="py-3 px-3" v-for="j in 5" :key="j">
               <div class="h-4 w-full bg-bg-muted rounded animate-pulse" />
             </td>
           </tr>
         </template>
+
+        <!-- Actual data rows -->
         <template v-else>
           <tr
             v-for="entry in props.entries"
             :key="entry.name"
-            class="hover:bg-bg-subtle transition-colors items-center"
+            class="border-b border-border hover:bg-bg-muted transition-colors duration-200"
           >
-            <td class="px-4 py-3 min-w-0">
+            <td class="px-3 py-3 min-w-0">
               <div class="flex items-center gap-3 min-w-0">
                 <div class="flex-1 min-w-0">
-                  <LinkBase
+                  <NuxtLink
                     :to="packageRoute(entry.name, entry.version)"
-                    class="block truncate font-mono text-sm font-medium"
+                    class="block truncate font-mono text-sm font-medium decoration-none hover:text-accent transition-colors"
                     :title="entry.name"
                   >
                     {{ entry.name }}
-                  </LinkBase>
+                  </NuxtLink>
                   <div class="text-3xs text-fg-subtle font-mono mt-0.5">
                     {{ entry.version }}
                   </div>
@@ -106,16 +113,16 @@ function toggleSort(col: keyof SizeEntry) {
                   variant="button-secondary"
                   size="sm"
                   :to="getSizeRoute(entry.name, entry.version)"
-                  classicon="i-lucide:list-tree"
+                  classicon="i-lucide:package-open"
                   class="flex-shrink-0 p-1.5 h-8 w-8"
                   :title="t('package.stats.view_all_sizes')"
                 />
               </div>
             </td>
-            <td class="px-4 py-3 text-end font-mono text-sm">
+            <td class="px-3 py-3 text-end font-mono text-sm">
               {{ bytesFormatter.format(entry.selfSize) }}
             </td>
-            <td class="px-4 py-3 text-end font-mono text-sm text-fg-muted">
+            <td class="px-3 py-3 text-end font-mono text-sm text-fg-muted">
               <template v-if="!Number.isNaN(entry.totalSize)">
                 {{ bytesFormatter.format(entry.totalSize) }}
               </template>
@@ -126,7 +133,7 @@ function toggleSort(col: keyof SizeEntry) {
                 />
               </template>
             </td>
-            <td class="px-4 py-3 text-end font-mono text-sm text-fg-muted">
+            <td class="px-3 py-3 text-end font-mono text-sm text-fg-muted">
               <template v-if="!Number.isNaN(entry.depCount)">
                 {{ numberFormatter.format(entry.depCount) }}
               </template>
@@ -137,7 +144,7 @@ function toggleSort(col: keyof SizeEntry) {
                 />
               </template>
             </td>
-            <td class="px-4 py-3 text-end font-mono text-sm">
+            <td class="px-3 py-3 text-end font-mono text-sm">
               <div class="flex items-center justify-end gap-2">
                 <span class="text-fg-subtle text-xs"
                   >{{ numberFormatter.format(entry.percentage) }}%</span
@@ -154,5 +161,13 @@ function toggleSort(col: keyof SizeEntry) {
         </template>
       </tbody>
     </table>
+
+    <!-- Empty state -->
+    <div
+      v-if="entries.length === 0 && !isLoading"
+      class="py-12 text-center text-fg-subtle font-mono text-sm"
+    >
+      {{ $t('package.dependencies.empty') }}
+    </div>
   </div>
 </template>

@@ -1,3 +1,5 @@
+import type { InstallSizeResult } from '#shared/types/install-size'
+
 export type SizeEntry = {
   name: string
   version: string
@@ -6,4 +8,6 @@ export type SizeEntry = {
   depCount: number
   percentage: number
   isRoot?: boolean
+  /** Full install size data when already fetched by the parent */
+  installSize?: InstallSizeResult
 }

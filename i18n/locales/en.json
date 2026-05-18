@@ -389,7 +389,7 @@
       "columns": {
         "self_size": "Self size",
         "total_size": "Total size",
-        "percentage": "%"
+        "percentage": "Percentage"
       }
     },
     "size_increase": {
