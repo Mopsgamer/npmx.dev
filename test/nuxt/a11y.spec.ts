@@ -209,7 +209,7 @@ import {
   PackageChartModal,
   PackageClaimPackageModal,
   PackageCompatibility,
-  PackageDependencies,
+  DependenciesCard,
   PackageDeprecatedTree,
   PackageHeader,
   PackageInstallScripts,
@@ -1476,40 +1476,21 @@ describe('component accessibility audits', () => {
     })
   })
 
-  describe('PackageDependencies', () => {
-    it('should have no accessibility violations without dependencies', async () => {
-      const component = await mountSuspended(PackageDependencies, {
-        props: { packageName: 'test-package', version: '1.0.0' },
-      })
-      const results = await runAxe(component)
-      expect(results.violations).toEqual([])
-    })
-
-    it('should have no accessibility violations with dependencies', async () => {
-      const component = await mountSuspended(PackageDependencies, {
+  describe('DependenciesCard', () => {
+    it('should have no accessibility violations', async () => {
+      const insights = usePackageDependencyInsights('test-package', '1.0.0', { vue: '^3.0.0' })
+      const component = await mountSuspended(DependenciesCard, {
         props: {
-          packageName: 'test-package',
-          version: '1.0.0',
-          dependencies: {
-            vue: '^3.0.0',
-            lodash: '^4.17.0',
+          item: {
+            name: 'vue',
+            range: '^3.0.0',
+            registry: 'npm',
+            flags: [],
           },
         },
-      })
-      const results = await runAxe(component)
-      expect(results.violations).toEqual([])
-    })
-
-    it('should have no accessibility violations with peer dependencies', async () => {
-      const component = await mountSuspended(PackageDependencies, {
-        props: {
-          packageName: 'test-package',
-          version: '1.0.0',
-          peerDependencies: {
-            vue: '^3.0.0',
-          },
-          peerDependenciesMeta: {
-            vue: { optional: true },
+        global: {
+          provide: {
+            [packageDependencyInsightsKey]: insights,
           },
         },
       })

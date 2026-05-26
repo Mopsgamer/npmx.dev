@@ -472,6 +472,7 @@
       "issues": "issues",
       "jsr": "jsr",
       "code": "code",
+      "dependencies": "dependencies",
       "docs": "docs",
       "fund": "fund",
       "compare": "compare",
@@ -636,6 +637,28 @@
           "version_events": "version {version}: {events}",
           "general_description": "Line chart showing the {metric} of the {package} package, from version {first} to {last}. The {metric} in version {first} is {first_value}, in version {last} is {last_value} ({overall_progress_percentage}% overall). {key_changes} {watermark}."
         }
+      }
+    },
+    "deps_tab": {
+      "version_required": "Version is required to view dependencies.",
+      "none": "This version has no dependencies.",
+      "no_matches": "No dependencies match your filter.",
+      "section_nav": "Dependency types",
+      "open_sections": "Open dependency sections",
+      "filter_placeholder": "Filter dependencies…",
+      "count": "{count} dependency | {count} dependencies",
+      "sections": {
+        "bundled": "Bundled"
+      },
+      "flags": {
+        "bundled": "bundled"
+      },
+      "sort": {
+        "range_asc": "Range (A-Z)",
+        "range_desc": "Range (Z-A)"
+      },
+      "table": {
+        "flags": "Flags"
       }
     },
     "dependencies": {

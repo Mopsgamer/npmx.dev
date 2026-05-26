@@ -1,4 +1,5 @@
 import type { RouteLocationRaw } from 'vue-router'
+import type { DepSectionId } from '#shared/types/package-dependencies'
 import { splitPackageName } from '~/utils/package-name'
 
 export function packageRoute(
@@ -92,5 +93,23 @@ export function packageTimelineRoute(packageName: string, version: string): Rout
       packageName: name,
       version: version.replace(/\s+/g, ''),
     },
+  }
+}
+
+export function dependenciesRoute(
+  packageName: string,
+  version: string,
+  section?: DepSectionId,
+): RouteLocationRaw {
+  const { org, name } = splitPackageName(packageName)
+
+  return {
+    name: 'dependencies',
+    params: {
+      org: org || undefined,
+      packageName: name,
+      version: version.replace(/\s+/g, ''),
+    },
+    query: section ? { section } : undefined,
   }
 }
