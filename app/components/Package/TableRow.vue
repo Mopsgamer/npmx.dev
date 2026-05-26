@@ -55,10 +55,11 @@ const { selectable } = usePackageSelectionContext()
     <td class="py-2 px-3">
       <NuxtLink
         :to="packageUrl"
-        class="row-link font-mono text-sm text-fg hover:text-accent-fallback transition-colors duration-200"
+        class="row-link font-mono text-sm text-fg hover:text-accent-fallback transition-colors duration-200 inline-flex items-center gap-2 min-w-0"
         dir="ltr"
       >
-        {{ pkg.name }}
+        <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+        <span class="truncate">{{ pkg.name }}</span>
       </NuxtLink>
     </td>
 

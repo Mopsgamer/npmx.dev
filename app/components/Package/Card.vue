@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { StructuredFilters } from '#shared/types/preferences'
+import { getOutdatedTooltip, getVersionClass } from '~/utils/npm/outdated-dependencies'
 
 const props = defineProps<{
   /** The search result object containing package data */
@@ -14,6 +15,8 @@ const props = defineProps<{
   filters?: StructuredFilters
   /** Search query for highlighting exact matches */
   searchQuery?: string
+  /** Optional pre-computed insights to avoid duplicate fetching/processing */
+  insights?: ReturnType<typeof usePackageDependencyInsights>
 }>()
 
 const { selectable } = usePackageSelectionContext()
@@ -40,6 +43,27 @@ const pkgDescription = useMarkdown(() => ({
   plain: true,
 }))
 
+const dependencies = computed(() => {
+  if (!props.result.package.name || !props.result.package.version) return undefined
+  return { [props.result.package.name]: props.result.package.version }
+})
+
+const insights =
+  props.insights ||
+  usePackageDependencyInsights(
+    computed(() => props.result.package.name),
+    computed(() => props.result.package.version),
+    dependencies,
+  )
+
+const hasExtra = computed(
+  () =>
+    !!insights.outdatedDeps.value[props.result.package.name] ||
+    !!insights.replacementDeps.value[props.result.package.name] ||
+    !!insights.getVulnerableDepInfo(props.result.package.name) ||
+    !!insights.getDeprecatedDepInfo(props.result.package.name),
+)
+
 const numberFormatter = useNumberFormatter()
 </script>
 
@@ -48,7 +72,7 @@ const numberFormatter = useNumberFormatter()
     <header class="mb-4 flex items-baseline justify-between gap-2">
       <component
         :is="headingLevel ?? 'h3'"
-        class="font-mono text-sm sm:text-base font-medium text-fg group-hover:text-fg transition-colors duration-200 min-w-0 break-all"
+        class="font-mono text-sm sm:text-base font-medium text-fg group-hover:text-fg transition-colors duration-200 min-w-0 break-all inline-flex items-center gap-2"
       >
         <NuxtLink
           :to="packageRoute(result.package.name)"
@@ -58,6 +82,9 @@ const numberFormatter = useNumberFormatter()
           dir="ltr"
           >{{ result.package.name }}</NuxtLink
         >
+        <slot name="status-indicators" :insights="insights">
+          <DependenciesStatusIndicators :name="result.package.name" :insights="insights" />
+        </slot>
         <span
           v-if="isExactMatch"
           class="text-xs px-1.5 py-0.5 ms-2 rounded bg-bg-elevated border border-border-hover text-fg"
@@ -149,5 +176,62 @@ const numberFormatter = useNumberFormatter()
         </span>
       </li>
     </ul>
+
+    <div
+      v-if="hasExtra"
+      class="flex items-center justify-between gap-2 mt-3 pt-3 border-t border-border relative z-10"
+    >
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs shrink-0">
+        <span
+          v-if="insights.outdatedDeps.value[result.package.name]"
+          class="flex items-center gap-1"
+          :class="getVersionClass(insights.outdatedDeps.value[result.package.name])"
+        >
+          <span class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+          {{ getOutdatedTooltip(insights.outdatedDeps.value[result.package.name]!, $t) }}
+        </span>
+        <span
+          v-if="insights.replacementDeps.value[result.package.name]"
+          class="flex items-center gap-1 text-amber-700 dark:text-amber-500"
+        >
+          <span class="i-lucide:lightbulb w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+          {{ $t('package.dependencies.has_replacement') }}
+        </span>
+        <LinkBase
+          v-if="insights.getVulnerableDepInfo(result.package.name)"
+          :to="
+            packageRoute(
+              result.package.name,
+              insights.getVulnerableDepInfo(result.package.name)!.version,
+            )
+          "
+          class="flex items-center gap-1 shrink-0"
+          :class="
+            SEVERITY_TEXT_COLORS[
+              getHighestSeverity(insights.getVulnerableDepInfo(result.package.name)!.counts)
+            ]
+          "
+        >
+          <span class="i-lucide:shield-alert w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+          {{ $t('package.dependencies.view_vulnerabilities') }}
+        </LinkBase>
+        <LinkBase
+          v-if="insights.getDeprecatedDepInfo(result.package.name)"
+          :to="
+            packageRoute(
+              result.package.name,
+              insights.getDeprecatedDepInfo(result.package.name)!.version,
+            )
+          "
+          class="flex items-center gap-1 shrink-0 text-purple-700 dark:text-purple-500"
+          :title="insights.getDeprecatedDepInfo(result.package.name)!.message"
+        >
+          <span class="i-lucide:octagon-alert w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+          {{ $t('package.deprecated.label') }}
+        </LinkBase>
+      </div>
+    </div>
+
+    <slot name="extra" />
   </BaseCard>
 </template>

@@ -10,5 +10,11 @@ export function useDependencyAnalysis(
   return useFetch(
     () =>
       `/api/registry/vulnerabilities/${encodePackageName(toValue(packageName))}/v/${toValue(version)}`,
+    {
+      key: `vuln:${toValue(packageName)}:${toValue(version)}`,
+      watch: [() => toValue(packageName), () => toValue(version)],
+      server: false,
+      lazy: true,
+    },
   )
 }

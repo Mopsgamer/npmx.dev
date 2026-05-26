@@ -1,0 +1,62 @@
+<script setup lang="ts">
+import type { PackageDependencyItem } from '#shared/types/package-dependencies'
+import { packageDependencyInsightsKey } from '~/composables/packageDependencyInsightsKey'
+
+const props = defineProps<{
+  item: PackageDependencyItem
+  showSkeleton: boolean
+}>()
+
+const parentInsights = inject(packageDependencyInsightsKey, null)
+
+// Fetch rich package metadata from API
+const { data: meta } = useLazyFetch<PackageMetaResponse>(
+  () => `/api/registry/package-meta/${encodePackageName(props.item.name)}`,
+  { server: false },
+)
+
+const searchResult = computed(() => {
+  if (!meta.value) return null
+  const result = metaToSearchResult(meta.value)
+  result.package.version = props.item.range
+  return result
+})
+</script>
+
+<template>
+  <BaseCard v-if="!searchResult || showSkeleton">
+    <header class="mb-4 flex items-baseline justify-between gap-2">
+      <h3
+        class="font-mono text-sm sm:text-base font-medium text-fg group-hover:text-fg transition-colors duration-200 min-w-0 break-all inline-flex items-center gap-2"
+      >
+        <NuxtLink
+          :to="packageRoute(item.name)"
+          class="decoration-none after:content-[''] after:absolute after:inset-0"
+          dir="ltr"
+          >{{ item.name }}</NuxtLink
+        >
+        <DependenciesStatusIndicators :name="item.name" :flags="item.flags" />
+      </h3>
+    </header>
+    <SkeletonBlock class="h-5 w-full mb-2 sm:mb-3" />
+    <div class="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-2 text-xs text-fg-muted">
+      <div class="flex items-center gap-1.5 min-w-0">
+        <dt class="sr-only">{{ $t('package.card.version') }}</dt>
+        <dd class="font-mono truncate max-w-32" :title="item.range">v{{ item.range }}</dd>
+      </div>
+      <SkeletonBlock class="h-4 w-8ch" />
+      <SkeletonBlock class="h-4 w-3ch" />
+      <SkeletonBlock class="h-4 w-20ch sm:ms-auto" />
+    </div>
+  </BaseCard>
+
+  <PackageCard v-else :result="searchResult" :insights="parentInsights || undefined">
+    <template #status-indicators="{ insights: activeInsights }">
+      <DependenciesStatusIndicators
+        :name="item.name"
+        :flags="item.flags"
+        v-bind="activeInsights ? { insights: activeInsights } : {}"
+      />
+    </template>
+  </PackageCard>
+</template>

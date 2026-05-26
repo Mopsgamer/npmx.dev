@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { getPackageDependencySections } from '~/utils/npm/package-dependency-sections'
+
 definePageMeta({
   name: 'stats',
   path: '/package-stats/:org?/:packageName/v/:version',
@@ -14,7 +16,40 @@ const packageName = computed(() =>
 )
 const version = computed(() => route.params.version)
 
-const { data: pkg } = usePackage(packageName, version)
+const { data: pkg, status: pkgStatus } = usePackage(packageName, version)
+
+const displayVersion = computed(() => pkg.value?.requestedVersion ?? null)
+const sections = computed(() => getPackageDependencySections(displayVersion.value))
+
+let cachedAllDeps: Record<string, string> = {}
+const allDependencies = computed(() => {
+  const reqVer = pkg.value?.requestedVersion
+  if (!reqVer) return {}
+  const record: Record<string, string> = {
+    ...reqVer.dependencies,
+    ...reqVer.devDependencies,
+    ...reqVer.peerDependencies,
+    ...reqVer.optionalDependencies,
+  }
+  if (Array.isArray(reqVer.bundledDependencies)) {
+    for (const name of reqVer.bundledDependencies) {
+      if (!record[name]) {
+        record[name] = reqVer.dependencies?.[name] ?? '*'
+      }
+    }
+  }
+  const keys = Object.keys(record)
+  const cachedKeys = Object.keys(cachedAllDeps)
+  if (keys.length === cachedKeys.length && keys.every(k => record[k] === cachedAllDeps[k])) {
+    return cachedAllDeps
+  }
+  cachedAllDeps = record
+  return record
+})
+
+const dependencyInsights = usePackageDependencyInsights(packageName, version, allDependencies)
+provide(packageDependencyInsightsKey, dependencyInsights)
+
 const { versions: commandPaletteVersions, ensureLoaded: ensureCommandPaletteVersionsLoaded } =
   useCommandPalettePackageVersions(packageName)
 
@@ -145,6 +180,10 @@ useSeoMeta({
       </div>
       <PackageSidebar class="w-80">
         <div class="flex flex-col gap-4 sm:gap-6 lg:pt-4">
+          <DependenciesInsightsSummary
+            :sections="sections"
+            :show-skeleton="pkgStatus === 'pending' || pkgStatus === 'idle'"
+          />
           <PackageMaintainers :package-name="packageName" :maintainers="pkg?.maintainers" />
           <PackageVersions
             v-if="pkg?.versions && Object.keys(pkg.versions).length > 0"

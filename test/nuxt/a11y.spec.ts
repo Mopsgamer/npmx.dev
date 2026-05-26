@@ -213,7 +213,13 @@ import {
   PackageCard,
   PackageClaimPackageModal,
   PackageCompatibility,
-  PackageDependencies,
+  DependenciesCard,
+  DependenciesInsightsSummary,
+  DependenciesList,
+  DependenciesStatusIndicators,
+  DependenciesTable,
+  DependenciesTableRow,
+  DependenciesToolbar,
   PackageDeprecatedTree,
   PackageHeader,
   PackageInstallScripts,
@@ -1553,41 +1559,132 @@ describe('component accessibility audits', () => {
     })
   })
 
-  describe('PackageDependencies', () => {
-    it('should have no accessibility violations without dependencies', async () => {
-      const component = await mountSuspended(PackageDependencies, {
-        props: { packageName: 'test-package', version: '1.0.0' },
-      })
-      const results = await runAxe(component)
-      expect(results.violations).toEqual([])
-    })
-
-    it('should have no accessibility violations with dependencies', async () => {
-      const component = await mountSuspended(PackageDependencies, {
+  describe('DependenciesCard', () => {
+    it('should have no accessibility violations', async () => {
+      const insights = usePackageDependencyInsights('test-package', '1.0.0', { vue: '^3.0.0' })
+      const component = await mountSuspended(DependenciesCard, {
         props: {
-          packageName: 'test-package',
-          version: '1.0.0',
-          dependencies: {
-            vue: '^3.0.0',
-            lodash: '^4.17.0',
+          item: {
+            name: 'vue',
+            range: '^3.0.0',
+            registry: 'npm',
+            flags: [],
+          },
+          showSkeleton: false,
+        },
+        global: {
+          provide: {
+            [packageDependencyInsightsKey]: insights,
           },
         },
       })
       const results = await runAxe(component)
       expect(results.violations).toEqual([])
     })
+  })
 
-    it('should have no accessibility violations with peer dependencies', async () => {
-      const component = await mountSuspended(PackageDependencies, {
+  describe('DependenciesInsightsSummary', () => {
+    it('should have no accessibility violations', async () => {
+      const component = await mountSuspended(DependenciesInsightsSummary, {
         props: {
-          packageName: 'test-package',
-          version: '1.0.0',
-          peerDependencies: {
-            vue: '^3.0.0',
+          sections: [
+            {
+              id: 'dependencies',
+              items: [{ name: 'vue', range: '^3.0.0', registry: 'npm', flags: [] }],
+            },
+          ],
+          showSkeleton: false,
+        },
+      })
+      const results = await runAxe(component)
+      expect(results.violations).toEqual([])
+    })
+  })
+
+  describe('DependenciesList', () => {
+    it('should have no accessibility violations', async () => {
+      const component = await mountSuspended(DependenciesList, {
+        props: {
+          items: [{ name: 'vue', range: '^3.0.0', registry: 'npm', flags: [] }],
+          viewMode: 'cards',
+          showSkeleton: false,
+          sort: 'name-asc',
+        },
+      })
+      const results = await runAxe(component)
+      expect(results.violations).toEqual([])
+    })
+  })
+
+  describe('DependenciesStatusIndicators', () => {
+    it('should have no accessibility violations', async () => {
+      const component = await mountSuspended(DependenciesStatusIndicators, {
+        props: {
+          name: 'vue',
+          flags: ['optional', 'bundled'],
+        },
+      })
+      const results = await runAxe(component)
+      expect(results.violations).toEqual([])
+    })
+  })
+
+  describe('DependenciesTable', () => {
+    it('should have no accessibility violations', async () => {
+      const component = await mountSuspended(DependenciesTable, {
+        props: {
+          items: [{ name: 'vue', range: '^3.0.0', registry: 'npm', flags: [] }],
+          sort: 'name-asc',
+          showSkeleton: false,
+        },
+      })
+      const results = await runAxe(component)
+      expect(results.violations).toEqual([])
+    })
+  })
+
+  describe('DependenciesTableRow', () => {
+    it('should have no accessibility violations', async () => {
+      const insights = usePackageDependencyInsights('test-package', '1.0.0', { vue: '^3.0.0' })
+      const component = await mountSuspended(DependenciesTableRow, {
+        props: {
+          item: { name: 'vue', range: '^3.0.0', registry: 'npm', flags: [] },
+          showSkeleton: false,
+        },
+        global: {
+          provide: {
+            [packageDependencyInsightsKey]: insights,
           },
-          peerDependenciesMeta: {
-            vue: { optional: true },
-          },
+        },
+        attachTo: (() => {
+          const table = document.createElement('table')
+          const tbody = document.createElement('tbody')
+          table.appendChild(tbody)
+          document.body.appendChild(table)
+          return tbody
+        })(),
+      })
+      const results = await runAxe(component)
+      expect(results.violations).toEqual([])
+    })
+  })
+
+  describe('DependenciesToolbar', () => {
+    it('should have no accessibility violations', async () => {
+      const component = await mountSuspended(DependenciesToolbar, {
+        props: {
+          filter: '',
+          sort: 'name-asc',
+          viewMode: 'cards',
+          filteredCount: 1,
+          totalCount: 1,
+          sections: [
+            {
+              id: 'dependencies',
+              items: [{ name: 'vue', range: '^3.0.0', registry: 'npm', flags: [] }],
+            },
+          ],
+          activeSection: 'dependencies',
         },
       })
       const results = await runAxe(component)
