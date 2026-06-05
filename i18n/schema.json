@@ -2145,6 +2145,21 @@
                 }
               },
               "additionalProperties": false
+            },
+            "embedding": {
+              "type": "object",
+              "properties": {
+                "chart": {
+                  "type": "string"
+                },
+                "copy_url": {
+                  "type": "string"
+                },
+                "preview": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
