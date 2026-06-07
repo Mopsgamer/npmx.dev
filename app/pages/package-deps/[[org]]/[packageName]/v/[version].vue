@@ -128,12 +128,6 @@ const filteredItems = computed(() => {
   return result
 })
 
-const mobileSectionDrawerRef = useTemplateRef('mobileSectionDrawerRef')
-
-function toggleMobileSectionDrawer() {
-  mobileSectionDrawerRef.value?.toggle()
-}
-
 const latestVersion = computed(() => {
   if (!pkg.value) return null
   const latestTag = pkg.value['dist-tags']?.latest
@@ -148,7 +142,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <main class="flex-1 flex flex-col">
+  <main class="flex-1 pb-8">
     <PackageHeader
       :pkg="pkg"
       :resolved-version="version"
@@ -176,36 +170,24 @@ useSeoMeta({
       }}</LinkBase>
     </div>
 
-    <div
+    <article
       v-else-if="activeSection && currentSection"
-      class="w-full container grid grid-cols-[18rem_1fr] max-lg:grid-cols-[16rem_1fr] max-md:grid-cols-[1fr] border-border border-x px-0 mx-auto"
+      id="package-article"
+      :class="$style.packagePage"
+      class="container w-full"
       dir="ltr"
     >
-      <aside
-        class="sticky top-25 w-64 lg:w-72 hidden md:block h-[calc(100vh-10.5rem)] shrink-0 self-start bg-bg-subtle border-ie border-border"
-      >
-        <div class="h-[calc(100vh-10.5rem)] overflow-y-auto">
-          <DependenciesSectionNav
-            :sections="sections"
-            :active-section="activeSection"
-            :get-section-link="getSectionLink"
-          />
-        </div>
-      </aside>
-
-      <div class="flex-1 grid grid-rows-[auto_1fr] min-w-0 self-start min-h-[calc(100vh-10.5rem)]">
-        <DependenciesHeader
-          :section="activeSection"
-          @mobile-nav-toggle="toggleMobileSectionDrawer"
-        />
-
-        <div class="overflow-y-auto p-4">
+      <div :class="$style.areaContent">
+        <div class="py-4">
           <DependenciesToolbar
             v-model:filter="filter"
             v-model:sort="sort"
             v-model:view-mode="viewMode"
             :filtered-count="filteredItems.length"
-            :total-count="currentSection.items.length"
+            :total-count="currentSection?.items?.length ?? 0"
+            :sections="sections"
+            :active-section="activeSection || undefined"
+            @update:active-section="router.push(getSectionLink($event as DepSectionId))"
           />
 
           <DependenciesList
@@ -221,18 +203,52 @@ useSeoMeta({
           </p>
         </div>
       </div>
-    </div>
 
-    <ClientOnly>
-      <Teleport to="body">
-        <DependenciesMobileSectionDrawer
-          v-if="sections.length > 0 && activeSection"
-          ref="mobileSectionDrawerRef"
-          :sections="sections"
-          :active-section="activeSection"
-          :get-section-link="getSectionLink"
-        />
-      </Teleport>
-    </ClientOnly>
+      <PackageSidebar :class="$style.areaSidebar">
+        <div class="flex flex-col gap-4 sm:gap-6 lg:pt-4">
+          <DependenciesInsightsSummary :sections="sections" />
+        </div>
+      </PackageSidebar>
+    </article>
   </main>
 </template>
+
+<style module>
+.packagePage {
+  display: grid;
+  gap: 2rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  /* Mobile: single column, sidebar (navigation) above content */
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    'sidebar'
+    'content';
+}
+
+/* Tablet/medium: side by side */
+@media (min-width: 1024px) {
+  .packagePage {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: 'content sidebar';
+  }
+}
+
+/* Desktop: floating sidebar */
+@media (min-width: 1280px) {
+  .packagePage {
+    grid-template-columns: 1fr 20rem;
+    grid-template-areas: 'content sidebar';
+  }
+}
+
+.areaContent {
+  grid-area: content;
+  min-width: 0;
+}
+
+.areaSidebar {
+  grid-area: sidebar;
+}
+</style>

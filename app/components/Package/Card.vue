@@ -149,5 +149,6 @@ const numberFormatter = useNumberFormatter()
         </span>
       </li>
     </ul>
+    <slot name="extra" />
   </BaseCard>
 </template>

@@ -6,6 +6,7 @@ import {
 } from '~/composables/usePackageDependencyInsights'
 import { packageDependencyInsightsKey } from '~/composables/packageDependencyInsightsKey'
 import { getOutdatedTooltip, getVersionClass } from '~/utils/npm/outdated-dependencies'
+import { metaToSearchResult } from '~/composables/npm/search-utils'
 
 const props = defineProps<{
   item: PackageDependencyItem
@@ -13,24 +14,38 @@ const props = defineProps<{
 
 const insights = inject(packageDependencyInsightsKey)!
 
-const registryIcon = computed(() =>
-  props.item.registry === 'jsr' ? 'i-simple-icons:jsr' : 'i-simple-icons:npm',
+// Fetch rich package metadata from API
+const { data: meta, status: metaStatus } = useLazyFetch<any>(
+  () => `/api/registry/package-meta/${encodePackageName(props.item.name)}`,
+  {
+    server: false,
+  },
+)
+
+const searchResult = computed(() => {
+  if (!meta.value) return null
+  const result = metaToSearchResult(meta.value)
+  result.package.version = props.item.range
+  return result
+})
+const hasExtra = computed(
+  () =>
+    props.item.flags.length > 0 ||
+    !!insights.outdatedDeps.value[props.item.name] ||
+    !!insights.replacementDeps.value[props.item.name] ||
+    !!insights.getVulnerableDepInfo(props.item.name) ||
+    !!insights.getDeprecatedDepInfo(props.item.name),
 )
 </script>
 
 <template>
-  <BaseCard>
-    <header class="mb-3 flex items-start justify-between gap-2">
-      <h3 class="font-mono text-sm font-medium text-fg min-w-0 flex items-center gap-2 m-0">
-        <span
-          :class="registryIcon"
-          class="w-4 h-4 shrink-0"
-          :title="item.registry"
-          aria-hidden="true"
-        />
+  <!-- Loading skeleton while meta is not yet available -->
+  <BaseCard v-if="!searchResult">
+    <header class="mb-4 flex items-baseline justify-between gap-2">
+      <h3 class="font-mono text-sm sm:text-base font-medium text-fg min-w-0 break-all">
         <NuxtLink
           :to="packageRoute(item.name)"
-          class="decoration-none after:content-[''] after:absolute after:inset-0 truncate"
+          class="decoration-none after:content-[''] after:absolute after:inset-0"
           dir="ltr"
         >
           {{ item.name }}
@@ -38,55 +53,65 @@ const registryIcon = computed(() =>
       </h3>
       <DependenciesFlags :flags="item.flags" />
     </header>
-
-    <div class="flex items-center justify-between gap-2" dir="ltr">
-      <span class="flex items-center gap-1 min-w-0">
-        <TooltipApp
-          v-if="insights.outdatedDeps.value[item.name]"
-          class="shrink-0"
-          :class="getVersionClass(insights.outdatedDeps.value[item.name])"
-          :text="getOutdatedTooltip(insights.outdatedDeps.value[item.name]!, $t)"
-        >
-          <span class="i-lucide:circle-alert w-3 h-3" aria-hidden="true" />
-        </TooltipApp>
-        <TooltipApp
-          v-if="insights.replacementDeps.value[item.name]"
-          class="shrink-0 text-amber-700 dark:text-amber-500"
-          :text="$t('package.dependencies.has_replacement')"
-        >
-          <span class="i-lucide:lightbulb w-3 h-3" aria-hidden="true" />
-        </TooltipApp>
-        <LinkBase
-          v-if="insights.getVulnerableDepInfo(item.name)"
-          :to="packageRoute(item.name, insights.getVulnerableDepInfo(item.name)!.version)"
-          class="shrink-0 relative z-10"
-          :class="
-            SEVERITY_TEXT_COLORS[
-              getHighestSeverity(insights.getVulnerableDepInfo(item.name)!.counts)
-            ]
-          "
-          classicon="i-lucide:shield-alert"
-        >
-          <span class="sr-only">{{ $t('package.dependencies.view_vulnerabilities') }}</span>
-        </LinkBase>
-        <LinkBase
-          v-if="insights.getDeprecatedDepInfo(item.name)"
-          :to="packageRoute(item.name, insights.getDeprecatedDepInfo(item.name)!.version)"
-          class="shrink-0 relative z-10 text-purple-700 dark:text-purple-500"
-          :title="insights.getDeprecatedDepInfo(item.name)!.message"
-          classicon="i-lucide:octagon-alert"
-        >
-          <span class="sr-only">{{ $t('package.deprecated.label') }}</span>
-        </LinkBase>
-      </span>
-      <LinkBase
-        :to="packageRoute(item.name, item.range)"
-        class="font-mono text-xs truncate max-w-[50%] relative z-10"
-        :class="insights.getDepVersionClass(item.name)"
-        :title="insights.getDepVersionTooltip(item.name, item.range)"
-      >
-        {{ item.range }}
-      </LinkBase>
+    <div
+      v-if="metaStatus === 'pending'"
+      class="h-4 bg-bg-elevated animate-pulse rounded max-w-md mb-2"
+    />
+    <div class="flex items-center gap-2 mt-1 text-xs text-fg-muted font-mono">
+      <span>{{ item.range }}</span>
     </div>
   </BaseCard>
+
+  <!-- Full card using Package/Card as base -->
+  <PackageCard v-else :result="searchResult">
+    <template #extra>
+      <div
+        v-if="hasExtra"
+        class="flex items-center justify-between gap-2 mt-3 pt-3 border-t border-border relative z-10"
+      >
+        <DependenciesFlags :flags="item.flags" />
+
+        <!-- insights -->
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs shrink-0">
+          <span
+            v-if="insights.outdatedDeps.value[item.name]"
+            class="flex items-center gap-1"
+            :class="getVersionClass(insights.outdatedDeps.value[item.name])"
+          >
+            <span class="i-lucide:circle-alert w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+            {{ getOutdatedTooltip(insights.outdatedDeps.value[item.name]!, $t) }}
+          </span>
+          <span
+            v-if="insights.replacementDeps.value[item.name]"
+            class="flex items-center gap-1 text-amber-700 dark:text-amber-500"
+          >
+            <span class="i-lucide:lightbulb w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+            {{ $t('package.dependencies.has_replacement') }}
+          </span>
+          <LinkBase
+            v-if="insights.getVulnerableDepInfo(item.name)"
+            :to="packageRoute(item.name, insights.getVulnerableDepInfo(item.name)!.version)"
+            class="flex items-center gap-1 shrink-0"
+            :class="
+              SEVERITY_TEXT_COLORS[
+                getHighestSeverity(insights.getVulnerableDepInfo(item.name)!.counts)
+              ]
+            "
+          >
+            <span class="i-lucide:shield-alert w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+            {{ $t('package.dependencies.view_vulnerabilities') }}
+          </LinkBase>
+          <LinkBase
+            v-if="insights.getDeprecatedDepInfo(item.name)"
+            :to="packageRoute(item.name, insights.getDeprecatedDepInfo(item.name)!.version)"
+            class="flex items-center gap-1 shrink-0 text-purple-700 dark:text-purple-500"
+            :title="insights.getDeprecatedDepInfo(item.name)!.message"
+          >
+            <span class="i-lucide:octagon-alert w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+            {{ $t('package.deprecated.label') }}
+          </LinkBase>
+        </div>
+      </div>
+    </template>
+  </PackageCard>
 </template>

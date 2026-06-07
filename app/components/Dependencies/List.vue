@@ -23,7 +23,7 @@ const emit = defineEmits<{
     :sort="sort"
     @update:sort="emit('update:sort', $event)"
   />
-  <ol v-else class="list-none m-0 p-0 grid gap-4 sm:grid-cols-2">
+  <ol v-else class="list-none m-0 p-0 flex flex-col gap-4">
     <li v-for="item in items" :key="item.name">
       <DependenciesCard :item="item" />
     </li>
