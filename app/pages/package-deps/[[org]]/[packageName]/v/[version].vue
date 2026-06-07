@@ -153,7 +153,7 @@ useSeoMeta({
     />
 
     <div v-if="!version" class="container py-20 text-center">
-      <p class="text-fg-muted mb-4">{{ $t('package.deps_tab.version_required') }}</p>
+      <p class="text-fg-muted mb-4">{{ $t('package.dependencies.version_required') }}</p>
       <LinkBase variant="button-secondary" :to="packageRoute(packageName)">{{
         $t('code.go_to_package')
       }}</LinkBase>
@@ -164,7 +164,7 @@ useSeoMeta({
     </div>
 
     <div v-else-if="sections.length === 0" class="container py-20 text-center">
-      <p class="text-fg-muted mb-4">{{ $t('package.deps_tab.none') }}</p>
+      <p class="text-fg-muted mb-4">{{ $t('package.dependencies.none') }}</p>
       <LinkBase variant="button-secondary" :to="packageRoute(packageName, version)">{{
         $t('code.back_to_package')
       }}</LinkBase>
@@ -199,7 +199,7 @@ useSeoMeta({
           />
 
           <p v-else class="py-12 text-center text-fg-subtle font-mono text-sm">
-            {{ $t('package.deps_tab.no_matches') }}
+            {{ $t('package.dependencies.no_matches') }}
           </p>
         </div>
       </div>

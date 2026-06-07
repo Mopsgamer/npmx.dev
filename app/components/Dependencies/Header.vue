@@ -10,7 +10,7 @@ const sectionTitleKeys: Record<DepSectionId, string> = {
   devDependencies: 'compare.dev_dependencies',
   peerDependencies: 'compare.peer_dependencies',
   optionalDependencies: 'compare.optional_dependencies',
-  bundledDependencies: 'package.deps_tab.sections.bundled',
+  bundledDependencies: 'compare.bundled_dependencies',
 }
 
 const sectionTitle = computed(() => $t(sectionTitleKeys[props.section]))
@@ -24,7 +24,7 @@ defineEmits<{
   <div class="flex items-center gap-2 px-3 py-2 border-b border-border bg-bg-subtle min-h-11">
     <ButtonBase
       class="md:hidden px-2"
-      :aria-label="$t('package.deps_tab.open_sections')"
+      :aria-label="$t('package.dependencies.open_sections')"
       @click="$emit('mobileNavToggle')"
       classicon="i-lucide:panel-left"
     />

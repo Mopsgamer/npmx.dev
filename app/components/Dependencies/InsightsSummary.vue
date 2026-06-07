@@ -45,7 +45,7 @@ const stats = computed(() => {
 </script>
 
 <template>
-  <CollapsibleSection :title="$t('package.deps_tab.insights') || 'Insights'" id="deps-insights">
+  <CollapsibleSection :title="$t('package.dependencies.insights') || 'Insights'" id="deps-insights">
     <div class="flex flex-col gap-3 font-mono text-xs">
       <div
         class="flex items-center justify-end text-3xs uppercase tracking-wider text-fg-subtle border-b border-border/40 pb-1"

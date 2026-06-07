@@ -98,7 +98,7 @@ const rangeSortDirection = computed(() =>
             scope="col"
             class="py-3 px-3 text-xs text-end text-fg-muted font-mono font-medium uppercase tracking-wider whitespace-nowrap"
           >
-            {{ $t('package.deps_tab.table.flags') }}
+            {{ $t('package.dependencies.types_label') }}
           </th>
         </tr>
       </thead>
@@ -108,7 +108,7 @@ const rangeSortDirection = computed(() =>
     </table>
 
     <div v-if="items.length === 0" class="py-12 text-center text-fg-subtle font-mono text-sm">
-      {{ $t('package.deps_tab.no_matches') }}
+      {{ $t('package.dependencies.no_matches') }}
     </div>
   </div>
 </template>

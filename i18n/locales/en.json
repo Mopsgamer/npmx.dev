@@ -639,33 +639,19 @@
         }
       }
     },
-    "deps_tab": {
-      "version_required": "Version is required to view dependencies.",
-      "none": "This version has no dependencies.",
-      "no_matches": "No dependencies match your filter.",
-      "section_nav": "Dependency types",
-      "open_sections": "Open dependency sections",
-      "filter_placeholder": "Filter dependencies…",
-      "count": "{count} dependency | {count} dependencies",
-      "sections": {
-        "bundled": "Bundled"
-      },
-      "flags": {
-        "bundled": "bundled"
-      },
-      "sort": {
-        "range_asc": "Range (A-Z)",
-        "range_desc": "Range (Z-A)"
-      },
-      "table": {
-        "flags": "Flags"
-      }
-    },
     "dependencies": {
       "title": "Dependency ({count}) | Dependencies ({count})",
+      "types_label": "Types",
+      "insights": "Insights",
       "list_label": "Package dependencies",
       "show_all": "show {count} dep | show all {count} deps",
       "optional": "optional",
+      "bundled": "bundled",
+      "version_required": "Version is required to view dependencies.",
+      "none": "This version has no dependencies.",
+      "no_matches": "No dependencies match your filter.",
+      "open_sections": "Open dependency sections",
+      "filter_placeholder": "Filter dependencies...",
       "view_vulnerabilities": "View vulnerabilities",
       "outdated_major": "{count} major version behind (latest: {latest}) | {count} major versions behind (latest: {latest})",
       "outdated_minor": "{count} minor version behind (latest: {latest}) | {count} minor versions behind (latest: {latest})",
@@ -858,7 +844,9 @@
       "downloads": "Most downloaded",
       "published": "Recently published",
       "name_asc": "Name (A-Z)",
-      "name_desc": "Name (Z-A)"
+      "name_desc": "Name (Z-A)",
+      "range_asc": "Range (A-Z)",
+      "range_desc": "Range (Z-A)"
     },
     "size": {
       "b": "{size} B",
@@ -1497,6 +1485,7 @@
     "dev_dependencies": "Dev Dependencies",
     "peer_dependencies": "Peer Dependencies",
     "optional_dependencies": "Optional Dependencies",
+    "bundled_dependencies": "Bundled Dependencies",
     "no_dependency_changes": "No dependency changes",
     "file_filter_option": {
       "all": "All ({count})",

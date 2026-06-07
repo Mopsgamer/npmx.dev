@@ -56,7 +56,7 @@ defineExpose({ toggle })
         class="sticky top-0 z-10 bg-bg-subtle border-b border-border px-4 py-3 flex items-center justify-start"
       >
         <span class="font-mono text-sm text-fg-muted">{{
-          $t('package.deps_tab.section_nav')
+          $t('package.dependencies.types_label')
         }}</span>
         <span aria-hidden="true" class="flex-shrink-1 flex-grow-1" />
         <ButtonBase

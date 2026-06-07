@@ -7,7 +7,7 @@ defineProps<{
 
 const flagLabels: Record<DepFlag, string> = {
   optional: 'package.dependencies.optional',
-  bundled: 'package.deps_tab.flags.bundled',
+  bundled: 'package.dependencies.bundled',
 }
 </script>
 

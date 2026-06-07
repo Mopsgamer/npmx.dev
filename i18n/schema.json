@@ -1420,6 +1420,9 @@
             "code": {
               "type": "string"
             },
+            "dependencies": {
+              "type": "string"
+            },
             "docs": {
               "type": "string"
             },
@@ -1924,6 +1927,12 @@
             "title": {
               "type": "string"
             },
+            "types_label": {
+              "type": "string"
+            },
+            "insights": {
+              "type": "string"
+            },
             "list_label": {
               "type": "string"
             },
@@ -1931,6 +1940,24 @@
               "type": "string"
             },
             "optional": {
+              "type": "string"
+            },
+            "bundled": {
+              "type": "string"
+            },
+            "version_required": {
+              "type": "string"
+            },
+            "none": {
+              "type": "string"
+            },
+            "no_matches": {
+              "type": "string"
+            },
+            "open_sections": {
+              "type": "string"
+            },
+            "filter_placeholder": {
               "type": "string"
             },
             "view_vulnerabilities": {
@@ -2510,6 +2537,12 @@
               "type": "string"
             },
             "name_desc": {
+              "type": "string"
+            },
+            "range_asc": {
+              "type": "string"
+            },
+            "range_desc": {
               "type": "string"
             }
           },
@@ -4424,6 +4457,9 @@
           "type": "string"
         },
         "optional_dependencies": {
+          "type": "string"
+        },
+        "bundled_dependencies": {
           "type": "string"
         },
         "no_dependency_changes": {

@@ -47,7 +47,7 @@ const sectionMeta = computed(() => {
     devDependencies: t('compare.dev_dependencies'),
     peerDependencies: t('compare.peer_dependencies'),
     optionalDependencies: t('compare.optional_dependencies'),
-    bundledDependencies: t('package.deps_tab.sections.bundled'),
+    bundledDependencies: t('compare.bundled_dependencies'),
   }
   return (
     props.sections?.map(section => ({
@@ -60,8 +60,8 @@ const sectionMeta = computed(() => {
 const sortOptions = computed(() => [
   { value: 'name-asc' as const, label: t('package.sort.name_asc') },
   { value: 'name-desc' as const, label: t('package.sort.name_desc') },
-  { value: 'range-asc' as const, label: t('package.deps_tab.sort.range_asc') },
-  { value: 'range-desc' as const, label: t('package.deps_tab.sort.range_desc') },
+  { value: 'range-asc' as const, label: t('package.sort.range_asc') },
+  { value: 'range-desc' as const, label: t('package.sort.range_desc') },
 ])
 
 const showFilteredCount = computed(() => props.filter && props.filteredCount !== props.totalCount)
@@ -97,7 +97,7 @@ const showFilteredCount = computed(() => props.filter && props.filteredCount !==
           }}
         </template>
         <template v-else>
-          {{ $t('package.deps_tab.count', { count: $n(totalCount) }, totalCount) }}
+          {{ $t('package.dependencies.title', { count: $n(totalCount) }, totalCount) }}
         </template>
       </p>
 
@@ -116,7 +116,7 @@ const showFilteredCount = computed(() => props.filter && props.filteredCount !==
             id="deps-filter"
             v-model="filterValue"
             type="search"
-            :placeholder="$t('package.deps_tab.filter_placeholder')"
+            :placeholder="$t('package.dependencies.filter_placeholder')"
             no-correct
             class="w-full min-w-25 ps-10"
           />
