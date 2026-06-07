@@ -7,6 +7,7 @@ import type {
 const props = defineProps<{
   items: PackageDependencyItem[]
   sort: DependencySortOption
+  showSkeleton: boolean
 }>()
 
 const emit = defineEmits<{
@@ -98,12 +99,17 @@ const rangeSortDirection = computed(() =>
             scope="col"
             class="py-3 px-3 text-xs text-end text-fg-muted font-mono font-medium uppercase tracking-wider whitespace-nowrap"
           >
-            {{ $t('package.dependencies.types_label') }}
+            {{ $t('package.dependencies.flags') }}
           </th>
         </tr>
       </thead>
       <tbody>
-        <DependenciesTableRow v-for="item in items" :key="item.name" :item="item" />
+        <DependenciesTableRow
+          v-for="item in items"
+          :key="item.name"
+          :item="item"
+          :show-skeleton="showSkeleton"
+        />
       </tbody>
     </table>
 

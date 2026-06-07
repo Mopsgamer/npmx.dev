@@ -1927,7 +1927,7 @@
             "title": {
               "type": "string"
             },
-            "types_label": {
+            "flags": {
               "type": "string"
             },
             "insights": {

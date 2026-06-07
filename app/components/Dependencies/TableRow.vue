@@ -9,6 +9,7 @@ import { getOutdatedTooltip, getVersionClass } from '~/utils/npm/outdated-depend
 
 const props = defineProps<{
   item: PackageDependencyItem
+  showSkeleton: boolean
 }>()
 
 const insights = inject(packageDependencyInsightsKey)!

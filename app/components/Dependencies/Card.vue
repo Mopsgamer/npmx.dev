@@ -10,12 +10,13 @@ import { metaToSearchResult } from '~/composables/npm/search-utils'
 
 const props = defineProps<{
   item: PackageDependencyItem
+  showSkeleton: boolean
 }>()
 
 const insights = inject(packageDependencyInsightsKey)!
 
 // Fetch rich package metadata from API
-const { data: meta, status: metaStatus } = useLazyFetch<any>(
+const { data: meta } = useLazyFetch<PackageMetaResponse>(
   () => `/api/registry/package-meta/${encodePackageName(props.item.name)}`,
   {
     server: false,
@@ -40,7 +41,7 @@ const hasExtra = computed(
 
 <template>
   <!-- Loading skeleton while meta is not yet available -->
-  <BaseCard v-if="!searchResult">
+  <BaseCard v-if="!searchResult || showSkeleton">
     <header class="mb-4 flex items-baseline justify-between gap-2">
       <h3 class="font-mono text-sm sm:text-base font-medium text-fg min-w-0 break-all">
         <NuxtLink
@@ -53,12 +54,9 @@ const hasExtra = computed(
       </h3>
       <DependenciesFlags :flags="item.flags" />
     </header>
-    <div
-      v-if="metaStatus === 'pending'"
-      class="h-4 bg-bg-elevated animate-pulse rounded max-w-md mb-2"
-    />
+    <div class="h-4 bg-bg-elevated animate-pulse rounded max-w-md mb-2" />
     <div class="flex items-center gap-2 mt-1 text-xs text-fg-muted font-mono">
-      <span>{{ item.range }}</span>
+      <span>v{{ item.range }}</span>
     </div>
   </BaseCard>
 

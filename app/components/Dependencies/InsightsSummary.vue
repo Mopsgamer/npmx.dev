@@ -4,6 +4,7 @@ import { packageDependencyInsightsKey } from '~/composables/packageDependencyIns
 
 const props = defineProps<{
   sections: PackageDependencySection[]
+  showSkeleton: boolean
 }>()
 
 const insights = inject(packageDependencyInsightsKey)!

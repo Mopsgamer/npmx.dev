@@ -641,7 +641,7 @@
     },
     "dependencies": {
       "title": "Dependency ({count}) | Dependencies ({count})",
-      "types_label": "Types",
+      "flags": "Flags",
       "insights": "Insights",
       "list_label": "Package dependencies",
       "show_all": "show {count} dep | show all {count} deps",

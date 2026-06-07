@@ -75,7 +75,6 @@ const showFilteredCount = computed(() => props.filter && props.filteredCount !==
           id="deps-section"
           v-model="activeSectionValue"
           :items="sectionMeta"
-          size="sm"
           class="min-w-[180px]"
         />
         <span v-if="showFilteredCount" class="text-xs font-mono text-fg-muted">

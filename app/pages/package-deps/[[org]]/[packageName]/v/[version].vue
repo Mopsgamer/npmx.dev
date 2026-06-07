@@ -139,9 +139,23 @@ useSeoMeta({
   title: () =>
     pkg.value ? `${pkg.value.name}@${version.value} dependencies - npmx` : 'Dependencies - npmx',
 })
+
+const showSkeleton = shallowRef(false)
 </script>
 
 <template>
+  <DevOnly>
+    <ButtonBase
+      class="fixed bottom-4 inset-is-4 z-50 shadow-lg rounded-full! px-3! py-2!"
+      classicon="i-simple-icons:skeleton"
+      variant="primary"
+      title="Toggle skeleton loader (development only)"
+      :aria-pressed="showSkeleton"
+      @click="showSkeleton = !showSkeleton"
+    >
+      <span class="text-xs">Skeleton</span>
+    </ButtonBase>
+  </DevOnly>
   <main class="flex-1 pb-8">
     <PackageHeader
       :pkg="pkg"
@@ -194,6 +208,7 @@ useSeoMeta({
             v-if="filteredItems.length > 0"
             :items="filteredItems"
             :view-mode="viewMode"
+            :show-skeleton="showSkeleton"
             :sort="sort"
             @update:sort="sort = $event"
           />
@@ -205,8 +220,8 @@ useSeoMeta({
       </div>
 
       <PackageSidebar :class="$style.areaSidebar">
-        <div class="flex flex-col gap-4 sm:gap-6 lg:pt-4">
-          <DependenciesInsightsSummary :sections="sections" />
+        <div class="flex flex-col gap-4 sm:gap-6 pt-4">
+          <DependenciesInsightsSummary :sections="sections" :show-skeleton="showSkeleton" />
         </div>
       </PackageSidebar>
     </article>
