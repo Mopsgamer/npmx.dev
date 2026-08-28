@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { StructuredFilters } from '#shared/types/preferences'
 import { getOutdatedTooltip, getVersionClass } from '~/utils/npm/outdated-dependencies'
+import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 
 const props = defineProps<{
   /** The search result object containing package data */
@@ -16,7 +17,7 @@ const props = defineProps<{
   /** Search query for highlighting exact matches */
   searchQuery?: string
   /** Optional pre-computed insights to avoid duplicate fetching/processing */
-  insights?: ReturnType<typeof usePackageDependencyInsights>
+  insights?: PackageDependencyInsights
 }>()
 
 const { selectable } = usePackageSelectionContext()

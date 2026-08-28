@@ -60,9 +60,27 @@ const nameSortDirection = computed(() =>
           </th>
           <th
             scope="col"
-            class="py-3 px-3 text-xs text-end text-fg-muted font-mono font-medium uppercase tracking-wider whitespace-nowrap select-none"
+            class="py-3 px-3 text-xs text-start text-fg-muted font-mono font-medium uppercase tracking-wider whitespace-nowrap select-none"
           >
             {{ $t('filters.columns.version') }}
+          </th>
+          <th
+            scope="col"
+            class="py-3 px-3 text-xs text-start text-fg-muted font-mono font-medium uppercase tracking-wider whitespace-nowrap select-none"
+          >
+            {{ $t('filters.columns.description') }}
+          </th>
+          <th
+            scope="col"
+            class="py-3 px-3 text-xs text-end text-fg-muted font-mono font-medium uppercase tracking-wider whitespace-nowrap select-none"
+          >
+            {{ $t('filters.columns.downloads') }}
+          </th>
+          <th
+            scope="col"
+            class="py-3 px-3 text-xs text-end text-fg-muted font-mono font-medium uppercase tracking-wider whitespace-nowrap select-none"
+          >
+            {{ $t('filters.columns.published') }}
           </th>
         </tr>
       </thead>

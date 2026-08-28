@@ -2,11 +2,17 @@
 import type { NpmSearchResult } from '#shared/types/npm-registry'
 import type { ColumnConfig, StructuredFilters } from '#shared/types/preferences'
 
+import {
+  usePackageDependencyInsights,
+  type PackageDependencyInsights,
+} from '~/composables/usePackageDependencyInsights'
+
 const props = defineProps<{
   result: NpmSearchResult
   columns: ColumnConfig[]
   index?: number
   filters?: StructuredFilters
+  insights?: PackageDependencyInsights
 }>()
 
 const emit = defineEmits<{
@@ -14,6 +20,18 @@ const emit = defineEmits<{
 }>()
 
 const pkg = computed(() => props.result.package)
+const dependencies = computed(() => {
+  if (!pkg.value.name || !pkg.value.version) return undefined
+  return { [pkg.value.name]: pkg.value.version }
+})
+
+const insights =
+  props.insights ||
+  usePackageDependencyInsights(
+    computed(() => pkg.value.name),
+    computed(() => pkg.value.version),
+    dependencies,
+  )
 
 const updatedDate = computed(() => props.result.package.date)
 const { isPackageSelected, togglePackageSelection, canSelectMore } = usePackageSelection()
@@ -30,6 +48,15 @@ const packageUrl = computed(() => packageRoute(pkg.value.name))
 const allMaintainersText = computed(() => {
   if (!pkg.value.maintainers?.length) return ''
   return pkg.value.maintainers.map(m => m.name || m.email).join(', ')
+})
+
+const packageTextColorClass = computed(() => {
+  const dependencyName = pkg.value.name
+  if (insights.getVulnerableDepInfo(dependencyName)) return 'text-red-600'
+  if (insights.getDeprecatedDepInfo(dependencyName)) return 'text-purple-700 dark:text-purple-500'
+  if (insights.replacementDeps.value[dependencyName]) return 'text-amber-700 dark:text-amber-500'
+
+  return 'text-fg hover:text-accent-fallback'
 })
 
 const compactNumberFormatter = useCompactNumberFormatter()
@@ -54,12 +81,21 @@ const { selectable } = usePackageSelectionContext()
     <td class="py-2 px-3">
       <NuxtLink
         :to="packageUrl"
-        class="row-link font-mono text-sm text-fg hover:text-accent-fallback transition-colors duration-200 inline-flex items-center gap-2 min-w-0"
+        class="row-link font-mono text-sm transition-colors duration-200 inline-flex items-center gap-2 min-w-0"
+        :class="packageTextColorClass"
         :data-result-index="index"
         dir="ltr"
       >
         <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
         <span class="truncate">{{ pkg.name }}</span>
+
+        <slot name="status-indicators" :insights="insights">
+          <DependenciesStatusIndicators
+            :name="pkg.name"
+            :insights="insights"
+            class="relative z-10"
+          />
+        </slot>
       </NuxtLink>
     </td>
 
