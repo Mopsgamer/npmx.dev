@@ -80,14 +80,12 @@ export function getPackageDependencySections(
         name in (version.optionalDependencies ?? {})
       return !inOther
     })
-    .map(
-      (name): PackageDependencyItem => ({
-        name,
-        range: version.dependencies?.[name] ?? '*',
-        registry: inferDependencyRegistry(name, version.dependencies?.[name] ?? '*'),
-        flags: ['bundled'],
-      }),
-    )
+    .map((name): PackageDependencyItem => ({
+      name,
+      range: version.dependencies?.[name] ?? '*',
+      registry: inferDependencyRegistry(name, version.dependencies?.[name] ?? '*'),
+      flags: ['bundled'],
+    }))
     .sort((a, b) => a.name.localeCompare(b.name))
 
   if (bundledOnly.length > 0) {
