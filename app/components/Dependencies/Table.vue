@@ -68,9 +68,10 @@ const nameSortDirection = computed(() =>
       </thead>
       <tbody>
         <DependenciesTableRow
-          v-for="item in items"
+          v-for="(item, index) in items"
           :key="item.name"
           :item="item"
+          :index="index"
           :show-skeleton="showSkeleton"
         />
       </tbody>

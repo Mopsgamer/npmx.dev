@@ -22,11 +22,13 @@ const keyboardShortcuts = useKeyboardShortcuts()
 const isVisible = (el: HTMLElement) => el.getClientRects().length > 0
 
 function getFocusableElements(): HTMLElement[] {
-  return Array.from(
-    document.querySelectorAll<HTMLElement>(
-      '.dependencies-list-element tbody tr, .dependencies-list-element li a',
-    ),
-  ).filter(isVisible)
+  return Array.from(document.querySelectorAll<HTMLElement>('[data-result-index]'))
+    .filter(isVisible)
+    .sort((a, b) => {
+      const aIdx = Number.parseInt(a.dataset.resultIndex ?? '0', 10)
+      const bIdx = Number.parseInt(b.dataset.resultIndex ?? '0', 10)
+      return aIdx - bIdx
+    })
 }
 
 function focusElement(el: HTMLElement) {
@@ -98,8 +100,8 @@ onKeyDown(['ArrowDown', 'ArrowUp', 'Enter'], handleResultsKeydown)
     v-show="viewMode === 'cards'"
     class="dependencies-list-element list-none m-0 p-0 flex flex-col gap-4"
   >
-    <li v-for="item in items" :key="item.name">
-      <DependenciesCard :item="item" :show-skeleton="showSkeleton" />
+    <li v-for="(item, index) in items" :key="item.name">
+      <DependenciesCard :item="item" :index="index" :show-skeleton="showSkeleton" />
     </li>
   </ol>
 </template>

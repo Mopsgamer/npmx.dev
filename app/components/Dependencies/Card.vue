@@ -5,6 +5,7 @@ import { packageDependencyInsightsKey } from '~/composables/packageDependencyIns
 const props = defineProps<{
   item: PackageDependencyItem
   showSkeleton: boolean
+  index?: number
 }>()
 
 const parentInsights = inject(packageDependencyInsightsKey, null)
@@ -32,6 +33,7 @@ const searchResult = computed(() => {
         <NuxtLink
           :to="packageRoute(item.name)"
           class="decoration-none after:content-[''] after:absolute after:inset-0"
+          :data-result-index="index"
           dir="ltr"
           >{{ item.name }}</NuxtLink
         >
@@ -50,7 +52,7 @@ const searchResult = computed(() => {
     </div>
   </BaseCard>
 
-  <PackageCard v-else :result="searchResult" :insights="parentInsights || undefined">
+  <PackageCard v-else :result="searchResult" :index="index" :insights="parentInsights || undefined">
     <template #status-indicators="{ insights: activeInsights }">
       <DependenciesStatusIndicators
         :name="item.name"
