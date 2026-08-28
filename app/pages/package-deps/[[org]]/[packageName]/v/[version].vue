@@ -22,10 +22,11 @@ definePageMeta({
 const route = useRoute('dependencies')
 const router = useRouter()
 
-const packageName = computed(() =>
-  route.params.org ? `${route.params.org}/${route.params.packageName}` : route.params.packageName,
-)
-const version = computed(() => route.params.version)
+const { packageName, requestedVersion } = usePackageRoute()
+
+const { data: resolvedVersion } = await useResolvedVersion(packageName, requestedVersion)
+
+const version = computed(() => resolvedVersion.value ?? requestedVersion.value)
 
 const { data: pkg, status: pkgStatus } = usePackage(packageName, version)
 const { versions: commandPaletteVersions, ensureLoaded: ensureCommandPaletteVersionsLoaded } =
@@ -212,13 +213,13 @@ const showSkeleton = shallowRef(false)
       page="dependencies"
     />
 
-    <div v-if="pkgStatus === 'pending'" class="container py-20 text-center">
+    <div v-if="pkgStatus === 'pending' || pkgStatus === 'idle'" class="container py-20 text-center">
       <div class="i-svg-spinners:ring-resize w-8 h-8 mx-auto text-fg-muted" />
     </div>
 
     <div v-else-if="sections.length === 0" class="container py-20 text-center">
       <p class="text-fg-muted mb-4">{{ $t('package.dependencies.none') }}</p>
-      <LinkBase variant="button-secondary" :to="packageRoute(packageName, version)">{{
+      <LinkBase variant="button-secondary" :to="packageRoute(packageName, requestedVersion)">{{
         $t('code.back_to_package')
       }}</LinkBase>
     </div>
