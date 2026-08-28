@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from 'vue-router'
+import { setResponseHeader } from 'h3'
 import type { DepSectionId, DependencySortOption } from '#shared/types/package-dependencies'
 import type { ViewMode } from '#shared/types/preferences'
 import { encodePackageName } from '#shared/utils/npm'
@@ -15,6 +16,10 @@ definePageMeta({
   alias: [
     '/package/dependencies/:org?/:packageName/v/:version',
     '/package/dependencies/:packageName/v/:version',
+    '/package-deps/:org?/:packageName',
+    '/package-deps/:packageName',
+    '/package/dependencies/:org?/:packageName',
+    '/package/dependencies/:packageName',
   ],
   scrollMargin: 160,
 })
@@ -31,6 +36,29 @@ const version = computed(() => resolvedVersion.value ?? requestedVersion.value)
 const { data: pkg, status: pkgStatus } = usePackage(packageName, version)
 const { versions: commandPaletteVersions, ensureLoaded: ensureCommandPaletteVersionsLoaded } =
   useCommandPalettePackageVersions(packageName)
+
+const latestVersionTag = computed(() => pkg.value?.['dist-tags']?.latest ?? null)
+
+if (import.meta.server && !requestedVersion.value && packageName.value) {
+  const app = useNuxtApp()
+  const latest = await fetchLatestVersion(packageName.value)
+  if (latest) {
+    setResponseHeader(useRequestEvent()!, 'Cache-Control', 'no-cache')
+    app.runWithContext(() =>
+      navigateTo(dependenciesRoute(packageName.value, latest), { redirectCode: 302 }),
+    )
+  }
+}
+
+watch(
+  [requestedVersion, latestVersionTag, packageName],
+  ([version, latest, name]) => {
+    if (!version && latest && name) {
+      router.replace(dependenciesRoute(name, latest))
+    }
+  },
+  { immediate: true },
+)
 
 const displayVersion = computed(() => pkg.value?.requestedVersion ?? null)
 
