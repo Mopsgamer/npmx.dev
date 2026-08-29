@@ -5,7 +5,7 @@ import {
   type OutdatedDependencyInfo,
   isNonSemverConstraint,
   constraintIncludesPrerelease,
-} from '~/utils/npm/outdated-dependencies'
+} from '~/utils/npm/problematic-dependencies'
 
 const BATCH_SIZE = 50
 

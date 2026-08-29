@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import type { StructuredFilters } from '#shared/types/preferences'
-import { getOutdatedTooltip, getVersionClass } from '~/utils/npm/outdated-dependencies'
+import {
+  getOutdatedTooltip,
+  getVersionClass,
+  getVulnerableDepInfo,
+  getDeprecatedDepInfo,
+} from '~/utils/npm/problematic-dependencies'
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 
 const props = defineProps<{
@@ -59,12 +64,19 @@ const insights =
     dependencies,
   )
 
+const vulnDepInfo = computed(() =>
+  getVulnerableDepInfo(props.result.package.name, insights.vulnTree.value),
+)
+const deprDepInfo = computed(() =>
+  getDeprecatedDepInfo(props.result.package.name, insights.vulnTree.value),
+)
+
 const hasExtra = computed(
   () =>
     !!insights.outdatedDeps.value[props.result.package.name] ||
     !!insights.replacementDeps.value[props.result.package.name] ||
-    !!insights.getVulnerableDepInfo(props.result.package.name) ||
-    !!insights.getDeprecatedDepInfo(props.result.package.name),
+    !!vulnDepInfo ||
+    !!deprDepInfo,
 )
 
 const numberFormatter = useNumberFormatter()
@@ -201,33 +213,19 @@ const numberFormatter = useNumberFormatter()
           {{ $t('package.dependencies.has_replacement') }}
         </span>
         <LinkBase
-          v-if="insights.getVulnerableDepInfo(result.package.name)"
-          :to="
-            packageRoute(
-              result.package.name,
-              insights.getVulnerableDepInfo(result.package.name)!.version,
-            )
-          "
+          v-if="vulnDepInfo"
+          :to="packageRoute(result.package.name, vulnDepInfo!.version)"
           class="flex items-center gap-1 shrink-0"
-          :class="
-            SEVERITY_TEXT_COLORS[
-              getHighestSeverity(insights.getVulnerableDepInfo(result.package.name)!.counts)
-            ]
-          "
+          :class="SEVERITY_TEXT_COLORS[getHighestSeverity(vulnDepInfo!.counts)]"
         >
           <span class="i-lucide:shield-alert w-3.5 h-3.5 shrink-0" aria-hidden="true" />
           {{ $t('package.dependencies.view_vulnerabilities') }}
         </LinkBase>
         <LinkBase
-          v-if="insights.getDeprecatedDepInfo(result.package.name)"
-          :to="
-            packageRoute(
-              result.package.name,
-              insights.getDeprecatedDepInfo(result.package.name)!.version,
-            )
-          "
+          v-if="deprDepInfo"
+          :to="packageRoute(result.package.name, deprDepInfo!.version)"
           class="flex items-center gap-1 shrink-0 text-purple-700 dark:text-purple-500"
-          :title="insights.getDeprecatedDepInfo(result.package.name)!.message"
+          :title="deprDepInfo!.message"
         >
           <span class="i-lucide:octagon-alert w-3.5 h-3.5 shrink-0" aria-hidden="true" />
           {{ $t('package.deprecated.label') }}

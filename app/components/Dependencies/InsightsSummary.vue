@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { PackageDependencySection } from '#shared/types/package-dependencies'
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
+import { getVulnerableDepInfo, getDeprecatedDepInfo } from '~/utils/npm/problematic-dependencies'
 import { useRoute } from 'vue-router'
 
 const props = defineProps<{
@@ -18,10 +19,10 @@ const stats = computed(() => {
 
   // Check the package itself for vulnerabilities (depth: 'root')
   if (props.packageName) {
-    if (props.insights.getVulnerableDepInfo(props.packageName)) {
+    if (getVulnerableDepInfo(props.packageName, props.insights.vulnTree.value)) {
       urgent.vulnerable++
     }
-    if (props.insights.getDeprecatedDepInfo(props.packageName)) {
+    if (getDeprecatedDepInfo(props.packageName, props.insights.vulnTree.value)) {
       urgent.deprecated++
     }
   }
@@ -39,8 +40,8 @@ const stats = computed(() => {
       }
 
       if (props.insights.replacementDeps.value[item.name]) target.replacement++
-      if (props.insights.getVulnerableDepInfo(item.name)) target.vulnerable++
-      if (props.insights.getDeprecatedDepInfo(item.name)) target.deprecated++
+      if (getVulnerableDepInfo(item.name, props.insights.vulnTree.value)) target.vulnerable++
+      if (getDeprecatedDepInfo(item.name, props.insights.vulnTree.value)) target.deprecated++
     }
   }
 

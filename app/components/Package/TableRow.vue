@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { NpmSearchResult } from '#shared/types/npm-registry'
 import type { ColumnConfig, StructuredFilters } from '#shared/types/preferences'
-
+import { getVulnerableDepInfo, getDeprecatedDepInfo } from '~/utils/npm/problematic-dependencies'
 import {
   usePackageDependencyInsights,
   type PackageDependencyInsights,
@@ -52,8 +52,9 @@ const allMaintainersText = computed(() => {
 
 const packageTextColorClass = computed(() => {
   const dependencyName = pkg.value.name
-  if (insights.getVulnerableDepInfo(dependencyName)) return 'text-red-600'
-  if (insights.getDeprecatedDepInfo(dependencyName)) return 'text-purple-700 dark:text-purple-500'
+  if (getVulnerableDepInfo(dependencyName, insights.vulnTree.value)) return 'text-red-600'
+  if (getDeprecatedDepInfo(dependencyName, insights.vulnTree.value))
+    return 'text-purple-700 dark:text-purple-500'
   if (insights.replacementDeps.value[dependencyName]) return 'text-amber-700 dark:text-amber-500'
 
   return 'text-fg hover:text-accent-fallback'

@@ -1,4 +1,5 @@
 import type { VersionDifference } from 'verkit'
+import type { PackageDependencyInsights } from '../../composables/usePackageDependencyInsights'
 
 /** Information about an outdated dependency */
 export interface OutdatedDependencyInfo {
@@ -80,4 +81,34 @@ export function getVersionClass(info: OutdatedDependencyInfo | undefined): strin
   if (info.minorsBehind > 0) return 'text-orange-700 dark:text-orange-500'
   // Yellow for patch versions behind
   return 'text-yellow-700 dark:text-yellow-500'
+}
+
+/**
+ * Same as {@link getVersionClass}, but using insights.
+ */
+export function getDepVersionClass(dep: string, insights: PackageDependencyInsights): string {
+  const outdated = insights.outdatedDeps.value?.[dep]
+  if (outdated) return getVersionClass(outdated)
+  if (insights.replacementDeps.value?.[dep]) return 'text-amber-700 dark:text-amber-500'
+  return getVersionClass(undefined)
+}
+
+export function getVulnerableDepInfo(
+  depName: string,
+  vulnTree: VulnerabilityTreeResult | undefined,
+) {
+  if (!vulnTree?.vulnerablePackages) return null
+  return vulnTree.vulnerablePackages.find(
+    p => p.name === depName && (p.depth === 'root' || p.depth === 'direct'),
+  )
+}
+
+export function getDeprecatedDepInfo(
+  depName: string,
+  vulnTree: VulnerabilityTreeResult | undefined,
+) {
+  if (!vulnTree?.deprecatedPackages) return null
+  return vulnTree.deprecatedPackages.find(
+    p => p.name === depName && (p.depth === 'root' || p.depth === 'direct'),
+  )
 }

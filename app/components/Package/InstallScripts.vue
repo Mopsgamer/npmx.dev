@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getOutdatedTooltip, getVersionClass } from '~/utils/npm/outdated-dependencies'
+import { getOutdatedTooltip, getVersionClass } from '~/utils/npm/problematic-dependencies'
 import type { RouteLocationRaw } from 'vue-router'
 
 const props = defineProps<{

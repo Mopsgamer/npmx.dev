@@ -2,7 +2,7 @@
 import type { PackageDependencyItem } from '#shared/types/package-dependencies'
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 import type { ColumnConfig } from '#shared/types/preferences'
-import { getVersionClass, getOutdatedTooltip } from '~/utils/npm/outdated-dependencies'
+import { getVersionClass, getOutdatedTooltip } from '~/utils/npm/problematic-dependencies'
 
 const props = defineProps<{
   insights?: PackageDependencyInsights

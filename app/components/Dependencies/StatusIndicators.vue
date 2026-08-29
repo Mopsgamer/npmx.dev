@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
+import { getVulnerableDepInfo, getDeprecatedDepInfo } from '~/utils/npm/problematic-dependencies'
 
 const props = defineProps<{
   name: string
@@ -15,10 +16,10 @@ const structuralMeta: Record<string, { icon: string; text: string }> = {
 const healthStatusAlert = computed(() => {
   if (!props.name || !props.insights) return null
 
-  if (props.insights.getVulnerableDepInfo(props.name))
+  if (getVulnerableDepInfo(props.name, props.insights.vulnTree.value))
     return { icon: 'i-lucide:shield-alert', cssClass: 'text-red-600', tooltipText: 'Vulnerable' }
 
-  if (props.insights.getDeprecatedDepInfo(props.name))
+  if (getDeprecatedDepInfo(props.name, props.insights.vulnTree.value))
     return {
       icon: 'i-lucide:octagon-alert',
       cssClass: 'text-purple-700 dark:text-purple-500',
