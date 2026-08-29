@@ -26,7 +26,7 @@ const searchResult = computed(() => {
 <template>
   <BaseCard v-if="!searchResult || showSkeleton">
     <header class="mb-4 flex items-baseline justify-between gap-2">
-      <h3
+      <h2
         class="font-mono text-sm sm:text-base font-medium text-fg group-hover:text-fg transition-colors duration-200 min-w-0 break-all inline-flex items-center gap-2"
       >
         <NuxtLink
@@ -37,14 +37,14 @@ const searchResult = computed(() => {
           >{{ item.name }}</NuxtLink
         >
         <DependenciesStatusIndicators :name="item.name" :flags="item.flags" />
-      </h3>
+      </h2>
     </header>
     <SkeletonBlock class="h-5 w-full mb-2 sm:mb-3" />
     <div class="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-2 text-xs text-fg-muted">
       <div class="flex items-center gap-1.5 min-w-0">
         <dl>
           <dt class="sr-only">{{ $t('package.card.version') }}</dt>
-          <dd class="font-mono truncate max-w-32" :title="item.range">v{{ item.range }}</dd>
+          <dd class="font-mono truncate max-w-32" :title="item.range">{{ item.range }}</dd>
         </dl>
       </div>
       <SkeletonBlock class="h-4 w-8ch" />
@@ -53,7 +53,14 @@ const searchResult = computed(() => {
     </div>
   </BaseCard>
 
-  <PackageCard v-else :result="searchResult" :index="index" :insights="insights || undefined">
+  <PackageCard
+    v-else
+    heading-level="h2"
+    :result="searchResult"
+    :index="index"
+    :insights="insights || undefined"
+    version-is-range
+  >
     <template #status-indicators="{ insights }">
       <DependenciesStatusIndicators :name="item.name" :flags="item.flags" v-bind="{ insights }" />
     </template>

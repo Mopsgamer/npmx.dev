@@ -101,7 +101,7 @@ const { selectable } = usePackageSelectionContext()
 </script>
 
 <template>
-  <div class="overflow-x-auto">
+  <div class="overflow-x-auto" tabindex="0">
     <table class="w-full text-start">
       <thead class="border-b border-border">
         <tr>

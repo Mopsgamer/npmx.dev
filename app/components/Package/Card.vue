@@ -18,6 +18,8 @@ const props = defineProps<{
   searchQuery?: string
   /** Optional pre-computed insights to avoid duplicate fetching/processing */
   insights?: PackageDependencyInsights
+  /** Version by default, adds "v" prefix. */
+  versionIsRange?: boolean
 }>()
 
 const { selectable } = usePackageSelectionContext()
@@ -118,7 +120,7 @@ const numberFormatter = useNumberFormatter()
         <div v-if="result.package.version" class="flex items-center gap-1.5 min-w-0">
           <dt class="sr-only">{{ $t('package.card.version') }}</dt>
           <dd class="font-mono truncate max-w-32" :title="result.package.version">
-            v{{ result.package.version }}
+            {{ versionIsRange ? '' : 'v' }}{{ result.package.version }}
           </dd>
         </div>
         <div v-if="result.package.date" class="flex items-center gap-1.5">

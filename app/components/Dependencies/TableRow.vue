@@ -54,21 +54,7 @@ const { t } = useI18n()
     <template #version="{ version }">
       <TooltipApp v-if="outdated" :text="getOutdatedTooltip(outdated, t)" position="top">
         <div :class="versionClass" class="flex items-center gap-1.5 cursor-help">
-          <span
-            v-if="outdated.majorsBehind > 0"
-            class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0 text-red-700 dark:text-red-500"
-            aria-hidden="true"
-          />
-          <span
-            v-else-if="outdated.minorsBehind > 0"
-            class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0 text-orange-700 dark:text-orange-500"
-            aria-hidden="true"
-          />
-          <span
-            v-else
-            class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0 text-yellow-700 dark:text-yellow-500"
-            aria-hidden="true"
-          />
+          <span class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0" aria-hidden="true" />
           <span>{{ version }}</span>
         </div>
       </TooltipApp>
