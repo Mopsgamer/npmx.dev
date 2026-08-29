@@ -2,7 +2,6 @@
 import type { RouteLocationRaw } from 'vue-router'
 import { setResponseHeader } from 'h3'
 import type { DepSectionId, DependencySortOption } from '#shared/types/package-dependencies'
-import type { ViewMode } from '#shared/types/preferences'
 import { assertValidPackageName, encodePackageName } from '#shared/utils/npm'
 import {
   getDefaultDependencySection,
@@ -142,7 +141,11 @@ useCommandPalettePackageContext(commandPalettePackageContext, {
 useCommandPalettePackageCommands(commandPalettePackageContext)
 useCommandPaletteVersionCommands(commandPalettePackageContext, depsVersionRoute)
 
-const insights = usePackageDependencyInsights(packageName, resolvedVersion, allDependencies)
+const insights = usePackageDependencyInsights(
+  packageName,
+  () => resolvedVersion.value || '',
+  allDependencies,
+)
 
 const { viewMode } = usePackageListPreferences()
 

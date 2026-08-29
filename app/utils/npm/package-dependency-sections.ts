@@ -118,10 +118,3 @@ export function getDefaultDependencySection(
 export function isDepSectionId(value: string): value is DepSectionId {
   return SECTION_ORDER.includes(value as DepSectionId)
 }
-
-export function dependencySectionRecord(
-  section: PackageDependencySection | undefined,
-): Record<string, string> | undefined {
-  if (!section?.items.length) return undefined
-  return Object.fromEntries(section.items.map(item => [item.name, item.range]))
-}

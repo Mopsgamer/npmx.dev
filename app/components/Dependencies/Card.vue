@@ -42,8 +42,10 @@ const searchResult = computed(() => {
     <SkeletonBlock class="h-5 w-full mb-2 sm:mb-3" />
     <div class="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-2 text-xs text-fg-muted">
       <div class="flex items-center gap-1.5 min-w-0">
-        <dt class="sr-only">{{ $t('package.card.version') }}</dt>
-        <dd class="font-mono truncate max-w-32" :title="item.range">v{{ item.range }}</dd>
+        <dl>
+          <dt class="sr-only">{{ $t('package.card.version') }}</dt>
+          <dd class="font-mono truncate max-w-32" :title="item.range">v{{ item.range }}</dd>
+        </dl>
       </div>
       <SkeletonBlock class="h-4 w-8ch" />
       <SkeletonBlock class="h-4 w-3ch" />

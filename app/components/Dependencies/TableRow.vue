@@ -34,10 +34,7 @@ const dependencyColumns = computed<ColumnConfig[]>(() => [
   { id: 'updated', visible: true, sortable: false },
 ])
 
-const outdated = computed(() => {
-  if (!props.insights || !props.insights.outdatedDeps.value) return null
-  return props.insights.outdatedDeps.value[props.item.name] ?? null
-})
+const outdated = computed(() => props.insights?.outdatedDeps.value[props.item.name])
 
 const versionClass = computed(() => {
   return getVersionClass(outdated.value)
@@ -68,7 +65,7 @@ const { t } = useI18n()
             aria-hidden="true"
           />
           <span
-            v-else-if="outdated.patchsBehind > 0"
+            v-else
             class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0 text-yellow-700 dark:text-yellow-500"
             aria-hidden="true"
           />
