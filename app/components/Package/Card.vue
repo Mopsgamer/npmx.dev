@@ -71,6 +71,7 @@ const deprDepInfo = computed(() =>
   getDeprecatedDepInfo(props.result.package.name, insights.vulnTree.value),
 )
 
+// Any insights such as vulnerabilities and replacements
 const hasExtra = computed(
   () =>
     !!insights.outdatedDeps.value[props.result.package.name] ||
@@ -200,7 +201,7 @@ const numberFormatter = useNumberFormatter()
         <span
           v-if="insights.outdatedDeps.value[result.package.name]"
           class="flex items-center gap-1"
-          :class="getVersionClass(insights.outdatedDeps.value[result.package.name])"
+          :class="getVersionClass(result.package.name, props.insights)"
         >
           <span class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0" aria-hidden="true" />
           {{ getOutdatedTooltip(insights.outdatedDeps.value[result.package.name]!, $t) }}

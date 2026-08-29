@@ -36,9 +36,7 @@ const dependencyColumns = computed<ColumnConfig[]>(() => [
 
 const outdated = computed(() => props.insights?.outdatedDeps.value[props.item.name])
 
-const versionClass = computed(() => {
-  return getVersionClass(outdated.value)
-})
+const versionClass = computed(() => getVersionClass(props.item.name, props.insights))
 
 const { t } = useI18n()
 </script>
