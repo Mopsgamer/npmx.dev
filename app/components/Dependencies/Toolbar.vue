@@ -76,6 +76,8 @@ const showFilteredCount = computed(() => props.filter && props.filteredCount !==
         <SelectField
           id="deps-section"
           v-model="activeSectionValue"
+          :label="$t('compare.dependencies')"
+          hidden-label
           :items="sectionMeta"
           class="min-w-[180px]"
         />

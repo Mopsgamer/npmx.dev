@@ -48,7 +48,9 @@ const scriptParts = computed(() => {
   return parts
 })
 
-const outdatedNpxDeps = useOutdatedDependencies(() => props.installScripts.npxDependencies)
+const { data: outdatedNpxDeps } = useOutdatedDependencies(
+  () => props.installScripts.npxDependencies,
+)
 const hasNpxDeps = computed(() => Object.keys(props.installScripts.npxDependencies).length > 0)
 const sortedNpxDeps = computed(() => {
   return Object.entries(props.installScripts.npxDependencies).sort(([a], [b]) => a.localeCompare(b))

@@ -4,6 +4,7 @@ import type {
   PackageDependencyItem,
 } from '#shared/types/package-dependencies'
 import type { ViewMode } from '#shared/types/preferences'
+import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 import { onKeyDown } from '@vueuse/core'
 
 defineProps<{
@@ -11,6 +12,7 @@ defineProps<{
   viewMode: ViewMode
   sort: DependencySortOption
   showSkeleton: boolean
+  insights?: PackageDependencyInsights
 }>()
 
 const emit = defineEmits<{
@@ -93,6 +95,7 @@ onKeyDown(['ArrowDown', 'ArrowUp', 'Enter'], handleResultsKeydown)
     :items="items"
     :sort="sort"
     :show-skeleton="showSkeleton"
+    :insights="insights"
     class="dependencies-list-element"
     @update:sort="emit('update:sort', $event)"
   />
@@ -101,7 +104,12 @@ onKeyDown(['ArrowDown', 'ArrowUp', 'Enter'], handleResultsKeydown)
     class="dependencies-list-element list-none m-0 p-0 flex flex-col gap-4"
   >
     <li v-for="(item, index) in items" :key="item.name">
-      <DependenciesCard :item="item" :index="index" :show-skeleton="showSkeleton" />
+      <DependenciesCard
+        :item="item"
+        :index="index"
+        :show-skeleton="showSkeleton"
+        :insights="insights"
+      />
     </li>
   </ol>
 </template>

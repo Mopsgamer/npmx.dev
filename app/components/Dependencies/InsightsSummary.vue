@@ -1,34 +1,46 @@
 <script setup lang="ts">
 import type { PackageDependencySection } from '#shared/types/package-dependencies'
-import { packageDependencyInsightsKey } from '~/composables/packageDependencyInsightsKey'
+import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 import { useRoute } from 'vue-router'
 
 const props = defineProps<{
+  insights?: PackageDependencyInsights
   sections: PackageDependencySection[]
   showSkeleton: boolean
+  packageName?: string
 }>()
-
-const insights = inject(packageDependencyInsightsKey)!
 
 const stats = computed(() => {
   const urgent = { major: 0, minor: 0, patch: 0, vulnerable: 0, deprecated: 0, replacement: 0 }
   const nonUrgent = { major: 0, minor: 0, patch: 0, vulnerable: 0, deprecated: 0, replacement: 0 }
+
+  if (!props.insights) return { urgent, nonUrgent }
+
+  // Check the package itself for vulnerabilities (depth: 'root')
+  if (props.packageName) {
+    if (props.insights.getVulnerableDepInfo(props.packageName)) {
+      urgent.vulnerable++
+    }
+    if (props.insights.getDeprecatedDepInfo(props.packageName)) {
+      urgent.deprecated++
+    }
+  }
 
   for (const section of props.sections) {
     const isUrgent = ['dependencies', 'bundledDependencies'].includes(section.id)
     const target = isUrgent ? urgent : nonUrgent
 
     for (const item of section.items) {
-      const outdated = insights.outdatedDeps.value[item.name]
+      const outdated = props.insights.outdatedDeps.value[item.name]
       if (outdated) {
         if (outdated.majorsBehind > 0) target.major++
         else if (outdated.minorsBehind > 0) target.minor++
         else target.patch++
       }
 
-      if (insights.replacementDeps.value[item.name]) target.replacement++
-      if (insights.getVulnerableDepInfo(item.name)) target.vulnerable++
-      if (insights.getDeprecatedDepInfo(item.name)) target.deprecated++
+      if (props.insights.replacementDeps.value[item.name]) target.replacement++
+      if (props.insights.getVulnerableDepInfo(item.name)) target.vulnerable++
+      if (props.insights.getDeprecatedDepInfo(item.name)) target.deprecated++
     }
   }
 
@@ -39,14 +51,22 @@ const route = useRoute()
 const isStatsTab = computed(() => route.name === 'stats')
 
 const vulnLoading = computed(
-  () => insights.vulnStatus?.value === 'idle' || insights.vulnStatus?.value === 'pending',
+  () =>
+    !props.insights ||
+    props.insights.vulnStatus?.value === 'idle' ||
+    props.insights.vulnStatus?.value === 'pending',
 )
 const outdatedLoading = computed(
-  () => insights.outdatedStatus?.value === 'idle' || insights.outdatedStatus?.value === 'pending',
+  () =>
+    !props.insights ||
+    props.insights.outdatedStatus?.value === 'idle' ||
+    props.insights.outdatedStatus?.value === 'pending',
 )
 const replacementLoading = computed(
   () =>
-    insights.replacementStatus?.value === 'idle' || insights.replacementStatus?.value === 'pending',
+    !props.insights ||
+    props.insights.replacementStatus?.value === 'idle' ||
+    props.insights.replacementStatus?.value === 'pending',
 )
 
 function shouldShowRow(type: keyof typeof stats.value.urgent) {

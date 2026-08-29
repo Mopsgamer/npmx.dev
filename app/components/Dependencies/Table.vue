@@ -3,11 +3,13 @@ import type {
   DependencySortOption,
   PackageDependencyItem,
 } from '#shared/types/package-dependencies'
+import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 
 const props = defineProps<{
   items: PackageDependencyItem[]
   sort: DependencySortOption
   showSkeleton: boolean
+  insights?: PackageDependencyInsights
 }>()
 
 const emit = defineEmits<{
@@ -91,6 +93,7 @@ const nameSortDirection = computed(() =>
           :item="item"
           :index="index"
           :show-skeleton="showSkeleton"
+          :insights="insights"
         />
       </tbody>
     </table>

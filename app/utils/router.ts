@@ -134,18 +134,16 @@ export function packageStatsRoute(
 
 export function dependenciesRoute(
   packageName: string,
-  version: string,
+  version?: string | null,
   section?: DepSectionId,
 ): RouteLocationRaw {
   const { org, name } = splitPackageName(packageName)
+  const nameSegments = org ? [org, name] : [name]
+  const path = version ? [...nameSegments, 'v', version.replace(/\s+/g, '')] : nameSegments
 
   return {
     name: 'dependencies',
-    params: {
-      org: org || undefined,
-      packageName: name,
-      version: version.replace(/\s+/g, ''),
-    },
+    params: { path: path as [string, ...string[]] },
     query: section ? { section } : undefined,
   }
 }

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { packageDependencyInsightsKey } from '~/composables/packageDependencyInsightsKey'
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 
 const props = defineProps<{
@@ -8,29 +7,25 @@ const props = defineProps<{
   insights?: PackageDependencyInsights
 }>()
 
-const injectedInsights = inject(packageDependencyInsightsKey, null)
-const activeInsights = computed(() => props.insights ?? injectedInsights)
-
 const structuralMeta: Record<string, { icon: string; translationKey: string }> = {
   optional: { icon: 'i-lucide:circle-dashed', translationKey: 'package.dependencies.optional' },
   bundled: { icon: 'i-lucide:package', translationKey: 'package.dependencies.bundled' },
 }
 
 const healthStatusAlert = computed(() => {
-  const insights = activeInsights.value
-  if (!props.name || !insights) return null
+  if (!props.name || !props.insights) return null
 
-  if (insights.getVulnerableDepInfo(props.name))
+  if (props.insights.getVulnerableDepInfo(props.name))
     return { icon: 'i-lucide:shield-alert', cssClass: 'text-red-600', tooltipText: 'Vulnerable' }
 
-  if (insights.getDeprecatedDepInfo(props.name))
+  if (props.insights.getDeprecatedDepInfo(props.name))
     return {
       icon: 'i-lucide:octagon-alert',
       cssClass: 'text-purple-700 dark:text-purple-500',
       tooltipText: 'Deprecated',
     }
 
-  if (insights.replacementDeps?.value?.[props.name])
+  if (props.insights.replacementDeps?.value?.[props.name])
     return {
       icon: 'i-lucide:lightbulb',
       cssClass: 'text-amber-700 dark:text-amber-500',

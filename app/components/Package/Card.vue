@@ -78,7 +78,7 @@ const numberFormatter = useNumberFormatter()
         <NuxtLink
           :to="packageRoute(result.package.name)"
           :prefetch-on="prefetch ? 'visibility' : 'interaction'"
-          class="decoration-none after:content-[''] after:absolute after:inset-0"
+          class="decoration-none hover:text-accent-fallback"
           :data-result-index="index"
           dir="ltr"
           >{{ result.package.name }}</NuxtLink
@@ -182,7 +182,7 @@ const numberFormatter = useNumberFormatter()
       v-if="hasExtra"
       class="flex items-center justify-between gap-2 mt-3 pt-3 border-t border-border relative z-10"
     >
-      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs shrink-0">
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs shrink-0">
         <span
           v-if="insights.outdatedDeps.value[result.package.name]"
           class="flex items-center gap-1"

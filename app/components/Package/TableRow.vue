@@ -101,7 +101,9 @@ const { selectable } = usePackageSelectionContext()
 
     <!-- Version -->
     <td v-if="isColumnVisible('version')" class="py-2 px-3 font-mono text-xs text-fg-subtle">
-      <span dir="ltr">{{ pkg.version }}</span>
+      <slot name="version" :version="pkg.version">
+        <span dir="ltr">{{ pkg.version }}</span>
+      </slot>
     </td>
 
     <!-- Description -->
@@ -213,14 +215,7 @@ const { selectable } = usePackageSelectionContext()
 
 <style scoped>
 .row-link {
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    cursor: pointer;
-  }
-
-  &:focus-visible::after {
+  &:focus-visible {
     outline: 2px solid var(--color-fg);
     outline-offset: -2px;
   }

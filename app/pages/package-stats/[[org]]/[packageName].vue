@@ -47,8 +47,7 @@ const allDependencies = computed(() => {
   return record
 })
 
-const dependencyInsights = usePackageDependencyInsights(packageName, version, allDependencies)
-provide(packageDependencyInsightsKey, dependencyInsights)
+const insights = usePackageDependencyInsights(packageName, version, allDependencies)
 
 const { versions: commandPaletteVersions, ensureLoaded: ensureCommandPaletteVersionsLoaded } =
   useCommandPalettePackageVersions(packageName)
@@ -181,8 +180,10 @@ useSeoMeta({
       <PackageSidebar class="w-80">
         <div class="flex flex-col gap-4 sm:gap-6 lg:pt-4">
           <DependenciesInsightsSummary
+            :insights="insights"
             :sections="sections"
             :show-skeleton="pkgStatus === 'pending' || pkgStatus === 'idle'"
+            :package-name="packageName"
           />
           <PackageMaintainers :package-name="packageName" :maintainers="pkg?.maintainers" />
           <PackageVersions

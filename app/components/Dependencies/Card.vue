@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import type { PackageDependencyItem } from '#shared/types/package-dependencies'
-import { packageDependencyInsightsKey } from '~/composables/packageDependencyInsightsKey'
+import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 
 const props = defineProps<{
+  insights?: PackageDependencyInsights
   item: PackageDependencyItem
   showSkeleton: boolean
   index?: number
 }>()
-
-const parentInsights = inject(packageDependencyInsightsKey, null)
 
 // Fetch rich package metadata from API
 const { data: meta } = useLazyFetch<PackageMetaResponse>(
@@ -32,7 +31,7 @@ const searchResult = computed(() => {
       >
         <NuxtLink
           :to="packageRoute(item.name)"
-          class="decoration-none after:content-[''] after:absolute after:inset-0"
+          class="decoration-none hover:text-accent-fallback"
           :data-result-index="index"
           dir="ltr"
           >{{ item.name }}</NuxtLink
@@ -52,13 +51,9 @@ const searchResult = computed(() => {
     </div>
   </BaseCard>
 
-  <PackageCard v-else :result="searchResult" :index="index" :insights="parentInsights || undefined">
-    <template #status-indicators="{ insights: activeInsights }">
-      <DependenciesStatusIndicators
-        :name="item.name"
-        :flags="item.flags"
-        v-bind="activeInsights ? { insights: activeInsights } : {}"
-      />
+  <PackageCard v-else :result="searchResult" :index="index" :insights="insights || undefined">
+    <template #status-indicators="{ insights }">
+      <DependenciesStatusIndicators :name="item.name" :flags="item.flags" v-bind="{ insights }" />
     </template>
   </PackageCard>
 </template>

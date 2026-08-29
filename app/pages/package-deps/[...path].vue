@@ -3,7 +3,7 @@ import type { RouteLocationRaw } from 'vue-router'
 import { setResponseHeader } from 'h3'
 import type { DepSectionId, DependencySortOption } from '#shared/types/package-dependencies'
 import type { ViewMode } from '#shared/types/preferences'
-import { encodePackageName } from '#shared/utils/npm'
+import { assertValidPackageName, encodePackageName } from '#shared/utils/npm'
 import {
   getDefaultDependencySection,
   getPackageDependencySections,
@@ -12,15 +12,8 @@ import {
 
 definePageMeta({
   name: 'dependencies',
-  path: '/package-deps/:org?/:packageName/v/:version',
-  alias: [
-    '/package/dependencies/:org?/:packageName/v/:version',
-    '/package/dependencies/:packageName/v/:version',
-    '/package-deps/:org?/:packageName',
-    '/package-deps/:packageName',
-    '/package/dependencies/:org?/:packageName',
-    '/package/dependencies/:packageName',
-  ],
+  path: '/package-deps/:path+',
+  alias: ['/package/dependencies/:path+', '/dependencies/:path+'],
   scrollMargin: 160,
 })
 
@@ -29,11 +22,16 @@ const router = useRouter()
 
 const { packageName, requestedVersion } = usePackageRoute()
 
+if (import.meta.server && packageName.value) {
+  assertValidPackageName(packageName.value)
+}
+
 const { data: resolvedVersion } = await useResolvedVersion(packageName, requestedVersion)
 
-const version = computed(() => resolvedVersion.value ?? requestedVersion.value)
-
-const { data: pkg, status: pkgStatus } = usePackage(packageName, version)
+const { data: pkg, status: pkgStatus } = usePackage(
+  packageName,
+  () => resolvedVersion.value ?? requestedVersion.value,
+)
 const { versions: commandPaletteVersions, ensureLoaded: ensureCommandPaletteVersionsLoaded } =
   useCommandPalettePackageVersions(packageName)
 
@@ -52,8 +50,8 @@ if (import.meta.server && !requestedVersion.value && packageName.value) {
 
 watch(
   [requestedVersion, latestVersionTag, packageName],
-  ([version, latest, name]) => {
-    if (!version && latest && name) {
+  ([reqVer, latest, name]) => {
+    if (!reqVer && latest && name) {
       router.replace(dependenciesRoute(name, latest))
     }
   },
@@ -113,14 +111,12 @@ watch(
 )
 
 function getSectionLink(section: DepSectionId): RouteLocationRaw {
-  return dependenciesRoute(packageName.value, version.value, section)
+  return dependenciesRoute(packageName.value, resolvedVersion.value, section)
 }
 
 const versionUrlPattern = computed(() => {
   const section = activeSection.value
-  const base = route.params.org
-    ? `/package-deps/${route.params.org}/${route.params.packageName}/v/{version}`
-    : `/package-deps/${route.params.packageName}/v/{version}`
+  const base = `/package-deps/${pkg.value?.name || packageName.value}/v/{version}`
   return section ? `${base}?section=${section}` : base
 })
 
@@ -134,7 +130,7 @@ const commandPalettePackageContext = computed(() => {
 
   return {
     packageName: packageData.name,
-    resolvedVersion: version.value ?? packageData['dist-tags']?.latest ?? null,
+    resolvedVersion: resolvedVersion.value ?? packageData['dist-tags']?.latest ?? null,
     latestVersion: packageData['dist-tags']?.latest ?? null,
     versions: commandPaletteVersions.value ?? Object.keys(packageData.versions ?? {}),
   }
@@ -146,8 +142,7 @@ useCommandPalettePackageContext(commandPalettePackageContext, {
 useCommandPalettePackageCommands(commandPalettePackageContext)
 useCommandPaletteVersionCommands(commandPalettePackageContext, depsVersionRoute)
 
-const dependencyInsights = usePackageDependencyInsights(packageName, version, allDependencies)
-provide(packageDependencyInsightsKey, dependencyInsights)
+const insights = usePackageDependencyInsights(packageName, resolvedVersion, allDependencies)
 
 const filter = ref('')
 const sort = ref<DependencySortOption>('name-asc')
@@ -212,7 +207,9 @@ const latestVersion = computed(() => {
 
 useSeoMeta({
   title: () =>
-    pkg.value ? `${pkg.value.name}@${version.value} dependencies - npmx` : 'Dependencies - npmx',
+    pkg.value && resolvedVersion.value
+      ? `${pkg.value.name}@${resolvedVersion.value} dependencies - npmx`
+      : 'Dependencies - npmx',
 })
 
 const showSkeleton = shallowRef(false)
@@ -234,7 +231,7 @@ const showSkeleton = shallowRef(false)
   <main class="flex-1 pb-8">
     <PackageHeader
       :pkg="pkg"
-      :resolved-version="version"
+      :resolved-version="resolvedVersion"
       :display-version="displayVersion"
       :latest-version="latestVersion"
       :version-url-pattern="versionUrlPattern"
@@ -278,6 +275,7 @@ const showSkeleton = shallowRef(false)
             :view-mode="viewMode"
             :show-skeleton="showSkeleton"
             :sort="sort"
+            :insights="insights"
             @update:sort="sort = $event"
           />
 
@@ -289,7 +287,12 @@ const showSkeleton = shallowRef(false)
 
       <PackageSidebar :class="$style.areaSidebar">
         <div class="flex flex-col gap-4 sm:gap-6 pt-4">
-          <DependenciesInsightsSummary :sections="sections" :show-skeleton="showSkeleton" />
+          <DependenciesInsightsSummary
+            :sections="sections"
+            :show-skeleton="showSkeleton"
+            :insights="insights"
+            :package-name="packageName"
+          />
         </div>
       </PackageSidebar>
     </article>

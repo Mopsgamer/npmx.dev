@@ -1564,6 +1564,7 @@ describe('component accessibility audits', () => {
       const insights = usePackageDependencyInsights('test-package', '1.0.0', { vue: '^3.0.0' })
       const component = await mountSuspended(DependenciesCard, {
         props: {
+          insights,
           item: {
             name: 'vue',
             range: '^3.0.0',
@@ -1571,11 +1572,6 @@ describe('component accessibility audits', () => {
             flags: [],
           },
           showSkeleton: false,
-        },
-        global: {
-          provide: {
-            [packageDependencyInsightsKey]: insights,
-          },
         },
       })
       const results = await runAxe(component)
@@ -1648,13 +1644,9 @@ describe('component accessibility audits', () => {
       const insights = usePackageDependencyInsights('test-package', '1.0.0', { vue: '^3.0.0' })
       const component = await mountSuspended(DependenciesTableRow, {
         props: {
+          insights,
           item: { name: 'vue', range: '^3.0.0', registry: 'npm', flags: [] },
           showSkeleton: false,
-        },
-        global: {
-          provide: {
-            [packageDependencyInsightsKey]: insights,
-          },
         },
         attachTo: (() => {
           const table = document.createElement('table')

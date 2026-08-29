@@ -1,3 +1,4 @@
+import type { PackumentVersion } from '#shared/types/npm-registry'
 import type {
   DepFlag,
   DepRegistry,
@@ -42,11 +43,16 @@ function entriesToItems(
 }
 
 export function getPackageDependencySections(
-  version: PackumentVersion | null | undefined,
+  version: Partial<PackumentVersion> | null | undefined,
 ): PackageDependencySection[] {
   if (!version) return []
 
-  const bundledSet = new Set(version.bundledDependencies ?? [])
+  const bundledDeps = Array.isArray(version.bundledDependencies)
+    ? version.bundledDependencies
+    : typeof version.bundledDependencies === 'boolean' && version.bundledDependencies
+      ? Object.keys(version.dependencies ?? {})
+      : []
+  const bundledSet = new Set(bundledDeps)
 
   const sections: PackageDependencySection[] = [
     {
@@ -71,7 +77,7 @@ export function getPackageDependencySections(
     },
   ]
 
-  const bundledOnly = (version.bundledDependencies ?? [])
+  const bundledOnly = bundledDeps
     .filter(name => {
       const inOther =
         name in (version.dependencies ?? {}) ||
@@ -97,7 +103,9 @@ export function getPackageDependencySections(
     .sort((a, b) => SECTION_ORDER.indexOf(a.id) - SECTION_ORDER.indexOf(b.id))
 }
 
-export function hasPackageDependencies(version: PackumentVersion | null | undefined): boolean {
+export function hasPackageDependencies(
+  version: Partial<PackumentVersion> | null | undefined,
+): boolean {
   return getPackageDependencySections(version).length > 0
 }
 

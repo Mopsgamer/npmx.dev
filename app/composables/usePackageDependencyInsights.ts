@@ -1,13 +1,10 @@
-import { getOutdatedTooltip, getVersionClass } from '~/utils/npm/outdated-dependencies'
-import { SEVERITY_TEXT_COLORS, getHighestSeverity } from '#shared/utils/severity'
+import { getVersionClass } from '~/utils/npm/outdated-dependencies'
 
 export function usePackageDependencyInsights(
   packageName: MaybeRefOrGetter<string>,
   version: MaybeRefOrGetter<string>,
   dependencies: MaybeRefOrGetter<Record<string, string> | undefined>,
 ) {
-  const { t } = useI18n()
-
   const {
     data: outdatedDeps,
     status: outdatedStatus,
@@ -24,7 +21,7 @@ export function usePackageDependencyInsights(
     data: vulnTree,
     status: vulnStatus,
     error: vulnError,
-  } = useDependencyAnalysis(packageName, version)
+  } = useDependencyAnalysis(packageName, toValue(version).replace(/^[\^~>=<]+/, ''))
 
   const hasError = computed(() => {
     return !!(vulnError.value || outdatedError.value || replacementError.value)
@@ -32,18 +29,16 @@ export function usePackageDependencyInsights(
 
   function getVulnerableDepInfo(depName: string) {
     if (!vulnTree.value?.vulnerablePackages) return null
-    return vulnTree.value.vulnerablePackages.find(p => p.name === depName && p.depth === 'direct')
+    return vulnTree.value.vulnerablePackages.find(
+      p => p.name === depName && (p.depth === 'root' || p.depth === 'direct'),
+    )
   }
 
   function getDeprecatedDepInfo(depName: string) {
     if (!vulnTree.value?.deprecatedPackages) return null
-    return vulnTree.value.deprecatedPackages.find(p => p.name === depName && p.depth === 'direct')
-  }
-
-  function getDepVersionTooltip(dep: string, depVersion: string) {
-    const outdated = outdatedDeps.value?.[dep]
-    if (outdated) return getOutdatedTooltip(outdated, t)
-    return depVersion
+    return vulnTree.value.deprecatedPackages.find(
+      p => p.name === depName && (p.depth === 'root' || p.depth === 'direct'),
+    )
   }
 
   function getDepVersionClass(dep: string) {
@@ -65,11 +60,8 @@ export function usePackageDependencyInsights(
     errors: { vulnError, outdatedError, replacementError },
     getVulnerableDepInfo,
     getDeprecatedDepInfo,
-    getDepVersionTooltip,
     getDepVersionClass,
   }
 }
 
 export type PackageDependencyInsights = ReturnType<typeof usePackageDependencyInsights>
-
-export { SEVERITY_TEXT_COLORS, getHighestSeverity }

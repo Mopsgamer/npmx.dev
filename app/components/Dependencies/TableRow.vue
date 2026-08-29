@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import type { PackageDependencyItem } from '#shared/types/package-dependencies'
-import { packageDependencyInsightsKey } from '~/composables/packageDependencyInsightsKey'
+import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 import type { ColumnConfig } from '#shared/types/preferences'
+import { getVersionClass, getOutdatedTooltip } from '~/utils/npm/outdated-dependencies'
 
 const props = defineProps<{
+  insights?: PackageDependencyInsights
   item: PackageDependencyItem
   showSkeleton: boolean
   index?: number
 }>()
 
 const item = computed(() => props.item)
-
-const parentInsights = inject(packageDependencyInsightsKey, null)
 
 // Fetch rich package metadata from API
 const { data: meta } = useLazyFetch<PackageMetaResponse>(
@@ -33,6 +33,17 @@ const dependencyColumns = computed<ColumnConfig[]>(() => [
   { id: 'downloads', visible: true, sortable: false },
   { id: 'updated', visible: true, sortable: false },
 ])
+
+const outdated = computed(() => {
+  if (!props.insights || !props.insights.outdatedDeps.value) return null
+  return props.insights.outdatedDeps.value[props.item.name] ?? null
+})
+
+const versionClass = computed(() => {
+  return getVersionClass(outdated.value)
+})
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -41,13 +52,38 @@ const dependencyColumns = computed<ColumnConfig[]>(() => [
     :result="searchResult"
     :columns="dependencyColumns"
     :index="index"
-    :insights="parentInsights || undefined"
+    :insights="insights || undefined"
   >
-    <template #status-indicators="{ insights: activeInsights }">
+    <template #version="{ version }">
+      <TooltipApp v-if="outdated" :text="getOutdatedTooltip(outdated, t)" position="top">
+        <div :class="versionClass" class="flex items-center gap-1.5 cursor-help">
+          <span
+            v-if="outdated.majorsBehind > 0"
+            class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0 text-red-700 dark:text-red-500"
+            aria-hidden="true"
+          />
+          <span
+            v-else-if="outdated.minorsBehind > 0"
+            class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0 text-orange-700 dark:text-orange-500"
+            aria-hidden="true"
+          />
+          <span
+            v-else-if="outdated.patchsBehind > 0"
+            class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0 text-yellow-700 dark:text-yellow-500"
+            aria-hidden="true"
+          />
+          <span>{{ version }}</span>
+        </div>
+      </TooltipApp>
+      <div v-else class="flex items-center gap-1.5">
+        <span>{{ version }}</span>
+      </div>
+    </template>
+    <template #status-indicators="{ insights }">
       <DependenciesStatusIndicators
         :name="item.name"
         :flags="item.flags"
-        v-bind="activeInsights ? { insights: activeInsights } : {}"
+        v-bind="{ insights }"
         class="relative z-10"
       />
     </template>
