@@ -144,9 +144,10 @@ useCommandPaletteVersionCommands(commandPalettePackageContext, depsVersionRoute)
 
 const insights = usePackageDependencyInsights(packageName, resolvedVersion, allDependencies)
 
+const { viewMode } = usePackageListPreferences()
+
 const filter = ref('')
 const sort = ref<DependencySortOption>('name-asc')
-const viewMode = ref<ViewMode>('cards')
 
 const dependencyMetas = ref<Record<string, PackageMetaResponse>>({})
 
