@@ -76,8 +76,8 @@ const hasExtra = computed(
   () =>
     !!insights.outdatedDeps.value[props.result.package.name] ||
     !!insights.replacementDeps.value[props.result.package.name] ||
-    !!vulnDepInfo ||
-    !!deprDepInfo,
+    !!vulnDepInfo.value ||
+    !!deprDepInfo.value,
 )
 
 const numberFormatter = useNumberFormatter()
