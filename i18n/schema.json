@@ -2053,9 +2053,6 @@
             "title": {
               "type": "string"
             },
-            "flags": {
-              "type": "string"
-            },
             "insights": {
               "type": "object",
               "properties": {
@@ -2068,28 +2065,16 @@
               },
               "additionalProperties": false
             },
-            "list_label": {
-              "type": "string"
-            },
-            "show_all": {
-              "type": "string"
-            },
             "optional": {
               "type": "string"
             },
             "bundled": {
               "type": "string"
             },
-            "version_required": {
-              "type": "string"
-            },
             "none": {
               "type": "string"
             },
             "no_matches": {
-              "type": "string"
-            },
-            "open_sections": {
               "type": "string"
             },
             "filter_placeholder": {
@@ -2108,39 +2093,6 @@
               "type": "string"
             },
             "has_replacement": {
-              "type": "string"
-            },
-            "vulnerabilities_count": {
-              "type": "string"
-            }
-          },
-          "additionalProperties": false
-        },
-        "peer_dependencies": {
-          "type": "object",
-          "properties": {
-            "title": {
-              "type": "string"
-            },
-            "list_label": {
-              "type": "string"
-            },
-            "show_all": {
-              "type": "string"
-            }
-          },
-          "additionalProperties": false
-        },
-        "optional_dependencies": {
-          "type": "object",
-          "properties": {
-            "title": {
-              "type": "string"
-            },
-            "list_label": {
-              "type": "string"
-            },
-            "show_all": {
               "type": "string"
             }
           },
@@ -2678,18 +2630,6 @@
               "type": "string"
             },
             "name_desc": {
-              "type": "string"
-            },
-            "downloads_week_desc": {
-              "type": "string"
-            },
-            "downloads_week_asc": {
-              "type": "string"
-            },
-            "updated_desc": {
-              "type": "string"
-            },
-            "updated_asc": {
               "type": "string"
             }
           },

@@ -7,9 +7,9 @@ const props = defineProps<{
   insights?: PackageDependencyInsights
 }>()
 
-const structuralMeta: Record<string, { icon: string; translationKey: string }> = {
-  optional: { icon: 'i-lucide:circle-dashed', translationKey: 'package.dependencies.optional' },
-  bundled: { icon: 'i-lucide:package', translationKey: 'package.dependencies.bundled' },
+const structuralMeta: Record<string, { icon: string; text: string }> = {
+  optional: { icon: 'i-lucide:circle-dashed', text: $t('package.dependencies.optional') },
+  bundled: { icon: 'i-lucide:package', text: $t('package.dependencies.bundled') },
 }
 
 const healthStatusAlert = computed(() => {
@@ -41,7 +41,7 @@ const healthStatusAlert = computed(() => {
     <template v-for="attribute in flags" :key="attribute">
       <TooltipApp
         v-if="structuralMeta[attribute]"
-        :text="$t(structuralMeta[attribute].translationKey)"
+        :text="structuralMeta[attribute].text"
         class="inline-flex shrink-0"
       >
         <span
