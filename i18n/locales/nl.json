@@ -674,7 +674,7 @@
       "outdated_major": "{count} hoofdversie achter (nieuwste: {latest}) | {count} hoofdversies achter (nieuwste: {latest})",
       "outdated_minor": "{count} subversie achter (nieuwste: {latest}) | {count} subversies achter (nieuwste: {latest})",
       "outdated_patch": "Patch update beschikbaar (nieuwste: {latest})",
-      "has_replacement": "Deze dedependency heeft voorgesteld alternatieven"
+      "has_replacement": "Deze dependency heeft voorgestelde alternatieven"
     },
     "maintainers": {
       "title": "Beheerders",
