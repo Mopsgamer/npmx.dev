@@ -24,7 +24,9 @@ const keyboardShortcuts = useKeyboardShortcuts()
 const isVisible = (el: HTMLElement) => el.getClientRects().length > 0
 
 function getFocusableElements(): HTMLElement[] {
-  return Array.from(document.querySelectorAll<HTMLElement>('[data-result-index]'))
+  return Array.from(
+    document.querySelectorAll<HTMLElement>('#header-search, #deps-filter, [data-result-index]'),
+  )
     .filter(isVisible)
     .sort((a, b) => {
       const aIdx = Number.parseInt(a.dataset.resultIndex ?? '0', 10)
@@ -36,11 +38,6 @@ function getFocusableElements(): HTMLElement[] {
 function focusElement(el: HTMLElement) {
   el.focus()
   el.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
-}
-
-function focusSearchInput() {
-  const searchInput = document.querySelector<HTMLInputElement>('input[type="search"], #deps-filter')
-  searchInput?.focus()
 }
 
 function handleResultsKeydown(e: KeyboardEvent) {
@@ -57,7 +54,11 @@ function handleResultsKeydown(e: KeyboardEvent) {
 
   if (e.key === 'ArrowDown') {
     e.preventDefault()
-    const nextIndex = currentIndex < 0 ? 0 : Math.min(currentIndex + 1, elements.length - 1)
+    const firstDataEntry = elements.findIndex(el => el.matches('[data-result-index]'))
+    const nextIndex =
+      firstDataEntry >= 0 && currentIndex < 0
+        ? firstDataEntry
+        : Math.min(currentIndex + 1, elements.length - 1)
     const el = elements[nextIndex]
     if (el) focusElement(el)
     return
@@ -65,11 +66,7 @@ function handleResultsKeydown(e: KeyboardEvent) {
 
   if (e.key === 'ArrowUp') {
     e.preventDefault()
-    if (currentIndex <= 0) {
-      focusSearchInput()
-      return
-    }
-    const nextIndex = currentIndex - 1
+    const nextIndex = Math.max(currentIndex - 1, 0)
     const el = elements[nextIndex]
     if (el) focusElement(el)
     return
