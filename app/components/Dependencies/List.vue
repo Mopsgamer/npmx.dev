@@ -73,9 +73,11 @@ function handleResultsKeydown(e: KeyboardEvent) {
   }
 
   if (e.key === 'Enter') {
+    // Browser handles Enter on focused links naturally, but handle for non-link elements
     if (document.activeElement && elements.includes(document.activeElement as HTMLElement)) {
       const el = document.activeElement as HTMLElement
-      if (el.tagName !== 'A') {
+      // Only prevent default and click if it's not already a link (links handle Enter natively)
+      if (el.tagName !== 'A' && el.matches('[data-result-index]')) {
         e.preventDefault()
         el.click()
       }
