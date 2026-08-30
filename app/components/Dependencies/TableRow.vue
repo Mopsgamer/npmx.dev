@@ -15,16 +15,18 @@ const item = computed(() => props.item)
 
 // Fetch rich package metadata from API
 const { data: meta } = useLazyFetch<PackageMetaResponse>(
-  () => `/api/registry/package-meta/${encodePackageName(props.item.name)}`,
+  () => `/api/registry/package-meta/${encodePackageName(item.value.name)}`,
   { server: false },
 )
 
 const searchResult = computed(() => {
   if (!meta.value) return null
   const result = metaToSearchResult(meta.value)
-  result.package.version = props.item.range
+  result.package.version = item.value.range
   return result
 })
+
+const packageUrl = computed(() => packageRoute(item.value.name))
 
 // Define the columns we want to show for dependencies
 const dependencyColumns = computed<ColumnConfig[]>(() => [
@@ -34,9 +36,9 @@ const dependencyColumns = computed<ColumnConfig[]>(() => [
   { id: 'updated', visible: true, sortable: false },
 ])
 
-const outdated = computed(() => props.insights?.outdatedDeps.value[props.item.name])
+const outdated = computed(() => props.insights?.outdatedDeps.value[item.value.name])
 
-const versionClass = computed(() => getVersionClass(props.item.name, props.insights))
+const versionClass = computed(() => getVersionClass(item.value.name, props.insights))
 
 const { t } = useI18n()
 </script>
@@ -73,22 +75,27 @@ const { t } = useI18n()
   <!-- Skeleton row -->
   <tr v-else class="border-b border-border">
     <td class="py-2 px-3">
-      <div class="flex items-center gap-2">
-        <span class="i-simple-icons:npm w-3.5 h-3.5 opacity-20 shrink-0" aria-hidden="true" />
-        <SkeletonBlock class="h-4 w-32" />
-      </div>
+      <NuxtLink
+        :to="packageUrl"
+        class="row-link font-mono text-sm transition-colors duration-200 inline-flex items-center gap-2 min-w-0"
+        :data-result-index="index"
+        dir="ltr"
+      >
+        <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+        <span class="truncate">{{ item.name }}</span>
+      </NuxtLink>
     </td>
-    <td class="py-2 px-3">
-      <SkeletonBlock class="h-4 w-12" />
+    <td class="py-2 px-3 font-mono text-xs text-fg-subtle">
+      <span dir="ltr">{{ item.range }}</span>
     </td>
-    <td class="py-2 px-3">
-      <SkeletonBlock class="h-4 w-48" />
+    <td class="py-2 px-3 text-sm text-fg-muted max-w-xs truncate">
+      <SkeletonBlock class="h-6 w-48" />
     </td>
-    <td class="py-2 px-3">
-      <SkeletonBlock class="h-4 w-16 ms-auto" />
+    <td class="py-2 px-3 font-mono text-xs text-fg-muted text-end tabular-nums">
+      <SkeletonBlock class="h-6 w-16 ms-auto" />
     </td>
-    <td class="py-2 px-3">
-      <SkeletonBlock class="h-4 w-20 ms-auto" />
+    <td class="py-2 px-3 font-mono text-end text-xs text-fg-muted">
+      <SkeletonBlock class="h-6 w-20 ms-auto" />
     </td>
   </tr>
 </template>
