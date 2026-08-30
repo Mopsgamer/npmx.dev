@@ -8,29 +8,33 @@ const props = defineProps<{
   insights?: PackageDependencyInsights
 }>()
 
-const structuralMeta: Record<string, { icon: string; text: string }> = {
+const structuralMeta = computed<Record<string, { icon: string; text: string }>>(() => ({
   optional: { icon: 'i-lucide:circle-dashed', text: $t('package.dependencies.optional') },
   bundled: { icon: 'i-lucide:package', text: $t('package.dependencies.bundled') },
-}
+}))
 
 const healthStatusAlert = computed(() => {
   if (!props.name || !props.insights) return null
 
   if (getVulnerableDepInfo(props.name, props.insights.vulnTree.value))
-    return { icon: 'i-lucide:shield-alert', cssClass: 'text-red-600', tooltipText: 'Vulnerable' }
+    return {
+      icon: 'i-lucide:shield-alert',
+      cssClass: 'text-red-600',
+      tooltipText: $t('package.dependencies.vulnerable'),
+    }
 
   if (getDeprecatedDepInfo(props.name, props.insights.vulnTree.value))
     return {
       icon: 'i-lucide:octagon-alert',
       cssClass: 'text-purple-700 dark:text-purple-500',
-      tooltipText: 'Deprecated',
+      tooltipText: $t('package.deprecated.label'),
     }
 
   if (props.insights.replacementDeps?.value?.[props.name])
     return {
       icon: 'i-lucide:lightbulb',
       cssClass: 'text-amber-700 dark:text-amber-500',
-      tooltipText: 'Replacement available',
+      tooltipText: $t('package.dependencies.has_replacement'),
     }
 
   return null

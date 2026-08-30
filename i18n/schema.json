@@ -2086,6 +2086,9 @@
             "filter_placeholder": {
               "type": "string"
             },
+            "vulnerable": {
+              "type": "string"
+            },
             "view_vulnerabilities": {
               "type": "string"
             },
