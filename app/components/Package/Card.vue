@@ -201,7 +201,7 @@ const numberFormatter = useNumberFormatter()
         <span
           v-if="insights.outdatedDeps.value[result.package.name]"
           class="flex items-center gap-1"
-          :class="getVersionClass(result.package.name, props.insights)"
+          :class="getVersionClass(result.package.name, insights)"
         >
           <span class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0" aria-hidden="true" />
           {{ getOutdatedTooltip(insights.outdatedDeps.value[result.package.name]!, $t) }}

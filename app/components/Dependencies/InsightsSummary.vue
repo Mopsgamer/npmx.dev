@@ -16,16 +16,6 @@ const stats = computed(() => {
 
   if (!props.insights) return { urgent, nonUrgent }
 
-  // Check the package itself for vulnerabilities (depth: 'root')
-  if (props.packageName) {
-    if (getVulnerableDepInfo(props.packageName, props.insights.vulnTree.value)) {
-      urgent.vulnerable++
-    }
-    if (getDeprecatedDepInfo(props.packageName, props.insights.vulnTree.value)) {
-      urgent.deprecated++
-    }
-  }
-
   for (const section of props.sections) {
     const isUrgent = ['dependencies', 'bundledDependencies'].includes(section.id)
     const target = isUrgent ? urgent : nonUrgent
