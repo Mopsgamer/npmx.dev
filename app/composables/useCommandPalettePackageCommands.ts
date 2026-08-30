@@ -91,7 +91,7 @@ export function useCommandPalettePackageCommands(
           group: 'package',
           label: t('package.links.dependencies'),
           keywords: [resolvedContext.packageName, t('package.links.dependencies')],
-          iconClass: 'i-lucide:boxes',
+          iconClass: 'i-lucide:network',
           active: route.name === 'dependencies',
           activeLabel: activeLabel(route.name === 'dependencies', t('command_palette.here')),
           to: dependenciesLink,
