@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { WindowVirtualizer } from 'virtua/vue'
+import {
+  usePackageDependencyInsights,
+  type PackageDependencyInsights,
+} from '~/composables/usePackageDependencyInsights'
 
 /** Number of items to render statically during SSR */
 const SSR_COUNT = 20
@@ -7,6 +11,8 @@ const SSR_COUNT = 20
 const props = defineProps<{
   /** List of search results to display */
   results: NpmSearchResult[]
+  /** Optional pre-computed insights to avoid duplicate fetching/processing */
+  insights?: PackageDependencyInsights
   /** Filters to apply to the results */
   filters?: StructuredFilters
   /** Heading level for package names */
@@ -138,6 +144,23 @@ watch(
   },
 )
 
+const insights = computed(
+  () =>
+    props.insights ||
+    usePackageDependencyInsights(
+      () => props.results[0]?.package.name ?? '',
+      () => props.results[0]?.package.version ?? '',
+      () => {
+        if (props.results.length === 0) return undefined
+        const deps: Record<string, string> = Object.create(null)
+        for (const item of props.results) {
+          deps[item.package.name] = item.package.version
+        }
+        return deps
+      },
+    ),
+)
+
 function scrollToIndex(index: number, smooth = true) {
   listRef.value?.scrollToIndex(index, { align: 'center', smooth })
 }
@@ -157,6 +180,7 @@ defineExpose({
         :columns="columns"
         v-model:sort-option="sortOption"
         :is-loading="isLoading"
+        :insights="insights"
         @click-keyword="emit('clickKeyword', $event)"
       />
     </template>
@@ -193,6 +217,7 @@ defineExpose({
                     : {}
                 "
                 :filters="filters"
+                :insights="insights"
                 @click-keyword="emit('clickKeyword', $event)"
               />
             </div>
@@ -211,6 +236,7 @@ defineExpose({
                   :index="index"
                   :search-query="searchQuery"
                   :filters="filters"
+                  :insights="insights"
                   @click-keyword="emit('clickKeyword', $event)"
                 />
               </div>
@@ -252,6 +278,7 @@ defineExpose({
                 : {}
             "
             :filters="filters"
+            :insights="insights"
             @click-keyword="emit('clickKeyword', $event)"
           />
         </li>
