@@ -2061,6 +2061,12 @@
                 },
                 "subtitle": {
                   "type": "string"
+                },
+                "tooltip_urgent": {
+                  "type": "string"
+                },
+                "tooltip_other": {
+                  "type": "string"
                 }
               },
               "additionalProperties": false

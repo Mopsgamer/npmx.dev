@@ -2,7 +2,6 @@
 import type { PackageDependencySection } from '#shared/types/package-dependencies'
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 import { getVulnerableDepInfo, getDeprecatedDepInfo } from '~/utils/npm/problematic-dependencies'
-import { useRoute } from 'vue-router'
 
 const props = defineProps<{
   insights?: PackageDependencyInsights
@@ -48,9 +47,6 @@ const stats = computed(() => {
   return { urgent, nonUrgent }
 })
 
-const route = useRoute()
-const isStatsTab = computed(() => route.name === 'stats')
-
 const vulnLoading = computed(
   () =>
     !props.insights ||
@@ -70,237 +66,128 @@ const replacementLoading = computed(
     props.insights.replacementStatus?.value === 'pending',
 )
 
-function shouldShowRow(type: keyof typeof stats.value.urgent) {
-  if (isStatsTab.value) return true
-  return stats.value.urgent[type] > 0 || stats.value.nonUrgent[type] > 0
+interface InsightMetric {
+  id: string
+  label: string
+  icon: string
+  iconColor: string
+  loading: boolean
+  urgentCount: number
+  nonUrgentCount: number
 }
+
+const metrics = computed<InsightMetric[]>(() => [
+  {
+    id: 'major',
+    label: 'Major behind',
+    icon: 'i-lucide:arrow-up',
+    iconColor: 'text-red-700 dark:text-red-500',
+    loading: outdatedLoading.value,
+    urgentCount: stats.value.urgent.major,
+    nonUrgentCount: stats.value.nonUrgent.major,
+  },
+  {
+    id: 'minor',
+    label: 'Minor behind',
+    icon: 'i-lucide:arrow-up',
+    iconColor: 'text-orange-700 dark:text-orange-500',
+    loading: outdatedLoading.value,
+    urgentCount: stats.value.urgent.minor,
+    nonUrgentCount: stats.value.nonUrgent.minor,
+  },
+  {
+    id: 'patch',
+    label: 'Patch behind',
+    icon: 'i-lucide:arrow-up',
+    iconColor: 'text-yellow-700 dark:text-yellow-500',
+    loading: outdatedLoading.value,
+    urgentCount: stats.value.urgent.patch,
+    nonUrgentCount: stats.value.nonUrgent.patch,
+  },
+  {
+    id: 'vulnerable',
+    label: 'Vulnerable',
+    icon: 'i-lucide:shield-alert',
+    iconColor: 'text-red-600',
+    loading: vulnLoading.value,
+    urgentCount: stats.value.urgent.vulnerable,
+    nonUrgentCount: stats.value.nonUrgent.vulnerable,
+  },
+  {
+    id: 'deprecated',
+    label: 'Deprecated',
+    icon: 'i-lucide:octagon-alert',
+    iconColor: 'text-purple-700 dark:text-purple-500',
+    loading: vulnLoading.value,
+    urgentCount: stats.value.urgent.deprecated,
+    nonUrgentCount: stats.value.nonUrgent.deprecated,
+  },
+  {
+    id: 'replacement',
+    label: 'Replacements available',
+    icon: 'i-lucide:lightbulb',
+    iconColor: 'text-amber-700 dark:text-amber-500',
+    loading: replacementLoading.value,
+    urgentCount: stats.value.urgent.replacement,
+    nonUrgentCount: stats.value.nonUrgent.replacement,
+  },
+])
 </script>
 
 <template>
-  <CollapsibleSection
-    id="deps-insights"
-    :title="$t('package.dependencies.insights.title')"
-    :subtitle="$t('package.dependencies.insights.subtitle')"
-  >
-    <div v-if="showSkeleton" class="flex flex-col gap-4 py-2">
-      <SkeletonBlock class="h-4 w-full" />
-      <SkeletonBlock class="h-4 w-full" />
-      <SkeletonBlock class="h-4 w-full" />
-      <SkeletonBlock class="h-4 w-full" />
+  <section class="w-full py-4">
+    <div class="flex items-center gap-1.5 mb-2">
+      <h2 class="text-fg-muted uppercase text-xs font-semibold tracking-wider">
+        {{ $t('package.dependencies.insights.title') }}
+      </h2>
+      <TooltipApp
+        :text="`${$t('package.dependencies.insights.subtitle')} — ${$t('package.dependencies.insights.tooltip_urgent')} / ${$t('package.dependencies.insights.tooltip_other')}`"
+        position="bottom"
+      >
+        <button
+          type="button"
+          class="inline-flex items-center cursor-help text-fg-subtle hover:text-fg p-0.5 rounded focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-fg"
+          :aria-label="$t('package.dependencies.insights.title')"
+        >
+          <span class="i-lucide:info w-3.5 h-3.5" aria-hidden="true" />
+        </button>
+      </TooltipApp>
     </div>
 
-    <div v-else class="overflow-x-auto">
-      <div class="flex flex-col gap-3 font-mono text-xs min-w-max">
-        <div
-          class="flex items-center justify-end text-3xs uppercase tracking-wider text-fg-subtle border-b border-border/40 pb-1"
-        >
-          <div class="w-16 text-end flex justify-end">
-            <TooltipApp text="Production and bundled dependencies" position="bottom">
-              <span class="font-semibold flex items-center gap-1 cursor-help">
-                Urgent
-                <span class="i-lucide:info w-3 h-3 text-fg-subtle" aria-hidden="true" />
+    <dl
+      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-3 gap-x-4 border-y-border border-y py-3"
+    >
+      <div v-for="item in metrics" :key="item.id" class="py-1">
+        <dt class="text-xs text-fg-muted lowercase flex items-center gap-1.5 truncate">
+          <span :class="[item.icon, item.iconColor, 'w-3.5 h-3.5 shrink-0']" aria-hidden="true" />
+          <span class="truncate">{{ item.label }}</span>
+        </dt>
+        <dd class="text-sm font-mono mt-1">
+          <template v-if="showSkeleton || item.loading">
+            <span
+              aria-hidden="true"
+              class="block w-4 h-4 border-2 border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
+            />
+          </template>
+          <template v-else>
+            <div class="flex items-baseline gap-1">
+              <span
+                class="tabular-nums"
+                :class="item.urgentCount > 0 ? 'text-fg font-medium' : 'text-fg-subtle'"
+              >
+                {{ item.urgentCount }}
               </span>
-            </TooltipApp>
-          </div>
-          <div class="w-16 text-end flex justify-end">
-            <TooltipApp text="Dev, peer, and optional dependencies" position="bottom">
-              <span class="flex items-center gap-1 cursor-help">
-                Other
-                <span class="i-lucide:info w-3 h-3 text-fg-subtle" aria-hidden="true" />
+              <span class="text-fg-subtle px-0.5">/</span>
+              <span
+                class="tabular-nums"
+                :class="item.nonUrgentCount > 0 ? 'text-fg-muted' : 'text-fg-subtle'"
+              >
+                {{ item.nonUrgentCount }}
               </span>
-            </TooltipApp>
-          </div>
-        </div>
-
-        <!-- Outdated Major -->
-        <div
-          v-if="shouldShowRow('major')"
-          class="flex items-center justify-between border-b border-border/40 pb-2"
-        >
-          <span class="flex items-center gap-2 text-fg-subtle whitespace-nowrap">
-            <span
-              class="i-lucide:arrow-up w-3.5 h-3.5 text-red-700 dark:text-red-500 shrink-0"
-              aria-hidden="true"
-            />
-            <span class="whitespace-nowrap">Major behind</span>
-          </span>
-          <div class="flex items-center gap-0">
-            <span class="w-16 text-end font-bold text-fg tabular-nums">
-              <span
-                v-if="outdatedLoading"
-                class="inline-block w-3 h-3 border border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
-                aria-hidden="true"
-              />
-              <template v-else>{{ stats.urgent.major }}</template>
-            </span>
-            <span class="w-16 text-end text-fg-muted tabular-nums">
-              <span
-                v-if="outdatedLoading"
-                class="inline-block w-3 h-3 border border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
-                aria-hidden="true"
-              />
-              <template v-else>{{ stats.nonUrgent.major }}</template>
-            </span>
-          </div>
-        </div>
-
-        <!-- Outdated Minor -->
-        <div
-          v-if="shouldShowRow('minor')"
-          class="flex items-center justify-between border-b border-border/40 pb-2"
-        >
-          <span class="flex items-center gap-2 text-fg-subtle whitespace-nowrap">
-            <span
-              class="i-lucide:arrow-up w-3.5 h-3.5 text-orange-700 dark:text-orange-500 shrink-0"
-              aria-hidden="true"
-            />
-            <span class="whitespace-nowrap">Minor behind</span>
-          </span>
-          <div class="flex items-center gap-0">
-            <span class="w-16 text-end font-bold text-fg tabular-nums">
-              <span
-                v-if="outdatedLoading"
-                class="inline-block w-3 h-3 border border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
-                aria-hidden="true"
-              />
-              <template v-else>{{ stats.urgent.minor }}</template>
-            </span>
-            <span class="w-16 text-end text-fg-muted tabular-nums">
-              <span
-                v-if="outdatedLoading"
-                class="inline-block w-3 h-3 border border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
-                aria-hidden="true"
-              />
-              <template v-else>{{ stats.nonUrgent.minor }}</template>
-            </span>
-          </div>
-        </div>
-
-        <!-- Outdated Patch -->
-        <div
-          v-if="shouldShowRow('patch')"
-          class="flex items-center justify-between border-b border-border/40 pb-2"
-        >
-          <span class="flex items-center gap-2 text-fg-subtle whitespace-nowrap">
-            <span
-              class="i-lucide:arrow-up w-3.5 h-3.5 text-yellow-700 dark:text-yellow-500 shrink-0"
-              aria-hidden="true"
-            />
-            <span class="whitespace-nowrap">Patch behind</span>
-          </span>
-          <div class="flex items-center gap-0">
-            <span class="w-16 text-end font-bold text-fg tabular-nums">
-              <span
-                v-if="outdatedLoading"
-                class="inline-block w-3 h-3 border border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
-                aria-hidden="true"
-              />
-              <template v-else>{{ stats.urgent.patch }}</template>
-            </span>
-            <span class="w-16 text-end text-fg-muted tabular-nums">
-              <span
-                v-if="outdatedLoading"
-                class="inline-block w-3 h-3 border border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
-                aria-hidden="true"
-              />
-              <template v-else>{{ stats.nonUrgent.patch }}</template>
-            </span>
-          </div>
-        </div>
-
-        <!-- Vulnerable -->
-        <div
-          v-if="shouldShowRow('vulnerable')"
-          class="flex items-center justify-between border-b border-border/40 pb-2"
-        >
-          <span class="flex items-center gap-2 text-fg-subtle whitespace-nowrap">
-            <span
-              class="i-lucide:shield-alert w-3.5 h-3.5 text-red-600 shrink-0"
-              aria-hidden="true"
-            />
-            <span class="whitespace-nowrap">Vulnerable</span>
-          </span>
-          <div class="flex items-center gap-0">
-            <span class="w-16 text-end font-bold text-fg tabular-nums">
-              <span
-                v-if="vulnLoading"
-                class="inline-block w-3 h-3 border border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
-                aria-hidden="true"
-              />
-              <template v-else>{{ stats.urgent.vulnerable }}</template>
-            </span>
-            <span class="w-16 text-end text-fg-muted tabular-nums">
-              <span
-                v-if="vulnLoading"
-                class="inline-block w-3 h-3 border border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
-                aria-hidden="true"
-              />
-              <template v-else>{{ stats.nonUrgent.vulnerable }}</template>
-            </span>
-          </div>
-        </div>
-
-        <!-- Deprecated -->
-        <div
-          v-if="shouldShowRow('deprecated')"
-          class="flex items-center justify-between border-b border-border/40 pb-2"
-        >
-          <span class="flex items-center gap-2 text-fg-subtle whitespace-nowrap">
-            <span
-              class="i-lucide:octagon-alert w-3.5 h-3.5 text-purple-700 dark:text-purple-500 shrink-0"
-              aria-hidden="true"
-            />
-            <span class="whitespace-nowrap">Deprecated</span>
-          </span>
-          <div class="flex items-center gap-0">
-            <span class="w-16 text-end font-bold text-fg tabular-nums">
-              <span
-                v-if="vulnLoading"
-                class="inline-block w-3 h-3 border border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
-                aria-hidden="true"
-              />
-              <template v-else>{{ stats.urgent.deprecated }}</template>
-            </span>
-            <span class="w-16 text-end text-fg-muted tabular-nums">
-              <span
-                v-if="vulnLoading"
-                class="inline-block w-3 h-3 border border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
-                aria-hidden="true"
-              />
-              <template v-else>{{ stats.nonUrgent.deprecated }}</template>
-            </span>
-          </div>
-        </div>
-
-        <!-- Replacements -->
-        <div v-if="shouldShowRow('replacement')" class="flex items-center justify-between pb-1">
-          <span class="flex items-center gap-2 text-fg-subtle whitespace-nowrap">
-            <span
-              class="i-lucide:lightbulb w-3.5 h-3.5 text-amber-700 dark:text-amber-500 shrink-0"
-              aria-hidden="true"
-            />
-            <span class="whitespace-nowrap">Replacements available</span>
-          </span>
-          <div class="flex items-center gap-0">
-            <span class="w-16 text-end font-bold text-fg tabular-nums">
-              <span
-                v-if="replacementLoading"
-                class="inline-block w-3 h-3 border border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
-                aria-hidden="true"
-              />
-              <template v-else>{{ stats.urgent.replacement }}</template>
-            </span>
-            <span class="w-16 text-end text-fg-muted tabular-nums">
-              <span
-                v-if="replacementLoading"
-                class="inline-block w-3 h-3 border border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
-                aria-hidden="true"
-              />
-              <template v-else>{{ stats.nonUrgent.replacement }}</template>
-            </span>
-          </div>
-        </div>
+            </div>
+          </template>
+        </dd>
       </div>
-    </div>
-  </CollapsibleSection>
+    </dl>
+  </section>
 </template>

@@ -256,89 +256,42 @@ const showSkeleton = shallowRef(false)
     <article
       v-else-if="activeSection && currentSection"
       id="package-article"
-      :class="$style.packagePage"
       class="container w-full"
       dir="ltr"
     >
-      <div :class="$style.areaContent">
-        <div class="py-4">
-          <DependenciesToolbar
-            v-model:filter="filter"
-            v-model:sort="sort"
-            v-model:view-mode="viewMode"
-            :filtered-count="filteredItems.length"
-            :total-count="currentSection?.items?.length ?? 0"
-            :sections="sections"
-            :active-section="activeSection || undefined"
-            @update:active-section="router.push(getSectionLink($event as DepSectionId))"
-          />
+      <DependenciesInsightsSummary
+        :sections="sections"
+        :show-skeleton="showSkeleton"
+        :insights="insights"
+        :package-name="packageName"
+      />
 
-          <DependenciesList
-            v-if="filteredItems.length > 0"
-            :items="filteredItems"
-            :view-mode="viewMode"
-            :show-skeleton="showSkeleton"
-            :sort="sort"
-            :insights="insights"
-            @update:sort="sort = $event"
-          />
+      <div class="py-4">
+        <DependenciesToolbar
+          v-model:filter="filter"
+          v-model:sort="sort"
+          v-model:view-mode="viewMode"
+          :filtered-count="filteredItems.length"
+          :total-count="currentSection?.items?.length ?? 0"
+          :sections="sections"
+          :active-section="activeSection || undefined"
+          @update:active-section="router.push(getSectionLink($event as DepSectionId))"
+        />
 
-          <p v-else class="py-12 text-center text-fg-subtle font-mono text-sm">
-            {{ $t('package.dependencies.no_matches') }}
-          </p>
-        </div>
+        <DependenciesList
+          v-if="filteredItems.length > 0"
+          :items="filteredItems"
+          :view-mode="viewMode"
+          :show-skeleton="showSkeleton"
+          :sort="sort"
+          :insights="insights"
+          @update:sort="sort = $event"
+        />
+
+        <p v-else class="py-12 text-center text-fg-subtle font-mono text-sm">
+          {{ $t('package.dependencies.no_matches') }}
+        </p>
       </div>
-
-      <PackageSidebar :class="$style.areaSidebar">
-        <div class="flex flex-col gap-4 sm:gap-6 pt-4">
-          <DependenciesInsightsSummary
-            :sections="sections"
-            :show-skeleton="showSkeleton"
-            :insights="insights"
-            :package-name="packageName"
-          />
-        </div>
-      </PackageSidebar>
     </article>
   </main>
 </template>
-
-<style module>
-.packagePage {
-  display: grid;
-  gap: 2rem;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-
-  /* Mobile: single column, sidebar (navigation) above content */
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-areas:
-    'sidebar'
-    'content';
-}
-
-/* Tablet/medium: side by side */
-@media (min-width: 1024px) {
-  .packagePage {
-    grid-template-columns: 2fr 1fr;
-    grid-template-areas: 'content sidebar';
-  }
-}
-
-/* Desktop: floating sidebar */
-@media (min-width: 1280px) {
-  .packagePage {
-    grid-template-columns: 1fr 20rem;
-    grid-template-areas: 'content sidebar';
-  }
-}
-
-.areaContent {
-  grid-area: content;
-  min-width: 0;
-}
-
-.areaSidebar {
-  grid-area: sidebar;
-}
-</style>

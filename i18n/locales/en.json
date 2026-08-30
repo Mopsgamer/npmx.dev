@@ -685,7 +685,9 @@
       "title": "Dependency ({count}) | Dependencies ({count})",
       "insights": {
         "title": "Insights",
-        "subtitle": "Across all dependencies"
+        "subtitle": "Across all direct dependencies",
+        "tooltip_urgent": "Urgent (prod & bundled)",
+        "tooltip_other": "Other (dev, peer & optional)"
       },
       "optional": "optional",
       "bundled": "bundled",

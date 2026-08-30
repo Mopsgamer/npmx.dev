@@ -133,8 +133,10 @@ useSeoMeta({
       page="stats"
     />
 
-    <section class="container w-full py-8">
-      <h2 class="text-fg-muted mb-2 uppercase">{{ $t('package.stats.main_information') }}</h2>
+    <section class="container w-full py-4">
+      <h2 class="text-fg-muted mb-2 uppercase text-xs font-semibold tracking-wider">
+        {{ $t('package.stats.main_information') }}
+      </h2>
       <dl
         class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-y-2 gap-x-4 border-y-border border-y py-2"
       >
@@ -155,7 +157,15 @@ useSeoMeta({
           </dd>
         </div>
       </dl>
+
+      <DependenciesInsightsSummary
+        :insights="insights"
+        :sections="sections"
+        :show-skeleton="pkgStatus === 'pending' || pkgStatus === 'idle'"
+        :package-name="packageName"
+      />
     </section>
+
     <div class="container w-full flex max-lg:flex-col gap-8 pb-16">
       <div class="flex-1">
         <section id="trends">
@@ -179,12 +189,6 @@ useSeoMeta({
       </div>
       <PackageSidebar class="w-80">
         <div class="flex flex-col gap-4 sm:gap-6 lg:pt-4">
-          <DependenciesInsightsSummary
-            :insights="insights"
-            :sections="sections"
-            :show-skeleton="pkgStatus === 'pending' || pkgStatus === 'idle'"
-            :package-name="packageName"
-          />
           <PackageMaintainers :package-name="packageName" :maintainers="pkg?.maintainers" />
           <PackageVersions
             v-if="pkg?.versions && Object.keys(pkg.versions).length > 0"
