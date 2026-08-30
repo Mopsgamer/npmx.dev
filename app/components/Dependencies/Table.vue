@@ -3,6 +3,8 @@ import type {
   DependencySortOption,
   PackageDependencyItem,
 } from '#shared/types/package-dependencies'
+import type { ColumnConfig, ColumnId } from '#shared/types/preferences'
+import { DEFAULT_COLUMNS } from '#shared/types/preferences'
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 
 const props = defineProps<{
@@ -10,6 +12,7 @@ const props = defineProps<{
   sort: DependencySortOption
   showSkeleton: boolean
   insights?: PackageDependencyInsights
+  columns?: ColumnConfig[]
 }>()
 
 const emit = defineEmits<{
@@ -23,6 +26,29 @@ function toggleNameSort() {
 const nameSortDirection = computed(() =>
   props.sort.startsWith('name') ? (props.sort === 'name-asc' ? 'asc' : 'desc') : null,
 )
+
+const activeColumns = computed(() => props.columns ?? DEFAULT_COLUMNS)
+
+function isColumnVisible(id: string): boolean {
+  return activeColumns.value.find(c => c.id === id)?.visible ?? false
+}
+
+// Map column IDs to i18n keys
+const columnLabels = computed(() => ({
+  name: $t('filters.columns.name'),
+  version: $t('filters.columns.version'),
+  description: $t('filters.columns.description'),
+  downloads: $t('filters.columns.downloads'),
+  updated: $t('filters.columns.published'),
+  maintainers: $t('filters.columns.maintainers'),
+  keywords: $t('filters.columns.keywords'),
+  security: $t('filters.columns.security'),
+  selection: $t('filters.columns.selection'),
+}))
+
+function getColumnLabel(id: ColumnId): string {
+  return columnLabels.value[id] ?? id
+}
 </script>
 
 <template>
@@ -46,7 +72,7 @@ const nameSortDirection = computed(() =>
             @keydown.space.prevent="toggleNameSort"
           >
             <span class="inline-flex items-center gap-1">
-              {{ $t('filters.columns.name') }}
+              {{ getColumnLabel('name') }}
               <span
                 v-if="nameSortDirection"
                 class="i-lucide:chevron-down w-3 h-3"
@@ -60,29 +86,61 @@ const nameSortDirection = computed(() =>
               />
             </span>
           </th>
+
           <th
+            v-if="isColumnVisible('version')"
             scope="col"
             class="py-3 px-3 text-xs text-start text-fg-muted font-mono font-medium uppercase tracking-wider whitespace-nowrap select-none"
           >
-            {{ $t('filters.columns.version') }}
+            {{ getColumnLabel('version') }}
           </th>
+
           <th
+            v-if="isColumnVisible('description')"
             scope="col"
             class="py-3 px-3 text-xs text-start text-fg-muted font-mono font-medium uppercase tracking-wider whitespace-nowrap select-none"
           >
-            {{ $t('filters.columns.description') }}
+            {{ getColumnLabel('description') }}
           </th>
+
           <th
+            v-if="isColumnVisible('downloads')"
             scope="col"
             class="py-3 px-3 text-xs text-end text-fg-muted font-mono font-medium uppercase tracking-wider whitespace-nowrap select-none"
           >
-            {{ $t('filters.columns.downloads') }}
+            {{ getColumnLabel('downloads') }}
           </th>
+
           <th
+            v-if="isColumnVisible('updated')"
             scope="col"
             class="py-3 px-3 text-xs text-end text-fg-muted font-mono font-medium uppercase tracking-wider whitespace-nowrap select-none"
           >
-            {{ $t('filters.columns.published') }}
+            {{ getColumnLabel('updated') }}
+          </th>
+
+          <th
+            v-if="isColumnVisible('maintainers')"
+            scope="col"
+            class="py-3 px-3 text-xs text-end text-fg-muted font-mono font-medium uppercase tracking-wider whitespace-nowrap select-none"
+          >
+            {{ getColumnLabel('maintainers') }}
+          </th>
+
+          <th
+            v-if="isColumnVisible('keywords')"
+            scope="col"
+            class="py-3 px-3 text-xs text-end text-fg-muted font-mono font-medium uppercase tracking-wider whitespace-nowrap select-none"
+          >
+            {{ getColumnLabel('keywords') }}
+          </th>
+
+          <th
+            v-if="isColumnVisible('security')"
+            scope="col"
+            class="py-3 px-3 text-xs text-end text-fg-muted font-mono font-medium uppercase tracking-wider whitespace-nowrap select-none"
+          >
+            {{ getColumnLabel('security') }}
           </th>
         </tr>
       </thead>
@@ -94,6 +152,7 @@ const nameSortDirection = computed(() =>
           :index="index"
           :show-skeleton="showSkeleton"
           :insights="insights"
+          :columns="activeColumns"
         />
       </tbody>
     </table>

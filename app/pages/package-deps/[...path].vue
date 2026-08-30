@@ -147,7 +147,7 @@ const insights = usePackageDependencyInsights(
   allDependencies,
 )
 
-const { viewMode } = usePackageListPreferences()
+const { viewMode, columns, toggleColumn, resetColumns } = usePackageListPreferences()
 
 const filter = ref('')
 const sort = ref<DependencySortOption>('name-asc')
@@ -287,17 +287,21 @@ const showSkeleton = shallowRef(false)
           v-model:filter="filter"
           v-model:sort="sort"
           v-model:view-mode="viewMode"
+          :columns="columns"
           :filtered-count="filteredItems.length"
           :total-count="currentSection?.items?.length ?? 0"
           :sections="sections"
           :active-section="activeSection || undefined"
           @update:active-section="router.push(getSectionLink($event as DepSectionId))"
+          @toggle-column="toggleColumn"
+          @reset-columns="resetColumns"
         />
 
         <DependenciesList
           v-if="filteredItems.length > 0"
           :items="filteredItems"
           :view-mode="viewMode"
+          :columns="columns"
           :show-skeleton="showSkeleton"
           :sort="sort"
           :insights="insights"

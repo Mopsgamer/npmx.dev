@@ -3,13 +3,14 @@ import type {
   DependencySortOption,
   PackageDependencyItem,
 } from '#shared/types/package-dependencies'
-import type { ViewMode } from '#shared/types/preferences'
+import type { ColumnConfig, ViewMode } from '#shared/types/preferences'
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 import { onKeyDown } from '@vueuse/core'
 
 defineProps<{
   items: PackageDependencyItem[]
   viewMode: ViewMode
+  columns?: ColumnConfig[]
   sort: DependencySortOption
   showSkeleton: boolean
   insights?: PackageDependencyInsights
@@ -93,6 +94,7 @@ onKeyDown(['ArrowDown', 'ArrowUp', 'Enter'], handleResultsKeydown)
     v-show="viewMode === 'table'"
     :items="items"
     :sort="sort"
+    :columns="columns"
     :show-skeleton="showSkeleton"
     :insights="insights"
     class="dependencies-list-element"

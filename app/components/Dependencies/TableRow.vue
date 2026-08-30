@@ -2,6 +2,7 @@
 import type { PackageDependencyItem } from '#shared/types/package-dependencies'
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 import type { ColumnConfig } from '#shared/types/preferences'
+import { DEFAULT_COLUMNS } from '#shared/types/preferences'
 import { getVersionClass, getOutdatedTooltip } from '~/utils/npm/problematic-dependencies'
 
 const props = defineProps<{
@@ -9,6 +10,7 @@ const props = defineProps<{
   item: PackageDependencyItem
   showSkeleton: boolean
   index?: number
+  columns?: ColumnConfig[]
 }>()
 
 const item = computed(() => props.item)
@@ -28,13 +30,7 @@ const searchResult = computed(() => {
 
 const packageUrl = computed(() => packageRoute(item.value.name))
 
-// Define the columns we want to show for dependencies
-const dependencyColumns = computed<ColumnConfig[]>(() => [
-  { id: 'version', visible: true, sortable: false },
-  { id: 'description', visible: true, sortable: false },
-  { id: 'downloads', visible: true, sortable: false },
-  { id: 'updated', visible: true, sortable: false },
-])
+const activeColumns = computed(() => props.columns ?? DEFAULT_COLUMNS)
 
 const outdated = computed(() => props.insights?.outdatedDeps.value[item.value.name])
 
@@ -47,7 +43,7 @@ const { t } = useI18n()
   <PackageTableRow
     v-if="searchResult && !showSkeleton"
     :result="searchResult"
-    :columns="dependencyColumns"
+    :columns="activeColumns"
     :index="index"
     :insights="insights || undefined"
   >
