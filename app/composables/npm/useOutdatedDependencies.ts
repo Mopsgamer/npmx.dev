@@ -62,13 +62,16 @@ export function useOutdatedDependencies(
   const outdated = shallowRef<Record<string, OutdatedDependencyInfo>>({})
   const status = ref<'idle' | 'pending' | 'success' | 'error'>('idle')
   const error = ref<Error | null>(null)
+  let currentEpoch = 0
 
-  async function fetchOutdatedInfo(deps: Record<string, string> | undefined) {
+  async function fetchOutdatedInfo(deps: Record<string, string> | undefined, epoch: number) {
+    if (epoch !== currentEpoch) return
     status.value = 'pending'
     error.value = null
 
     try {
       if (!deps || Object.keys(deps).length === 0) {
+        if (epoch !== currentEpoch) return
         outdated.value = {}
         status.value = 'success'
         return
@@ -79,6 +82,7 @@ export function useOutdatedDependencies(
       )
 
       if (semverEntries.length === 0) {
+        if (epoch !== currentEpoch) return
         outdated.value = {}
         status.value = 'success'
         return
@@ -95,6 +99,8 @@ export function useOutdatedDependencies(
       const batchResults = await Promise.allSettled(
         chunks.map(chunk => getVersionsBatch(chunk, { throw: false })),
       )
+
+      if (epoch !== currentEpoch) return
 
       let anyChunkFailed = false
       const allVersionData = batchResults.flatMap(result => {
@@ -124,6 +130,7 @@ export function useOutdatedDependencies(
         }
       }
 
+      if (epoch !== currentEpoch) return
       outdated.value = results
       // Keep partial results from successful chunks; only surface error if ALL chunks failed
       if (anyChunkFailed && Object.keys(results).length === 0) {
@@ -133,6 +140,7 @@ export function useOutdatedDependencies(
         status.value = 'success'
       }
     } catch (err) {
+      if (epoch !== currentEpoch) return
       error.value = err instanceof Error ? err : new Error(String(err))
       status.value = 'error'
     }
@@ -141,6 +149,8 @@ export function useOutdatedDependencies(
   watch(
     () => toValue(dependencies),
     deps => {
+      const epoch = ++currentEpoch
+
       // If the dependencies become undefined/empty and we aren't tracking anything,
       // it is cleaner to set it to idle until legitimate keys show up.
       if (!deps || Object.keys(deps).length === 0) {
@@ -149,7 +159,8 @@ export function useOutdatedDependencies(
         return
       }
 
-      fetchOutdatedInfo(deps).catch(err => {
+      fetchOutdatedInfo(deps, epoch).catch(err => {
+        if (epoch !== currentEpoch) return
         error.value = err instanceof Error ? err : new Error(String(err))
         status.value = 'error'
       })
