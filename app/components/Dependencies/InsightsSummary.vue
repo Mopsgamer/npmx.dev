@@ -69,7 +69,7 @@ interface InsightMetric {
 const metrics = computed<InsightMetric[]>(() => [
   {
     id: 'major',
-    label: 'Major behind',
+    label: $t('package.dependencies.insights.major_behind'),
     icon: 'i-lucide:arrow-up',
     iconColor: 'text-red-700 dark:text-red-500',
     loading: outdatedLoading.value,
@@ -78,7 +78,7 @@ const metrics = computed<InsightMetric[]>(() => [
   },
   {
     id: 'minor',
-    label: 'Minor behind',
+    label: $t('package.dependencies.insights.minor_behind'),
     icon: 'i-lucide:arrow-up',
     iconColor: 'text-orange-700 dark:text-orange-500',
     loading: outdatedLoading.value,
@@ -87,7 +87,7 @@ const metrics = computed<InsightMetric[]>(() => [
   },
   {
     id: 'patch',
-    label: 'Patch behind',
+    label: $t('package.dependencies.insights.patch_behind'),
     icon: 'i-lucide:arrow-up',
     iconColor: 'text-yellow-700 dark:text-yellow-500',
     loading: outdatedLoading.value,
@@ -96,7 +96,7 @@ const metrics = computed<InsightMetric[]>(() => [
   },
   {
     id: 'vulnerable',
-    label: 'Vulnerable',
+    label: $t('package.dependencies.insights.vulnerable'),
     icon: 'i-lucide:shield-alert',
     iconColor: 'text-red-600',
     loading: vulnLoading.value,
@@ -105,7 +105,7 @@ const metrics = computed<InsightMetric[]>(() => [
   },
   {
     id: 'deprecated',
-    label: 'Deprecated',
+    label: $t('package.dependencies.insights.deprecated'),
     icon: 'i-lucide:octagon-alert',
     iconColor: 'text-purple-700 dark:text-purple-500',
     loading: vulnLoading.value,
@@ -114,7 +114,7 @@ const metrics = computed<InsightMetric[]>(() => [
   },
   {
     id: 'replacement',
-    label: 'Replacements available',
+    label: $t('package.dependencies.insights.replacements_available'),
     icon: 'i-lucide:lightbulb',
     iconColor: 'text-amber-700 dark:text-amber-500',
     loading: replacementLoading.value,

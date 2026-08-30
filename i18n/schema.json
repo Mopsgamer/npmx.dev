@@ -2067,6 +2067,24 @@
                 },
                 "tooltip_other": {
                   "type": "string"
+                },
+                "major_behind": {
+                  "type": "string"
+                },
+                "minor_behind": {
+                  "type": "string"
+                },
+                "patch_behind": {
+                  "type": "string"
+                },
+                "vulnerable": {
+                  "type": "string"
+                },
+                "deprecated": {
+                  "type": "string"
+                },
+                "replacements_available": {
+                  "type": "string"
                 }
               },
               "additionalProperties": false

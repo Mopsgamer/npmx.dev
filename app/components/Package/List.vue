@@ -1,9 +1,6 @@
 <script setup lang="ts">
+import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 import { WindowVirtualizer } from 'virtua/vue'
-import {
-  usePackageDependencyInsights,
-  type PackageDependencyInsights,
-} from '~/composables/usePackageDependencyInsights'
 
 /** Number of items to render statically during SSR */
 const SSR_COUNT = 20
@@ -144,22 +141,12 @@ watch(
   },
 )
 
-const insights = computed(
-  () =>
-    props.insights ||
-    usePackageDependencyInsights(
-      () => props.results[0]?.package.name ?? '',
-      () => props.results[0]?.package.version ?? '',
-      () => {
-        if (props.results.length === 0) return undefined
-        const deps: Record<string, string> = Object.create(null)
-        for (const item of props.results) {
-          deps[item.package.name] = item.package.version
-        }
-        return deps
-      },
-    ),
-)
+/**
+ * Preserves the optional pre-computed `props.insights` override.
+ * When `props.insights` is undefined, child components (`PackageCard` and `PackageTableRow`)
+ * fall back to computing dependency insights scoped to their own result's package name and version.
+ */
+const insights = computed(() => props.insights)
 
 function scrollToIndex(index: number, smooth = true) {
   listRef.value?.scrollToIndex(index, { align: 'center', smooth })

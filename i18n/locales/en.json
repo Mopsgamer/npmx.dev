@@ -687,7 +687,13 @@
         "title": "Insights",
         "subtitle": "Across all direct dependencies",
         "tooltip_urgent": "Urgent (prod & bundled)",
-        "tooltip_other": "Other (dev, peer & optional)"
+        "tooltip_other": "Other (dev, peer & optional)",
+        "major_behind": "Major behind",
+        "minor_behind": "Minor behind",
+        "patch_behind": "Patch behind",
+        "vulnerable": "Vulnerable",
+        "deprecated": "Deprecated",
+        "replacements_available": "Replacements available"
       },
       "optional": "optional",
       "bundled": "bundled",
