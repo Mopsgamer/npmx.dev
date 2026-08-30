@@ -246,6 +246,22 @@ const showSkeleton = shallowRef(false)
       <div class="i-svg-spinners:ring-resize w-8 h-8 mx-auto text-fg-muted" />
     </div>
 
+    <div
+      v-else-if="pkgStatus === 'error'"
+      role="alert"
+      class="flex flex-col items-center py-20 text-center container w-full"
+    >
+      <h1 class="font-mono text-2xl font-medium mb-4">
+        {{ $t('package.not_found') }}
+      </h1>
+      <p class="text-fg-muted mb-8">
+        {{ $t('package.not_found_message') }}
+      </p>
+      <LinkBase variant="button-secondary" :to="{ name: 'index' }">{{
+        $t('common.go_back_home')
+      }}</LinkBase>
+    </div>
+
     <div v-else-if="sections.length === 0" class="container py-20 text-center">
       <p class="text-fg-muted mb-4">{{ $t('package.dependencies.none') }}</p>
       <LinkBase variant="button-secondary" :to="packageRoute(packageName, requestedVersion)">{{
