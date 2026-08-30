@@ -135,7 +135,7 @@ const metrics = computed<InsightMetric[]>(() => [
 </script>
 
 <template>
-  <section class="w-full py-4">
+  <section class="w-full py-4 mt-6">
     <div class="flex items-center gap-1.5 mb-2">
       <h2 class="text-fg-muted uppercase text-xs font-semibold tracking-wider">
         {{ $t('package.dependencies.insights.title') }}
@@ -159,8 +159,8 @@ const metrics = computed<InsightMetric[]>(() => [
     >
       <div v-for="item in metrics" :key="item.id" class="py-1">
         <dt class="text-xs text-fg-muted lowercase flex items-center gap-1.5 truncate">
-          <span :class="[item.icon, item.iconColor, 'w-3.5 h-3.5 shrink-0']" aria-hidden="true" />
           <span class="truncate">{{ item.label }}</span>
+          <span :class="[item.icon, item.iconColor, 'w-3.5 h-3.5 shrink-0']" aria-hidden="true" />
         </dt>
         <dd class="text-sm font-mono mt-1">
           <template v-if="showSkeleton || item.loading">
