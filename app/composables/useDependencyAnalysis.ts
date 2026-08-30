@@ -17,7 +17,7 @@ export function useDependencyAnalysis(
       return `/api/registry/vulnerabilities/${encodePackageName(pkg)}/v/${ver}`
     },
     {
-      key: `vuln:${toValue(packageName)}:${toValue(version)}`,
+      key: () => `vuln:${toValue(packageName)}:${toValue(version)}`,
       watch: [() => toValue(packageName), () => toValue(version)],
       server: false,
       lazy: true,
