@@ -136,7 +136,7 @@ const metrics = computed<InsightMetric[]>(() => [
       >
         <button
           type="button"
-          class="inline-flex items-center cursor-help text-fg-subtle hover:text-fg p-0.5 rounded focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-fg"
+          class="inline-flex items-center cursor-help text-fg-subtle hover:text-fg p-0.5 rounded"
           :aria-label="$t('package.dependencies.insights.title')"
         >
           <span class="i-lucide:info w-3.5 h-3.5" aria-hidden="true" />
