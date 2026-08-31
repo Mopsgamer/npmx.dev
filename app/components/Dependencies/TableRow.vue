@@ -95,14 +95,7 @@ const { t } = useI18n()
 
 <style scoped>
 .row-link {
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    cursor: pointer;
-  }
-
-  &:focus-visible::after {
+  &:focus-visible {
     outline: 2px solid var(--color-fg);
     outline-offset: -2px;
   }
