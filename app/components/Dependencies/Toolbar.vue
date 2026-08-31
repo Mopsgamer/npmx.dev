@@ -97,6 +97,9 @@ function toggleSection(id: string) {
 const sectionTriggerText = computed(() => {
   const total = props.sections?.length ?? 0
   const active = activeSectionsValue.value
+  if (total === 1) {
+    return getSectionLabel(props.sections![0]!.id)
+  }
   if (total > 0 && active.length === total) {
     return t('package.dependencies.all')
   }
