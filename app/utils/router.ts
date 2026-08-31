@@ -135,15 +135,22 @@ export function packageStatsRoute(
 export function dependenciesRoute(
   packageName: string,
   version?: string | null,
-  section?: DepSectionId,
+  sections?: DepSectionId | DepSectionId[],
 ): RouteLocationRaw {
   const { org, name } = splitPackageName(packageName)
   const nameSegments = org ? [org, name] : [name]
   const path = version ? [...nameSegments, 'v', version.replace(/\s+/g, '')] : nameSegments
 
+  let sectionsQuery: string | undefined
+  if (Array.isArray(sections)) {
+    sectionsQuery = sections.length > 0 ? sections.join(',') : undefined
+  } else if (sections) {
+    sectionsQuery = sections
+  }
+
   return {
     name: 'dependencies',
     params: { path: path as [string, ...string[]] },
-    query: section ? { section } : undefined,
+    query: sectionsQuery ? { sections: sectionsQuery } : undefined,
   }
 }

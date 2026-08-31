@@ -3,6 +3,8 @@ import type { RouteLocationRaw } from 'vue-router'
 import { setResponseHeader } from 'h3'
 import type { DepSectionId, DependencySortOption } from '#shared/types/package-dependencies'
 import { assertValidPackageName } from '#shared/utils/npm'
+import { normalizeSearchParam } from '#shared/utils/url'
+import { debounce } from 'perfect-debounce'
 import {
   getDefaultDependencySection,
   getPackageDependencySections,
@@ -15,6 +17,7 @@ definePageMeta({
   path: '/package-deps/:path+',
   alias: ['/package/dependencies/:path+', '/dependencies/:path+'],
   scrollMargin: 160,
+  preserveScrollOnQuery: true,
 })
 
 const route = useRoute('dependencies')
@@ -62,20 +65,52 @@ const displayVersion = computed(() => pkg.value?.requestedVersion ?? null)
 
 const sections = computed(() => getPackageDependencySections(displayVersion.value))
 
+const DEFAULT_SORT: DependencySortOption = 'name-asc'
+
+function parseSectionsFromQuery(queryValue: unknown): string[] {
+  if (!queryValue) return []
+  const rawList = Array.isArray(queryValue) ? queryValue : [queryValue]
+  const parsed: string[] = []
+  for (const item of rawList) {
+    if (typeof item === 'string') {
+      const parts = item.split(',')
+      for (const part of parts) {
+        const trimmed = part.trim()
+        if (isDepSectionId(trimmed) && !parsed.includes(trimmed)) {
+          parsed.push(trimmed)
+        }
+      }
+    }
+  }
+  return parsed
+}
+
+const filter = ref(normalizeSearchParam(route.query.q))
+const initialQuerySort = normalizeSearchParam(route.query.sort) as DependencySortOption
+const sort = ref<DependencySortOption>(
+  [
+    'name-asc',
+    'name-desc',
+    'downloads-week-asc',
+    'downloads-week-desc',
+    'updated-asc',
+    'updated-desc',
+  ].includes(initialQuerySort)
+    ? initialQuerySort
+    : DEFAULT_SORT,
+)
+
+const initialQuerySections = parseSectionsFromQuery(route.query.sections ?? route.query.section)
 const activeSections = ref<string[]>(
-  typeof route.query.section === 'string' && isDepSectionId(route.query.section)
-    ? [route.query.section]
-    : ['dependencies'],
+  initialQuerySections.length > 0 ? initialQuerySections : ['dependencies'],
 )
 
 watch(
   sections,
   s => {
-    if (s.length > 0 && activeSections.value.length === 0) {
-      const querySection = route.query.section
-      if (typeof querySection === 'string' && isDepSectionId(querySection)) {
-        activeSections.value = [querySection]
-      } else {
+    if (s.length > 0) {
+      const validActive = activeSections.value.filter(id => s.some(sec => sec.id === id))
+      if (validActive.length === 0) {
         const defaultSec = getDefaultDependencySection(s)
         activeSections.value = defaultSec ? [defaultSec] : s.map(sec => sec.id)
       }
@@ -83,6 +118,85 @@ watch(
   },
   { immediate: true },
 )
+
+const updateUrl = debounce(() => {
+  const newQ = filter.value.trim() || undefined
+  const newSort = sort.value !== DEFAULT_SORT ? sort.value : undefined
+
+  const defaultSec =
+    sections.value.length > 0 ? getDefaultDependencySection(sections.value) : 'dependencies'
+  const isDefaultSections =
+    activeSections.value.length === 1 && activeSections.value[0] === defaultSec
+  const newSections = isDefaultSections ? undefined : activeSections.value.join(',')
+
+  const currentQ = normalizeSearchParam(route.query.q) || undefined
+  const currentSort = normalizeSearchParam(route.query.sort) || undefined
+  const currentSections =
+    parseSectionsFromQuery(route.query.sections ?? route.query.section).join(',') || undefined
+
+  if (
+    currentQ !== newQ ||
+    currentSort !== newSort ||
+    currentSections !== newSections ||
+    route.query.section !== undefined
+  ) {
+    const query = { ...route.query }
+    delete query.section
+    if (newQ) query.q = newQ
+    else delete query.q
+
+    if (newSort) query.sort = newSort
+    else delete query.sort
+
+    if (newSections) query.sections = newSections
+    else delete query.sections
+
+    router.replace({ query })
+  }
+}, 300)
+
+watch([filter, sort, activeSections], () => {
+  updateUrl()
+})
+
+watch(
+  () => route.query,
+  newQuery => {
+    const qFromUrl = normalizeSearchParam(newQuery.q)
+    if (filter.value !== qFromUrl) {
+      filter.value = qFromUrl
+    }
+
+    const sortFromUrl = normalizeSearchParam(newQuery.sort) as DependencySortOption
+    const validSort = [
+      'name-asc',
+      'name-desc',
+      'downloads-week-asc',
+      'downloads-week-desc',
+      'updated-asc',
+      'updated-desc',
+    ].includes(sortFromUrl)
+      ? sortFromUrl
+      : DEFAULT_SORT
+    if (sort.value !== validSort) {
+      sort.value = validSort
+    }
+
+    const sectionsFromUrl = parseSectionsFromQuery(newQuery.sections ?? newQuery.section)
+    if (sectionsFromUrl.length > 0) {
+      const isSame =
+        sectionsFromUrl.length === activeSections.value.length &&
+        sectionsFromUrl.every((sec, i) => sec === activeSections.value[i])
+      if (!isSame) {
+        activeSections.value = sectionsFromUrl
+      }
+    }
+  },
+)
+
+onBeforeUnmount(() => {
+  updateUrl.cancel()
+})
 
 const currentSections = computed(() =>
   sections.value.filter(s => activeSections.value.includes(s.id)),
@@ -111,37 +225,14 @@ const allDependencies = computed<Record<string, string>>(() => {
   return record
 })
 
-watch(
-  [sections, () => route.query.section],
-  () => {
-    if (sections.value.length === 0) return
-    const querySection = route.query.section
-    const validQuery =
-      typeof querySection === 'string' &&
-      isDepSectionId(querySection) &&
-      sections.value.some(s => s.id === querySection)
-    if (!validQuery && activeSections.value[0]) {
-      router.replace({
-        ...route,
-        query: { ...route.query, section: activeSections.value[0] },
-      })
-    }
-  },
-  { immediate: true },
-)
-
 const versionUrlPattern = computed(() => {
-  const section = activeSections.value[0]
   const base = `/package-deps/${pkg.value?.name || packageName.value}/v/{version}`
-  return section ? `${base}?section=${section}` : base
+  const secs = activeSections.value.join(',')
+  return secs ? `${base}?sections=${secs}` : base
 })
 
 function depsVersionRoute(nextVersion: string): RouteLocationRaw {
-  return dependenciesRoute(
-    packageName.value,
-    nextVersion,
-    activeSections.value[0] as DepSectionId | undefined,
-  )
+  return dependenciesRoute(packageName.value, nextVersion, activeSections.value as DepSectionId[])
 }
 
 const commandPalettePackageContext = computed(() => {
@@ -170,9 +261,7 @@ const insights = usePackageDependencyInsights(
 
 const { viewMode, columns, toggleColumn, resetColumns } = usePackageListPreferences()
 
-const filter = ref('')
 const selectedInsights = ref<string[]>([])
-const sort = ref<DependencySortOption>('name-asc')
 
 const dependencyMetas = ref<Record<string, PackageMetaResponse>>({})
 
