@@ -4,6 +4,7 @@ import { getVulnerableDepInfo, getDeprecatedDepInfo } from '~/utils/npm/problema
 
 const props = defineProps<{
   name: string
+  packageName?: string
   flags?: string[]
   insights?: PackageDependencyInsights
 }>()
@@ -13,17 +14,19 @@ const structuralMeta = computed<Record<string, { icon: string; text: string }>>(
   bundled: { icon: 'i-lucide:package', text: $t('package.dependencies.bundled') },
 }))
 
+const realPackageName = computed(() => props.packageName || props.name)
+
 const healthStatusAlert = computed(() => {
   if (!props.name || !props.insights) return null
 
-  if (getVulnerableDepInfo(props.name, props.insights.vulnTree.value))
+  if (getVulnerableDepInfo(realPackageName.value, props.insights.vulnTree.value))
     return {
       icon: 'i-lucide:shield-alert',
       cssClass: 'text-red-600',
       tooltipText: $t('package.dependencies.vulnerable'),
     }
 
-  if (getDeprecatedDepInfo(props.name, props.insights.vulnTree.value))
+  if (getDeprecatedDepInfo(realPackageName.value, props.insights.vulnTree.value))
     return {
       icon: 'i-lucide:octagon-alert',
       cssClass: 'text-purple-700 dark:text-purple-500',

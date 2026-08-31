@@ -6,6 +6,7 @@ import {
   isNonSemverConstraint,
   constraintIncludesPrerelease,
 } from '~/utils/npm/problematic-dependencies'
+import type { DependencySpec } from '~/utils/npm/package-dependency-sections'
 
 const BATCH_SIZE = 50
 
@@ -57,14 +58,17 @@ function resolveOutdated(
  * Returns a reactive map of dependency name to outdated info.
  */
 export function useOutdatedDependencies(
-  dependencies: MaybeRefOrGetter<Record<string, string> | undefined>,
+  dependencies: MaybeRefOrGetter<Record<string, DependencySpec> | undefined>,
 ) {
   const outdated = shallowRef<Record<string, OutdatedDependencyInfo>>({})
   const status = ref<'idle' | 'pending' | 'success' | 'error'>('idle')
   const error = ref<Error | null>(null)
   let currentEpoch = 0
 
-  async function fetchOutdatedInfo(deps: Record<string, string> | undefined, epoch: number) {
+  async function fetchOutdatedInfo(
+    deps: Record<string, DependencySpec> | undefined,
+    epoch: number,
+  ) {
     if (epoch !== currentEpoch) return
     status.value = 'pending'
     error.value = null
@@ -78,7 +82,7 @@ export function useOutdatedDependencies(
       }
 
       const semverEntries = Object.entries(deps).filter(
-        ([, constraint]) => !isNonSemverConstraint(constraint),
+        ([, spec]) => !isNonSemverConstraint(spec.version),
       )
 
       if (semverEntries.length === 0) {
@@ -88,11 +92,11 @@ export function useOutdatedDependencies(
         return
       }
 
-      const packageNames = semverEntries.map(([name]) => name)
+      const uniquePackageNames = Array.from(new Set(semverEntries.map(([, spec]) => spec.name)))
 
       const chunks: string[][] = []
-      for (let i = 0; i < packageNames.length; i += BATCH_SIZE) {
-        chunks.push(packageNames.slice(i, i + BATCH_SIZE))
+      for (let i = 0; i < uniquePackageNames.length; i += BATCH_SIZE) {
+        chunks.push(uniquePackageNames.slice(i, i + BATCH_SIZE))
       }
 
       // Use allSettled so a failing chunk doesn't discard results from successful ones
@@ -117,16 +121,16 @@ export function useOutdatedDependencies(
       }
 
       const results: Record<string, OutdatedDependencyInfo> = {}
-      for (const [name, constraint] of semverEntries) {
-        const data = versionMap.get(name)
+      for (const [key, spec] of semverEntries) {
+        const data = versionMap.get(spec.name)
         if (!data) continue
 
         const latestTag = data.distTags.latest
         if (!latestTag) continue
 
-        const info = resolveOutdated(data.versions, latestTag, constraint)
+        const info = resolveOutdated(data.versions, latestTag, spec.version)
         if (info) {
-          results[name] = info
+          results[key] = info
         }
       }
 

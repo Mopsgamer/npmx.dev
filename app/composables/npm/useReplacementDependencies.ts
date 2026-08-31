@@ -1,37 +1,47 @@
 import type { ModuleReplacement, ModuleReplacementMapping } from 'module-replacements'
 import { ref, shallowRef, watch, toValue } from 'vue'
+import type { DependencySpec } from '~/utils/npm/package-dependency-sections'
 
 async function fetchReplacements(
-  deps: Record<string, string>,
+  deps: Record<string, DependencySpec>,
 ): Promise<Record<string, ModuleReplacement>> {
-  const names = Object.keys(deps)
-  if (names.length === 0) return {}
+  const entries = Object.entries(deps)
+  if (entries.length === 0) return {}
 
-  // Single item: use the single-lookup endpoint (same response shape)
-  if (names.length === 1) {
-    const name = names[0]!
+  const uniquePackageNames = Array.from(new Set(entries.map(([, spec]) => spec.name)))
+
+  if (uniquePackageNames.length === 1) {
+    const packageName = uniquePackageNames[0]!
     try {
       const response = await $fetch<{
         mapping: ModuleReplacementMapping
         replacement: ModuleReplacement
-      } | null>(`/api/replacements/${encodeURIComponent(name)}`)
-      return response?.replacement ? { [name]: response.replacement } : {}
+      } | null>(`/api/replacements/${encodeURIComponent(packageName)}`)
+
+      if (!response?.replacement) return {}
+      const map: Record<string, ModuleReplacement> = {}
+      for (const [key, spec] of entries) {
+        if (spec.name === packageName) {
+          map[key] = response.replacement
+        }
+      }
+      return map
     } catch {
       return {}
     }
   }
 
-  // Multiple items: batch query (comma-separated) — single round-trip
   try {
-    const query = names.map(encodeURIComponent).join(',')
+    const query = uniquePackageNames.map(encodeURIComponent).join(',')
     const response = await $fetch<
       Record<string, { mapping: ModuleReplacementMapping; replacement: ModuleReplacement }>
     >(`/api/replacements/${query}`)
 
     const map: Record<string, ModuleReplacement> = {}
-    for (const name of names) {
-      if (response?.[name]?.replacement) {
-        map[name] = response[name].replacement
+    for (const [key, spec] of entries) {
+      const match = response?.[spec.name]
+      if (match?.replacement) {
+        map[key] = match.replacement
       }
     }
     return map
@@ -45,7 +55,7 @@ async function fetchReplacements(
  * Returns a reactive map of dependency name to ModuleReplacement.
  */
 export function useReplacementDependencies(
-  dependencies: MaybeRefOrGetter<Record<string, string> | undefined>,
+  dependencies: MaybeRefOrGetter<Record<string, DependencySpec> | undefined>,
 ) {
   const replacements = shallowRef<Record<string, ModuleReplacement>>({})
   const status = ref<'idle' | 'pending' | 'success' | 'error'>('idle')

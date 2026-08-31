@@ -7,6 +7,7 @@ import {
   getVulnerableDepInfo,
   getDeprecatedDepInfo,
 } from '~/utils/npm/problematic-dependencies'
+import { normalizeDependencies } from '~/utils/npm/package-dependency-sections'
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 
 const props = defineProps<{
@@ -57,7 +58,7 @@ const pkgDescription = useMarkdown(() => ({
 
 const dependencies = computed(() => {
   if (!props.result.package.name || !props.result.package.version) return undefined
-  return { [props.result.package.name]: props.result.package.version }
+  return normalizeDependencies({ [props.result.package.name]: props.result.package.version })
 })
 
 const insights =

@@ -45,8 +45,9 @@ const stats = computed(() => {
       }
 
       if (props.insights.replacementDeps.value[item.name]) target.replacement++
-      if (getVulnerableDepInfo(item.name, props.insights.vulnTree.value)) target.vulnerable++
-      if (getDeprecatedDepInfo(item.name, props.insights.vulnTree.value)) target.deprecated++
+      const realName = item.packageName || item.name
+      if (getVulnerableDepInfo(realName, props.insights.vulnTree.value)) target.vulnerable++
+      if (getDeprecatedDepInfo(realName, props.insights.vulnTree.value)) target.deprecated++
     }
   }
 

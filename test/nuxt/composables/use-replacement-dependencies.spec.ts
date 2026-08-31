@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { mountSuspended, registerEndpoint } from '@nuxt/test-utils/runtime'
 import { defineEventHandler } from 'h3'
 import type { ModuleReplacement } from 'module-replacements'
+import { normalizeDependencies } from '~/utils/npm/package-dependency-sections'
 
 const SIMPLE_REPLACEMENT: ModuleReplacement = {
   id: 'snippet::is-even',
@@ -46,7 +47,7 @@ async function mountWithDeps(deps: Record<string, string> | undefined) {
 
   const WrapperComponent = defineComponent({
     setup() {
-      const replacements = useReplacementDependencies(() => deps)
+      const replacements = useReplacementDependencies(() => normalizeDependencies(deps))
 
       watchEffect(() => {
         captured.value = { ...replacements.data.value }

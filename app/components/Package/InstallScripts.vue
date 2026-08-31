@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { getOutdatedTooltip, getVersionClass } from '~/utils/npm/problematic-dependencies'
+import { normalizeDependencies } from '~/utils/npm/package-dependency-sections'
 import type { RouteLocationRaw } from 'vue-router'
 
 const props = defineProps<{
@@ -48,8 +49,8 @@ const scriptParts = computed(() => {
   return parts
 })
 
-const { data: outdatedNpxDeps } = useOutdatedDependencies(
-  () => props.installScripts.npxDependencies,
+const { data: outdatedNpxDeps } = useOutdatedDependencies(() =>
+  normalizeDependencies(props.installScripts.npxDependencies),
 )
 // const { data: replacementNpxDeps } = useReplacementDependencies(
 //   () => props.installScripts.npxDependencies,

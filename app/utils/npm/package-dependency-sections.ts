@@ -22,20 +22,51 @@ export function inferDependencyRegistry(name: string, range: string): DepRegistr
   return 'npm'
 }
 
+export interface DependencySpec {
+  name: string
+  version: string
+}
+
 export function normalizeDependencies(
   record: Record<string, string> | undefined,
-): Record<string, string> {
+): Record<string, DependencySpec> {
   if (!record) return {}
-  const normalized: Record<string, string> = {}
+  const normalized: Record<string, DependencySpec> = {}
   for (const [key, range] of Object.entries(record)) {
     if (range.startsWith('npm:') || range.startsWith('jsr:')) {
       const { name, version } = parsePackageSpec(range)
-      normalized[name] = version ?? '*'
+      normalized[key] = {
+        name,
+        version: version ?? '*',
+      }
     } else {
-      normalized[key] = range
+      normalized[key] = {
+        name: key,
+        version: range,
+      }
     }
   }
   return normalized
+}
+
+export function getNormalizedDependenciesFromPackageVersion(
+  reqVer: Partial<PackumentVersion> | null | undefined,
+): Record<string, DependencySpec> {
+  if (!reqVer) return {}
+  const rawRecord: Record<string, string> = {
+    ...reqVer.dependencies,
+    ...reqVer.devDependencies,
+    ...reqVer.peerDependencies,
+    ...reqVer.optionalDependencies,
+  }
+  if (Array.isArray(reqVer.bundledDependencies)) {
+    for (const name of reqVer.bundledDependencies) {
+      if (!rawRecord[name]) {
+        rawRecord[name] = reqVer.dependencies?.[name] ?? '*'
+      }
+    }
+  }
+  return normalizeDependencies(rawRecord)
 }
 
 function entriesToItems(

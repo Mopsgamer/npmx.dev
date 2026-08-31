@@ -3,6 +3,7 @@ import type { RouteLocationRaw } from 'vue-router'
 import type { NpmSearchResult } from '#shared/types/npm-registry'
 import type { ColumnConfig, StructuredFilters } from '#shared/types/preferences'
 import { getVulnerableDepInfo, getDeprecatedDepInfo } from '~/utils/npm/problematic-dependencies'
+import { normalizeDependencies } from '~/utils/npm/package-dependency-sections'
 import {
   usePackageDependencyInsights,
   type PackageDependencyInsights,
@@ -24,7 +25,7 @@ const emit = defineEmits<{
 const pkg = computed(() => props.result.package)
 const dependencies = computed(() => {
   if (!pkg.value.name || !pkg.value.version) return undefined
-  return { [pkg.value.name]: pkg.value.version }
+  return normalizeDependencies({ [pkg.value.name]: pkg.value.version })
 })
 
 const insights =

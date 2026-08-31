@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {
   getPackageDependencySections,
-  normalizeDependencies,
+  getNormalizedDependenciesFromPackageVersion,
 } from '~/utils/npm/package-dependency-sections'
 
 definePageMeta({
@@ -24,31 +24,8 @@ const { data: pkg, status: pkgStatus } = usePackage(packageName, version)
 const displayVersion = computed(() => pkg.value?.requestedVersion ?? null)
 const sections = computed(() => getPackageDependencySections(displayVersion.value))
 
-let cachedAllDeps: Record<string, string> = {}
 const allDependencies = computed(() => {
-  const reqVer = pkg.value?.requestedVersion
-  if (!reqVer) return {}
-  const rawRecord: Record<string, string> = {
-    ...reqVer.dependencies,
-    ...reqVer.devDependencies,
-    ...reqVer.peerDependencies,
-    ...reqVer.optionalDependencies,
-  }
-  if (Array.isArray(reqVer.bundledDependencies)) {
-    for (const name of reqVer.bundledDependencies) {
-      if (!rawRecord[name]) {
-        rawRecord[name] = reqVer.dependencies?.[name] ?? '*'
-      }
-    }
-  }
-  const record = normalizeDependencies(rawRecord)
-  const keys = Object.keys(record)
-  const cachedKeys = Object.keys(cachedAllDeps)
-  if (keys.length === cachedKeys.length && keys.every(k => record[k] === cachedAllDeps[k])) {
-    return cachedAllDeps
-  }
-  cachedAllDeps = record
-  return record
+  return getNormalizedDependenciesFromPackageVersion(pkg.value?.requestedVersion)
 })
 
 const insights = usePackageDependencyInsights(packageName, version, allDependencies)

@@ -36,9 +36,9 @@ function isColumnVisible(id: string): boolean {
   return activeColumns.value.find(c => c.id === id)?.visible ?? false
 }
 
-const outdated = computed(() => props.insights?.outdatedDeps.value[targetName.value])
+const outdated = computed(() => props.insights?.outdatedDeps.value[item.value.name])
 
-const versionClass = computed(() => getVersionClass(targetName.value, props.insights))
+const versionClass = computed(() => getVersionClass(item.value.name, props.insights))
 
 const { t } = useI18n()
 </script>
@@ -65,7 +65,8 @@ const { t } = useI18n()
     </template>
     <template #status-indicators="{ insights }">
       <DependenciesStatusIndicators
-        :name="targetName"
+        :name="item.name"
+        :package-name="targetName"
         :flags="item.flags"
         v-bind="{ insights }"
         class="relative z-10"
@@ -85,7 +86,12 @@ const { t } = useI18n()
       >
         <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
         <span class="truncate">{{ item.name }}</span>
-        <DependenciesStatusIndicators :name="item.name" :flags="item.flags" class="relative z-10" />
+        <DependenciesStatusIndicators
+          :name="item.name"
+          :package-name="targetName"
+          :flags="item.flags"
+          class="relative z-10"
+        />
       </NuxtLink>
     </td>
 

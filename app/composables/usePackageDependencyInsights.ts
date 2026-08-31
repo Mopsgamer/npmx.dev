@@ -1,9 +1,10 @@
 import { findMinimumForRange, normalize } from 'verkit'
+import type { DependencySpec } from '~/utils/npm/package-dependency-sections'
 
 export function usePackageDependencyInsights(
   packageName: MaybeRefOrGetter<string>,
   version: MaybeRefOrGetter<string | null | undefined>,
-  dependencies: MaybeRefOrGetter<Record<string, string> | undefined>,
+  dependencies: MaybeRefOrGetter<Record<string, DependencySpec> | undefined>,
 ) {
   const {
     data: outdatedDeps,

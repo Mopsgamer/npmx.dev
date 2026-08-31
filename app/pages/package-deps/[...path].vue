@@ -9,7 +9,7 @@ import {
   getDefaultDependencySection,
   getPackageDependencySections,
   isDepSectionId,
-  normalizeDependencies,
+  getNormalizedDependenciesFromPackageVersion,
 } from '~/utils/npm/package-dependency-sections'
 import { getVulnerableDepInfo, getDeprecatedDepInfo } from '~/utils/npm/problematic-dependencies'
 
@@ -233,23 +233,8 @@ const allSectionItems = computed(() => {
   return currentSections.value.flatMap(s => s.items)
 })
 
-const allDependencies = computed<Record<string, string>>(() => {
-  const reqVer = pkg.value?.requestedVersion
-  if (!reqVer) return {}
-  const rawRecord: Record<string, string> = {
-    ...reqVer.dependencies,
-    ...reqVer.devDependencies,
-    ...reqVer.peerDependencies,
-    ...reqVer.optionalDependencies,
-  }
-  if (Array.isArray(reqVer.bundledDependencies)) {
-    for (const name of reqVer.bundledDependencies) {
-      if (!rawRecord[name]) {
-        rawRecord[name] = reqVer.dependencies?.[name] ?? '*'
-      }
-    }
-  }
-  return normalizeDependencies(rawRecord)
+const allDependencies = computed(() => {
+  return getNormalizedDependenciesFromPackageVersion(pkg.value?.requestedVersion)
 })
 
 const versionUrlPattern = computed(() => {
@@ -314,7 +299,7 @@ const filteredItems = computed(() => {
   if (selectedInsights.value.length > 0) {
     result = result.filter(item => {
       const targetName = item.packageName || item.name
-      const outdated = insights.outdatedDeps.value[targetName]
+      const outdated = insights.outdatedDeps.value[item.name]
       return selectedInsights.value.some(id => {
         switch (id) {
           case 'major':
@@ -332,7 +317,7 @@ const filteredItems = computed(() => {
           case 'deprecated':
             return !!getDeprecatedDepInfo(targetName, insights.vulnTree.value)
           case 'replacement':
-            return !!insights.replacementDeps.value[targetName]
+            return !!insights.replacementDeps.value[item.name]
           default:
             return false
         }

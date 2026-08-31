@@ -5,6 +5,7 @@ import 'axe-core'
 import type { AxeResults, RunOptions } from 'axe-core'
 import { afterEach, beforeEach, describe, expect, it, type MockInstance, vi } from 'vitest'
 import { createLikesLeaderboardEntry } from '~~/test/fixtures/likes-leaderboard'
+import { normalizeDependencies } from '~/utils/npm/package-dependency-sections'
 
 // axe-core is a UMD module that exposes itself as window.axe in the browser
 declare const axe: {
@@ -1561,7 +1562,11 @@ describe('component accessibility audits', () => {
 
   describe('DependenciesCard', () => {
     it('should have no accessibility violations', async () => {
-      const insights = usePackageDependencyInsights('test-package', '1.0.0', { vue: '^3.0.0' })
+      const insights = usePackageDependencyInsights(
+        'test-package',
+        '1.0.0',
+        normalizeDependencies({ vue: '^3.0.0' }),
+      )
       const component = await mountSuspended(DependenciesCard, {
         props: {
           insights,
@@ -1644,7 +1649,11 @@ describe('component accessibility audits', () => {
 
   describe('DependenciesTableRow', () => {
     it('should have no accessibility violations', async () => {
-      const insights = usePackageDependencyInsights('test-package', '1.0.0', { vue: '^3.0.0' })
+      const insights = usePackageDependencyInsights(
+        'test-package',
+        '1.0.0',
+        normalizeDependencies({ vue: '^3.0.0' }),
+      )
       const component = await mountSuspended(DependenciesTableRow, {
         props: {
           insights,
