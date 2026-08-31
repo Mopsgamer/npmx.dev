@@ -13,7 +13,6 @@
   "trademark_disclaimer": "npm è un marchio registrato da npm, Inc. Questo sito non è affiliato con npm, Inc.",
   "footer": {
     "about": "info",
-    "sponsors": "EN TEXT TO REPLACE: sponsors",
     "blog": "blog",
     "docs": "docs",
     "source": "codice",
@@ -24,8 +23,7 @@
     "brand": "marca",
     "resources": "Risorse",
     "features": "funzionalità",
-    "other": "Altro",
-    "sponsored_by": "EN TEXT TO REPLACE: Sponsored by {list}"
+    "other": "Altro"
   },
   "shortcuts": {
     "section": {
@@ -41,7 +39,6 @@
     "settings": "Apri impostazioni",
     "compare": "Apri confronto",
     "compare_from_package": "Apri confronto (con il pacchetto attuale)",
-    "changelog": "EN TEXT TO REPLACE: Open changelog",
     "navigate_results": "Naviga risultati",
     "go_to_result": "Vai al risultato",
     "open_code_view": "Apri vista codice",
@@ -102,11 +99,6 @@
     "current": "corrente",
     "here": "sei qui",
     "connected": "connesso",
-    "keyboard_shortcuts": {
-      "navigate": "EN TEXT TO REPLACE: to navigate",
-      "select": "EN TEXT TO REPLACE: to select",
-      "close": "EN TEXT TO REPLACE: to close"
-    },
     "state": {
       "on": "attivo",
       "off": "disattivo"
@@ -191,7 +183,6 @@
       "theme_changed": "Tema impostato su {theme}.",
       "accent_color_changed": "Colore principale impostato su {color}.",
       "background_theme_changed": "Sfumatura di sfondo impostata su {theme}.",
-      "foreground_theme_changed": "EN TEXT TO REPLACE: Foreground shade set to {theme}.",
       "download_started": "Download del tarball {package} in corso.",
       "copied_to_clipboard": "Copiato negli appunti.",
       "npm_disconnected": "npm CLI disconnesso.",
@@ -262,8 +253,7 @@
     "back_to_archive": "Torna a tutti i noodle",
     "missing": {
       "title": "Questo noodle non è mai uscito dalla ciotola.",
-      "body": "Non abbiamo un noodle \"{slug}\" nel menu. O è ancora in preparazione, o non è mai stato scritto. In ogni caso, torna all'archivio.",
-      "empty_bowl": "EN TEXT TO REPLACE: empty bowl"
+      "body": "Non abbiamo un noodle \"{slug}\" nel menu. O è ancora in preparazione, o non è mai stato scritto. In ogni caso, torna all'archivio."
     }
   },
   "settings": {
@@ -320,12 +310,6 @@
       "zinc": "Zinco",
       "slate": "Ardesia",
       "black": "Nero"
-    },
-    "foreground_themes": {
-      "label": "EN TEXT TO REPLACE: Foreground shade",
-      "contrast": "EN TEXT TO REPLACE: Contrast",
-      "standard": "EN TEXT TO REPLACE: Standard",
-      "muted": "EN TEXT TO REPLACE: Muted"
     },
     "keyboard_shortcuts_enabled": "Abilita scorciatoie da tastiera",
     "keyboard_shortcuts_enabled_description": "Le scorciatoie da tastiera possono essere disabilitate se entrano in conflitto con altre scorciatoie del browser o del sistema",
@@ -393,8 +377,7 @@
     "collapse": "Comprimi",
     "collapse_with_name": "Comprimi {name}",
     "expand": "Espandi",
-    "expand_with_name": "Espandi {name}",
-    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
+    "expand_with_name": "Espandi {name}"
   },
   "profile": {
     "display_name": "Nome visualizzato",
@@ -420,7 +403,6 @@
     "verified_provenance": "Provenienza verificata",
     "navigation": "Pacchetto",
     "copy_name": "Copia nome pacchetto",
-    "copy_version": "EN TEXT TO REPLACE: Copy package version",
     "deprecation": {
       "package": "Questo pacchetto è stato deprecato.",
       "version": "Questa versione è stata deprecata.",
@@ -494,13 +476,11 @@
       "issues": "issues",
       "jsr": "jsr",
       "code": "codice",
-      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "documenti",
       "fund": "finanzia",
       "compare": "confronta",
       "timeline": "Cronologia",
       "stats": "Statistiche",
-      "compare_this_package": "Confronta questo pacchetto",
       "changelog": "Registro delle modifiche"
     },
     "likes": {
@@ -536,16 +516,7 @@
     },
     "run": {
       "title": "Esegui",
-      "locally": "Esegui localmente",
-      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
-    },
-    "command": {
-      "copied_install": "EN TEXT TO REPLACE: Install command copied",
-      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
-      "copied_run": "EN TEXT TO REPLACE: Run command copied",
-      "copied_create": "EN TEXT TO REPLACE: Create command copied",
-      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
-      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+      "locally": "Esegui localmente"
     },
     "readme": {
       "title": "Readme",
@@ -644,7 +615,6 @@
     "timeline": {
       "load_more": "Carica altri",
       "load_error": "Impossibile caricare la cronologia. Riprova più tardi.",
-      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
       "size_increase": "Dimensione di installazione aumentata del {percent}% ({size})",
       "size_decrease": "Dimensione di installazione diminuita del {percent}% ({size})",
       "dep_increase": "{count} dipendenza aggiunta | {count} dipendenze aggiunte",
@@ -658,57 +628,40 @@
       "trusted_publisher_removed": "Pubblicazione attendibile rimossa",
       "provenance_added": "Provenienza abilitata",
       "provenance_removed": "Provenienza rimossa",
-      "deprecated": "EN TEXT TO REPLACE: Deprecated",
       "chart": {
         "tab_aria_label": "Selezione metrica",
-        "dependency_size": "EN TEXT TO REPLACE: Dependency Size",
-        "other_dependencies": "EN TEXT TO REPLACE: Other",
         "base_scale": "inizia l'asse Y da zero",
         "zoom": "zoom",
         "reset_minimap": "reimposta minimappa",
         "ordered_versions": "solo stabili",
-        "sort_label": "EN TEXT TO REPLACE: Sort by",
-        "sort_time": "EN TEXT TO REPLACE: Publish time",
-        "sort_semver": "EN TEXT TO REPLACE: Semver",
         "copy_alt": {
           "key_changes": "Modifiche principali: {version_events}.",
           "version_events": "versione {version}: {events}",
-          "general_description": "Grafico a linee che mostra {metric} del pacchetto {package}, dalla versione {first} alla {last}. Il valore di {metric} nella versione {first} è {first_value}, nella versione {last} è {last_value} ({overall_progress_percentage}% complessivo). {key_changes} {watermark}.",
-          "stackbar_segment_share": "EN TEXT TO REPLACE: {segment}: {value} ({percentage})",
-          "stackbar_top_segments": "EN TEXT TO REPLACE: In {version}, the largest segments are {segments}.",
-          "stackbar_largest_increase": "EN TEXT TO REPLACE: The largest increase is {segment}, up {delta}.",
-          "stackbar_largest_decrease": "EN TEXT TO REPLACE: The largest decrease is {segment}, down {delta}."
+          "general_description": "Grafico a linee che mostra {metric} del pacchetto {package}, dalla versione {first} alla {last}. Il valore di {metric} nella versione {first} è {first_value}, nella versione {last} è {last_value} ({overall_progress_percentage}% complessivo). {key_changes} {watermark}."
         }
       }
     },
     "dependencies": {
       "title": "Dipendenza ({count}) | Dipendenze ({count})",
-      "insights": {
-        "title": "EN TEXT TO REPLACE: Insights",
-        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
-        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
-        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
-        "major_behind": "EN TEXT TO REPLACE: Major behind",
-        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
-        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
-        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
-        "deprecated": "EN TEXT TO REPLACE: Deprecated",
-        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
-        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
-        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
-      },
+      "list_label": "Dipendenze del pacchetto",
+      "show_all": "mostra {count} dip | mostra tutte le {count} dip",
       "optional": "opzionale",
-      "bundled": "EN TEXT TO REPLACE: bundled",
-      "all": "EN TEXT TO REPLACE: All dependencies",
-      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
-      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
-      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
-      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "Visualizza vulnerabilità",
       "outdated_major": "{count} versione principale indietro (latest: {latest}) | {count} versioni principali indietro (latest: {latest})",
       "outdated_minor": "{count} versione minore indietro (latest: {latest}) | {count} versioni minori indietro (latest: {latest})",
       "outdated_patch": "Aggiornamento patch disponibile (latest: {latest})",
-      "has_replacement": "Questa dipendenza ha sostituzioni suggerite"
+      "has_replacement": "Questa dipendenza ha sostituzioni suggerite",
+      "vulnerabilities_count": "{count} vulnerabilità | {count} vulnerabilità"
+    },
+    "peer_dependencies": {
+      "title": "Dipendenza peer ({count}) | Dipendenze peer ({count})",
+      "list_label": "Dipendenze peer del pacchetto",
+      "show_all": "mostra {count} dip peer | mostra tutte le {count} dip peer"
+    },
+    "optional_dependencies": {
+      "title": "Dipendenza opzionale ({count}) | Dipendenze opzionali ({count})",
+      "list_label": "Dipendenze opzionali del pacchetto",
+      "show_all": "mostra {count} dip opzionale | mostra tutte le {count} dip opzionali"
     },
     "maintainers": {
       "title": "Mantenitori",
@@ -746,7 +699,6 @@
       "date_range": "{start} a {end}",
       "date_range_multiline": "{start}\na {end}",
       "download_file": "Scarica {fileType}",
-      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "Attiva/disattiva annotatore",
       "toggle_stack_mode": "Attiva modalità stack",
       "open_options": "Apri opzioni",
@@ -781,7 +733,6 @@
         "trend_undefined": "indefinito (dati insufficienti)",
         "button_label": "Copia testo alternativo",
         "watermark": "In basso, una filigrana recita \"./npmx un browser veloce e moderno per il registro npm\"",
-        "watermark_top": "EN TEXT TO REPLACE: At the top, a watermark reads \"./npmx a fast, modern browser for the npm registry\"",
         "analysis": "{package_name} inizia a {start_value} e termina a {end_value}, mostrando un trend {trend} con una pendenza di {downloads_slope} download per intervallo di tempo",
         "estimation": "Il valore finale è una stima basata su dati parziali per il periodo corrente.",
         "estimations": "I valori finali sono stime basate su dati parziali per il periodo corrente.",
@@ -1115,8 +1066,7 @@
     },
     "file_path": "Percorso del file",
     "binary_file": "File binario",
-    "binary_rendering_warning": "Il tipo di file \"{contentType}\" non è supportato per l'anteprima.",
-    "possibly_unnecessary": "EN TEXT TO REPLACE: May be unnecessary in a published package"
+    "binary_rendering_warning": "Il tipo di file \"{contentType}\" non è supportato per l'anteprima."
   },
   "badges": {
     "provenance": {
@@ -1150,7 +1100,6 @@
     "keywords": "Keywords",
     "more_keywords": "+{count} altri",
     "clear_all": "Cancella tutto",
-    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "Rimuovi filtro {label}",
     "chips": {
       "search": "Cerca",
@@ -1264,9 +1213,7 @@
       }
     },
     "sponsors": {
-      "title": "Sponsor",
-      "gold": "EN TEXT TO REPLACE: Gold Sponsors",
-      "silver": "EN TEXT TO REPLACE: Silver Sponsors"
+      "title": "Sponsor"
     },
     "oss_partners": {
       "title": "Partner OSS"
@@ -1309,64 +1256,6 @@
         "title": "Rimani aggiornato",
         "description": "Scopri le ultime novità su npmx.",
         "cta": "Segui su Bluesky"
-      }
-    }
-  },
-  "sponsors_page": {
-    "title": "EN TEXT TO REPLACE: Sponsors",
-    "heading": "EN TEXT TO REPLACE: sponsors",
-    "meta_description": "EN TEXT TO REPLACE: Support npmx and help us accelerate ecosystem work around security, trust, optimization, and research.",
-    "intro": "EN TEXT TO REPLACE: Support npmx and help us grow the ecosystem work we do for developers and maintainers.",
-    "what_we_do": {
-      "title": "EN TEXT TO REPLACE: What we do",
-      "description": "EN TEXT TO REPLACE: We're building an ecosystem that solves problems around security, trust, optimization, and research for the tools we use in everyday development - quickly, conveniently, and with high quality. This project is built by developers for developers. As authors of widely used libraries, we understand team needs and actively study what maintainers and projects need most."
-    },
-    "what_support_means": {
-      "title": "EN TEXT TO REPLACE: What support means",
-      "description": "EN TEXT TO REPLACE: Our plans and connections keep growing, along with our desire to share what we've built and learn from others. Your support helps fund the project, external talks, conferences, and the broader ecosystem, and, most importantly, enables us to keep growing our community."
-    },
-    "cta": "EN TEXT TO REPLACE: See sponsorship tiers",
-    "community_growth_footnote": "EN TEXT TO REPLACE: * According to {link} Q1 2026 research.",
-    "what_this_means_for_you": {
-      "title": "EN TEXT TO REPLACE: What this means for you",
-      "description": "EN TEXT TO REPLACE: npmx is not only about improving developer experience and closing critical everyday gaps. In our first six months, we have already become the default source for thousands of teams and a huge number of developers. You get not only a more stable tool for your teams, but also visibility in front of a constantly growing audience of top-tier engineers.",
-      "cards": {
-        "people": {
-          "contributors": "EN TEXT TO REPLACE: contributors",
-          "community_members": "EN TEXT TO REPLACE: community members"
-        },
-        "visitors": {
-          "description": "EN TEXT TO REPLACE: unique monthly visitors"
-        },
-        "stars": {
-          "title": "EN TEXT TO REPLACE: stars"
-        },
-        "community": {
-          "title": "EN TEXT TO REPLACE: fast-growing",
-          "description": "EN TEXT TO REPLACE: We are one of the fastest-growing communities in the ecosystem"
-        },
-        "adoption": {
-          "title": "EN TEXT TO REPLACE: adoption",
-          "description": "EN TEXT TO REPLACE: charts at conferences, talks, and articles rely on our data"
-        },
-        "default_source": {
-          "title": "EN TEXT TO REPLACE: default source",
-          "description": "EN TEXT TO REPLACE: pnpm made npmx the default source, many packages have been configured to link to npmx"
-        }
-      }
-    },
-    "tiers": {
-      "title": "EN TEXT TO REPLACE: Sponsorship tiers",
-      "per_month": "EN TEXT TO REPLACE: /month",
-      "custom": "EN TEXT TO REPLACE: Custom",
-      "silver": {
-        "name": "EN TEXT TO REPLACE: Silver"
-      },
-      "gold": {
-        "name": "EN TEXT TO REPLACE: Gold"
-      },
-      "platinum": {
-        "name": "EN TEXT TO REPLACE: Platinum"
       }
     }
   },
@@ -1592,7 +1481,6 @@
     "dev_dependencies": "Dipendenze di sviluppo",
     "peer_dependencies": "Dipendenze peer",
     "optional_dependencies": "Dipendenze opzionali",
-    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "Nessuna modifica alle dipendenze",
     "file_filter_option": {
       "all": "Tutti ({count})",
@@ -1654,86 +1542,6 @@
       "empty": "Nessun membro della community da visualizzare.",
       "view_profile": "Visualizza il profilo di {handle}",
       "new_accounts": "...più altri {count} che sono nuovi sull'atmosphere"
-    }
-  },
-  "privacy_policy": {
-    "title": "EN TEXT TO REPLACE: privacy policy",
-    "last_updated": "EN TEXT TO REPLACE: Last updated: {date}",
-    "welcome": "EN TEXT TO REPLACE: Welcome to {app}. We are committed to protecting your privacy. This policy explains what data we collect, how we use it, and your rights regarding your information.",
-    "cookies": {
-      "what_are": {
-        "title": "EN TEXT TO REPLACE: What are cookies?",
-        "p1": "EN TEXT TO REPLACE: Cookies are small text files stored on your device when you visit a website. Their purpose is to enhance your browsing experience by remembering certain preferences and settings."
-      },
-      "types": {
-        "title": "EN TEXT TO REPLACE: What cookies do we use?",
-        "p1": "EN TEXT TO REPLACE: We only use {bold} for purposes strictly necessary for the site's functionality. We do not use third-party or advertising cookies.",
-        "bold": "EN TEXT TO REPLACE: essential technical cookies",
-        "li1": "EN TEXT TO REPLACE: {li11}{separator} {li12}",
-        "li2": "EN TEXT TO REPLACE: {li21}{separator} {li22}",
-        "separator": "EN TEXT TO REPLACE: :",
-        "cookie_vdpl": "EN TEXT TO REPLACE: __vdpl",
-        "cookie_vdpl_desc": "EN TEXT TO REPLACE: This cookie is used by our hosting provider (Vercel) for skew protection. It ensures you fetch assets from the correct deployment version if a new update is released while you are browsing. It does not track you.",
-        "cookie_h3": "EN TEXT TO REPLACE: h3",
-        "cookie_h3_desc": "EN TEXT TO REPLACE: This is our secure session cookie. It stores the OAuth access token when you connect your Atmosphere account. It is essential for maintaining your authenticated session."
-      },
-      "local_storage": {
-        "title": "EN TEXT TO REPLACE: Local storage",
-        "p1": "EN TEXT TO REPLACE: In addition to session cookies, we use your browser's {bold} to save your display preferences. This allows us to remember the theme (light/dark) and some other {settings} you have selected, so you don't have to reconfigure them on each visit.",
-        "bold": "EN TEXT TO REPLACE: Local Storage",
-        "p2": "EN TEXT TO REPLACE: This information is purely functional, stored only on your device, and {bold2}. We use it exclusively to improve your experience on our website.",
-        "bold2": "EN TEXT TO REPLACE: contains no personal data nor is it used to track you",
-        "settings": "EN TEXT TO REPLACE: settings"
-      },
-      "management": {
-        "title": "EN TEXT TO REPLACE: Managing cookies",
-        "p1": "EN TEXT TO REPLACE: You can configure your browser to accept, reject, or delete cookies according to your preferences. However, please note that {bold}.",
-        "bold": "EN TEXT TO REPLACE: rejecting essential cookies may prevent full access to the application",
-        "p2": "EN TEXT TO REPLACE: Below are links with instructions for cookie management in the most commonly used browsers:",
-        "chrome": "EN TEXT TO REPLACE: Google Chrome (opens in a new window)",
-        "firefox": "EN TEXT TO REPLACE: Mozilla Firefox (opens in a new window)",
-        "edge": "EN TEXT TO REPLACE: Microsoft Edge (opens in a new window)"
-      }
-    },
-    "analytics": {
-      "title": "EN TEXT TO REPLACE: Analytics",
-      "p1": "EN TEXT TO REPLACE: We use {bold} to understand how visitors use our website. This helps us improve the user experience and identify issues.",
-      "bold": "EN TEXT TO REPLACE: Vercel Web Analytics",
-      "p2": "EN TEXT TO REPLACE: Vercel Analytics is designed with privacy in mind:",
-      "li1": "EN TEXT TO REPLACE: It does not use cookies",
-      "li2": "EN TEXT TO REPLACE: It does not collect personal identifiers",
-      "li3": "EN TEXT TO REPLACE: It does not track users across websites",
-      "li4": "EN TEXT TO REPLACE: All data is aggregated and anonymised",
-      "p3": "EN TEXT TO REPLACE: The only information collected includes: page URLs, referrer, country/region, device type, browser, and operating system. This data cannot be used to identify individual users."
-    },
-    "authenticated": {
-      "title": "EN TEXT TO REPLACE: Authenticated users",
-      "p1": "EN TEXT TO REPLACE: When you connect your {bold} account to npmx, we store your OAuth access token in a secure, HTTP-only session cookie. This token is used solely to authenticate requests on your behalf.",
-      "bold": "EN TEXT TO REPLACE: Atmosphere",
-      "p2": "EN TEXT TO REPLACE: We do not store your credentials, and we do not access any data beyond what is necessary to provide the features you use. You can disconnect your account at any time from the {settings} page.",
-      "settings": "EN TEXT TO REPLACE: settings"
-    },
-    "data_retention": {
-      "title": "EN TEXT TO REPLACE: Data retention",
-      "p1": "EN TEXT TO REPLACE: Session cookies are automatically deleted when you close your browser or after a period of inactivity. Local storage preferences remain on your device until you clear your browser data. Analytics data is retained in aggregate form and cannot be linked to individual users."
-    },
-    "your_rights": {
-      "title": "EN TEXT TO REPLACE: Your rights",
-      "p1": "EN TEXT TO REPLACE: You have the right to:",
-      "li1": "EN TEXT TO REPLACE: Access information about what data we collect",
-      "li2": "EN TEXT TO REPLACE: Clear your local storage and cookies at any time",
-      "li3": "EN TEXT TO REPLACE: Disconnect your authenticated session",
-      "li4": "EN TEXT TO REPLACE: Request information about our data practices",
-      "p2": "EN TEXT TO REPLACE: Since we do not collect personal data, there is typically no personal information to delete or export."
-    },
-    "contact": {
-      "title": "EN TEXT TO REPLACE: Contact us",
-      "p1": "EN TEXT TO REPLACE: For any questions or concerns about this privacy policy, you can contact us by opening an issue on our {link}.",
-      "link": "EN TEXT TO REPLACE: GitHub repository"
-    },
-    "changes": {
-      "title": "EN TEXT TO REPLACE: Changes to this policy",
-      "p1": "EN TEXT TO REPLACE: We may update this privacy policy from time to time. Any changes will be published on this page with an updated revision date."
     }
   },
   "a11y": {
@@ -1889,7 +1697,6 @@
       "p2": "Riprova più tardi o {viewon}"
     },
     "rate_limit_ungh": "Spiacenti, è stato raggiunto il limite di richieste di GitHub. Riprova tra un momento.",
-    "version_unavailable": "La versione richiesta non è disponibile.",
-    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
+    "version_unavailable": "La versione richiesta non è disponibile."
   }
 }

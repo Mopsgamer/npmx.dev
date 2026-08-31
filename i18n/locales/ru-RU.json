@@ -393,8 +393,7 @@
     "collapse": "Свернуть",
     "collapse_with_name": "Свернуть {name}",
     "expand": "Развернуть",
-    "expand_with_name": "Развернуть {name}",
-    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
+    "expand_with_name": "Развернуть {name}"
   },
   "profile": {
     "display_name": "Отображаемое имя",
@@ -494,13 +493,11 @@
       "issues": "тикеты",
       "jsr": "jsr",
       "code": "код",
-      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "доки",
       "fund": "поддержать",
       "compare": "сравнить",
       "timeline": "хронология",
       "stats": "статистика",
-      "compare_this_package": "сравнить этот пакет",
       "changelog": "изменения"
     },
     "likes": {
@@ -536,16 +533,7 @@
     },
     "run": {
       "title": "Запуск",
-      "locally": "Запустить локально",
-      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
-    },
-    "command": {
-      "copied_install": "EN TEXT TO REPLACE: Install command copied",
-      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
-      "copied_run": "EN TEXT TO REPLACE: Run command copied",
-      "copied_create": "EN TEXT TO REPLACE: Create command copied",
-      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
-      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+      "locally": "Запустить локально"
     },
     "readme": {
       "title": "Readme",
@@ -644,7 +632,6 @@
     "timeline": {
       "load_more": "Загрузить ещё",
       "load_error": "Не удалось загрузить хронологию. Попробуйте позже.",
-      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
       "size_increase": "Размер установки увеличился на {percent}% ({size})",
       "size_decrease": "Размер установки уменьшился на {percent}% ({size})",
       "dep_increase": "Добавлена {count} зависимость | Добавлено {count} зависимости | Добавлено {count} зависимостей",
@@ -658,7 +645,6 @@
       "trusted_publisher_removed": "Доверенная публикация удалена",
       "provenance_added": "Происхождение включено",
       "provenance_removed": "Происхождение удалено",
-      "deprecated": "EN TEXT TO REPLACE: Deprecated",
       "chart": {
         "tab_aria_label": "Выбор метрики",
         "dependency_size": "Размер зависимостей",
@@ -667,9 +653,6 @@
         "zoom": "масштабировать",
         "reset_minimap": "сбросить миникарту",
         "ordered_versions": "только стабильные",
-        "sort_label": "EN TEXT TO REPLACE: Sort by",
-        "sort_time": "EN TEXT TO REPLACE: Publish time",
-        "sort_semver": "EN TEXT TO REPLACE: Semver",
         "copy_alt": {
           "key_changes": "Ключевые изменения: {version_events}.",
           "version_events": "версия {version}: {events}",
@@ -683,32 +666,25 @@
     },
     "dependencies": {
       "title": "Зависимости ({count})",
-      "insights": {
-        "title": "EN TEXT TO REPLACE: Insights",
-        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
-        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
-        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
-        "major_behind": "EN TEXT TO REPLACE: Major behind",
-        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
-        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
-        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
-        "deprecated": "EN TEXT TO REPLACE: Deprecated",
-        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
-        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
-        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
-      },
+      "list_label": "Зависимости пакета",
+      "show_all": "показать все ({count})",
       "optional": "опционально",
-      "bundled": "EN TEXT TO REPLACE: bundled",
-      "all": "EN TEXT TO REPLACE: All dependencies",
-      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
-      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
-      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
-      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "Посмотреть уязвимости",
       "outdated_major": "{count} мажорная версия позади (последняя: {latest}) | {count} мажорные версии позади (последняя: {latest}) | {count} мажорных версий позади (последняя: {latest})",
       "outdated_minor": "{count} минорная версия позади (последняя: {latest}) | {count} минорные версии позади (последняя: {latest}) | {count} минорных версий позади (последняя: {latest})",
       "outdated_patch": "Доступно патч-обновление (последняя: {latest})",
-      "has_replacement": "Для этой зависимости есть рекомендуемые замены"
+      "has_replacement": "Для этой зависимости есть рекомендуемые замены",
+      "vulnerabilities_count": "{count} уязвимость | {count} уязвимости | {count} уязвимостей"
+    },
+    "peer_dependencies": {
+      "title": "Peer-зависимости ({count})",
+      "list_label": "Peer-зависимости пакета",
+      "show_all": "показать все ({count})"
+    },
+    "optional_dependencies": {
+      "title": "Опциональные зависимости ({count})",
+      "list_label": "Опциональные зависимости пакета",
+      "show_all": "показать все ({count})"
     },
     "maintainers": {
       "title": "Мейнтейнеры",
@@ -746,7 +722,6 @@
       "date_range": "С {start} по {end}",
       "date_range_multiline": "С {start}\nпо {end}",
       "download_file": "Скачать {fileType}",
-      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "Переключить аннотации",
       "toggle_stack_mode": "Переключить режим накопления",
       "open_options": "Открыть параметры",
@@ -1150,7 +1125,6 @@
     "keywords": "Ключевые слова",
     "more_keywords": "ещё +{count}",
     "clear_all": "Очистить все",
-    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "Удалить фильтр {label}",
     "chips": {
       "search": "Поиск",
@@ -1592,7 +1566,6 @@
     "dev_dependencies": "Dev-зависимости",
     "peer_dependencies": "Peer-зависимости",
     "optional_dependencies": "Опциональные зависимости",
-    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "Изменений в зависимостях нет",
     "file_filter_option": {
       "all": "Все ({count})",
@@ -1889,7 +1862,6 @@
       "p2": "Пожалуйста, попробуйте позже или {viewon}"
     },
     "rate_limit_ungh": "К сожалению, достигнут лимит запросов GitHub. Попробуйте снова через некоторое время.",
-    "version_unavailable": "Запрошенная версия недоступна.",
-    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
+    "version_unavailable": "Запрошенная версия недоступна."
   }
 }

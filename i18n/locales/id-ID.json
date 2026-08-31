@@ -13,7 +13,6 @@
   "trademark_disclaimer": "npm adalah merek dagang terdaftar dari npm, Inc. Situs ini tidak berafiliasi dengan npm, Inc.",
   "footer": {
     "about": "tentang",
-    "sponsors": "EN TEXT TO REPLACE: sponsors",
     "blog": "blog",
     "docs": "dokumentasi",
     "source": "sumber",
@@ -21,11 +20,7 @@
     "chat": "obrolan",
     "builders_chat": "builders",
     "keyboard_shortcuts": "pintasan papan ketik",
-    "brand": "merek",
-    "resources": "EN TEXT TO REPLACE: Resources",
-    "features": "EN TEXT TO REPLACE: Features",
-    "other": "EN TEXT TO REPLACE: Other",
-    "sponsored_by": "EN TEXT TO REPLACE: Sponsored by {list}"
+    "brand": "merek"
   },
   "shortcuts": {
     "section": {
@@ -33,24 +28,18 @@
       "search": "Pencarian",
       "package": "Paket"
     },
-    "ctrl_key": "EN TEXT TO REPLACE: Ctrl",
-    "command_palette": "EN TEXT TO REPLACE: Open command palette",
-    "command_palette_description": "EN TEXT TO REPLACE: Use the command palette to jump between pages, package views, settings, and external links without leaving the keyboard. On macOS, press ⌘K. On Windows and Linux, press {ctrlKey}+K.",
     "focus_search": "Fokus ke pencarian",
     "show_kbd_hints": "Sorot petunjuk papan ketik",
     "settings": "Buka pengaturan",
     "compare": "Buka perbandingan",
     "compare_from_package": "Tampilkan perbandingan (dengan paket saat ini)",
-    "changelog": "EN TEXT TO REPLACE: Open changelog",
     "navigate_results": "Navigasi hasil",
     "go_to_result": "Tampilkan hasil",
     "open_code_view": "Tampilkan kode",
     "open_docs": "Tampilkan dokumentasi",
     "disable_shortcuts": "Anda dapat menonaktifkan pintasan papan ketik pada {settings}.",
     "open_main": "Tampilkan informasi utama",
-    "open_diff": "Tampilkan perbedaan versi",
-    "open_timeline": "EN TEXT TO REPLACE: Open timeline",
-    "open_stats": "EN TEXT TO REPLACE: Open stats"
+    "open_diff": "Tampilkan perbedaan versi"
   },
   "search": {
     "label": "Cari paket npm",
@@ -88,119 +77,21 @@
     "instant_search_advisory": "{label} {state} — {action}"
   },
   "command_palette": {
-    "title": "EN TEXT TO REPLACE: command palette",
-    "quick_actions": "EN TEXT TO REPLACE: jump to...",
-    "subtitle": "EN TEXT TO REPLACE: navigate across npmx and switch settings quickly",
-    "subtitle_languages": "EN TEXT TO REPLACE: choose a language or help improve translations",
-    "instructions": "EN TEXT TO REPLACE: Type to filter commands. Use the arrow keys to move through results and Enter to run a command.",
-    "input_label": "EN TEXT TO REPLACE: Command palette search",
-    "results_label": "EN TEXT TO REPLACE: Command results",
-    "placeholder": "EN TEXT TO REPLACE: type a command...",
-    "back": "EN TEXT TO REPLACE: Back",
-    "empty": "EN TEXT TO REPLACE: No matching commands",
-    "empty_search_hint": "EN TEXT TO REPLACE: Press Enter to search for \"{query}\".",
-    "current": "EN TEXT TO REPLACE: current",
-    "here": "EN TEXT TO REPLACE: you are here",
-    "connected": "EN TEXT TO REPLACE: connected",
-    "keyboard_shortcuts": {
-      "navigate": "EN TEXT TO REPLACE: to navigate",
-      "select": "EN TEXT TO REPLACE: to select",
-      "close": "EN TEXT TO REPLACE: to close"
-    },
-    "state": {
-      "on": "EN TEXT TO REPLACE: on",
-      "off": "EN TEXT TO REPLACE: off"
-    },
-    "groups": {
-      "actions": "EN TEXT TO REPLACE: Actions",
-      "help": "EN TEXT TO REPLACE: Help",
-      "language": "EN TEXT TO REPLACE: Language",
-      "connections": "EN TEXT TO REPLACE: Connections",
-      "navigation": "EN TEXT TO REPLACE: Navigation",
-      "links": "EN TEXT TO REPLACE: Links",
-      "npmx": "EN TEXT TO REPLACE: npmx",
-      "package": "EN TEXT TO REPLACE: Package",
-      "package_with_name": "EN TEXT TO REPLACE: Package ({name})",
-      "versions": "EN TEXT TO REPLACE: Versions",
-      "versions_with_name": "EN TEXT TO REPLACE: Versions of {name}"
-    },
-    "actions": {
-      "search": "EN TEXT TO REPLACE: Search",
-      "search_for": "EN TEXT TO REPLACE: Search for \"{query}\"",
-      "keyboard_shortcuts": "EN TEXT TO REPLACE: Keyboard shortcuts",
-      "help_translate": "EN TEXT TO REPLACE: Help translate"
-    },
-    "connections": {
-      "npm_connect": "EN TEXT TO REPLACE: Connect to npm CLI",
-      "npm_connected": "EN TEXT TO REPLACE: npm CLI (~{username})",
-      "npm_disconnect": "EN TEXT TO REPLACE: Disconnect npm CLI",
-      "atmosphere_connect": "EN TEXT TO REPLACE: Connect to Atmosphere",
-      "atmosphere_connected": "EN TEXT TO REPLACE: atmosphere ({'@'}{handle})",
-      "atmosphere_disconnect": "EN TEXT TO REPLACE: Disconnect Atmosphere"
-    },
-    "navigation": {
-      "home": "EN TEXT TO REPLACE: home",
-      "packages": "EN TEXT TO REPLACE: packages (~{username})",
-      "orgs": "EN TEXT TO REPLACE: orgs (~{username})",
-      "profile": "EN TEXT TO REPLACE: profile ({'@'}{handle})"
-    },
-    "links": {
-      "external": "EN TEXT TO REPLACE: External link"
-    },
-    "package_links": {
-      "stars": "EN TEXT TO REPLACE: Repository stars",
-      "forks": "EN TEXT TO REPLACE: Repository forks"
-    },
-    "theme": {
-      "system": "EN TEXT TO REPLACE: Use system theme",
-      "light": "EN TEXT TO REPLACE: Use light theme",
-      "dark": "EN TEXT TO REPLACE: Use dark theme"
-    },
-    "package": {
-      "main": "EN TEXT TO REPLACE: Package page",
-      "docs": "EN TEXT TO REPLACE: Docs",
-      "code": "EN TEXT TO REPLACE: Code",
-      "diff": "EN TEXT TO REPLACE: Diff",
-      "compare": "EN TEXT TO REPLACE: Compare this package",
-      "download": "EN TEXT TO REPLACE: Download tarball",
-      "changelog": "EN TEXT TO REPLACE: Changelog",
-      "stats": "EN TEXT TO REPLACE: Stats"
-    },
-    "package_actions": {
-      "copy_run": "EN TEXT TO REPLACE: Copy run command"
-    },
-    "code": {
-      "copy_file": "EN TEXT TO REPLACE: Copy file contents"
-    },
-    "diff": {
-      "merge_modified_lines": "EN TEXT TO REPLACE: Merge modified lines",
-      "word_wrap": "EN TEXT TO REPLACE: Word wrap"
-    },
-    "version": {
-      "label": "EN TEXT TO REPLACE: {version}"
-    },
-    "status": {
-      "available_in_context": "EN TEXT TO REPLACE: {context}. No commands available | {context}. 1 command available | {context}. {count} commands available",
-      "matching_in_context": "EN TEXT TO REPLACE: {context}. No matching commands | {context}. 1 matching command | {context}. {count} matching commands",
-      "no_matches_search_in_context": "EN TEXT TO REPLACE: {context}. No matching commands. Press Enter to search for \"{query}\"."
-    },
-    "announcements": {
-      "language_changed": "EN TEXT TO REPLACE: Language set to {language}.",
-      "relative_dates_on": "EN TEXT TO REPLACE: Relative dates on.",
-      "relative_dates_off": "EN TEXT TO REPLACE: Relative dates off.",
-      "theme_changed": "EN TEXT TO REPLACE: Theme set to {theme}.",
-      "accent_color_changed": "EN TEXT TO REPLACE: Accent color set to {color}.",
-      "background_theme_changed": "EN TEXT TO REPLACE: Background shade set to {theme}.",
-      "foreground_theme_changed": "EN TEXT TO REPLACE: Foreground shade set to {theme}.",
-      "download_started": "EN TEXT TO REPLACE: Downloading {package} tarball.",
-      "copied_to_clipboard": "EN TEXT TO REPLACE: Copied to clipboard.",
-      "npm_disconnected": "EN TEXT TO REPLACE: npm CLI disconnected.",
-      "atmosphere_disconnected": "EN TEXT TO REPLACE: Atmosphere disconnected.",
-      "facets_all_selected": "EN TEXT TO REPLACE: All facets selected.",
-      "facets_all_deselected": "EN TEXT TO REPLACE: All facets deselected.",
-      "view_switched": "EN TEXT TO REPLACE: Switched to {view} view.",
-      "setting_toggled": "EN TEXT TO REPLACE: {setting} {state}."
-    }
+    "state": {},
+    "groups": {},
+    "actions": {},
+    "connections": {},
+    "navigation": {},
+    "links": {},
+    "package_links": {},
+    "theme": {},
+    "package": {},
+    "package_actions": {},
+    "code": {},
+    "diff": {},
+    "version": {},
+    "status": {},
+    "announcements": {}
   },
   "nav": {
     "main_navigation": "Utama",
@@ -240,32 +131,6 @@
       "more_replies": "{count} balasan lagi... | {count} balasan lagi..."
     }
   },
-  "noodles": {
-    "title": "EN TEXT TO REPLACE: noodles",
-    "meta_description": "EN TEXT TO REPLACE: Every noodle we've ever shown on npmx — the seasonal logos, easter eggs, and the stories behind them.",
-    "latest": "EN TEXT TO REPLACE: Latest noodles",
-    "what_is": "EN TEXT TO REPLACE: What is noodles",
-    "what_is_body": "EN TEXT TO REPLACE: Noodles are the playful variants of the npmx logo we run on the homepage to mark releases, holidays, events, and other moments worth celebrating. Think of them like Google Doodles, but for npm packages.",
-    "empty": "EN TEXT TO REPLACE: No noodles yet.",
-    "load_more": "EN TEXT TO REPLACE: Load {count} more",
-    "dates": "EN TEXT TO REPLACE: Active dates",
-    "shipped_in": "EN TEXT TO REPLACE: Shipped in",
-    "credits": "EN TEXT TO REPLACE: Credits",
-    "learn_more": "EN TEXT TO REPLACE: Learn more",
-    "carousel_prev": "EN TEXT TO REPLACE: Previous image",
-    "carousel_next": "EN TEXT TO REPLACE: Next image",
-    "carousel_dots": "EN TEXT TO REPLACE: Variant image navigation",
-    "carousel_jump": "EN TEXT TO REPLACE: Go to image {index}",
-    "lens_label": "EN TEXT TO REPLACE: {title} — image reel",
-    "lens_slide": "EN TEXT TO REPLACE: image {index}",
-    "lens_slide_position": "EN TEXT TO REPLACE: Slide {index} of {total}",
-    "back_to_archive": "EN TEXT TO REPLACE: Back to all noodles",
-    "missing": {
-      "title": "EN TEXT TO REPLACE: This noodle never made it out of the bowl.",
-      "body": "EN TEXT TO REPLACE: We don't have a “{slug}” noodle on the menu. Either it's still being plated, or it was never written. Either way — back to the archive.",
-      "empty_bowl": "EN TEXT TO REPLACE: empty bowl"
-    }
-  },
   "settings": {
     "title": "pengaturan",
     "tagline": "Sesuaikan npmx dengan preferensi anda",
@@ -303,7 +168,6 @@
     "translation_status": "Periksa status terjemahan global",
     "accent_colors": {
       "label": "Warna aksen",
-      "neutral": "EN TEXT TO REPLACE: Neutral",
       "sky": "Biru langit",
       "coral": "Merah koral",
       "amber": "Kuning jingga",
@@ -321,17 +185,8 @@
       "slate": "Slate",
       "black": "Hitam"
     },
-    "foreground_themes": {
-      "label": "EN TEXT TO REPLACE: Foreground shade",
-      "contrast": "EN TEXT TO REPLACE: Contrast",
-      "standard": "EN TEXT TO REPLACE: Standard",
-      "muted": "EN TEXT TO REPLACE: Muted"
-    },
     "keyboard_shortcuts_enabled": "Aktifkan pintasan papan ketik",
-    "keyboard_shortcuts_enabled_description": "Pintasan papan ketik dapat dinonaktifkan jika bertentangan dengan pintasan peramban atau sistem lainnya.",
-    "enable_code_ligatures": "EN TEXT TO REPLACE: Enable ligatures in code",
-    "enable_changelog_autoscroll": "EN TEXT TO REPLACE: Auto scroll to requested version",
-    "enable_changelog_autoscroll_description": "EN TEXT TO REPLACE: Auto scroll to or close to the requested version at package changelog"
+    "keyboard_shortcuts_enabled_description": "Pintasan papan ketik dapat dinonaktifkan jika bertentangan dengan pintasan peramban atau sistem lainnya."
   },
   "i18n": {
     "missing_keys": "{count} belum diterjemahkan | {count} belum diterjemahkan",
@@ -363,7 +218,6 @@
     "warnings": "Peringatan:",
     "go_back_home": "Kembali ke Beranda",
     "per_week": "/ minggu",
-    "per_week_short": "EN TEXT TO REPLACE: /wk",
     "vanity_downloads_hint": "Angka statistik: tidak ada paket | Angka statistik: untuk paket yang tampil | Angka statistik: Total dari {count} paket yang tampil",
     "sort": {
       "name": "nama",
@@ -386,15 +240,11 @@
       "gitea": "Lihat di Gitea",
       "gitee": "Lihat di Gitee",
       "radicle": "Lihat di Radicle",
-      "socket_dev": "EN TEXT TO REPLACE: View on socket.dev",
       "sourcehut": "Lihat di SourceHut",
       "tangled": "Lihat di Tangled"
     },
     "collapse": "Ciutkan",
-    "collapse_with_name": "EN TEXT TO REPLACE: Collapse {name}",
-    "expand": "Perluas",
-    "expand_with_name": "EN TEXT TO REPLACE: Expand {name}",
-    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
+    "expand": "Perluas"
   },
   "profile": {
     "display_name": "Nama tampilan",
@@ -420,7 +270,6 @@
     "verified_provenance": "Provenans terverifikasi",
     "navigation": "Paket",
     "copy_name": "Salin nama paket",
-    "copy_version": "EN TEXT TO REPLACE: Copy package version",
     "deprecation": {
       "package": "Paket ini telah usang (deprecated).",
       "version": "Versi ini telah usang (deprecated).",
@@ -433,20 +282,10 @@
       "size": "Ukuran instalasi meningkat sebesar {percent} ({size} lebih besar)",
       "deps": "{count} lebih banyak dependensi"
     },
-    "size_decrease": {
-      "title_size": "EN TEXT TO REPLACE: Package size decreased since v{version}!",
-      "title_deps": "EN TEXT TO REPLACE: Dependency count decreased since v{version}!",
-      "title_both": "EN TEXT TO REPLACE: Package size and dependency count decreased since v{version}!",
-      "size": "EN TEXT TO REPLACE: Install size reduced by {percent} ({size} smaller)",
-      "deps": "EN TEXT TO REPLACE: {count} fewer dependency | {count} fewer dependencies"
-    },
+    "size_decrease": {},
     "replacement": {
       "title": "Mungkin Anda tidak butuh dependensi ini.",
-      "example": "EN TEXT TO REPLACE: Example:",
       "native": "Paket ini dapat diganti dengan {replacement}, tersedia sejak Node {nodeVersion}.",
-      "native_no_version": "EN TEXT TO REPLACE: This package can be replaced with {replacement}.",
-      "simple": "EN TEXT TO REPLACE: This package has been flagged as redundant, with the advice: {replacement}",
-      "documented": "EN TEXT TO REPLACE: This package has been flagged as having more performant alternatives.",
       "none": "Paket ini ditandai sudah tidak diperlukan, fungsinya kemungkinan sudah tersedia secara bawaan (native).",
       "learn_more": "Pelajari lebih lanjut",
       "learn_more_above": "Pelajari selengkapnya di atas.",
@@ -464,10 +303,7 @@
       "size_tooltip": {
         "unpacked": "{size} ukuran tidak terkompresi (paket ini)",
         "total": "{size} total ukuran tidak terkompresi (termasuk semua {count} dependensi untuk linux-x64)"
-      },
-      "main_information": "EN TEXT TO REPLACE: Main Information",
-      "trends": "EN TEXT TO REPLACE: Trends",
-      "version_distribution": "EN TEXT TO REPLACE: Version Distribution"
+      }
     },
     "skills": {
       "title": "Keahlian Agen",
@@ -494,21 +330,13 @@
       "issues": "kendala",
       "jsr": "jsr",
       "code": "kode",
-      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "dokumentasi",
       "fund": "donasi",
-      "compare": "bandingkan",
-      "timeline": "EN TEXT TO REPLACE: timeline",
-      "stats": "EN TEXT TO REPLACE: stats",
-      "compare_this_package": "Bandingkan paket ini",
-      "changelog": "EN TEXT TO REPLACE: changelog"
+      "compare": "bandingkan"
     },
     "likes": {
       "like": "Sukai paket ini",
-      "unlike": "Batal sukai paket ini",
-      "top_rank_tooltip": "EN TEXT TO REPLACE: This is among the top 10 most liked packages on npmx! (#{rank})",
-      "top_rank_label": "EN TEXT TO REPLACE: #{rank}",
-      "top_rank_link_label": "EN TEXT TO REPLACE: View likes leaderboard. This package is ranked #{rank}."
+      "unlike": "Batal sukai paket ini"
     },
     "docs": {
       "contents": "Daftar Isi",
@@ -536,16 +364,7 @@
     },
     "run": {
       "title": "Jalankan",
-      "locally": "Jalankan secara lokal",
-      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
-    },
-    "command": {
-      "copied_install": "EN TEXT TO REPLACE: Install command copied",
-      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
-      "copied_run": "EN TEXT TO REPLACE: Run command copied",
-      "copied_create": "EN TEXT TO REPLACE: Create command copied",
-      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
-      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+      "locally": "Jalankan secara lokal"
     },
     "readme": {
       "title": "Readme",
@@ -558,8 +377,7 @@
         "warning": "Peringatan",
         "caution": "Perhatian"
       },
-      "copy_as_markdown": "Salin README sebagai Markdown",
-      "error_loading": "EN TEXT TO REPLACE: Failed to load README details"
+      "copy_as_markdown": "Salin README sebagai Markdown"
     },
     "provenance_section": {
       "title": "Provenans",
@@ -590,7 +408,6 @@
       "weekly_downloads": "Total unduhan mingguan",
       "keywords": "Kata kunci",
       "license": "Lisensi",
-      "version": "EN TEXT TO REPLACE: Version",
       "select": "Pilih paket",
       "select_maximum": "Maksimum {count} paket dapat dipilih"
     },
@@ -629,9 +446,6 @@
       "filter_help": "Bantuan filter rentang semver",
       "filter_tooltip": "Saring versi menggunakan {link}. Sebagai contoh, ^3.0.0 menampilkan semua versi 3.x.",
       "filter_tooltip_link": "rentang semver",
-      "license_change_help": "EN TEXT TO REPLACE: License Change Details",
-      "license_change_warning": "EN TEXT TO REPLACE: License changed since previous version.",
-      "license_change_record": "EN TEXT TO REPLACE: The license of this package changed from \"{from}\" to \"{to}\".",
       "no_matches": "Tidak ada versi yang cocok dengan rentang ini",
       "copy_alt": {
         "per_version_analysis": "Versi {version} diunduh {downloads} kali",
@@ -642,73 +456,31 @@
       "no_match_filter": "Tidak ada versi yang cocok dengan {filter}"
     },
     "timeline": {
-      "load_more": "EN TEXT TO REPLACE: Load more",
-      "load_error": "EN TEXT TO REPLACE: Failed to load timeline. Please try again later.",
-      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
-      "size_increase": "EN TEXT TO REPLACE: Install size increased by {percent}% ({size})",
-      "size_decrease": "EN TEXT TO REPLACE: Install size decreased by {percent}% ({size})",
-      "dep_increase": "EN TEXT TO REPLACE: {count} dependency added | {count} dependencies added",
-      "dep_decrease": "EN TEXT TO REPLACE: {count} dependency removed | {count} dependencies removed",
-      "license_change": "EN TEXT TO REPLACE: License changed from {from} to {to}",
-      "esm_added": "EN TEXT TO REPLACE: Module type changed to ESM",
-      "esm_removed": "EN TEXT TO REPLACE: Module type changed from ESM to CJS",
-      "types_added": "EN TEXT TO REPLACE: TypeScript types added",
-      "types_removed": "EN TEXT TO REPLACE: TypeScript types removed",
-      "trusted_publisher_added": "EN TEXT TO REPLACE: Trusted publishing enabled",
-      "trusted_publisher_removed": "EN TEXT TO REPLACE: Trusted publishing removed",
-      "provenance_added": "EN TEXT TO REPLACE: Provenance enabled",
-      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed",
-      "deprecated": "EN TEXT TO REPLACE: Deprecated",
       "chart": {
-        "tab_aria_label": "EN TEXT TO REPLACE: Metric selection",
-        "dependency_size": "EN TEXT TO REPLACE: Dependency Size",
-        "other_dependencies": "EN TEXT TO REPLACE: Other",
-        "base_scale": "EN TEXT TO REPLACE: start y-axis at zero",
-        "zoom": "EN TEXT TO REPLACE: zoom",
-        "reset_minimap": "EN TEXT TO REPLACE: reset minimap",
-        "ordered_versions": "EN TEXT TO REPLACE: stable only",
-        "sort_label": "EN TEXT TO REPLACE: Sort by",
-        "sort_time": "EN TEXT TO REPLACE: Publish time",
-        "sort_semver": "EN TEXT TO REPLACE: Semver",
-        "copy_alt": {
-          "key_changes": "EN TEXT TO REPLACE: Key changes: {version_events}.",
-          "version_events": "EN TEXT TO REPLACE: version {version}: {events}",
-          "general_description": "EN TEXT TO REPLACE: Line chart showing the {metric} of the {package} package, from version {first} to {last}. The {metric} in version {first} is {first_value}, in version {last} is {last_value} ({overall_progress_percentage}% overall). {key_changes} {watermark}.",
-          "stackbar_segment_share": "EN TEXT TO REPLACE: {segment}: {value} ({percentage})",
-          "stackbar_top_segments": "EN TEXT TO REPLACE: In {version}, the largest segments are {segments}.",
-          "stackbar_largest_increase": "EN TEXT TO REPLACE: The largest increase is {segment}, up {delta}.",
-          "stackbar_largest_decrease": "EN TEXT TO REPLACE: The largest decrease is {segment}, down {delta}."
-        }
+        "copy_alt": {}
       }
     },
     "dependencies": {
       "title": "Dependensi ({count})",
-      "insights": {
-        "title": "EN TEXT TO REPLACE: Insights",
-        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
-        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
-        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
-        "major_behind": "EN TEXT TO REPLACE: Major behind",
-        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
-        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
-        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
-        "deprecated": "EN TEXT TO REPLACE: Deprecated",
-        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
-        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
-        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
-      },
+      "list_label": "Dependensi paket",
+      "show_all": "tampilkan {count} dep | tampilkan semua {count} dep",
       "optional": "opsional",
-      "bundled": "EN TEXT TO REPLACE: bundled",
-      "all": "EN TEXT TO REPLACE: All dependencies",
-      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
-      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
-      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
-      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "Lihat kerentanan",
       "outdated_major": "Tertinggal {count} versi major (terbaru: {latest}) | Tertinggal {count} versi major (terbaru: {latest})",
       "outdated_minor": "Tertinggal {count} versi minor (terbaru: {latest}) | Tertinggal {count} versi minor (terbaru: {latest})",
       "outdated_patch": "Pembaruan patch tersedia (terbaru: {latest})",
-      "has_replacement": "Ketergantungan ini telah menyarankan beberapa alternatif"
+      "has_replacement": "Ketergantungan ini telah menyarankan beberapa alternatif",
+      "vulnerabilities_count": "{count} kerentanan | {count} kerentanan"
+    },
+    "peer_dependencies": {
+      "title": "Peer Dependencies ({count})",
+      "list_label": "Peer dependencies paket",
+      "show_all": "tampilkan {count} peer dep | tampilkan semua {count} peer dep"
+    },
+    "optional_dependencies": {
+      "title": "Optional Dependencies ({count})",
+      "list_label": "Optional dependencies paket",
+      "show_all": "tampilkan {count} optional dep | tampilkan semua {count} optional dep"
     },
     "maintainers": {
       "title": "Pemelihara",
@@ -746,7 +518,6 @@
       "date_range": "{start} sampai {end}",
       "date_range_multiline": "{start}\nsampai {end}",
       "download_file": "Unduh {fileType}",
-      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "Ganti anotator",
       "toggle_stack_mode": "Beralih mode tumpukan",
       "open_options": "Buka opsi",
@@ -781,7 +552,6 @@
         "trend_undefined": "tidak terdefinisi (data tidak cukup)",
         "button_label": "Salin teks alternatif",
         "watermark": "Di bagian bawah, terdapat tanda air bertuliskan \"./npmx penjelajah cepat dan modern untuk registri npm\"",
-        "watermark_top": "EN TEXT TO REPLACE: At the top, a watermark reads \"./npmx a fast, modern browser for the npm registry\"",
         "analysis": "{package_name} dimulai dari {start_value} dan berakhir di {end_value}, menampilkan tren {trend} dengan kemiringan {downloads_slope} unduhan per interval waktu",
         "estimation": "Nilai akhir adalah estimasi berdasarkan data sebagian untuk periode saat ini.",
         "estimations": "Nilai akhir adalah estimasi berdasarkan data sebagian untuk periode saat ini.",
@@ -790,17 +560,10 @@
         "general_description": "Sumbu Y melambangkan jumlah unduhan. Sumbu X melambangkan jangka waktu, mulai dari {start_date} hingga {end_date}, dalam kurun waktu {granularity}. {estimation_notice} {packages_analysis}. {watermark}.",
         "facet_bar_general_description": "Grafik batang horizontal untuk: {packages}, membandingkan {facet} ({description}). {facet_analysis} {watermark}.",
         "facet_bar_analysis": "{package_name} memiliki nilai {value}."
-      },
-      "embedding": {
-        "chart": "EN TEXT TO REPLACE: Embed this chart",
-        "copy_url": "EN TEXT TO REPLACE: Copy this URL to embed the chart into your website",
-        "preview": "EN TEXT TO REPLACE: Preview",
-        "tip": "EN TEXT TO REPLACE: If startDate and endDate are not provided in the URL, the graph will display the last 12 months by default."
       }
     },
     "downloads": {
       "title": "Unduhan Mingguan",
-      "version_distribution_title": "EN TEXT TO REPLACE: weekly downloads for version {version}",
       "community_distribution": "Lihat sebaran penggunaan komunitas",
       "subtitle": "Di semua versi",
       "sparkline_nav_hint": "Gunakan ← →"
@@ -900,14 +663,7 @@
     }
   },
   "leaderboard": {
-    "likes": {
-      "title": "EN TEXT TO REPLACE: Likes Leaderboard",
-      "description": "EN TEXT TO REPLACE: The 10 most liked packages on npmx right now.",
-      "rank": "EN TEXT TO REPLACE: Rank",
-      "likes": "EN TEXT TO REPLACE: Likes",
-      "unavailable_title": "EN TEXT TO REPLACE: No likes leaderboard yet",
-      "unavailable_description": "EN TEXT TO REPLACE: We don't have a likes leaderboard to show right now."
-    }
+    "likes": {}
   },
   "connector": {
     "modal": {
@@ -1090,12 +846,8 @@
     "lines": "{count} baris",
     "toggle_tree": "Ganti file tree",
     "close_tree": "Tutup file tree",
-    "copy_content": "EN TEXT TO REPLACE: Copy file content",
     "copy_link": "Salin tautan",
     "view_raw": "Lihat file mentah",
-    "toggle_container": "EN TEXT TO REPLACE: Toggle code container width",
-    "open_raw_file": "EN TEXT TO REPLACE: Open raw file",
-    "open_path_dropdown": "EN TEXT TO REPLACE: Open path segments dropdown",
     "file_too_large": "Berkas terlalu besar untuk pratinjau",
     "file_size_warning": "{size} melebihi batas 500KB untuk penyorotan sintaksis",
     "failed_to_load": "Gagal memuat file",
@@ -1115,8 +867,7 @@
     },
     "file_path": "Path file",
     "binary_file": "File biner",
-    "binary_rendering_warning": "File ini adalah file biner dan tidak dapat ditampilkan sebagai teks.",
-    "possibly_unnecessary": "EN TEXT TO REPLACE: May be unnecessary in a published package"
+    "binary_rendering_warning": "File ini adalah file biner dan tidak dapat ditampilkan sebagai teks."
   },
   "badges": {
     "provenance": {
@@ -1150,7 +901,6 @@
     "keywords": "Kata kunci",
     "more_keywords": "+{count} lagi",
     "clear_all": "Hapus semua",
-    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "Hapus filter {label}",
     "chips": {
       "search": "Pencarian",
@@ -1264,18 +1014,13 @@
       }
     },
     "sponsors": {
-      "title": "Sponsor",
-      "gold": "EN TEXT TO REPLACE: Gold Sponsors",
-      "silver": "EN TEXT TO REPLACE: Silver Sponsors"
+      "title": "Sponsor"
     },
     "oss_partners": {
       "title": "Mitra OSS"
     },
     "team": {
       "title": "Tim",
-      "core": "EN TEXT TO REPLACE: Core",
-      "maintainers": "EN TEXT TO REPLACE: Maintainers",
-      "role_core": "EN TEXT TO REPLACE: core",
       "role_steward": "pengurus",
       "role_maintainer": "pemelihara",
       "sponsor": "sponsor",
@@ -1309,64 +1054,6 @@
         "title": "Tetap terbarui",
         "description": "Temukan kabar terbaru tentang npmx.",
         "cta": "Ikuti di Bluesky"
-      }
-    }
-  },
-  "sponsors_page": {
-    "title": "EN TEXT TO REPLACE: Sponsors",
-    "heading": "EN TEXT TO REPLACE: sponsors",
-    "meta_description": "EN TEXT TO REPLACE: Support npmx and help us accelerate ecosystem work around security, trust, optimization, and research.",
-    "intro": "EN TEXT TO REPLACE: Support npmx and help us grow the ecosystem work we do for developers and maintainers.",
-    "what_we_do": {
-      "title": "EN TEXT TO REPLACE: What we do",
-      "description": "EN TEXT TO REPLACE: We're building an ecosystem that solves problems around security, trust, optimization, and research for the tools we use in everyday development - quickly, conveniently, and with high quality. This project is built by developers for developers. As authors of widely used libraries, we understand team needs and actively study what maintainers and projects need most."
-    },
-    "what_support_means": {
-      "title": "EN TEXT TO REPLACE: What support means",
-      "description": "EN TEXT TO REPLACE: Our plans and connections keep growing, along with our desire to share what we've built and learn from others. Your support helps fund the project, external talks, conferences, and the broader ecosystem, and, most importantly, enables us to keep growing our community."
-    },
-    "cta": "EN TEXT TO REPLACE: See sponsorship tiers",
-    "community_growth_footnote": "EN TEXT TO REPLACE: * According to {link} Q1 2026 research.",
-    "what_this_means_for_you": {
-      "title": "EN TEXT TO REPLACE: What this means for you",
-      "description": "EN TEXT TO REPLACE: npmx is not only about improving developer experience and closing critical everyday gaps. In our first six months, we have already become the default source for thousands of teams and a huge number of developers. You get not only a more stable tool for your teams, but also visibility in front of a constantly growing audience of top-tier engineers.",
-      "cards": {
-        "people": {
-          "contributors": "EN TEXT TO REPLACE: contributors",
-          "community_members": "EN TEXT TO REPLACE: community members"
-        },
-        "visitors": {
-          "description": "EN TEXT TO REPLACE: unique monthly visitors"
-        },
-        "stars": {
-          "title": "EN TEXT TO REPLACE: stars"
-        },
-        "community": {
-          "title": "EN TEXT TO REPLACE: fast-growing",
-          "description": "EN TEXT TO REPLACE: We are one of the fastest-growing communities in the ecosystem"
-        },
-        "adoption": {
-          "title": "EN TEXT TO REPLACE: adoption",
-          "description": "EN TEXT TO REPLACE: charts at conferences, talks, and articles rely on our data"
-        },
-        "default_source": {
-          "title": "EN TEXT TO REPLACE: default source",
-          "description": "EN TEXT TO REPLACE: pnpm made npmx the default source, many packages have been configured to link to npmx"
-        }
-      }
-    },
-    "tiers": {
-      "title": "EN TEXT TO REPLACE: Sponsorship tiers",
-      "per_month": "EN TEXT TO REPLACE: /month",
-      "custom": "EN TEXT TO REPLACE: Custom",
-      "silver": {
-        "name": "EN TEXT TO REPLACE: Silver"
-      },
-      "gold": {
-        "name": "EN TEXT TO REPLACE: Gold"
-      },
-      "platinum": {
-        "name": "EN TEXT TO REPLACE: Platinum"
       }
     }
   },
@@ -1451,15 +1138,7 @@
       "add_hint": "Tambah setidaknya 2 paket untuk dibandingkan."
     },
     "scatter_chart": {
-      "title": "EN TEXT TO REPLACE: Compare {x} vs {y}",
-      "freshness_score": "EN TEXT TO REPLACE: Freshness score",
-      "copy_alt": {
-        "analysis": "EN TEXT TO REPLACE: {package} : {x_name} ({x_value}) and {y_name} ({y_value})",
-        "description": "EN TEXT TO REPLACE: Scatter plot chart mapping {x_name} versus {y_name} for the {packages} packages. {analysis}. {watermark}"
-      },
-      "filename": "EN TEXT TO REPLACE: {x}-vs-{y}-scatter-chart",
-      "x_axis": "EN TEXT TO REPLACE: X-AXIS ↦",
-      "y_axis": "EN TEXT TO REPLACE: Y-AXIS ↥"
+      "copy_alt": {}
     },
     "no_dependency": {
       "label": "(Tanpa Ketergantungan)",
@@ -1540,22 +1219,9 @@
           "label": "Kerentanan",
           "description": "Kerentanan keamanan yang diketahui"
         },
-        "githubStars": {
-          "label": "EN TEXT TO REPLACE: GitHub Stars",
-          "description": "EN TEXT TO REPLACE: Number of stars on the GitHub repository"
-        },
-        "githubForks": {
-          "label": "EN TEXT TO REPLACE: GitHub Forks",
-          "description": "EN TEXT TO REPLACE: Number of forks on the GitHub repository"
-        },
-        "githubIssues": {
-          "label": "EN TEXT TO REPLACE: GitHub Issues",
-          "description": "EN TEXT TO REPLACE: Number of issues on the GitHub repository"
-        },
-        "createdAt": {
-          "label": "EN TEXT TO REPLACE: Created At",
-          "description": "EN TEXT TO REPLACE: When the package was created"
-        }
+        "githubStars": {},
+        "githubIssues": {},
+        "createdAt": {}
       },
       "values": {
         "any": "Apa saja",
@@ -1592,7 +1258,6 @@
     "dev_dependencies": "Dev Dependencies",
     "peer_dependencies": "Peer Dependencies",
     "optional_dependencies": "Optional Dependencies",
-    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "Tidak ada perubahan ketergantungan",
     "file_filter_option": {
       "all": "Semua ({count})",
@@ -1616,9 +1281,6 @@
     "change_ratio": "Ubah rasio",
     "char_edits": "Perubahan karakter",
     "diff_distance": "Jarak perbedaan",
-    "diff_truncated": "EN TEXT TO REPLACE: Diff truncated for performance. Showing the first changed lines only.",
-    "large_diff_mode": "EN TEXT TO REPLACE: Large file diff shown with inline edit merging disabled for performance.",
-    "large_diff_options_disabled": "EN TEXT TO REPLACE: Large file mode disables inline edit merging for performance.",
     "loading_diff": "Memuat perbedaan...",
     "loading_diff_error": "Gagal memuat perbedaan",
     "merge_modified_lines": "Gabungkan baris yang dimodifikasi",
@@ -1879,17 +1541,7 @@
       "discord_link_text": "chat.npmx.dev"
     }
   },
-  "alt_logo_kawaii": "EN TEXT TO REPLACE: A cute, rounded, and colorful version of the npmx logo.",
   "changelog": {
-    "pre_release": "EN TEXT TO REPLACE: Pre-release",
-    "draft": "EN TEXT TO REPLACE: Draft",
-    "no_logs": "EN TEXT TO REPLACE: Sorry, this package does not publish changelogs or its changelog format is not supported.",
-    "error": {
-      "p1": "EN TEXT TO REPLACE: Sorry, the changelog for {package} couldn't be loaded",
-      "p2": "EN TEXT TO REPLACE: Please try again later or {viewon}"
-    },
-    "rate_limit_ungh": "EN TEXT TO REPLACE: Sorry, Github's rate limit has been hit, try again in a moment",
-    "version_unavailable": "EN TEXT TO REPLACE: The requested version is not available.",
-    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
+    "error": {}
   }
 }

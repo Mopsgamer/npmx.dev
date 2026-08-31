@@ -13,7 +13,6 @@
   "trademark_disclaimer": "npm je registrovani zaštitni znak kompanije npm, Inc. Ovaj sajt nije povezan sa kompanijom npm, Inc.",
   "footer": {
     "about": "o nama",
-    "sponsors": "EN TEXT TO REPLACE: sponsors",
     "blog": "blog",
     "docs": "dokumentacija",
     "source": "izvor",
@@ -21,11 +20,7 @@
     "chat": "ćaskanje",
     "builders_chat": "builders",
     "keyboard_shortcuts": "prečice na tastaturi",
-    "brand": "brend",
-    "resources": "EN TEXT TO REPLACE: Resources",
-    "features": "EN TEXT TO REPLACE: Features",
-    "other": "EN TEXT TO REPLACE: Other",
-    "sponsored_by": "EN TEXT TO REPLACE: Sponsored by {list}"
+    "brand": "brend"
   },
   "shortcuts": {
     "section": {
@@ -33,24 +28,18 @@
       "search": "Pretraga",
       "package": "Paket"
     },
-    "ctrl_key": "EN TEXT TO REPLACE: Ctrl",
-    "command_palette": "EN TEXT TO REPLACE: Open command palette",
-    "command_palette_description": "EN TEXT TO REPLACE: Use the command palette to jump between pages, package views, settings, and external links without leaving the keyboard. On macOS, press ⌘K. On Windows and Linux, press {ctrlKey}+K.",
     "focus_search": "Fokusirajte pretragu",
     "show_kbd_hints": "Istaknite prečice na tastaturi",
     "settings": "Otvorite podešavanja",
     "compare": "Otvorite poređenje",
     "compare_from_package": "Otvorite poređenje (sa trenutnim paketom)",
-    "changelog": "EN TEXT TO REPLACE: Open changelog",
     "navigate_results": "Krećite se kroz rezultate",
     "go_to_result": "Idite na rezultat",
     "open_code_view": "Otvorite pregled koda",
     "open_docs": "Otvorite dokumentaciju",
     "disable_shortcuts": "Možete isključiti prečice na tastaturi u {settings}.",
     "open_main": "Otvorite glavne informacije",
-    "open_diff": "Otvorite razlike verzija",
-    "open_timeline": "EN TEXT TO REPLACE: Open timeline",
-    "open_stats": "EN TEXT TO REPLACE: Open stats"
+    "open_diff": "Otvorite razlike verzija"
   },
   "search": {
     "label": "Pretražite npm pakete",
@@ -88,119 +77,21 @@
     "instant_search_advisory": "{label} {state} — {action}"
   },
   "command_palette": {
-    "title": "EN TEXT TO REPLACE: command palette",
-    "quick_actions": "EN TEXT TO REPLACE: jump to...",
-    "subtitle": "EN TEXT TO REPLACE: navigate across npmx and switch settings quickly",
-    "subtitle_languages": "EN TEXT TO REPLACE: choose a language or help improve translations",
-    "instructions": "EN TEXT TO REPLACE: Type to filter commands. Use the arrow keys to move through results and Enter to run a command.",
-    "input_label": "EN TEXT TO REPLACE: Command palette search",
-    "results_label": "EN TEXT TO REPLACE: Command results",
-    "placeholder": "EN TEXT TO REPLACE: type a command...",
-    "back": "EN TEXT TO REPLACE: Back",
-    "empty": "EN TEXT TO REPLACE: No matching commands",
-    "empty_search_hint": "EN TEXT TO REPLACE: Press Enter to search for \"{query}\".",
-    "current": "EN TEXT TO REPLACE: current",
-    "here": "EN TEXT TO REPLACE: you are here",
-    "connected": "EN TEXT TO REPLACE: connected",
-    "keyboard_shortcuts": {
-      "navigate": "EN TEXT TO REPLACE: to navigate",
-      "select": "EN TEXT TO REPLACE: to select",
-      "close": "EN TEXT TO REPLACE: to close"
-    },
-    "state": {
-      "on": "EN TEXT TO REPLACE: on",
-      "off": "EN TEXT TO REPLACE: off"
-    },
-    "groups": {
-      "actions": "EN TEXT TO REPLACE: Actions",
-      "help": "EN TEXT TO REPLACE: Help",
-      "language": "EN TEXT TO REPLACE: Language",
-      "connections": "EN TEXT TO REPLACE: Connections",
-      "navigation": "EN TEXT TO REPLACE: Navigation",
-      "links": "EN TEXT TO REPLACE: Links",
-      "npmx": "EN TEXT TO REPLACE: npmx",
-      "package": "EN TEXT TO REPLACE: Package",
-      "package_with_name": "EN TEXT TO REPLACE: Package ({name})",
-      "versions": "EN TEXT TO REPLACE: Versions",
-      "versions_with_name": "EN TEXT TO REPLACE: Versions of {name}"
-    },
-    "actions": {
-      "search": "EN TEXT TO REPLACE: Search",
-      "search_for": "EN TEXT TO REPLACE: Search for \"{query}\"",
-      "keyboard_shortcuts": "EN TEXT TO REPLACE: Keyboard shortcuts",
-      "help_translate": "EN TEXT TO REPLACE: Help translate"
-    },
-    "connections": {
-      "npm_connect": "EN TEXT TO REPLACE: Connect to npm CLI",
-      "npm_connected": "EN TEXT TO REPLACE: npm CLI (~{username})",
-      "npm_disconnect": "EN TEXT TO REPLACE: Disconnect npm CLI",
-      "atmosphere_connect": "EN TEXT TO REPLACE: Connect to Atmosphere",
-      "atmosphere_connected": "EN TEXT TO REPLACE: atmosphere ({'@'}{handle})",
-      "atmosphere_disconnect": "EN TEXT TO REPLACE: Disconnect Atmosphere"
-    },
-    "navigation": {
-      "home": "EN TEXT TO REPLACE: home",
-      "packages": "EN TEXT TO REPLACE: packages (~{username})",
-      "orgs": "EN TEXT TO REPLACE: orgs (~{username})",
-      "profile": "EN TEXT TO REPLACE: profile ({'@'}{handle})"
-    },
-    "links": {
-      "external": "EN TEXT TO REPLACE: External link"
-    },
-    "package_links": {
-      "stars": "EN TEXT TO REPLACE: Repository stars",
-      "forks": "EN TEXT TO REPLACE: Repository forks"
-    },
-    "theme": {
-      "system": "EN TEXT TO REPLACE: Use system theme",
-      "light": "EN TEXT TO REPLACE: Use light theme",
-      "dark": "EN TEXT TO REPLACE: Use dark theme"
-    },
-    "package": {
-      "main": "EN TEXT TO REPLACE: Package page",
-      "docs": "EN TEXT TO REPLACE: Docs",
-      "code": "EN TEXT TO REPLACE: Code",
-      "diff": "EN TEXT TO REPLACE: Diff",
-      "compare": "EN TEXT TO REPLACE: Compare this package",
-      "download": "EN TEXT TO REPLACE: Download tarball",
-      "changelog": "EN TEXT TO REPLACE: Changelog",
-      "stats": "EN TEXT TO REPLACE: Stats"
-    },
-    "package_actions": {
-      "copy_run": "EN TEXT TO REPLACE: Copy run command"
-    },
-    "code": {
-      "copy_file": "EN TEXT TO REPLACE: Copy file contents"
-    },
-    "diff": {
-      "merge_modified_lines": "EN TEXT TO REPLACE: Merge modified lines",
-      "word_wrap": "EN TEXT TO REPLACE: Word wrap"
-    },
-    "version": {
-      "label": "EN TEXT TO REPLACE: {version}"
-    },
-    "status": {
-      "available_in_context": "EN TEXT TO REPLACE: {context}. No commands available | {context}. 1 command available | {context}. {count} commands available",
-      "matching_in_context": "EN TEXT TO REPLACE: {context}. No matching commands | {context}. 1 matching command | {context}. {count} matching commands",
-      "no_matches_search_in_context": "EN TEXT TO REPLACE: {context}. No matching commands. Press Enter to search for \"{query}\"."
-    },
-    "announcements": {
-      "language_changed": "EN TEXT TO REPLACE: Language set to {language}.",
-      "relative_dates_on": "EN TEXT TO REPLACE: Relative dates on.",
-      "relative_dates_off": "EN TEXT TO REPLACE: Relative dates off.",
-      "theme_changed": "EN TEXT TO REPLACE: Theme set to {theme}.",
-      "accent_color_changed": "EN TEXT TO REPLACE: Accent color set to {color}.",
-      "background_theme_changed": "EN TEXT TO REPLACE: Background shade set to {theme}.",
-      "foreground_theme_changed": "EN TEXT TO REPLACE: Foreground shade set to {theme}.",
-      "download_started": "EN TEXT TO REPLACE: Downloading {package} tarball.",
-      "copied_to_clipboard": "EN TEXT TO REPLACE: Copied to clipboard.",
-      "npm_disconnected": "EN TEXT TO REPLACE: npm CLI disconnected.",
-      "atmosphere_disconnected": "EN TEXT TO REPLACE: Atmosphere disconnected.",
-      "facets_all_selected": "EN TEXT TO REPLACE: All facets selected.",
-      "facets_all_deselected": "EN TEXT TO REPLACE: All facets deselected.",
-      "view_switched": "EN TEXT TO REPLACE: Switched to {view} view.",
-      "setting_toggled": "EN TEXT TO REPLACE: {setting} {state}."
-    }
+    "state": {},
+    "groups": {},
+    "actions": {},
+    "connections": {},
+    "navigation": {},
+    "links": {},
+    "package_links": {},
+    "theme": {},
+    "package": {},
+    "package_actions": {},
+    "code": {},
+    "diff": {},
+    "version": {},
+    "status": {},
+    "announcements": {}
   },
   "nav": {
     "main_navigation": "Glavno",
@@ -240,32 +131,6 @@
       "more_replies": "{count} još odgovor... | {count} još odgovora... | {count} još odgovora..."
     }
   },
-  "noodles": {
-    "title": "EN TEXT TO REPLACE: noodles",
-    "meta_description": "EN TEXT TO REPLACE: Every noodle we've ever shown on npmx — the seasonal logos, easter eggs, and the stories behind them.",
-    "latest": "EN TEXT TO REPLACE: Latest noodles",
-    "what_is": "EN TEXT TO REPLACE: What is noodles",
-    "what_is_body": "EN TEXT TO REPLACE: Noodles are the playful variants of the npmx logo we run on the homepage to mark releases, holidays, events, and other moments worth celebrating. Think of them like Google Doodles, but for npm packages.",
-    "empty": "EN TEXT TO REPLACE: No noodles yet.",
-    "load_more": "EN TEXT TO REPLACE: Load {count} more",
-    "dates": "EN TEXT TO REPLACE: Active dates",
-    "shipped_in": "EN TEXT TO REPLACE: Shipped in",
-    "credits": "EN TEXT TO REPLACE: Credits",
-    "learn_more": "EN TEXT TO REPLACE: Learn more",
-    "carousel_prev": "EN TEXT TO REPLACE: Previous image",
-    "carousel_next": "EN TEXT TO REPLACE: Next image",
-    "carousel_dots": "EN TEXT TO REPLACE: Variant image navigation",
-    "carousel_jump": "EN TEXT TO REPLACE: Go to image {index}",
-    "lens_label": "EN TEXT TO REPLACE: {title} — image reel",
-    "lens_slide": "EN TEXT TO REPLACE: image {index}",
-    "lens_slide_position": "EN TEXT TO REPLACE: Slide {index} of {total}",
-    "back_to_archive": "EN TEXT TO REPLACE: Back to all noodles",
-    "missing": {
-      "title": "EN TEXT TO REPLACE: This noodle never made it out of the bowl.",
-      "body": "EN TEXT TO REPLACE: We don't have a “{slug}” noodle on the menu. Either it's still being plated, or it was never written. Either way — back to the archive.",
-      "empty_bowl": "EN TEXT TO REPLACE: empty bowl"
-    }
-  },
   "settings": {
     "title": "podešavanja",
     "tagline": "prilagodite svoje npmx iskustvo",
@@ -303,7 +168,6 @@
     "translation_status": "Proverite globalni status prevoda",
     "accent_colors": {
       "label": "Akcent boje",
-      "neutral": "EN TEXT TO REPLACE: Neutral",
       "sky": "Nebeska",
       "coral": "Koral",
       "amber": "Ćilibar",
@@ -321,17 +185,8 @@
       "slate": "Škriljac",
       "black": "Crna"
     },
-    "foreground_themes": {
-      "label": "EN TEXT TO REPLACE: Foreground shade",
-      "contrast": "EN TEXT TO REPLACE: Contrast",
-      "standard": "EN TEXT TO REPLACE: Standard",
-      "muted": "EN TEXT TO REPLACE: Muted"
-    },
     "keyboard_shortcuts_enabled": "Omogućite prečice na tastaturi",
-    "keyboard_shortcuts_enabled_description": "Prečice na tastaturi mogu biti isključene ako su u sukobu sa drugim prečicama pregledača ili sistema",
-    "enable_code_ligatures": "EN TEXT TO REPLACE: Enable ligatures in code",
-    "enable_changelog_autoscroll": "EN TEXT TO REPLACE: Auto scroll to requested version",
-    "enable_changelog_autoscroll_description": "EN TEXT TO REPLACE: Auto scroll to or close to the requested version at package changelog"
+    "keyboard_shortcuts_enabled_description": "Prečice na tastaturi mogu biti isključene ako su u sukobu sa drugim prečicama pregledača ili sistema"
   },
   "i18n": {
     "missing_keys": "{count} nedostajući prevod | {count} nedostajuća prevoda | {count} nedostajućih prevoda",
@@ -363,7 +218,6 @@
     "warnings": "Upozorenja:",
     "go_back_home": "Vratite se na početnu",
     "per_week": "/ nedeljno",
-    "per_week_short": "EN TEXT TO REPLACE: /wk",
     "vanity_downloads_hint": "Ukrasni broj: nema prikazanih paketa | Ukrasni broj: za prikazani paket | Ukrasni broj: Zbir {count} prikazanih paketa",
     "sort": {
       "name": "ime",
@@ -386,15 +240,11 @@
       "gitea": "Pogledajte na Gitea-i",
       "gitee": "Pogledajte na Gitee-u",
       "radicle": "Pogledajte na Radicle-u",
-      "socket_dev": "EN TEXT TO REPLACE: View on socket.dev",
       "sourcehut": "Pogledajte na SourceHut-u",
       "tangled": "Pogledajte na Tangled-u"
     },
     "collapse": "Skupite",
-    "collapse_with_name": "EN TEXT TO REPLACE: Collapse {name}",
-    "expand": "Proširite",
-    "expand_with_name": "EN TEXT TO REPLACE: Expand {name}",
-    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
+    "expand": "Proširite"
   },
   "profile": {
     "display_name": "Ime za prikaz",
@@ -420,7 +270,6 @@
     "verified_provenance": "Verifikovano poreklo",
     "navigation": "Paket",
     "copy_name": "Kopirajte ime paketa",
-    "copy_version": "EN TEXT TO REPLACE: Copy package version",
     "deprecation": {
       "package": "Ovaj paket je zastareo.",
       "version": "Ova verzija je zastarela.",
@@ -433,20 +282,10 @@
       "size": "Veličina instalacije povećana za {percent} ({size} veća)",
       "deps": "{count} više zavisnosti"
     },
-    "size_decrease": {
-      "title_size": "EN TEXT TO REPLACE: Package size decreased since v{version}!",
-      "title_deps": "EN TEXT TO REPLACE: Dependency count decreased since v{version}!",
-      "title_both": "EN TEXT TO REPLACE: Package size and dependency count decreased since v{version}!",
-      "size": "EN TEXT TO REPLACE: Install size reduced by {percent} ({size} smaller)",
-      "deps": "EN TEXT TO REPLACE: {count} fewer dependency | {count} fewer dependencies"
-    },
+    "size_decrease": {},
     "replacement": {
       "title": "Možda vam ova zavisnost ne treba.",
-      "example": "EN TEXT TO REPLACE: Example:",
       "native": "Ovo se može zameniti sa {replacement}, dostupno od Node verzije {nodeVersion}.",
-      "native_no_version": "EN TEXT TO REPLACE: This package can be replaced with {replacement}.",
-      "simple": "EN TEXT TO REPLACE: This package has been flagged as redundant, with the advice: {replacement}",
-      "documented": "EN TEXT TO REPLACE: This package has been flagged as having more performant alternatives.",
       "none": "Ovaj paket je označen kao nepotreban, a njegova funkcionalnost je verovatno dostupna izvorno u svim okruženjima.",
       "learn_more": "Saznajte više",
       "learn_more_above": "Saznajte više iznad.",
@@ -464,10 +303,7 @@
       "size_tooltip": {
         "unpacked": "{size} raspakovana veličina (ovaj paket)",
         "total": "{size} ukupna raspakovana veličina (uključujući {count} zavisnost za linux-x64) | {size} ukupna raspakovana veličina (uključujući {count} zavisnosti za linux-x64) | {size} ukupna raspakovana veličina (uključujući svih {count} zavisnosti za linux-x64)"
-      },
-      "main_information": "EN TEXT TO REPLACE: Main Information",
-      "trends": "EN TEXT TO REPLACE: Trends",
-      "version_distribution": "EN TEXT TO REPLACE: Version Distribution"
+      }
     },
     "skills": {
       "title": "Agent veštine",
@@ -494,21 +330,13 @@
       "issues": "prijave problema",
       "jsr": "jsr",
       "code": "kod",
-      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "dokumentacija",
       "fund": "podržite",
-      "compare": "uporedite",
-      "timeline": "EN TEXT TO REPLACE: timeline",
-      "stats": "EN TEXT TO REPLACE: stats",
-      "compare_this_package": "uporedite ovaj paket",
-      "changelog": "EN TEXT TO REPLACE: changelog"
+      "compare": "uporedite"
     },
     "likes": {
       "like": "Sviđa mi se ovaj paket",
-      "unlike": "Uklonite sviđanje",
-      "top_rank_tooltip": "EN TEXT TO REPLACE: This is among the top 10 most liked packages on npmx! (#{rank})",
-      "top_rank_label": "EN TEXT TO REPLACE: #{rank}",
-      "top_rank_link_label": "EN TEXT TO REPLACE: View likes leaderboard. This package is ranked #{rank}."
+      "unlike": "Uklonite sviđanje"
     },
     "docs": {
       "contents": "Sadržaj",
@@ -536,16 +364,7 @@
     },
     "run": {
       "title": "Pokrenite",
-      "locally": "Pokrenite lokalno",
-      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
-    },
-    "command": {
-      "copied_install": "EN TEXT TO REPLACE: Install command copied",
-      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
-      "copied_run": "EN TEXT TO REPLACE: Run command copied",
-      "copied_create": "EN TEXT TO REPLACE: Create command copied",
-      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
-      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+      "locally": "Pokrenite lokalno"
     },
     "readme": {
       "title": "Readme",
@@ -558,8 +377,7 @@
         "warning": "Upozorenje",
         "caution": "Oprez"
       },
-      "copy_as_markdown": "Kopirajte README kao Markdown",
-      "error_loading": "EN TEXT TO REPLACE: Failed to load README details"
+      "copy_as_markdown": "Kopirajte README kao Markdown"
     },
     "provenance_section": {
       "title": "Poreklo",
@@ -590,7 +408,6 @@
       "weekly_downloads": "Nedeljna preuzimanja",
       "keywords": "Ključne reči",
       "license": "Licenca",
-      "version": "EN TEXT TO REPLACE: Version",
       "select": "Izaberite paket",
       "select_maximum": "Maksimalno {count} paketa može biti izabrano"
     },
@@ -629,9 +446,6 @@
       "filter_help": "Pomoć za filtriranje semver opsega",
       "filter_tooltip": "Filtrirajte verzije koristeći {link}. Na primer, ^3.0.0 prikazuje sve 3.x verzije.",
       "filter_tooltip_link": "semver opseg",
-      "license_change_help": "EN TEXT TO REPLACE: License Change Details",
-      "license_change_warning": "EN TEXT TO REPLACE: License changed since previous version.",
-      "license_change_record": "EN TEXT TO REPLACE: The license of this package changed from \"{from}\" to \"{to}\".",
       "no_matches": "Nijedna verzija ne odgovara ovom opsegu",
       "copy_alt": {
         "per_version_analysis": "Verzija {version} je preuzeta {downloads} puta",
@@ -642,73 +456,31 @@
       "no_match_filter": "Nijedna verzija ne odgovara filteru {filter}"
     },
     "timeline": {
-      "load_more": "EN TEXT TO REPLACE: Load more",
-      "load_error": "EN TEXT TO REPLACE: Failed to load timeline. Please try again later.",
-      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
-      "size_increase": "EN TEXT TO REPLACE: Install size increased by {percent}% ({size})",
-      "size_decrease": "EN TEXT TO REPLACE: Install size decreased by {percent}% ({size})",
-      "dep_increase": "EN TEXT TO REPLACE: {count} dependency added | {count} dependencies added",
-      "dep_decrease": "EN TEXT TO REPLACE: {count} dependency removed | {count} dependencies removed",
-      "license_change": "EN TEXT TO REPLACE: License changed from {from} to {to}",
-      "esm_added": "EN TEXT TO REPLACE: Module type changed to ESM",
-      "esm_removed": "EN TEXT TO REPLACE: Module type changed from ESM to CJS",
-      "types_added": "EN TEXT TO REPLACE: TypeScript types added",
-      "types_removed": "EN TEXT TO REPLACE: TypeScript types removed",
-      "trusted_publisher_added": "EN TEXT TO REPLACE: Trusted publishing enabled",
-      "trusted_publisher_removed": "EN TEXT TO REPLACE: Trusted publishing removed",
-      "provenance_added": "EN TEXT TO REPLACE: Provenance enabled",
-      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed",
-      "deprecated": "EN TEXT TO REPLACE: Deprecated",
       "chart": {
-        "tab_aria_label": "EN TEXT TO REPLACE: Metric selection",
-        "dependency_size": "EN TEXT TO REPLACE: Dependency Size",
-        "other_dependencies": "EN TEXT TO REPLACE: Other",
-        "base_scale": "EN TEXT TO REPLACE: start y-axis at zero",
-        "zoom": "EN TEXT TO REPLACE: zoom",
-        "reset_minimap": "EN TEXT TO REPLACE: reset minimap",
-        "ordered_versions": "EN TEXT TO REPLACE: stable only",
-        "sort_label": "EN TEXT TO REPLACE: Sort by",
-        "sort_time": "EN TEXT TO REPLACE: Publish time",
-        "sort_semver": "EN TEXT TO REPLACE: Semver",
-        "copy_alt": {
-          "key_changes": "EN TEXT TO REPLACE: Key changes: {version_events}.",
-          "version_events": "EN TEXT TO REPLACE: version {version}: {events}",
-          "general_description": "EN TEXT TO REPLACE: Line chart showing the {metric} of the {package} package, from version {first} to {last}. The {metric} in version {first} is {first_value}, in version {last} is {last_value} ({overall_progress_percentage}% overall). {key_changes} {watermark}.",
-          "stackbar_segment_share": "EN TEXT TO REPLACE: {segment}: {value} ({percentage})",
-          "stackbar_top_segments": "EN TEXT TO REPLACE: In {version}, the largest segments are {segments}.",
-          "stackbar_largest_increase": "EN TEXT TO REPLACE: The largest increase is {segment}, up {delta}.",
-          "stackbar_largest_decrease": "EN TEXT TO REPLACE: The largest decrease is {segment}, down {delta}."
-        }
+        "copy_alt": {}
       }
     },
     "dependencies": {
       "title": "Zavisnost ({count}) | Zavisnosti ({count})",
-      "insights": {
-        "title": "EN TEXT TO REPLACE: Insights",
-        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
-        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
-        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
-        "major_behind": "EN TEXT TO REPLACE: Major behind",
-        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
-        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
-        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
-        "deprecated": "EN TEXT TO REPLACE: Deprecated",
-        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
-        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
-        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
-      },
+      "list_label": "Zavisnosti paketa",
+      "show_all": "prikažite {count} zavisnost | prikažite {count} zavisnosti | prikažite svih {count} zavisnosti",
       "optional": "opciono",
-      "bundled": "EN TEXT TO REPLACE: bundled",
-      "all": "EN TEXT TO REPLACE: All dependencies",
-      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
-      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
-      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
-      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "Pogledajte ranljivosti",
       "outdated_major": "{count} glavna verzija kasni (najnovija: {latest}) | {count} glavne verzije kasne (najnovija: {latest}) | {count} glavnih verzija kasni (najnovija: {latest})",
       "outdated_minor": "{count} sporedna verzija kasni (najnovija: {latest}) | {count} sporedne verzije kasne (najnovija: {latest}) | {count} sporednih verzija kasni (najnovija: {latest})",
       "outdated_patch": "Dostupno je ažuriranje zakrpe (najnovija: {latest})",
-      "has_replacement": "Ova zavisnost ima predložene zamene"
+      "has_replacement": "Ova zavisnost ima predložene zamene",
+      "vulnerabilities_count": "{count} ranjivost | {count} ranjivosti | {count} ranjivosti"
+    },
+    "peer_dependencies": {
+      "title": "Peer zavisnost ({count}) | Peer zavisnosti ({count})",
+      "list_label": "Peer zavisnosti",
+      "show_all": "prikažite {count} peer zavisnost | prikažite {count} peer zavisnosti | prikažite svih {count} peer zavisnosti"
+    },
+    "optional_dependencies": {
+      "title": "Opciona zavisnost ({count}) | Opcione zavisnosti ({count})",
+      "list_label": "Opcione zavisnosti paketa",
+      "show_all": "prikažite {count} opcionu zavisnost | prikažite {count} opcione zavisnosti | prikažite svih {count} opcionih zavisnosti"
     },
     "maintainers": {
       "title": "Održavaoci",
@@ -732,9 +504,6 @@
         "table_available": "Tabela podataka za ovaj grafikon je dostupna ispod.",
         "table_caption": "Tabela podataka grafikona"
       },
-      "chart_view_toggle": "EN TEXT TO REPLACE: Toggle view",
-      "chart_view_combined": "EN TEXT TO REPLACE: Combined view",
-      "chart_view_split": "EN TEXT TO REPLACE: Split view",
       "granularity": "Granularnost",
       "granularity_daily": "Dnevno",
       "granularity_weekly": "Nedeljno",
@@ -746,7 +515,6 @@
       "date_range": "{start} do {end}",
       "date_range_multiline": "{start}\ndo {end}",
       "download_file": "Preuzmite {fileType}",
-      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "Uključite/isključite anotator",
       "toggle_stack_mode": "Uključite/isključite slogovni način",
       "open_options": "Otvorite opcije",
@@ -781,7 +549,6 @@
         "trend_undefined": "nedefinisano (nedovoljno podataka)",
         "button_label": "Kopirajte alt tekst",
         "watermark": "Pri dnu, vodeni žig kaže \"./npmx a fast, modern browser for the npm registry\"",
-        "watermark_top": "EN TEXT TO REPLACE: At the top, a watermark reads \"./npmx a fast, modern browser for the npm registry\"",
         "analysis": "{package_name} počinje od {start_value} i završava na {end_value}, pokazujući {trend} trend sa nagibom od {downloads_slope} preuzimanja po vremenskom intervalu",
         "estimation": "Konačna vrednost je procena zasnovana na delimičnim podacima za tekući period.",
         "estimations": "Konačne vrednosti su procene zasnovane na delimičnim podacima za tekući period.",
@@ -790,17 +557,10 @@
         "general_description": "Y osa predstavlja broj preuzimanja. X osa predstavlja opseg datuma, od {start_date} do {end_date}, sa vremenskim periodom {granularity}.{estimation_notice} {packages_analysis}. {watermark}.",
         "facet_bar_general_description": "Horizontalni stubičasti grafikon za: {packages}, poređenje {facet} ({description}). {facet_analysis} {watermark}.",
         "facet_bar_analysis": "{package_name} ima vrednost {value}."
-      },
-      "embedding": {
-        "chart": "EN TEXT TO REPLACE: Embed this chart",
-        "copy_url": "EN TEXT TO REPLACE: Copy this URL to embed the chart into your website",
-        "preview": "EN TEXT TO REPLACE: Preview",
-        "tip": "EN TEXT TO REPLACE: If startDate and endDate are not provided in the URL, the graph will display the last 12 months by default."
       }
     },
     "downloads": {
       "title": "Nedeljna preuzimanja",
-      "version_distribution_title": "EN TEXT TO REPLACE: weekly downloads for version {version}",
       "community_distribution": "Pogledajte distribuciju prihvatanja u zajednici",
       "subtitle": "Kroz sve verzije",
       "sparkline_nav_hint": "Koristite ← →"
@@ -900,14 +660,7 @@
     }
   },
   "leaderboard": {
-    "likes": {
-      "title": "EN TEXT TO REPLACE: Likes Leaderboard",
-      "description": "EN TEXT TO REPLACE: The 10 most liked packages on npmx right now.",
-      "rank": "EN TEXT TO REPLACE: Rank",
-      "likes": "EN TEXT TO REPLACE: Likes",
-      "unavailable_title": "EN TEXT TO REPLACE: No likes leaderboard yet",
-      "unavailable_description": "EN TEXT TO REPLACE: We don't have a likes leaderboard to show right now."
-    }
+    "likes": {}
   },
   "connector": {
     "modal": {
@@ -1090,12 +843,8 @@
     "lines": "{count} linija | {count} linije | {count} linija",
     "toggle_tree": "Uključite/isključite stablo datoteka",
     "close_tree": "Zatvorite stablo datoteka",
-    "copy_content": "EN TEXT TO REPLACE: Copy file content",
     "copy_link": "Kopirajte link",
     "view_raw": "Pogledajte izvornu datoteku",
-    "toggle_container": "EN TEXT TO REPLACE: Toggle code container width",
-    "open_raw_file": "EN TEXT TO REPLACE: Open raw file",
-    "open_path_dropdown": "EN TEXT TO REPLACE: Open path segments dropdown",
     "file_too_large": "Datoteka je prevelika za pregled",
     "file_size_warning": "{size} premašuje ograničenje od 500KB za isticanje sintakse",
     "failed_to_load": "Neuspešno učitavanje",
@@ -1115,8 +864,7 @@
     },
     "file_path": "Putanja datoteke",
     "binary_file": "Binarna datoteka",
-    "binary_rendering_warning": "Tip datoteke \"{contentType}\" nije podržan za pregled.",
-    "possibly_unnecessary": "EN TEXT TO REPLACE: May be unnecessary in a published package"
+    "binary_rendering_warning": "Tip datoteke \"{contentType}\" nije podržan za pregled."
   },
   "badges": {
     "provenance": {
@@ -1150,7 +898,6 @@
     "keywords": "Ključne reči",
     "more_keywords": "+{count} još",
     "clear_all": "Obrišite sve",
-    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "Uklonite filter {label}",
     "chips": {
       "search": "Pretraga",
@@ -1264,18 +1011,13 @@
       }
     },
     "sponsors": {
-      "title": "Sponzori",
-      "gold": "EN TEXT TO REPLACE: Gold Sponsors",
-      "silver": "EN TEXT TO REPLACE: Silver Sponsors"
+      "title": "Sponzori"
     },
     "oss_partners": {
       "title": "OSS partneri"
     },
     "team": {
       "title": "Tim",
-      "core": "EN TEXT TO REPLACE: Core",
-      "maintainers": "EN TEXT TO REPLACE: Maintainers",
-      "role_core": "EN TEXT TO REPLACE: core",
       "role_steward": "steward",
       "role_maintainer": "održavalac",
       "sponsor": "sponzor",
@@ -1309,64 +1051,6 @@
         "title": "Ostanite u toku",
         "description": "Saznajte najnovije o npmx-u.",
         "cta": "Zapratite na Bluesky-u"
-      }
-    }
-  },
-  "sponsors_page": {
-    "title": "EN TEXT TO REPLACE: Sponsors",
-    "heading": "EN TEXT TO REPLACE: sponsors",
-    "meta_description": "EN TEXT TO REPLACE: Support npmx and help us accelerate ecosystem work around security, trust, optimization, and research.",
-    "intro": "EN TEXT TO REPLACE: Support npmx and help us grow the ecosystem work we do for developers and maintainers.",
-    "what_we_do": {
-      "title": "EN TEXT TO REPLACE: What we do",
-      "description": "EN TEXT TO REPLACE: We're building an ecosystem that solves problems around security, trust, optimization, and research for the tools we use in everyday development - quickly, conveniently, and with high quality. This project is built by developers for developers. As authors of widely used libraries, we understand team needs and actively study what maintainers and projects need most."
-    },
-    "what_support_means": {
-      "title": "EN TEXT TO REPLACE: What support means",
-      "description": "EN TEXT TO REPLACE: Our plans and connections keep growing, along with our desire to share what we've built and learn from others. Your support helps fund the project, external talks, conferences, and the broader ecosystem, and, most importantly, enables us to keep growing our community."
-    },
-    "cta": "EN TEXT TO REPLACE: See sponsorship tiers",
-    "community_growth_footnote": "EN TEXT TO REPLACE: * According to {link} Q1 2026 research.",
-    "what_this_means_for_you": {
-      "title": "EN TEXT TO REPLACE: What this means for you",
-      "description": "EN TEXT TO REPLACE: npmx is not only about improving developer experience and closing critical everyday gaps. In our first six months, we have already become the default source for thousands of teams and a huge number of developers. You get not only a more stable tool for your teams, but also visibility in front of a constantly growing audience of top-tier engineers.",
-      "cards": {
-        "people": {
-          "contributors": "EN TEXT TO REPLACE: contributors",
-          "community_members": "EN TEXT TO REPLACE: community members"
-        },
-        "visitors": {
-          "description": "EN TEXT TO REPLACE: unique monthly visitors"
-        },
-        "stars": {
-          "title": "EN TEXT TO REPLACE: stars"
-        },
-        "community": {
-          "title": "EN TEXT TO REPLACE: fast-growing",
-          "description": "EN TEXT TO REPLACE: We are one of the fastest-growing communities in the ecosystem"
-        },
-        "adoption": {
-          "title": "EN TEXT TO REPLACE: adoption",
-          "description": "EN TEXT TO REPLACE: charts at conferences, talks, and articles rely on our data"
-        },
-        "default_source": {
-          "title": "EN TEXT TO REPLACE: default source",
-          "description": "EN TEXT TO REPLACE: pnpm made npmx the default source, many packages have been configured to link to npmx"
-        }
-      }
-    },
-    "tiers": {
-      "title": "EN TEXT TO REPLACE: Sponsorship tiers",
-      "per_month": "EN TEXT TO REPLACE: /month",
-      "custom": "EN TEXT TO REPLACE: Custom",
-      "silver": {
-        "name": "EN TEXT TO REPLACE: Silver"
-      },
-      "gold": {
-        "name": "EN TEXT TO REPLACE: Gold"
-      },
-      "platinum": {
-        "name": "EN TEXT TO REPLACE: Platinum"
       }
     }
   },
@@ -1437,7 +1121,6 @@
       "empty_description": "Pretražite i dodajte najmanje 2 paketa iznad da biste videli uporedni prikaz njihovih metrika.",
       "table_view": "Tabela",
       "charts_view": "Grafikoni",
-      "no_chartable_data": "EN TEXT TO REPLACE: No chartable data available for the selected facets.",
       "bar_chart_nav_hint": "Koristite ↑ ↓",
       "line_chart_nav_hint": "Koristite ← →"
     },
@@ -1451,15 +1134,7 @@
       "add_hint": "Dodajte najmanje 2 paketa za poređenje."
     },
     "scatter_chart": {
-      "title": "EN TEXT TO REPLACE: Compare {x} vs {y}",
-      "freshness_score": "EN TEXT TO REPLACE: Freshness score",
-      "copy_alt": {
-        "analysis": "EN TEXT TO REPLACE: {package} : {x_name} ({x_value}) and {y_name} ({y_value})",
-        "description": "EN TEXT TO REPLACE: Scatter plot chart mapping {x_name} versus {y_name} for the {packages} packages. {analysis}. {watermark}"
-      },
-      "filename": "EN TEXT TO REPLACE: {x}-vs-{y}-scatter-chart",
-      "x_axis": "EN TEXT TO REPLACE: X-AXIS ↦",
-      "y_axis": "EN TEXT TO REPLACE: Y-AXIS ↥"
+      "copy_alt": {}
     },
     "no_dependency": {
       "label": "(Bez zavisnosti)",
@@ -1540,22 +1215,9 @@
           "label": "Ranjivosti",
           "description": "Poznate bezbednosne ranjivosti"
         },
-        "githubStars": {
-          "label": "EN TEXT TO REPLACE: GitHub Stars",
-          "description": "EN TEXT TO REPLACE: Number of stars on the GitHub repository"
-        },
-        "githubForks": {
-          "label": "EN TEXT TO REPLACE: GitHub Forks",
-          "description": "EN TEXT TO REPLACE: Number of forks on the GitHub repository"
-        },
-        "githubIssues": {
-          "label": "EN TEXT TO REPLACE: GitHub Issues",
-          "description": "EN TEXT TO REPLACE: Number of issues on the GitHub repository"
-        },
-        "createdAt": {
-          "label": "EN TEXT TO REPLACE: Created At",
-          "description": "EN TEXT TO REPLACE: When the package was created"
-        }
+        "githubStars": {},
+        "githubIssues": {},
+        "createdAt": {}
       },
       "values": {
         "any": "Bilo koje",
@@ -1592,7 +1254,6 @@
     "dev_dependencies": "Razvojne zavisnosti",
     "peer_dependencies": "Peer zavisnosti",
     "optional_dependencies": "Opcione zavisnosti",
-    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "Nema promena u zavisnostima",
     "file_filter_option": {
       "all": "Sve ({count})",
@@ -1616,9 +1277,6 @@
     "change_ratio": "Odnos promene",
     "char_edits": "Izmene znakova",
     "diff_distance": "Udaljenost razlike",
-    "diff_truncated": "EN TEXT TO REPLACE: Diff truncated for performance. Showing the first changed lines only.",
-    "large_diff_mode": "EN TEXT TO REPLACE: Large file diff shown with inline edit merging disabled for performance.",
-    "large_diff_options_disabled": "EN TEXT TO REPLACE: Large file mode disables inline edit merging for performance.",
     "loading_diff": "Učitavanje razlike...",
     "loading_diff_error": "Neuspešno učitavanje razlike",
     "merge_modified_lines": "Spojite izmenjene linije",
@@ -1879,17 +1537,7 @@
       "discord_link_text": "chat.npmx.dev"
     }
   },
-  "alt_logo_kawaii": "EN TEXT TO REPLACE: A cute, rounded, and colorful version of the npmx logo.",
   "changelog": {
-    "pre_release": "EN TEXT TO REPLACE: Pre-release",
-    "draft": "EN TEXT TO REPLACE: Draft",
-    "no_logs": "EN TEXT TO REPLACE: Sorry, this package does not publish changelogs or its changelog format is not supported.",
-    "error": {
-      "p1": "EN TEXT TO REPLACE: Sorry, the changelog for {package} couldn't be loaded",
-      "p2": "EN TEXT TO REPLACE: Please try again later or {viewon}"
-    },
-    "rate_limit_ungh": "EN TEXT TO REPLACE: Sorry, Github's rate limit has been hit, try again in a moment",
-    "version_unavailable": "EN TEXT TO REPLACE: The requested version is not available.",
-    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
+    "error": {}
   }
 }
