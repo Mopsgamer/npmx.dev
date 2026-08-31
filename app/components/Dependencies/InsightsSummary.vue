@@ -164,7 +164,7 @@ const metrics = computed<InsightMetric[]>(() => [
       <button
         v-if="interactive && selectedInsights.length > 0"
         type="button"
-        class="inline-flex items-center gap-1 text-xs text-fg-muted hover:text-fg font-mono transition-colors duration-200 cursor-pointer"
+        class="inline-flex items-center gap-1 text-xs text-fg-subtle hover:text-fg font-mono transition-colors duration-200 cursor-pointer"
         @click="selectedInsights = []"
       >
         <span class="i-lucide:x w-3 h-3" aria-hidden="true" />

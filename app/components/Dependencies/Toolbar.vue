@@ -183,7 +183,7 @@ const showFilteredCount = computed(() => props.filter && props.filteredCount !==
                   <span>{{ t('filters.title') }}</span>
                   <button
                     type="button"
-                    class="text-xs text-fg-muted hover:text-fg font-mono transition-colors"
+                    class="text-xs text-fg-subtle hover:text-fg font-mono transition-colors cursor-pointer"
                     @click="
                       activeSectionsValue.length === sections.length
                         ? (activeSectionsValue = [])
