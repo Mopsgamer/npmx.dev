@@ -29,6 +29,10 @@ const packageUrl = computed(() => packageRoute(item.value.name))
 
 const activeColumns = computed(() => props.columns ?? DEFAULT_COLUMNS)
 
+function isColumnVisible(id: string): boolean {
+  return activeColumns.value.find(c => c.id === id)?.visible ?? false
+}
+
 const outdated = computed(() => props.insights?.outdatedDeps.value[item.value.name])
 
 const versionClass = computed(() => getVersionClass(item.value.name, props.insights))
@@ -67,6 +71,7 @@ const { t } = useI18n()
 
   <!-- Skeleton row -->
   <tr v-else class="border-b border-border">
+    <!-- Name (always visible) -->
     <td class="py-2 px-3">
       <NuxtLink
         :to="packageUrl"
@@ -76,19 +81,52 @@ const { t } = useI18n()
       >
         <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
         <span class="truncate">{{ item.name }}</span>
+        <DependenciesStatusIndicators :name="item.name" :flags="item.flags" class="relative z-10" />
       </NuxtLink>
     </td>
-    <td class="py-2 px-3 font-mono text-xs text-fg-subtle">
+
+    <!-- Version -->
+    <td v-if="isColumnVisible('version')" class="py-2 px-3 font-mono text-xs text-fg-subtle">
       <span dir="ltr">{{ item.range }}</span>
     </td>
-    <td class="py-2 px-3 text-sm text-fg-muted max-w-xs truncate">
-      <SkeletonBlock class="h-6 w-48" />
+
+    <!-- Description -->
+    <td
+      v-if="isColumnVisible('description')"
+      class="py-2 px-3 text-sm text-fg-muted max-w-xs truncate"
+    >
+      <SkeletonBlock class="h-4 w-48" />
     </td>
-    <td class="py-2 px-3 font-mono text-xs text-fg-muted text-end tabular-nums">
-      <SkeletonBlock class="h-6 w-16 ms-auto" />
+
+    <!-- Downloads -->
+    <td
+      v-if="isColumnVisible('downloads')"
+      class="py-2 px-3 font-mono text-xs text-fg-muted text-end tabular-nums"
+    >
+      <SkeletonBlock class="h-4 w-16 ms-auto" />
     </td>
-    <td class="py-2 px-3 font-mono text-end text-xs text-fg-muted">
-      <SkeletonBlock class="h-6 w-20 ms-auto" />
+
+    <!-- Updated -->
+    <td
+      v-if="isColumnVisible('updated')"
+      class="py-2 px-3 font-mono text-end text-xs text-fg-muted"
+    >
+      <SkeletonBlock class="h-4 w-20 ms-auto" />
+    </td>
+
+    <!-- Maintainers -->
+    <td v-if="isColumnVisible('maintainers')" class="py-2 px-3 text-sm text-fg-muted text-end">
+      <SkeletonBlock class="h-4 w-24 ms-auto" />
+    </td>
+
+    <!-- Keywords -->
+    <td v-if="isColumnVisible('keywords')" class="py-2 px-3 text-end">
+      <SkeletonBlock class="h-4 w-32 ms-auto" />
+    </td>
+
+    <!-- Security -->
+    <td v-if="isColumnVisible('security')" class="py-2 px-3">
+      <span class="text-fg-subtle"> - </span>
     </td>
   </tr>
 </template>
