@@ -14,6 +14,7 @@ const props = defineProps<{
   totalCount: number
   sections?: PackageDependencySection[]
   activeSection?: string
+  activeSections?: string[]
 }>()
 
 const emit = defineEmits<{
@@ -21,6 +22,7 @@ const emit = defineEmits<{
   'update:sort': [value: DependencySortOption]
   'update:viewMode': [value: ViewMode]
   'update:activeSection': [value: string]
+  'update:activeSections': [value: string[]]
   'toggleColumn': [columnId: ColumnId]
   'resetColumns': []
 }>()
@@ -37,12 +39,42 @@ const viewModeValue = computed({
   set: value => emit('update:viewMode', value),
 })
 
-const activeSectionValue = computed({
-  get: () => props.activeSection,
-  set: value => emit('update:activeSection', value!),
+const isSectionsOpen = shallowRef(false)
+const sectionsButtonRef = useTemplateRef('sectionsButtonRef')
+const sectionsMenuRef = useTemplateRef('sectionsMenuRef')
+const sectionsMenuId = useId()
+
+onClickOutside(
+  sectionsMenuRef,
+  () => {
+    isSectionsOpen.value = false
+  },
+  { ignore: [sectionsButtonRef] },
+)
+
+onKeyDown(
+  'Escape',
+  () => {
+    if (!isSectionsOpen.value) return
+    isSectionsOpen.value = false
+    sectionsButtonRef.value?.focus()
+  },
+  { dedupe: true },
+)
+
+const activeSectionsValue = computed({
+  get: () =>
+    props.activeSections ??
+    (props.activeSection ? [props.activeSection] : (props.sections?.map(s => s.id) ?? [])),
+  set: val => {
+    emit('update:activeSections', val)
+    if (val.length > 0) {
+      emit('update:activeSection', val[0]!)
+    }
+  },
 })
 
-const sectionMeta = computed(() => {
+function getSectionLabel(id: string) {
   const labels: Record<string, string> = {
     dependencies: t('compare.dependencies'),
     devDependencies: t('compare.dev_dependencies'),
@@ -50,12 +82,28 @@ const sectionMeta = computed(() => {
     optionalDependencies: t('compare.optional_dependencies'),
     bundledDependencies: t('compare.bundled_dependencies'),
   }
-  return (
-    props.sections?.map(section => ({
-      value: section.id,
-      label: `${labels[section.id] || section.id} (${section.items.length})`,
-    })) ?? []
-  )
+  return labels[id] || id
+}
+
+function toggleSection(id: string) {
+  const current = activeSectionsValue.value
+  if (current.includes(id)) {
+    activeSectionsValue.value = current.filter(s => s !== id)
+  } else {
+    activeSectionsValue.value = [...current, id]
+  }
+}
+
+const sectionTriggerText = computed(() => {
+  const total = props.sections?.length ?? 0
+  const active = activeSectionsValue.value
+  if (total > 0 && active.length === total) {
+    return t('filters.security_options.all')
+  }
+  if (active.length === 1) {
+    return getSectionLabel(active[0]!)
+  }
+  return t('action_bar.selection', { count: active.length }, active.length)
 })
 
 const { selectedPackages, clearSelectedPackages, openSelectionView } = usePackageSelection()
@@ -107,14 +155,74 @@ const showFilteredCount = computed(() => props.filter && props.filteredCount !==
   <div class="flex flex-col gap-3 mb-4 border-b border-border pb-4">
     <div class="flex flex-col sm:flex-row sm:items-center gap-3">
       <div v-if="sections && sections.length > 0" class="flex items-center gap-2">
-        <SelectField
-          id="deps-section"
-          v-model="activeSectionValue"
-          :label="$t('compare.dependencies')"
-          hidden-label
-          :items="sectionMeta"
-          class="min-w-[180px]"
-        />
+        <div class="relative">
+          <ButtonBase
+            ref="sectionsButtonRef"
+            :aria-expanded="isSectionsOpen"
+            aria-haspopup="true"
+            :aria-controls="isSectionsOpen ? sectionsMenuId : undefined"
+            @click.stop="isSectionsOpen = !isSectionsOpen"
+            classicon="i-lucide:layers"
+          >
+            {{ sectionTriggerText }}
+          </ButtonBase>
+
+          <Transition name="dropdown">
+            <div
+              v-if="isSectionsOpen"
+              ref="sectionsMenuRef"
+              :id="sectionsMenuId"
+              class="absolute top-full inset-is-0 mt-2 w-64 bg-bg-subtle border border-border rounded-lg shadow-lg z-20"
+              role="group"
+              :aria-label="t('filters.title')"
+            >
+              <div class="py-1">
+                <div
+                  class="px-3 py-2 text-xs font-mono text-fg-subtle uppercase tracking-wider border-b border-border flex items-center justify-between"
+                >
+                  <span>{{ t('filters.title') }}</span>
+                  <button
+                    type="button"
+                    class="text-xs text-fg-muted hover:text-fg font-mono transition-colors"
+                    @click="
+                      activeSectionsValue.length === sections.length
+                        ? (activeSectionsValue = [])
+                        : (activeSectionsValue = sections.map(s => s.id))
+                    "
+                  >
+                    {{
+                      activeSectionsValue.length === sections.length
+                        ? t('filters.clear_all')
+                        : t('compare.facets.select_all')
+                    }}
+                  </button>
+                </div>
+
+                <div class="py-1 max-h-64 overflow-y-auto">
+                  <label
+                    v-for="section in sections"
+                    :key="section.id"
+                    class="flex gap-2 items-center px-3 py-2 transition-colors duration-200 hover:bg-bg-muted cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      :checked="activeSectionsValue.includes(section.id)"
+                      class="w-4 h-4 accent-fg bg-bg-muted border-border rounded"
+                      @change="toggleSection(section.id)"
+                    />
+                    <span class="text-sm text-fg-muted font-mono flex-1 truncate">
+                      {{ getSectionLabel(section.id) }}
+                    </span>
+                    <span class="text-xs text-fg-subtle font-mono">
+                      ({{ section.items.length }})
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </Transition>
+        </div>
+
         <span v-if="showFilteredCount" class="text-xs font-mono text-fg-muted">
           {{
             $t('package.list.showing_count', {

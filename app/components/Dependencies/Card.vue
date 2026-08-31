@@ -9,11 +9,8 @@ const props = defineProps<{
   index?: number
 }>()
 
-// Fetch rich package metadata from API
-const { data: meta } = useLazyFetch<PackageMetaResponse>(
-  () => `/api/registry/package-meta/${encodePackageName(props.item.name)}`,
-  { server: false },
-)
+// Fetch rich package metadata from API (with hydrated useState caching)
+const { data: meta } = usePackageMeta(() => props.item.name)
 
 const searchResult = computed(() => {
   if (!meta.value) return null

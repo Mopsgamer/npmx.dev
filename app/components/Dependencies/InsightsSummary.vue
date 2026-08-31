@@ -3,12 +3,28 @@ import type { PackageDependencySection } from '#shared/types/package-dependencie
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 import { getVulnerableDepInfo, getDeprecatedDepInfo } from '~/utils/npm/problematic-dependencies'
 
-const props = defineProps<{
-  insights?: PackageDependencyInsights
-  sections: PackageDependencySection[]
-  showSkeleton: boolean
-  packageName?: string
-}>()
+const selectedInsights = defineModel<string[]>('selectedInsights', { default: () => [] })
+
+function toggleInsight(id: string) {
+  if (selectedInsights.value.includes(id)) {
+    selectedInsights.value = selectedInsights.value.filter(i => i !== id)
+  } else {
+    selectedInsights.value = [...selectedInsights.value, id]
+  }
+}
+
+const props = withDefaults(
+  defineProps<{
+    insights?: PackageDependencyInsights
+    sections: PackageDependencySection[]
+    showSkeleton: boolean
+    packageName?: string
+    interactive?: boolean
+  }>(),
+  {
+    interactive: true,
+  },
+)
 
 const stats = computed(() => {
   const urgent = { major: 0, minor: 0, patch: 0, vulnerable: 0, deprecated: 0, replacement: 0 }
@@ -126,33 +142,68 @@ const metrics = computed<InsightMetric[]>(() => [
 
 <template>
   <section class="w-full py-4 mt-6">
-    <div class="flex items-center gap-1.5 mb-2">
-      <h2 class="text-fg-muted uppercase text-xs font-semibold tracking-wider">
-        {{ $t('package.dependencies.insights.title') }}
-      </h2>
-      <TooltipApp
-        :text="`${$t('package.dependencies.insights.subtitle')} — ${$t('package.dependencies.insights.tooltip_urgent')} / ${$t('package.dependencies.insights.tooltip_other')}`"
-        position="bottom"
-      >
-        <button
-          type="button"
-          class="inline-flex items-center cursor-help text-fg-subtle hover:text-fg p-0.5 rounded"
-          :aria-label="$t('package.dependencies.insights.title')"
+    <div class="flex items-center justify-between mb-2">
+      <div class="flex items-center gap-1.5">
+        <h2 class="text-fg-muted uppercase text-xs font-semibold tracking-wider">
+          {{ $t('package.dependencies.insights.title') }}
+        </h2>
+        <TooltipApp
+          :text="`${$t('package.dependencies.insights.subtitle')} — ${$t('package.dependencies.insights.tooltip_urgent')} / ${$t('package.dependencies.insights.tooltip_other')}`"
+          position="bottom"
         >
-          <span class="i-lucide:info w-3.5 h-3.5" aria-hidden="true" />
-        </button>
-      </TooltipApp>
+          <button
+            type="button"
+            class="inline-flex items-center cursor-help text-fg-subtle hover:text-fg p-0.5 rounded"
+            :aria-label="$t('package.dependencies.insights.title')"
+          >
+            <span class="i-lucide:info w-3.5 h-3.5" aria-hidden="true" />
+          </button>
+        </TooltipApp>
+      </div>
+
+      <button
+        v-if="interactive && selectedInsights.length > 0"
+        type="button"
+        class="inline-flex items-center gap-1 text-xs text-fg-muted hover:text-fg font-mono transition-colors duration-200 cursor-pointer"
+        @click="selectedInsights = []"
+      >
+        <span class="i-lucide:x w-3 h-3" aria-hidden="true" />
+        <span>{{ $t('filters.clear_all') }}</span>
+      </button>
     </div>
 
-    <dl
+    <div
       class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-3 gap-x-4 border-y-border border-y py-3"
     >
-      <div v-for="item in metrics" :key="item.id" class="py-1">
-        <dt class="text-xs text-fg-muted lowercase flex items-center gap-1.5 truncate">
+      <component
+        :is="interactive ? 'button' : 'div'"
+        v-for="item in metrics"
+        :key="item.id"
+        :type="interactive ? 'button' : undefined"
+        class="py-1.5 px-2 rounded-md text-start transition-colors duration-200"
+        :class="[
+          interactive
+            ? 'focus-visible:(outline-2 outline-accent/70 outline-offset-1) hover:bg-bg-subtle cursor-pointer'
+            : '',
+          interactive && selectedInsights.includes(item.id)
+            ? 'bg-bg-muted ring-1 ring-border-hover'
+            : '',
+        ]"
+        :aria-pressed="interactive ? selectedInsights.includes(item.id) : undefined"
+        :aria-label="
+          interactive
+            ? selectedInsights.includes(item.id)
+              ? $t('package.dependencies.insights.clear_filter', { filter: item.label })
+              : $t('package.dependencies.insights.filter_by', { filter: item.label })
+            : undefined
+        "
+        @click="interactive ? toggleInsight(item.id) : undefined"
+      >
+        <span class="text-xs text-fg-muted lowercase flex items-center gap-1.5 truncate">
           <span class="truncate">{{ item.label }}</span>
           <span :class="[item.icon, item.iconColor, 'w-3.5 h-3.5 shrink-0']" aria-hidden="true" />
-        </dt>
-        <dd class="text-sm font-mono mt-1">
+        </span>
+        <span class="text-sm font-mono mt-1 block">
           <template v-if="showSkeleton || item.loading">
             <span
               aria-hidden="true"
@@ -160,7 +211,7 @@ const metrics = computed<InsightMetric[]>(() => [
             />
           </template>
           <template v-else>
-            <div class="flex items-baseline gap-1">
+            <span class="flex items-baseline gap-1">
               <span
                 class="tabular-nums"
                 :class="item.urgentCount > 0 ? 'text-fg font-medium' : 'text-fg-subtle'"
@@ -174,10 +225,10 @@ const metrics = computed<InsightMetric[]>(() => [
               >
                 {{ item.nonUrgentCount }}
               </span>
-            </div>
+            </span>
           </template>
-        </dd>
-      </div>
-    </dl>
+        </span>
+      </component>
+    </div>
   </section>
 </template>

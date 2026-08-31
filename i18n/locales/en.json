@@ -693,7 +693,9 @@
         "patch_behind": "Patch behind",
         "vulnerable": "Vulnerable",
         "deprecated": "Deprecated",
-        "replacements_available": "Replacements available"
+        "replacements_available": "Replacements available",
+        "clear_filter": "Clear filter ({filter})",
+        "filter_by": "Filter dependencies by {filter}"
       },
       "optional": "optional",
       "bundled": "bundled",

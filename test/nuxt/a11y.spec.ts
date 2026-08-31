@@ -1676,7 +1676,7 @@ describe('component accessibility audits', () => {
               items: [{ name: 'vue', range: '^3.0.0', registry: 'npm', flags: [] }],
             },
           ],
-          activeSection: 'dependencies',
+          activeSections: ['dependencies'],
         },
       })
       const results = await runAxe(component)

@@ -2085,6 +2085,12 @@
                 },
                 "replacements_available": {
                   "type": "string"
+                },
+                "clear_filter": {
+                  "type": "string"
+                },
+                "filter_by": {
+                  "type": "string"
                 }
               },
               "additionalProperties": false

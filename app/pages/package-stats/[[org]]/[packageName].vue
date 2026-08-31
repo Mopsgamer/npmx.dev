@@ -163,6 +163,7 @@ useSeoMeta({
         :sections="sections"
         :show-skeleton="pkgStatus === 'pending' || pkgStatus === 'idle'"
         :package-name="packageName"
+        :interactive="false"
       />
     </section>
 

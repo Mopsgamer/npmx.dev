@@ -2,12 +2,13 @@
 import type { RouteLocationRaw } from 'vue-router'
 import { setResponseHeader } from 'h3'
 import type { DepSectionId, DependencySortOption } from '#shared/types/package-dependencies'
-import { assertValidPackageName, encodePackageName } from '#shared/utils/npm'
+import { assertValidPackageName } from '#shared/utils/npm'
 import {
   getDefaultDependencySection,
   getPackageDependencySections,
   isDepSectionId,
 } from '~/utils/npm/package-dependency-sections'
+import { getVulnerableDepInfo, getDeprecatedDepInfo } from '~/utils/npm/problematic-dependencies'
 
 definePageMeta({
   name: 'dependencies',
@@ -61,15 +62,35 @@ const displayVersion = computed(() => pkg.value?.requestedVersion ?? null)
 
 const sections = computed(() => getPackageDependencySections(displayVersion.value))
 
-const activeSection = computed<DepSectionId | null>(() => {
-  const querySection = route.query.section
-  if (typeof querySection === 'string' && isDepSectionId(querySection)) {
-    if (sections.value.some(s => s.id === querySection)) return querySection
-  }
-  return getDefaultDependencySection(sections.value)
-})
+const activeSections = ref<string[]>(
+  typeof route.query.section === 'string' && isDepSectionId(route.query.section)
+    ? [route.query.section]
+    : ['dependencies'],
+)
 
-const currentSection = computed(() => sections.value.find(s => s.id === activeSection.value))
+watch(
+  sections,
+  s => {
+    if (s.length > 0 && activeSections.value.length === 0) {
+      const querySection = route.query.section
+      if (typeof querySection === 'string' && isDepSectionId(querySection)) {
+        activeSections.value = [querySection]
+      } else {
+        const defaultSec = getDefaultDependencySection(s)
+        activeSections.value = defaultSec ? [defaultSec] : s.map(sec => sec.id)
+      }
+    }
+  },
+  { immediate: true },
+)
+
+const currentSections = computed(() =>
+  sections.value.filter(s => activeSections.value.includes(s.id)),
+)
+
+const allSectionItems = computed(() => {
+  return currentSections.value.flatMap(s => s.items)
+})
 
 const allDependencies = computed<Record<string, string>>(() => {
   const reqVer = pkg.value?.requestedVersion
@@ -99,28 +120,28 @@ watch(
       typeof querySection === 'string' &&
       isDepSectionId(querySection) &&
       sections.value.some(s => s.id === querySection)
-    if (!validQuery && activeSection.value) {
+    if (!validQuery && activeSections.value[0]) {
       router.replace({
         ...route,
-        query: { ...route.query, section: activeSection.value },
+        query: { ...route.query, section: activeSections.value[0] },
       })
     }
   },
   { immediate: true },
 )
 
-function getSectionLink(section: DepSectionId): RouteLocationRaw {
-  return dependenciesRoute(packageName.value, resolvedVersion.value, section)
-}
-
 const versionUrlPattern = computed(() => {
-  const section = activeSection.value
+  const section = activeSections.value[0]
   const base = `/package-deps/${pkg.value?.name || packageName.value}/v/{version}`
   return section ? `${base}?section=${section}` : base
 })
 
 function depsVersionRoute(nextVersion: string): RouteLocationRaw {
-  return dependenciesRoute(packageName.value, nextVersion, activeSection.value ?? undefined)
+  return dependenciesRoute(
+    packageName.value,
+    nextVersion,
+    activeSections.value[0] as DepSectionId | undefined,
+  )
 }
 
 const commandPalettePackageContext = computed(() => {
@@ -150,19 +171,20 @@ const insights = usePackageDependencyInsights(
 const { viewMode, columns, toggleColumn, resetColumns } = usePackageListPreferences()
 
 const filter = ref('')
+const selectedInsights = ref<string[]>([])
 const sort = ref<DependencySortOption>('name-asc')
 
 const dependencyMetas = ref<Record<string, PackageMetaResponse>>({})
 
 watch(
-  () => currentSection.value?.items,
+  allSectionItems,
   items => {
     if (!items) return
     for (const item of items) {
       if (dependencyMetas.value[item.name]) continue
-      $fetch<PackageMetaResponse>(`/api/registry/package-meta/${encodePackageName(item.name)}`)
+      fetchPackageMeta(item.name)
         .then(data => {
-          dependencyMetas.value[item.name] = data
+          if (data) dependencyMetas.value[item.name] = data
         })
         .catch(() => {})
     }
@@ -171,9 +193,37 @@ watch(
 )
 
 const filteredItems = computed(() => {
-  const items = currentSection.value?.items ?? []
+  const items = allSectionItems.value
   const query = filter.value.trim().toLowerCase()
   let result = query ? items.filter(item => item.name.toLowerCase().includes(query)) : [...items]
+
+  if (selectedInsights.value.length > 0) {
+    result = result.filter(item => {
+      const outdated = insights.outdatedDeps.value[item.name]
+      return selectedInsights.value.some(id => {
+        switch (id) {
+          case 'major':
+            return outdated ? outdated.majorsBehind > 0 : false
+          case 'minor':
+            return outdated ? outdated.majorsBehind === 0 && outdated.minorsBehind > 0 : false
+          case 'patch':
+            return outdated
+              ? outdated.majorsBehind === 0 &&
+                  outdated.minorsBehind === 0 &&
+                  outdated.resolved !== outdated.latest
+              : false
+          case 'vulnerable':
+            return !!getVulnerableDepInfo(item.name, insights.vulnTree.value)
+          case 'deprecated':
+            return !!getDeprecatedDepInfo(item.name, insights.vulnTree.value)
+          case 'replacement':
+            return !!insights.replacementDeps.value[item.name]
+          default:
+            return false
+        }
+      })
+    })
+  }
 
   result.sort((a, b) => {
     const metaA = dependencyMetas.value[a.name]
@@ -200,6 +250,25 @@ const filteredItems = computed(() => {
   })
 
   return result
+})
+
+const isInsightsLoading = computed(() => {
+  if (selectedInsights.value.length === 0) return false
+  return selectedInsights.value.some(id => {
+    if (['major', 'minor', 'patch'].includes(id)) {
+      return insights.outdatedStatus.value === 'pending' || insights.outdatedStatus.value === 'idle'
+    }
+    if (['vulnerable', 'deprecated'].includes(id)) {
+      return insights.vulnStatus.value === 'pending' || insights.vulnStatus.value === 'idle'
+    }
+    if (id === 'replacement') {
+      return (
+        insights.replacementStatus.value === 'pending' ||
+        insights.replacementStatus.value === 'idle'
+      )
+    }
+    return false
+  })
 })
 
 const latestVersion = computed(() => {
@@ -270,12 +339,13 @@ const showSkeleton = shallowRef(false)
     </div>
 
     <article
-      v-else-if="activeSection && currentSection"
+      v-else-if="sections.length > 0"
       id="package-article"
       class="container w-full"
       dir="ltr"
     >
       <DependenciesInsightsSummary
+        v-model:selected-insights="selectedInsights"
         :sections="sections"
         :show-skeleton="showSkeleton"
         :insights="insights"
@@ -287,18 +357,21 @@ const showSkeleton = shallowRef(false)
           v-model:filter="filter"
           v-model:sort="sort"
           v-model:view-mode="viewMode"
+          v-model:active-sections="activeSections"
           :columns="columns"
           :filtered-count="filteredItems.length"
-          :total-count="currentSection?.items?.length ?? 0"
+          :total-count="allSectionItems.length"
           :sections="sections"
-          :active-section="activeSection || undefined"
-          @update:active-section="router.push(getSectionLink($event as DepSectionId))"
           @toggle-column="toggleColumn"
           @reset-columns="resetColumns"
         />
 
+        <div v-if="isInsightsLoading" class="py-12 text-center">
+          <div class="i-svg-spinners:ring-resize w-6 h-6 mx-auto text-fg-muted" />
+        </div>
+
         <DependenciesList
-          v-if="filteredItems.length > 0"
+          v-else-if="filteredItems.length > 0"
           :items="filteredItems"
           :view-mode="viewMode"
           :columns="columns"
