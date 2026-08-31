@@ -31,10 +31,7 @@ if (import.meta.server && packageName.value) {
 
 const { data: resolvedVersion } = await useResolvedVersion(packageName, requestedVersion)
 
-const { data: pkg, status: pkgStatus } = usePackage(
-  packageName,
-  () => resolvedVersion.value ?? requestedVersion.value,
-)
+const { data: pkg, status: pkgStatus } = usePackage(packageName, resolvedVersion)
 const { versions: commandPaletteVersions, ensureLoaded: ensureCommandPaletteVersionsLoaded } =
   useCommandPalettePackageVersions(packageName)
 
@@ -253,29 +250,21 @@ useCommandPalettePackageContext(commandPalettePackageContext, {
 useCommandPalettePackageCommands(commandPalettePackageContext)
 useCommandPaletteVersionCommands(commandPalettePackageContext, depsVersionRoute)
 
-const insights = usePackageDependencyInsights(
-  packageName,
-  () => resolvedVersion.value || '',
-  allDependencies,
-)
+const insights = usePackageDependencyInsights(packageName, resolvedVersion, allDependencies)
 
 const { viewMode, columns, toggleColumn, resetColumns } = usePackageListPreferences()
 
 const selectedInsights = ref<string[]>([])
 
-const dependencyMetas = ref<Record<string, PackageMetaResponse>>({})
+const packageMetaCache = usePackageMetaState()
 
 watch(
   allSectionItems,
   items => {
     if (!items) return
     for (const item of items) {
-      if (dependencyMetas.value[item.name]) continue
-      fetchPackageMeta(item.name)
-        .then(data => {
-          if (data) dependencyMetas.value[item.name] = data
-        })
-        .catch(() => {})
+      if (packageMetaCache.value[item.name]) continue
+      fetchPackageMeta(item.name).catch(() => {})
     }
   },
   { immediate: true },
@@ -315,8 +304,8 @@ const filteredItems = computed(() => {
   }
 
   result.sort((a, b) => {
-    const metaA = dependencyMetas.value[a.name]
-    const metaB = dependencyMetas.value[b.name]
+    const metaA = packageMetaCache.value[a.name]
+    const metaB = packageMetaCache.value[b.name]
 
     switch (sort.value) {
       case 'name-desc':
@@ -400,7 +389,10 @@ const showSkeleton = shallowRef(false)
       page="dependencies"
     />
 
-    <div v-if="pkgStatus === 'pending' || pkgStatus === 'idle'" class="container py-20 text-center">
+    <div
+      v-if="!resolvedVersion || pkgStatus === 'pending' || pkgStatus === 'idle'"
+      class="container py-20 text-center"
+    >
       <div class="i-svg-spinners:ring-resize w-8 h-8 mx-auto text-fg-muted" />
     </div>
 

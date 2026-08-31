@@ -151,11 +151,15 @@ export function useOutdatedDependencies(
     deps => {
       const epoch = ++currentEpoch
 
-      // If the dependencies become undefined/empty and we aren't tracking anything,
-      // it is cleaner to set it to idle until legitimate keys show up.
-      if (!deps || Object.keys(deps).length === 0) {
+      if (!deps) {
         outdated.value = {}
         status.value = 'idle'
+        return
+      }
+
+      if (Object.keys(deps).length === 0) {
+        outdated.value = {}
+        status.value = 'success'
         return
       }
 

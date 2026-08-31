@@ -2,7 +2,7 @@ import { findMinimumForRange, normalize } from 'verkit'
 
 export function usePackageDependencyInsights(
   packageName: MaybeRefOrGetter<string>,
-  version: MaybeRefOrGetter<string>,
+  version: MaybeRefOrGetter<string | null | undefined>,
   dependencies: MaybeRefOrGetter<Record<string, string> | undefined>,
 ) {
   const {
@@ -17,9 +17,11 @@ export function usePackageDependencyInsights(
     error: replacementError,
   } = useReplacementDependencies(dependencies)
 
-  const minVersion = computed((): string => {
-    const min = findMinimumForRange(toValue(version))
-    return (min && normalize(min)) || ''
+  const minVersion = computed((): string | undefined => {
+    const ver = toValue(version)
+    if (!ver) return undefined
+    const min = findMinimumForRange(ver)
+    return (min && normalize(min)) || ver
   })
 
   const {

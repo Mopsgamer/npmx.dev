@@ -128,7 +128,7 @@ export function transformPackument(
 
 export function usePackage(
   name: MaybeRefOrGetter<string>,
-  requestedVersion?: MaybeRefOrGetter<string | null>,
+  requestedVersion?: MaybeRefOrGetter<string | null | undefined>,
 ) {
   const asyncData = useLazyAsyncData(
     () => `package:${toValue(name)}:${toValue(requestedVersion) ?? ''}`,
