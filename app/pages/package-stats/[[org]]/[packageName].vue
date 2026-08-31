@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { getPackageDependencySections } from '~/utils/npm/package-dependency-sections'
+import {
+  getPackageDependencySections,
+  normalizeDependencies,
+} from '~/utils/npm/package-dependency-sections'
 
 definePageMeta({
   name: 'stats',
@@ -25,7 +28,7 @@ let cachedAllDeps: Record<string, string> = {}
 const allDependencies = computed(() => {
   const reqVer = pkg.value?.requestedVersion
   if (!reqVer) return {}
-  const record: Record<string, string> = {
+  const rawRecord: Record<string, string> = {
     ...reqVer.dependencies,
     ...reqVer.devDependencies,
     ...reqVer.peerDependencies,
@@ -33,11 +36,12 @@ const allDependencies = computed(() => {
   }
   if (Array.isArray(reqVer.bundledDependencies)) {
     for (const name of reqVer.bundledDependencies) {
-      if (!record[name]) {
-        record[name] = reqVer.dependencies?.[name] ?? '*'
+      if (!rawRecord[name]) {
+        rawRecord[name] = reqVer.dependencies?.[name] ?? '*'
       }
     }
   }
+  const record = normalizeDependencies(rawRecord)
   const keys = Object.keys(record)
   const cachedKeys = Object.keys(cachedAllDeps)
   if (keys.length === cachedKeys.length && keys.every(k => record[k] === cachedAllDeps[k])) {

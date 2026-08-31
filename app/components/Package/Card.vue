@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { RouteLocationRaw } from 'vue-router'
 import type { StructuredFilters } from '#shared/types/preferences'
 import {
   getOutdatedTooltip,
@@ -25,6 +26,7 @@ const props = defineProps<{
   insights?: PackageDependencyInsights
   /** Version by default, adds "v" prefix. */
   versionIsRange?: boolean
+  to?: RouteLocationRaw | string
 }>()
 
 const { selectable } = usePackageSelectionContext()
@@ -38,6 +40,8 @@ const emit = defineEmits<{
 }>()
 
 /** Check if this package is an exact match for the search query */
+const packageUrl = computed(() => props.to ?? packageRoute(props.result.package.name))
+
 const isExactMatch = computed(() => {
   if (!props.searchQuery) return false
   const query = props.searchQuery.trim().toLowerCase()
@@ -91,7 +95,7 @@ const numberFormatter = useNumberFormatter()
         class="font-mono text-sm sm:text-base font-medium text-fg group-hover:text-fg transition-colors duration-200 min-w-0 break-all inline-flex items-center gap-2"
       >
         <NuxtLink
-          :to="packageRoute(result.package.name)"
+          :to="packageUrl"
           :prefetch-on="prefetch ? 'visibility' : 'interaction'"
           class="decoration-none hover:text-accent-fallback"
           :data-result-index="index"

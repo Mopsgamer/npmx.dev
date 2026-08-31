@@ -9,15 +9,20 @@ const props = defineProps<{
   index?: number
 }>()
 
+const targetName = computed(() => props.item.packageName || props.item.name)
+
 // Fetch rich package metadata from API (with hydrated useState caching)
-const { data: meta } = usePackageMeta(() => props.item.name)
+const { data: meta } = usePackageMeta(targetName)
 
 const searchResult = computed(() => {
   if (!meta.value) return null
   const result = metaToSearchResult(meta.value)
+  result.package.name = props.item.name
   result.package.version = props.item.range
   return result
 })
+
+const packageUrl = computed(() => packageRoute(targetName.value))
 </script>
 
 <template>
@@ -27,13 +32,13 @@ const searchResult = computed(() => {
         class="font-mono text-sm sm:text-base font-medium text-fg group-hover:text-fg transition-colors duration-200 min-w-0 break-all inline-flex items-center gap-2"
       >
         <NuxtLink
-          :to="packageRoute(item.name)"
+          :to="packageUrl"
           class="decoration-none hover:text-accent-fallback"
           :data-result-index="index"
           dir="ltr"
           >{{ item.name }}</NuxtLink
         >
-        <DependenciesStatusIndicators :name="item.name" :flags="item.flags" />
+        <DependenciesStatusIndicators :name="targetName" :flags="item.flags" />
       </h2>
     </header>
     <SkeletonBlock class="h-5 w-full mb-2 sm:mb-3" />
@@ -56,10 +61,11 @@ const searchResult = computed(() => {
     :result="searchResult"
     :index="index"
     :insights="insights || undefined"
+    :to="packageUrl"
     version-is-range
   >
     <template #status-indicators="{ insights }">
-      <DependenciesStatusIndicators :name="item.name" :flags="item.flags" v-bind="{ insights }" />
+      <DependenciesStatusIndicators :name="targetName" :flags="item.flags" v-bind="{ insights }" />
     </template>
   </PackageCard>
 </template>

@@ -15,17 +15,20 @@ const props = defineProps<{
 
 const item = computed(() => props.item)
 
+const targetName = computed(() => item.value.packageName || item.value.name)
+
 // Fetch rich package metadata from API (with hydrated useState caching)
-const { data: meta } = usePackageMeta(() => item.value.name)
+const { data: meta } = usePackageMeta(targetName)
 
 const searchResult = computed(() => {
   if (!meta.value) return null
   const result = metaToSearchResult(meta.value)
+  result.package.name = item.value.name
   result.package.version = item.value.range
   return result
 })
 
-const packageUrl = computed(() => packageRoute(item.value.name))
+const packageUrl = computed(() => packageRoute(targetName.value))
 
 const activeColumns = computed(() => props.columns ?? DEFAULT_COLUMNS)
 
@@ -33,9 +36,9 @@ function isColumnVisible(id: string): boolean {
   return activeColumns.value.find(c => c.id === id)?.visible ?? false
 }
 
-const outdated = computed(() => props.insights?.outdatedDeps.value[item.value.name])
+const outdated = computed(() => props.insights?.outdatedDeps.value[targetName.value])
 
-const versionClass = computed(() => getVersionClass(item.value.name, props.insights))
+const versionClass = computed(() => getVersionClass(targetName.value, props.insights))
 
 const { t } = useI18n()
 </script>
@@ -47,6 +50,7 @@ const { t } = useI18n()
     :columns="activeColumns"
     :index="index"
     :insights="insights || undefined"
+    :to="packageUrl"
   >
     <template #version="{ version }">
       <TooltipApp v-if="outdated" :text="getOutdatedTooltip(outdated, t)" position="top">
@@ -61,7 +65,7 @@ const { t } = useI18n()
     </template>
     <template #status-indicators="{ insights }">
       <DependenciesStatusIndicators
-        :name="item.name"
+        :name="targetName"
         :flags="item.flags"
         v-bind="{ insights }"
         class="relative z-10"

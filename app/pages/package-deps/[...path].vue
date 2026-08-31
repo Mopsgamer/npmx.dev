@@ -9,6 +9,7 @@ import {
   getDefaultDependencySection,
   getPackageDependencySections,
   isDepSectionId,
+  normalizeDependencies,
 } from '~/utils/npm/package-dependency-sections'
 import { getVulnerableDepInfo, getDeprecatedDepInfo } from '~/utils/npm/problematic-dependencies'
 
@@ -235,7 +236,7 @@ const allSectionItems = computed(() => {
 const allDependencies = computed<Record<string, string>>(() => {
   const reqVer = pkg.value?.requestedVersion
   if (!reqVer) return {}
-  const record: Record<string, string> = {
+  const rawRecord: Record<string, string> = {
     ...reqVer.dependencies,
     ...reqVer.devDependencies,
     ...reqVer.peerDependencies,
@@ -243,12 +244,12 @@ const allDependencies = computed<Record<string, string>>(() => {
   }
   if (Array.isArray(reqVer.bundledDependencies)) {
     for (const name of reqVer.bundledDependencies) {
-      if (!record[name]) {
-        record[name] = reqVer.dependencies?.[name] ?? '*'
+      if (!rawRecord[name]) {
+        rawRecord[name] = reqVer.dependencies?.[name] ?? '*'
       }
     }
   }
-  return record
+  return normalizeDependencies(rawRecord)
 })
 
 const versionUrlPattern = computed(() => {
@@ -292,8 +293,9 @@ watch(
   items => {
     if (!items) return
     for (const item of items) {
-      if (packageMetaCache.value[item.name]) continue
-      fetchPackageMeta(item.name).catch(() => {})
+      const targetName = item.packageName || item.name
+      if (packageMetaCache.value[targetName]) continue
+      fetchPackageMeta(targetName).catch(() => {})
     }
   },
   { immediate: true },
@@ -302,11 +304,17 @@ watch(
 const filteredItems = computed(() => {
   const items = allSectionItems.value
   const query = filter.value.trim().toLowerCase()
-  let result = query ? items.filter(item => item.name.toLowerCase().includes(query)) : [...items]
+  let result = query
+    ? items.filter(
+        item =>
+          item.name.toLowerCase().includes(query) || item.packageName.toLowerCase().includes(query),
+      )
+    : [...items]
 
   if (selectedInsights.value.length > 0) {
     result = result.filter(item => {
-      const outdated = insights.outdatedDeps.value[item.name]
+      const targetName = item.packageName || item.name
+      const outdated = insights.outdatedDeps.value[targetName]
       return selectedInsights.value.some(id => {
         switch (id) {
           case 'major':
@@ -320,11 +328,11 @@ const filteredItems = computed(() => {
                   outdated.resolved !== outdated.latest
               : false
           case 'vulnerable':
-            return !!getVulnerableDepInfo(item.name, insights.vulnTree.value)
+            return !!getVulnerableDepInfo(targetName, insights.vulnTree.value)
           case 'deprecated':
-            return !!getDeprecatedDepInfo(item.name, insights.vulnTree.value)
+            return !!getDeprecatedDepInfo(targetName, insights.vulnTree.value)
           case 'replacement':
-            return !!insights.replacementDeps.value[item.name]
+            return !!insights.replacementDeps.value[targetName]
           default:
             return false
         }
@@ -333,8 +341,8 @@ const filteredItems = computed(() => {
   }
 
   result.sort((a, b) => {
-    const metaA = packageMetaCache.value[a.name]
-    const metaB = packageMetaCache.value[b.name]
+    const metaA = packageMetaCache.value[a.packageName || a.name]
+    const metaB = packageMetaCache.value[b.packageName || b.name]
 
     switch (sort.value) {
       case 'name-desc':

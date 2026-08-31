@@ -13,6 +13,7 @@ export type DepFlag = 'optional' | 'bundled'
 
 export interface PackageDependencyItem {
   name: string
+  packageName: string
   range: string
   registry: DepRegistry
   flags: DepFlag[]

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { RouteLocationRaw } from 'vue-router'
 import type { NpmSearchResult } from '#shared/types/npm-registry'
 import type { ColumnConfig, StructuredFilters } from '#shared/types/preferences'
 import { getVulnerableDepInfo, getDeprecatedDepInfo } from '~/utils/npm/problematic-dependencies'
@@ -13,6 +14,7 @@ const props = defineProps<{
   index?: number
   filters?: StructuredFilters
   insights?: PackageDependencyInsights
+  to?: RouteLocationRaw | string
 }>()
 
 const emit = defineEmits<{
@@ -43,7 +45,7 @@ function isColumnVisible(id: string): boolean {
   return props.columns.find(c => c.id === id)?.visible ?? false
 }
 
-const packageUrl = computed(() => packageRoute(pkg.value.name))
+const packageUrl = computed(() => props.to ?? packageRoute(pkg.value.name))
 
 const allMaintainersText = computed(() => {
   if (!pkg.value.maintainers?.length) return ''

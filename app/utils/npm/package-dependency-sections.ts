@@ -6,6 +6,7 @@ import type {
   PackageDependencyItem,
   PackageDependencySection,
 } from '#shared/types/package-dependencies'
+import { parsePackageSpec } from '#shared/utils/parse-package-param'
 
 const SECTION_ORDER: DepSectionId[] = [
   'dependencies',
@@ -21,6 +22,22 @@ export function inferDependencyRegistry(name: string, range: string): DepRegistr
   return 'npm'
 }
 
+export function normalizeDependencies(
+  record: Record<string, string> | undefined,
+): Record<string, string> {
+  if (!record) return {}
+  const normalized: Record<string, string> = {}
+  for (const [key, range] of Object.entries(record)) {
+    if (range.startsWith('npm:') || range.startsWith('jsr:')) {
+      const { name, version } = parsePackageSpec(range)
+      normalized[name] = version ?? '*'
+    } else {
+      normalized[key] = range
+    }
+  }
+  return normalized
+}
+
 function entriesToItems(
   record: Record<string, string> | undefined,
   bundledSet: Set<string>,
@@ -29,13 +46,23 @@ function entriesToItems(
   if (!record) return []
 
   return Object.entries(record)
-    .map(([name, range]) => {
+    .map(([name, rawRange]) => {
       const flags: DepFlag[] = [...(extraFlags?.(name) ?? [])]
       if (bundledSet.has(name) && !flags.includes('bundled')) flags.push('bundled')
+      let packageName = name
+      let range = rawRange
+
+      if (rawRange.startsWith('npm:') || rawRange.startsWith('jsr:')) {
+        const parsed = parsePackageSpec(rawRange)
+        packageName = parsed.name
+        range = parsed.version ?? '*'
+      }
+
       return {
         name,
+        packageName,
         range,
-        registry: inferDependencyRegistry(name, range),
+        registry: inferDependencyRegistry(name, rawRange),
         flags,
       }
     })
@@ -86,12 +113,25 @@ export function getPackageDependencySections(
         name in (version.optionalDependencies ?? {})
       return !inOther
     })
-    .map((name): PackageDependencyItem => ({
-      name,
-      range: version.dependencies?.[name] ?? '*',
-      registry: inferDependencyRegistry(name, version.dependencies?.[name] ?? '*'),
-      flags: ['bundled'],
-    }))
+    .map((name): PackageDependencyItem => {
+      const rawRange = version.dependencies?.[name] ?? '*'
+      let packageName = name
+      let range = rawRange
+
+      if (rawRange.startsWith('npm:') || rawRange.startsWith('jsr:')) {
+        const parsed = parsePackageSpec(rawRange)
+        packageName = parsed.name
+        range = parsed.version ?? '*'
+      }
+
+      return {
+        name,
+        packageName,
+        range,
+        registry: inferDependencyRegistry(name, rawRange),
+        flags: ['bundled'],
+      }
+    })
     .sort((a, b) => a.name.localeCompare(b.name))
 
   if (bundledOnly.length > 0) {

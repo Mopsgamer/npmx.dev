@@ -1567,6 +1567,7 @@ describe('component accessibility audits', () => {
           insights,
           item: {
             name: 'vue',
+            packageName: 'vue',
             range: '^3.0.0',
             registry: 'npm',
             flags: [],
@@ -1586,7 +1587,9 @@ describe('component accessibility audits', () => {
           sections: [
             {
               id: 'dependencies',
-              items: [{ name: 'vue', range: '^3.0.0', registry: 'npm', flags: [] }],
+              items: [
+                { name: 'vue', packageName: 'vue', range: '^3.0.0', registry: 'npm', flags: [] },
+              ],
             },
           ],
           showSkeleton: false,
@@ -1601,7 +1604,7 @@ describe('component accessibility audits', () => {
     it('should have no accessibility violations', async () => {
       const component = await mountSuspended(DependenciesList, {
         props: {
-          items: [{ name: 'vue', range: '^3.0.0', registry: 'npm', flags: [] }],
+          items: [{ name: 'vue', packageName: 'vue', range: '^3.0.0', registry: 'npm', flags: [] }],
           viewMode: 'cards',
           showSkeleton: false,
           sort: 'name-asc',
@@ -1629,7 +1632,7 @@ describe('component accessibility audits', () => {
     it('should have no accessibility violations', async () => {
       const component = await mountSuspended(DependenciesTable, {
         props: {
-          items: [{ name: 'vue', range: '^3.0.0', registry: 'npm', flags: [] }],
+          items: [{ name: 'vue', packageName: 'vue', range: '^3.0.0', registry: 'npm', flags: [] }],
           sort: 'name-asc',
           showSkeleton: false,
         },
@@ -1645,7 +1648,7 @@ describe('component accessibility audits', () => {
       const component = await mountSuspended(DependenciesTableRow, {
         props: {
           insights,
-          item: { name: 'vue', range: '^3.0.0', registry: 'npm', flags: [] },
+          item: { name: 'vue', packageName: 'vue', range: '^3.0.0', registry: 'npm', flags: [] },
           showSkeleton: false,
         },
         attachTo: (() => {
@@ -1673,7 +1676,9 @@ describe('component accessibility audits', () => {
           sections: [
             {
               id: 'dependencies',
-              items: [{ name: 'vue', range: '^3.0.0', registry: 'npm', flags: [] }],
+              items: [
+                { name: 'vue', packageName: 'vue', range: '^3.0.0', registry: 'npm', flags: [] },
+              ],
             },
           ],
           activeSections: ['dependencies'],
