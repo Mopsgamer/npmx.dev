@@ -29,7 +29,36 @@ if (import.meta.server && packageName.value) {
   assertValidPackageName(packageName.value)
 }
 
-const { data: resolvedVersion } = await useResolvedVersion(packageName, requestedVersion)
+const { data: resolvedVersion, status: resolvedStatus } = await useResolvedVersion(
+  packageName,
+  requestedVersion,
+)
+
+if (
+  import.meta.server &&
+  !resolvedVersion.value &&
+  ['success', 'error'].includes(resolvedStatus.value)
+) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: $t('package.not_found'),
+    message: $t('package.not_found_message'),
+  })
+}
+
+watch(
+  [resolvedStatus, resolvedVersion],
+  ([status, version]) => {
+    if ((!version && status === 'success') || status === 'error') {
+      showError({
+        statusCode: 404,
+        statusMessage: $t('package.not_found'),
+        message: $t('package.not_found_message'),
+      })
+    }
+  },
+  { immediate: true },
+)
 
 const { data: pkg, status: pkgStatus } = usePackage(packageName, resolvedVersion)
 const { versions: commandPaletteVersions, ensureLoaded: ensureCommandPaletteVersionsLoaded } =
@@ -397,7 +426,7 @@ const showSkeleton = shallowRef(false)
     </div>
 
     <div
-      v-else-if="pkgStatus === 'error'"
+      v-else-if="pkgStatus === 'error' || resolvedStatus === 'error'"
       role="alert"
       class="flex flex-col items-center py-20 text-center container w-full"
     >
