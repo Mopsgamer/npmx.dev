@@ -494,6 +494,7 @@
       "issues": "issues",
       "jsr": "jsr",
       "code": "code",
+      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "docs",
       "fund": "Steunen",
       "compare": "vergelijk",
@@ -535,7 +536,16 @@
     },
     "run": {
       "title": "Uitvoeren",
-      "locally": "Lokaal uitvoeren"
+      "locally": "Lokaal uitvoeren",
+      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
+    },
+    "command": {
+      "copied_install": "EN TEXT TO REPLACE: Install command copied",
+      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
+      "copied_run": "EN TEXT TO REPLACE: Run command copied",
+      "copied_create": "EN TEXT TO REPLACE: Create command copied",
+      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
+      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
     },
     "readme": {
       "title": "Readme",
@@ -634,6 +644,7 @@
     "timeline": {
       "load_more": "Laad meer",
       "load_error": "De tijdlijn kan niet worden geladen. Probeer het later nog eens.",
+      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
       "size_increase": "De installatiegrootte is toegenomen met {percent}% ({size})",
       "size_decrease": "De installatiegrootte is afgenomen met {percent}% ({size})",
       "dep_increase": "{count} dependency toegevoegd | {count} dependencies toegevoegd",
@@ -647,6 +658,7 @@
       "trusted_publisher_removed": "Vertrouwd publiceren gedeactiveerd",
       "provenance_added": "Herkomst verificatie geactiveerd",
       "provenance_removed": "Herkomst verificatie gedeactiveerd",
+      "deprecated": "EN TEXT TO REPLACE: Deprecated",
       "chart": {
         "tab_aria_label": "Selecteer statistiek",
         "dependency_size": "Dependencygrootte",
@@ -655,6 +667,9 @@
         "zoom": "zoom",
         "reset_minimap": "minimap resetten",
         "ordered_versions": "Alleen stabiele versies",
+        "sort_label": "EN TEXT TO REPLACE: Sort by",
+        "sort_time": "EN TEXT TO REPLACE: Publish time",
+        "sort_semver": "EN TEXT TO REPLACE: Semver",
         "copy_alt": {
           "key_changes": "Belangrijkste wijzigingen: {version_events}.",
           "version_events": "versie {version}: {events}",
@@ -668,8 +683,27 @@
     },
     "dependencies": {
       "title": "Dependency ({count}) | Dependencies ({count})",
-      "insights": {},
+      "insights": {
+        "title": "EN TEXT TO REPLACE: Insights",
+        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
+        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
+        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
+        "major_behind": "EN TEXT TO REPLACE: Major behind",
+        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
+        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
+        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
+        "deprecated": "EN TEXT TO REPLACE: Deprecated",
+        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
+        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
+        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
+      },
       "optional": "optioneel",
+      "bundled": "EN TEXT TO REPLACE: bundled",
+      "all": "EN TEXT TO REPLACE: All dependencies",
+      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
+      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
+      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
+      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "Bekijk kwetsbaarheden",
       "outdated_major": "{count} hoofdversie achter (nieuwste: {latest}) | {count} hoofdversies achter (nieuwste: {latest})",
       "outdated_minor": "{count} subversie achter (nieuwste: {latest}) | {count} subversies achter (nieuwste: {latest})",
@@ -1116,6 +1150,7 @@
     "keywords": "Trefwoorden",
     "more_keywords": "+{count} meer",
     "clear_all": "Leegmaken",
+    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "Verwijder {label} filter",
     "chips": {
       "search": "Zoek",
@@ -1557,6 +1592,7 @@
     "dev_dependencies": "Dev Dependencies",
     "peer_dependencies": "Peer Dependencies",
     "optional_dependencies": "Optionele Dependencies",
+    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "Geen dependency veranderingen",
     "file_filter_option": {
       "all": "Alle ({count})",

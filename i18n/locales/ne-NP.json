@@ -191,6 +191,7 @@
       "theme_changed": "थिम {theme} मा सेट गरियो।",
       "accent_color_changed": "एक्सेन्ट रङ {color} मा सेट गरियो।",
       "background_theme_changed": "ब्याकग्राउन्ड सेड {theme} मा सेट गरियो।",
+      "foreground_theme_changed": "EN TEXT TO REPLACE: Foreground shade set to {theme}.",
       "download_started": "{package} टारबल डाउनलोड हुँदैछ।",
       "copied_to_clipboard": "क्लिपबोर्डमा कपी भयो।",
       "npm_disconnected": "npm CLI डिस्कनेक्ट भयो।",
@@ -261,7 +262,8 @@
     "back_to_archive": "सबै नुडलहरूमा फर्कनुहोस्",
     "missing": {
       "title": "यो नुडल भाँडोबाट बाहिर आउनै पाएन।",
-      "body": "हाम्रो मेनुमा “{slug}” नामको नुडल छैन। कि त यो अझै पाक्दैछ, कि त कहिल्यै लेखिएकै थिएन। जे होस् — अर्काइभतिर फर्कनुहोस्।"
+      "body": "हाम्रो मेनुमा “{slug}” नामको नुडल छैन। कि त यो अझै पाक्दैछ, कि त कहिल्यै लेखिएकै थिएन। जे होस् — अर्काइभतिर फर्कनुहोस्।",
+      "empty_bowl": "EN TEXT TO REPLACE: empty bowl"
     }
   },
   "settings": {
@@ -318,6 +320,12 @@
       "zinc": "जिन्क",
       "slate": "स्लेट",
       "black": "कालो"
+    },
+    "foreground_themes": {
+      "label": "EN TEXT TO REPLACE: Foreground shade",
+      "contrast": "EN TEXT TO REPLACE: Contrast",
+      "standard": "EN TEXT TO REPLACE: Standard",
+      "muted": "EN TEXT TO REPLACE: Muted"
     },
     "keyboard_shortcuts_enabled": "किबोर्ड सर्टकटहरू सक्षम गर्नुहोस्",
     "keyboard_shortcuts_enabled_description": "अन्य ब्राउजर वा सिस्टम सर्टकटहरूसँग बाझिएमा किबोर्ड सर्टकटहरू निष्क्रिय गर्न सकिन्छ",
@@ -385,7 +393,8 @@
     "collapse": "समेट्नुहोस्",
     "collapse_with_name": "{name} समेट्नुहोस्",
     "expand": "विस्तार गर्नुहोस्",
-    "expand_with_name": "{name} विस्तार गर्नुहोस्"
+    "expand_with_name": "{name} विस्तार गर्नुहोस्",
+    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
   },
   "profile": {
     "display_name": "डिस्प्ले नाम",
@@ -411,6 +420,7 @@
     "verified_provenance": "प्रमाणित प्रोभेनेन्स",
     "navigation": "प्याकेज",
     "copy_name": "प्याकेज नाम कपी गर्नुहोस्",
+    "copy_version": "EN TEXT TO REPLACE: Copy package version",
     "deprecation": {
       "package": "यो प्याकेज अप्रचलित (deprecated) गरिएको छ।",
       "version": "यो संस्करण अप्रचलित (deprecated) गरिएको छ।",
@@ -484,6 +494,7 @@
       "issues": "इश्यूहरू",
       "jsr": "jsr",
       "code": "कोड",
+      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "डकुमेन्टेसन",
       "fund": "फन्ड",
       "compare": "तुलना",
@@ -525,9 +536,17 @@
     },
     "run": {
       "title": "चलाउनुहोस्",
-      "locally": "लोकलमा चलाउनुहोस्"
+      "locally": "लोकलमा चलाउनुहोस्",
+      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
     },
-    "command": {},
+    "command": {
+      "copied_install": "EN TEXT TO REPLACE: Install command copied",
+      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
+      "copied_run": "EN TEXT TO REPLACE: Run command copied",
+      "copied_create": "EN TEXT TO REPLACE: Create command copied",
+      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
+      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+    },
     "readme": {
       "title": "Readme",
       "no_readme": "README उपलब्ध छैन।",
@@ -625,6 +644,7 @@
     "timeline": {
       "load_more": "थप लोड गर्नुहोस्",
       "load_error": "टाइमलाइन लोड गर्न असफल। कृपया पछि फेरि प्रयास गर्नुहोस्।",
+      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
       "size_increase": "इन्स्टल साइज {percent}% ले बढ्यो ({size})",
       "size_decrease": "इन्स्टल साइज {percent}% ले घट्यो ({size})",
       "dep_increase": "{count} डिपेन्डेन्सी थपियो | {count} डिपेन्डेन्सीहरू थपिए",
@@ -638,6 +658,7 @@
       "trusted_publisher_removed": "विश्वसनीय प्रकाशन हटाइयो",
       "provenance_added": "प्रोभेनेन्स सक्षम गरियो",
       "provenance_removed": "प्रोभेनेन्स हटाइयो",
+      "deprecated": "EN TEXT TO REPLACE: Deprecated",
       "chart": {
         "tab_aria_label": "मेट्रिक चयन",
         "dependency_size": "डिपेन्डेन्सी साइज",
@@ -646,6 +667,9 @@
         "zoom": "जुम",
         "reset_minimap": "मिनीम्याप रिसेट गर्नुहोस्",
         "ordered_versions": "स्टेबल मात्र",
+        "sort_label": "EN TEXT TO REPLACE: Sort by",
+        "sort_time": "EN TEXT TO REPLACE: Publish time",
+        "sort_semver": "EN TEXT TO REPLACE: Semver",
         "copy_alt": {
           "key_changes": "मुख्य परिवर्तनहरू: {version_events}।",
           "version_events": "संस्करण {version}: {events}",
@@ -659,8 +683,27 @@
     },
     "dependencies": {
       "title": "डिपेन्डेन्सी ({count}) | डिपेन्डेन्सीहरू ({count})",
-      "insights": {},
+      "insights": {
+        "title": "EN TEXT TO REPLACE: Insights",
+        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
+        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
+        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
+        "major_behind": "EN TEXT TO REPLACE: Major behind",
+        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
+        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
+        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
+        "deprecated": "EN TEXT TO REPLACE: Deprecated",
+        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
+        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
+        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
+      },
       "optional": "वैकल्पिक",
+      "bundled": "EN TEXT TO REPLACE: bundled",
+      "all": "EN TEXT TO REPLACE: All dependencies",
+      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
+      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
+      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
+      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "कमजोरीहरू हेर्नुहोस्",
       "outdated_major": "{count} मेजर संस्करण पछाडि (नवीनतम: {latest}) | {count} मेजर संस्करणहरू पछाडि (नवीनतम: {latest})",
       "outdated_minor": "{count} माइनर संस्करण पछाडि (नवीनतम: {latest}) | {count} माइनर संस्करणहरू पछाडि (नवीनतम: {latest})",
@@ -703,6 +746,7 @@
       "date_range": "{start} देखि {end}",
       "date_range_multiline": "{start}\nदेखि {end}",
       "download_file": "{fileType} डाउनलोड गर्नुहोस्",
+      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "एनोटेटर टगल गर्नुहोस्",
       "toggle_stack_mode": "स्ट्याक मोड टगल गर्नुहोस्",
       "open_options": "विकल्पहरू खोल्नुहोस्",
@@ -1106,6 +1150,7 @@
     "keywords": "किवर्डहरू",
     "more_keywords": "+{count} थप",
     "clear_all": "सबै हटाउनुहोस्",
+    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "{label} फिल्टर हटाउनुहोस्",
     "chips": {
       "search": "खोज",
@@ -1547,6 +1592,7 @@
     "dev_dependencies": "डेभ डिपेन्डेन्सीहरू",
     "peer_dependencies": "पियर डिपेन्डेन्सीहरू",
     "optional_dependencies": "वैकल्पिक डिपेन्डेन्सीहरू",
+    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "डिपेन्डेन्सीमा कुनै परिवर्तन छैन",
     "file_filter_option": {
       "all": "सबै ({count})",
@@ -1843,6 +1889,7 @@
       "p2": "कृपया पछि फेरि प्रयास गर्नुहोस् वा {viewon}"
     },
     "rate_limit_ungh": "माफ गर्नुहोस्, GitHub को रेट लिमिटमा पुगियो, एकैछिनमा फेरि प्रयास गर्नुहोस्",
-    "version_unavailable": "अनुरोध गरिएको संस्करण उपलब्ध छैन।"
+    "version_unavailable": "अनुरोध गरिएको संस्करण उपलब्ध छैन।",
+    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
   }
 }

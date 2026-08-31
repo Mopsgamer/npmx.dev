@@ -191,6 +191,7 @@
       "theme_changed": "テーマを {theme} に設定しました。",
       "accent_color_changed": "アクセントカラーを {color} に設定しました。",
       "background_theme_changed": "背景シェードを {theme} に設定しました。",
+      "foreground_theme_changed": "EN TEXT TO REPLACE: Foreground shade set to {theme}.",
       "download_started": "{package} のtarballをダウンロード中。",
       "copied_to_clipboard": "クリップボードにコピーしました。",
       "npm_disconnected": "npm CLIから切断しました。",
@@ -261,7 +262,8 @@
     "back_to_archive": "すべてのnoodlesに戻る",
     "missing": {
       "title": "このnoodleはボウルから出られませんでした。",
-      "body": "メニューに「{slug}」というnoodleはありません。まだ調理中か、作成されなかったかのどちらかです。いずれにせよ、アーカイブに戻りましょう。"
+      "body": "メニューに「{slug}」というnoodleはありません。まだ調理中か、作成されなかったかのどちらかです。いずれにせよ、アーカイブに戻りましょう。",
+      "empty_bowl": "EN TEXT TO REPLACE: empty bowl"
     }
   },
   "settings": {
@@ -319,7 +321,12 @@
       "slate": "スレート",
       "black": "ブラック"
     },
-    "foreground_themes": {},
+    "foreground_themes": {
+      "label": "EN TEXT TO REPLACE: Foreground shade",
+      "contrast": "EN TEXT TO REPLACE: Contrast",
+      "standard": "EN TEXT TO REPLACE: Standard",
+      "muted": "EN TEXT TO REPLACE: Muted"
+    },
     "keyboard_shortcuts_enabled": "キーボードショートカットを有効化",
     "keyboard_shortcuts_enabled_description": "ブラウザやシステムのショートカットと競合する場合、キーボードショートカットを無効化できます",
     "enable_code_ligatures": "コードのリガチャを有効化",
@@ -386,7 +393,8 @@
     "collapse": "折りたたむ",
     "collapse_with_name": "{name} を折りたたむ",
     "expand": "展開",
-    "expand_with_name": "{name} を展開"
+    "expand_with_name": "{name} を展開",
+    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
   },
   "profile": {
     "display_name": "表示名",
@@ -412,6 +420,7 @@
     "verified_provenance": "検証済みprovenance",
     "navigation": "パッケージナビゲーション",
     "copy_name": "パッケージ名をコピー",
+    "copy_version": "EN TEXT TO REPLACE: Copy package version",
     "deprecation": {
       "package": "このパッケージは非推奨になりました。",
       "version": "このバージョンは非推奨になりました。",
@@ -485,6 +494,7 @@
       "issues": "issues",
       "jsr": "jsr",
       "code": "コード",
+      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "ドキュメント",
       "fund": "資金援助",
       "compare": "比較",
@@ -526,9 +536,17 @@
     },
     "run": {
       "title": "実行",
-      "locally": "ローカルで実行"
+      "locally": "ローカルで実行",
+      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
     },
-    "command": {},
+    "command": {
+      "copied_install": "EN TEXT TO REPLACE: Install command copied",
+      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
+      "copied_run": "EN TEXT TO REPLACE: Run command copied",
+      "copied_create": "EN TEXT TO REPLACE: Create command copied",
+      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
+      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+    },
     "readme": {
       "title": "Readme",
       "no_readme": "READMEはありません。",
@@ -626,6 +644,7 @@
     "timeline": {
       "load_more": "さらに読み込む",
       "load_error": "タイムラインの読み込みに失敗しました。後で再試行してください。",
+      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
       "size_increase": "インストールサイズが {percent}% ({size}) 増加",
       "size_decrease": "インストールサイズが {percent}% ({size}) 減少",
       "dep_increase": "依存関係を {count} 個追加",
@@ -639,23 +658,52 @@
       "trusted_publisher_removed": "Trusted publishingを削除",
       "provenance_added": "Provenanceを有効化",
       "provenance_removed": "Provenanceを削除",
+      "deprecated": "EN TEXT TO REPLACE: Deprecated",
       "chart": {
         "tab_aria_label": "メトリクスの選択",
+        "dependency_size": "EN TEXT TO REPLACE: Dependency Size",
+        "other_dependencies": "EN TEXT TO REPLACE: Other",
         "base_scale": "Y軸を0から開始",
         "zoom": "ズーム",
         "reset_minimap": "ミニマップをリセット",
         "ordered_versions": "安定版のみ",
+        "sort_label": "EN TEXT TO REPLACE: Sort by",
+        "sort_time": "EN TEXT TO REPLACE: Publish time",
+        "sort_semver": "EN TEXT TO REPLACE: Semver",
         "copy_alt": {
           "key_changes": "主な変更: {version_events}",
           "version_events": "バージョン {version}: {events}",
-          "general_description": "パッケージ {package} の {metric} をバージョン {first} から {last} まで示すラインチャート。{first} 時の {metric} は {first_value}、{last} 時は {last_value} (全体で {overall_progress_percentage}% 変化) です。{key_changes} {watermark}。"
+          "general_description": "パッケージ {package} の {metric} をバージョン {first} から {last} まで示すラインチャート。{first} 時の {metric} は {first_value}、{last} 時は {last_value} (全体で {overall_progress_percentage}% 変化) です。{key_changes} {watermark}。",
+          "stackbar_segment_share": "EN TEXT TO REPLACE: {segment}: {value} ({percentage})",
+          "stackbar_top_segments": "EN TEXT TO REPLACE: In {version}, the largest segments are {segments}.",
+          "stackbar_largest_increase": "EN TEXT TO REPLACE: The largest increase is {segment}, up {delta}.",
+          "stackbar_largest_decrease": "EN TEXT TO REPLACE: The largest decrease is {segment}, down {delta}."
         }
       }
     },
     "dependencies": {
       "title": "依存関係（{count}）",
-      "insights": {},
+      "insights": {
+        "title": "EN TEXT TO REPLACE: Insights",
+        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
+        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
+        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
+        "major_behind": "EN TEXT TO REPLACE: Major behind",
+        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
+        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
+        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
+        "deprecated": "EN TEXT TO REPLACE: Deprecated",
+        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
+        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
+        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
+      },
       "optional": "オプション",
+      "bundled": "EN TEXT TO REPLACE: bundled",
+      "all": "EN TEXT TO REPLACE: All dependencies",
+      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
+      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
+      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
+      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "脆弱性情報を表示",
       "outdated_major": "最新から {count} 個のメジャーバージョン遅れています (最新: {latest})",
       "outdated_minor": "最新から {count} 個のマイナーバージョン遅れています (最新: {latest})",
@@ -698,6 +746,7 @@
       "date_range": "{start} から {end}",
       "date_range_multiline": "{start}\nから {end}",
       "download_file": "{fileType} をダウンロード",
+      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "アノテーターを切り替え",
       "toggle_stack_mode": "スタックモードを切り替え",
       "open_options": "オプションを開く",
@@ -732,6 +781,7 @@
         "trend_undefined": "未定義（データ不足）",
         "button_label": "altテキストをコピー",
         "watermark": "下部に「./npmx a fast, modern browser for the npm registry」のウォーターマークあり",
+        "watermark_top": "EN TEXT TO REPLACE: At the top, a watermark reads \"./npmx a fast, modern browser for the npm registry\"",
         "analysis": "{package_name} は {start_value} で始まり {end_value} で終了。{trend} の傾向を示し、時間間隔あたりのダウンロード数のグラフの傾きは {downloads_slope} です。",
         "estimation": "最終値は、現在の期間の部分的データに基づく推定値です。",
         "estimations": "最終値は、現在の期間の部分的データに基づく推定値です。",
@@ -1065,7 +1115,8 @@
     },
     "file_path": "ファイルパス",
     "binary_file": "バイナリファイル",
-    "binary_rendering_warning": "ファイルタイプ「{contentType}」はプレビューに対応していません。"
+    "binary_rendering_warning": "ファイルタイプ「{contentType}」はプレビューに対応していません。",
+    "possibly_unnecessary": "EN TEXT TO REPLACE: May be unnecessary in a published package"
   },
   "badges": {
     "provenance": {
@@ -1099,6 +1150,7 @@
     "keywords": "キーワード",
     "more_keywords": "+他 {count} 個",
     "clear_all": "すべてクリア",
+    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "{label} フィルターを削除",
     "chips": {
       "search": "検索",
@@ -1540,6 +1592,7 @@
     "dev_dependencies": "dev依存関係",
     "peer_dependencies": "ピア依存関係",
     "optional_dependencies": "オプション依存関係",
+    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "依存関係の変更なし",
     "file_filter_option": {
       "all": "すべて ({count})",
@@ -1836,6 +1889,7 @@
       "p2": "後でもう一度試すか、{viewon} を確認してください"
     },
     "rate_limit_ungh": "GitHubのレート制限に達しました。しばらくしてから再度試してください。",
-    "version_unavailable": "リクエストされたバージョンは利用できません。"
+    "version_unavailable": "リクエストされたバージョンは利用できません。",
+    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
   }
 }

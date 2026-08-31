@@ -699,6 +699,7 @@
       },
       "optional": "optional",
       "bundled": "bundled",
+      "all": "All dependencies",
       "none": "This version has no dependencies.",
       "no_matches": "No dependencies match your filter.",
       "filter_placeholder": "Filter dependencies...",
@@ -1149,6 +1150,7 @@
     "keywords": "Keywords",
     "more_keywords": "+{count} more",
     "clear_all": "Clear all",
+    "select_all": "Select all",
     "remove_filter": "Remove {label} filter",
     "chips": {
       "search": "Search",

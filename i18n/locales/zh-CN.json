@@ -13,6 +13,7 @@
   "trademark_disclaimer": "npm 是 npm, Inc. 的注册商标。本网站不与 npm, Inc. 有任何隶属关系。",
   "footer": {
     "about": "关于",
+    "sponsors": "EN TEXT TO REPLACE: sponsors",
     "blog": "博客",
     "docs": "文档",
     "source": "源码",
@@ -23,7 +24,8 @@
     "brand": "品牌",
     "resources": "资源",
     "features": "功能",
-    "other": "其它"
+    "other": "其它",
+    "sponsored_by": "EN TEXT TO REPLACE: Sponsored by {list}"
   },
   "shortcuts": {
     "section": {
@@ -39,6 +41,7 @@
     "settings": "打开设置",
     "compare": "打开比较",
     "compare_from_package": "打开比较（使用当前包预填充）",
+    "changelog": "EN TEXT TO REPLACE: Open changelog",
     "navigate_results": "导航结果",
     "go_to_result": "跳转到结果",
     "open_code_view": "打开代码视图",
@@ -46,7 +49,8 @@
     "disable_shortcuts": "你可以在{settings}中禁用快捷键。",
     "open_main": "查看主要信息",
     "open_diff": "查看版本差异",
-    "open_timeline": "时间线"
+    "open_timeline": "时间线",
+    "open_stats": "EN TEXT TO REPLACE: Open stats"
   },
   "search": {
     "label": "搜索 npm 包",
@@ -98,7 +102,11 @@
     "current": "当前",
     "here": "你在这里",
     "connected": "已连接",
-    "keyboard_shortcuts": {},
+    "keyboard_shortcuts": {
+      "navigate": "EN TEXT TO REPLACE: to navigate",
+      "select": "EN TEXT TO REPLACE: to select",
+      "close": "EN TEXT TO REPLACE: to close"
+    },
     "state": {
       "on": "开启",
       "off": "关闭"
@@ -154,7 +162,9 @@
       "code": "代码",
       "diff": "差异",
       "compare": "比较此包",
-      "download": "下载 tarball"
+      "download": "下载 tarball",
+      "changelog": "EN TEXT TO REPLACE: Changelog",
+      "stats": "EN TEXT TO REPLACE: Stats"
     },
     "package_actions": {
       "copy_run": "复制运行命令"
@@ -181,6 +191,7 @@
       "theme_changed": "主题设置为 {theme}.",
       "accent_color_changed": "强调颜色设置为 {color}.",
       "background_theme_changed": "背景主题设置为 {theme}.",
+      "foreground_theme_changed": "EN TEXT TO REPLACE: Foreground shade set to {theme}.",
       "download_started": "下载 {package} tarball.",
       "copied_to_clipboard": "已复制到剪贴板。",
       "npm_disconnected": "npm CLI 断开连接。",
@@ -230,7 +241,30 @@
     }
   },
   "noodles": {
-    "missing": {}
+    "title": "EN TEXT TO REPLACE: noodles",
+    "meta_description": "EN TEXT TO REPLACE: Every noodle we've ever shown on npmx — the seasonal logos, easter eggs, and the stories behind them.",
+    "latest": "EN TEXT TO REPLACE: Latest noodles",
+    "what_is": "EN TEXT TO REPLACE: What is noodles",
+    "what_is_body": "EN TEXT TO REPLACE: Noodles are the playful variants of the npmx logo we run on the homepage to mark releases, holidays, events, and other moments worth celebrating. Think of them like Google Doodles, but for npm packages.",
+    "empty": "EN TEXT TO REPLACE: No noodles yet.",
+    "load_more": "EN TEXT TO REPLACE: Load {count} more",
+    "dates": "EN TEXT TO REPLACE: Active dates",
+    "shipped_in": "EN TEXT TO REPLACE: Shipped in",
+    "credits": "EN TEXT TO REPLACE: Credits",
+    "learn_more": "EN TEXT TO REPLACE: Learn more",
+    "carousel_prev": "EN TEXT TO REPLACE: Previous image",
+    "carousel_next": "EN TEXT TO REPLACE: Next image",
+    "carousel_dots": "EN TEXT TO REPLACE: Variant image navigation",
+    "carousel_jump": "EN TEXT TO REPLACE: Go to image {index}",
+    "lens_label": "EN TEXT TO REPLACE: {title} — image reel",
+    "lens_slide": "EN TEXT TO REPLACE: image {index}",
+    "lens_slide_position": "EN TEXT TO REPLACE: Slide {index} of {total}",
+    "back_to_archive": "EN TEXT TO REPLACE: Back to all noodles",
+    "missing": {
+      "title": "EN TEXT TO REPLACE: This noodle never made it out of the bowl.",
+      "body": "EN TEXT TO REPLACE: We don't have a “{slug}” noodle on the menu. Either it's still being plated, or it was never written. Either way — back to the archive.",
+      "empty_bowl": "EN TEXT TO REPLACE: empty bowl"
+    }
   },
   "settings": {
     "title": "设置",
@@ -287,10 +321,17 @@
       "slate": "板岩灰",
       "black": "黑色"
     },
-    "foreground_themes": {},
+    "foreground_themes": {
+      "label": "EN TEXT TO REPLACE: Foreground shade",
+      "contrast": "EN TEXT TO REPLACE: Contrast",
+      "standard": "EN TEXT TO REPLACE: Standard",
+      "muted": "EN TEXT TO REPLACE: Muted"
+    },
     "keyboard_shortcuts_enabled": "启用快捷键",
     "keyboard_shortcuts_enabled_description": "如果某些快捷键与其他浏览器或系统快捷键冲突，可以选择将其禁用。",
-    "enable_code_ligatures": "在代码中启用连字"
+    "enable_code_ligatures": "在代码中启用连字",
+    "enable_changelog_autoscroll": "EN TEXT TO REPLACE: Auto scroll to requested version",
+    "enable_changelog_autoscroll_description": "EN TEXT TO REPLACE: Auto scroll to or close to the requested version at package changelog"
   },
   "i18n": {
     "missing_keys": "{count} 项缺少翻译",
@@ -352,7 +393,8 @@
     "collapse": "收起",
     "collapse_with_name": "收起 {name}",
     "expand": "展开",
-    "expand_with_name": "展开 {name}"
+    "expand_with_name": "展开 {name}",
+    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
   },
   "profile": {
     "display_name": "显示名称",
@@ -378,6 +420,7 @@
     "verified_provenance": "已验证来源",
     "navigation": "包导航",
     "copy_name": "复制包名",
+    "copy_version": "EN TEXT TO REPLACE: Copy package version",
     "deprecation": {
       "package": "此包已废弃。",
       "version": "此版本已废弃。",
@@ -402,6 +445,8 @@
       "example": "示例：",
       "native": "该功能自 Node.js {nodeVersion} 起已被内置，可直接使用 {replacement} 替代。",
       "native_no_version": "此包可直接使用 {replacement} 替代。",
+      "simple": "EN TEXT TO REPLACE: This package has been flagged as redundant, with the advice: {replacement}",
+      "documented": "EN TEXT TO REPLACE: This package has been flagged as having more performant alternatives.",
       "none": "此包已被标记为不再需要，其功能很可能已由所有引擎原生提供。",
       "learn_more": "了解更多",
       "learn_more_above": "在上方了解更多。",
@@ -419,7 +464,10 @@
       "size_tooltip": {
         "unpacked": "未打包大小（当前包)：{size}",
         "total": "总未打包大小（包括 {count} 个依赖项）：{size}"
-      }
+      },
+      "main_information": "EN TEXT TO REPLACE: Main Information",
+      "trends": "EN TEXT TO REPLACE: Trends",
+      "version_distribution": "EN TEXT TO REPLACE: Version Distribution"
     },
     "skills": {
       "title": "代理技能",
@@ -446,11 +494,14 @@
       "issues": "议题",
       "jsr": "jsr",
       "code": "代码",
+      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "文档",
       "fund": "资助",
       "compare": "比较",
       "timeline": "时间线",
-      "compare_this_package": "比较此包"
+      "stats": "EN TEXT TO REPLACE: stats",
+      "compare_this_package": "比较此包",
+      "changelog": "EN TEXT TO REPLACE: changelog"
     },
     "likes": {
       "like": "点赞此包",
@@ -485,9 +536,17 @@
     },
     "run": {
       "title": "运行",
-      "locally": "本地运行"
+      "locally": "本地运行",
+      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
     },
-    "command": {},
+    "command": {
+      "copied_install": "EN TEXT TO REPLACE: Install command copied",
+      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
+      "copied_run": "EN TEXT TO REPLACE: Run command copied",
+      "copied_create": "EN TEXT TO REPLACE: Create command copied",
+      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
+      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+    },
     "readme": {
       "title": "自述文件",
       "no_readme": "无可用自述文件。",
@@ -531,6 +590,7 @@
       "weekly_downloads": "每周下载量",
       "keywords": "关键词",
       "license": "许可证",
+      "version": "EN TEXT TO REPLACE: Version",
       "select": "选择软件包",
       "select_maximum": "最多可选择 {count} 个软件包"
     },
@@ -584,6 +644,7 @@
     "timeline": {
       "load_more": "加载更多",
       "load_error": "加载时间线失败，请稍后再试。",
+      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
       "size_increase": "安装体积增加了 {percent}%（增加了 {size}）",
       "size_decrease": "安装体积减少了 {percent}%（减少了 {size}）",
       "dep_increase": "新增了 {count} 个依赖",
@@ -600,20 +661,49 @@
       "deprecated": "已弃用",
       "chart": {
         "tab_aria_label": "指标选择",
+        "dependency_size": "EN TEXT TO REPLACE: Dependency Size",
+        "other_dependencies": "EN TEXT TO REPLACE: Other",
         "base_scale": "Y 轴从 0 开始",
         "zoom": "缩放",
         "reset_minimap": "重置缩略图",
+        "ordered_versions": "EN TEXT TO REPLACE: stable only",
+        "sort_label": "EN TEXT TO REPLACE: Sort by",
+        "sort_time": "EN TEXT TO REPLACE: Publish time",
+        "sort_semver": "EN TEXT TO REPLACE: Semver",
         "copy_alt": {
           "key_changes": "关键变更：{version_events}。",
           "version_events": "版本 {version}：{events}",
-          "general_description": "折线图展示了 {package} 包从版本 {first} 到 {last} 的 {metric} 变化情况。版本 {first} 的 {metric} 为 {first_value}，版本 {last} 为 {last_value}（整体变化 {overall_progress_percentage}%）。{key_changes} {watermark}。"
+          "general_description": "折线图展示了 {package} 包从版本 {first} 到 {last} 的 {metric} 变化情况。版本 {first} 的 {metric} 为 {first_value}，版本 {last} 为 {last_value}（整体变化 {overall_progress_percentage}%）。{key_changes} {watermark}。",
+          "stackbar_segment_share": "EN TEXT TO REPLACE: {segment}: {value} ({percentage})",
+          "stackbar_top_segments": "EN TEXT TO REPLACE: In {version}, the largest segments are {segments}.",
+          "stackbar_largest_increase": "EN TEXT TO REPLACE: The largest increase is {segment}, up {delta}.",
+          "stackbar_largest_decrease": "EN TEXT TO REPLACE: The largest decrease is {segment}, down {delta}."
         }
       }
     },
     "dependencies": {
       "title": "依赖（{count} 个）",
-      "insights": {},
+      "insights": {
+        "title": "EN TEXT TO REPLACE: Insights",
+        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
+        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
+        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
+        "major_behind": "EN TEXT TO REPLACE: Major behind",
+        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
+        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
+        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
+        "deprecated": "EN TEXT TO REPLACE: Deprecated",
+        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
+        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
+        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
+      },
       "optional": "可选",
+      "bundled": "EN TEXT TO REPLACE: bundled",
+      "all": "EN TEXT TO REPLACE: All dependencies",
+      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
+      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
+      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
+      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "查看漏洞",
       "outdated_major": "落后 {count} 个主要版本（最新：{latest}）",
       "outdated_minor": "落后 {count} 个次要版本（最新：{latest}）",
@@ -656,6 +746,7 @@
       "date_range": "{start} 至 {end}",
       "date_range_multiline": "{start}\n至 {end}",
       "download_file": "下载 {fileType}",
+      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "切换标注工具",
       "toggle_stack_mode": "切换堆叠模式",
       "open_options": "展开选项",
@@ -690,6 +781,7 @@
         "trend_undefined": "未知（数据不足）",
         "button_label": "复制替代文本",
         "watermark": "底部有水印 \"./npmx a fast, modern browser for the npm registry\"",
+        "watermark_top": "EN TEXT TO REPLACE: At the top, a watermark reads \"./npmx a fast, modern browser for the npm registry\"",
         "analysis": "{package_name} 的下载量从{start_value}，变为{end_value}，变化趋势{trend}（平均每期变化{downloads_slope}次）",
         "estimation": "（注：最终值为基于部分数据的估算）",
         "estimations": "（注：最终值为基于部分数据的估算）",
@@ -699,7 +791,12 @@
         "facet_bar_general_description": "水平条形图：{packages} 的 {facet} 对比（{description}）。{facet_analysis} {watermark}",
         "facet_bar_analysis": "{package_name}：{value}"
       },
-      "embedding": {}
+      "embedding": {
+        "chart": "EN TEXT TO REPLACE: Embed this chart",
+        "copy_url": "EN TEXT TO REPLACE: Copy this URL to embed the chart into your website",
+        "preview": "EN TEXT TO REPLACE: Preview",
+        "tip": "EN TEXT TO REPLACE: If startDate and endDate are not provided in the URL, the graph will display the last 12 months by default."
+      }
     },
     "downloads": {
       "title": "每周下载量",
@@ -1018,7 +1115,8 @@
     },
     "file_path": "文件路径",
     "binary_file": "二进制文件",
-    "binary_rendering_warning": "暂不支持预览“{contentType}”类型的文件。"
+    "binary_rendering_warning": "暂不支持预览“{contentType}”类型的文件。",
+    "possibly_unnecessary": "EN TEXT TO REPLACE: May be unnecessary in a published package"
   },
   "badges": {
     "provenance": {
@@ -1052,6 +1150,7 @@
     "keywords": "关键词",
     "more_keywords": "+ {count} 个更多",
     "clear_all": "清除所有",
+    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "移除 {label} 筛选",
     "chips": {
       "search": "搜索",
@@ -1165,13 +1264,18 @@
       }
     },
     "sponsors": {
-      "title": "赞助商"
+      "title": "赞助商",
+      "gold": "EN TEXT TO REPLACE: Gold Sponsors",
+      "silver": "EN TEXT TO REPLACE: Silver Sponsors"
     },
     "oss_partners": {
       "title": "开源合作伙伴"
     },
     "team": {
       "title": "团队",
+      "core": "EN TEXT TO REPLACE: Core",
+      "maintainers": "EN TEXT TO REPLACE: Maintainers",
+      "role_core": "EN TEXT TO REPLACE: core",
       "role_steward": "管理者",
       "role_maintainer": "维护者",
       "sponsor": "赞助",
@@ -1209,22 +1313,61 @@
     }
   },
   "sponsors_page": {
-    "what_we_do": {},
-    "what_support_means": {},
+    "title": "EN TEXT TO REPLACE: Sponsors",
+    "heading": "EN TEXT TO REPLACE: sponsors",
+    "meta_description": "EN TEXT TO REPLACE: Support npmx and help us accelerate ecosystem work around security, trust, optimization, and research.",
+    "intro": "EN TEXT TO REPLACE: Support npmx and help us grow the ecosystem work we do for developers and maintainers.",
+    "what_we_do": {
+      "title": "EN TEXT TO REPLACE: What we do",
+      "description": "EN TEXT TO REPLACE: We're building an ecosystem that solves problems around security, trust, optimization, and research for the tools we use in everyday development - quickly, conveniently, and with high quality. This project is built by developers for developers. As authors of widely used libraries, we understand team needs and actively study what maintainers and projects need most."
+    },
+    "what_support_means": {
+      "title": "EN TEXT TO REPLACE: What support means",
+      "description": "EN TEXT TO REPLACE: Our plans and connections keep growing, along with our desire to share what we've built and learn from others. Your support helps fund the project, external talks, conferences, and the broader ecosystem, and, most importantly, enables us to keep growing our community."
+    },
+    "cta": "EN TEXT TO REPLACE: See sponsorship tiers",
+    "community_growth_footnote": "EN TEXT TO REPLACE: * According to {link} Q1 2026 research.",
     "what_this_means_for_you": {
+      "title": "EN TEXT TO REPLACE: What this means for you",
+      "description": "EN TEXT TO REPLACE: npmx is not only about improving developer experience and closing critical everyday gaps. In our first six months, we have already become the default source for thousands of teams and a huge number of developers. You get not only a more stable tool for your teams, but also visibility in front of a constantly growing audience of top-tier engineers.",
       "cards": {
-        "people": {},
-        "visitors": {},
-        "stars": {},
-        "community": {},
-        "adoption": {},
-        "default_source": {}
+        "people": {
+          "contributors": "EN TEXT TO REPLACE: contributors",
+          "community_members": "EN TEXT TO REPLACE: community members"
+        },
+        "visitors": {
+          "description": "EN TEXT TO REPLACE: unique monthly visitors"
+        },
+        "stars": {
+          "title": "EN TEXT TO REPLACE: stars"
+        },
+        "community": {
+          "title": "EN TEXT TO REPLACE: fast-growing",
+          "description": "EN TEXT TO REPLACE: We are one of the fastest-growing communities in the ecosystem"
+        },
+        "adoption": {
+          "title": "EN TEXT TO REPLACE: adoption",
+          "description": "EN TEXT TO REPLACE: charts at conferences, talks, and articles rely on our data"
+        },
+        "default_source": {
+          "title": "EN TEXT TO REPLACE: default source",
+          "description": "EN TEXT TO REPLACE: pnpm made npmx the default source, many packages have been configured to link to npmx"
+        }
       }
     },
     "tiers": {
-      "silver": {},
-      "gold": {},
-      "platinum": {}
+      "title": "EN TEXT TO REPLACE: Sponsorship tiers",
+      "per_month": "EN TEXT TO REPLACE: /month",
+      "custom": "EN TEXT TO REPLACE: Custom",
+      "silver": {
+        "name": "EN TEXT TO REPLACE: Silver"
+      },
+      "gold": {
+        "name": "EN TEXT TO REPLACE: Gold"
+      },
+      "platinum": {
+        "name": "EN TEXT TO REPLACE: Platinum"
+      }
     }
   },
   "account_menu": {
@@ -1401,7 +1544,10 @@
           "label": "GitHub 星标",
           "description": "GitHub 仓库的星标数量"
         },
-        "githubForks": {},
+        "githubForks": {
+          "label": "EN TEXT TO REPLACE: GitHub Forks",
+          "description": "EN TEXT TO REPLACE: Number of forks on the GitHub repository"
+        },
         "githubIssues": {
           "label": "GitHub 问题数",
           "description": "GitHub 仓库的问题数量"
@@ -1446,6 +1592,7 @@
     "dev_dependencies": "开发依赖项",
     "peer_dependencies": "对等依赖项",
     "optional_dependencies": "可选依赖项",
+    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "无依赖项更改",
     "file_filter_option": {
       "all": "全部 ({count})",
@@ -1469,6 +1616,9 @@
     "change_ratio": "更改比例",
     "char_edits": "字符编辑",
     "diff_distance": "差异距离",
+    "diff_truncated": "EN TEXT TO REPLACE: Diff truncated for performance. Showing the first changed lines only.",
+    "large_diff_mode": "EN TEXT TO REPLACE: Large file diff shown with inline edit merging disabled for performance.",
+    "large_diff_options_disabled": "EN TEXT TO REPLACE: Large file mode disables inline edit merging for performance.",
     "loading_diff": "加载差异...",
     "loading_diff_error": "加载差异失败",
     "merge_modified_lines": "合并修改的行",
@@ -1731,6 +1881,15 @@
   },
   "alt_logo_kawaii": "一个圆润可爱、色彩活泼的 npmx logo 版本。",
   "changelog": {
-    "error": {}
+    "pre_release": "EN TEXT TO REPLACE: Pre-release",
+    "draft": "EN TEXT TO REPLACE: Draft",
+    "no_logs": "EN TEXT TO REPLACE: Sorry, this package does not publish changelogs or its changelog format is not supported.",
+    "error": {
+      "p1": "EN TEXT TO REPLACE: Sorry, the changelog for {package} couldn't be loaded",
+      "p2": "EN TEXT TO REPLACE: Please try again later or {viewon}"
+    },
+    "rate_limit_ungh": "EN TEXT TO REPLACE: Sorry, Github's rate limit has been hit, try again in a moment",
+    "version_unavailable": "EN TEXT TO REPLACE: The requested version is not available.",
+    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
   }
 }

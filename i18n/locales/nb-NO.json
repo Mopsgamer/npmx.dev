@@ -13,6 +13,7 @@
   "trademark_disclaimer": "npm er et registrert varemerke for npm, Inc. Dette nettstedet er ikke tilknyttet npm, Inc.",
   "footer": {
     "about": "om",
+    "sponsors": "EN TEXT TO REPLACE: sponsors",
     "blog": "blogg",
     "docs": "dokumentasjon",
     "source": "kildekode",
@@ -23,7 +24,8 @@
     "brand": "merkevare",
     "resources": "Ressurser",
     "features": "Funksjoner",
-    "other": "Annet"
+    "other": "Annet",
+    "sponsored_by": "EN TEXT TO REPLACE: Sponsored by {list}"
   },
   "shortcuts": {
     "section": {
@@ -39,6 +41,7 @@
     "settings": "Åpne innstillinger",
     "compare": "Åpne sammenligning",
     "compare_from_package": "Åpne sammenligning (forhåndsutfylt med nåværende pakke)",
+    "changelog": "EN TEXT TO REPLACE: Open changelog",
     "navigate_results": "Naviger resultater",
     "go_to_result": "Gå til resultat",
     "open_code_view": "Åpne kodevisning",
@@ -188,6 +191,7 @@
       "theme_changed": "Tema satt til {theme}.",
       "accent_color_changed": "Aksentfarge satt til {color}.",
       "background_theme_changed": "Bakgrunnsnyanse satt til {theme}.",
+      "foreground_theme_changed": "EN TEXT TO REPLACE: Foreground shade set to {theme}.",
       "download_started": "Laster ned tarball for {package}.",
       "copied_to_clipboard": "Kopiert til utklippstavlen.",
       "npm_disconnected": "npm CLI frakoblet.",
@@ -258,7 +262,8 @@
     "back_to_archive": "Tilbake til alle nudler",
     "missing": {
       "title": "Denne nudelen kom aldri ut av bollen.",
-      "body": "Vi har ikke en {slug}-nudel på menyen. Enten blir den fortsatt lagt opp, eller den ble aldri laget. Uansett — tilbake til arkivet."
+      "body": "Vi har ikke en {slug}-nudel på menyen. Enten blir den fortsatt lagt opp, eller den ble aldri laget. Uansett — tilbake til arkivet.",
+      "empty_bowl": "EN TEXT TO REPLACE: empty bowl"
     }
   },
   "settings": {
@@ -316,7 +321,12 @@
       "slate": "Skifer",
       "black": "Svart"
     },
-    "foreground_themes": {},
+    "foreground_themes": {
+      "label": "EN TEXT TO REPLACE: Foreground shade",
+      "contrast": "EN TEXT TO REPLACE: Contrast",
+      "standard": "EN TEXT TO REPLACE: Standard",
+      "muted": "EN TEXT TO REPLACE: Muted"
+    },
     "keyboard_shortcuts_enabled": "Aktiver tastatursnarveier",
     "keyboard_shortcuts_enabled_description": "Tastatursnarveier kan deaktiveres hvis de er i konflikt med andre nettleser- eller systemsnarveier",
     "enable_code_ligatures": "Aktiver ligaturer i kode",
@@ -383,7 +393,8 @@
     "collapse": "Skjul",
     "collapse_with_name": "Skjul {name}",
     "expand": "Utvid",
-    "expand_with_name": "Utvid {name}"
+    "expand_with_name": "Utvid {name}",
+    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
   },
   "profile": {
     "display_name": "Visningsnavn",
@@ -409,6 +420,7 @@
     "verified_provenance": "Verifisert opprinnelse",
     "navigation": "Pakke",
     "copy_name": "Kopier pakkenavn",
+    "copy_version": "EN TEXT TO REPLACE: Copy package version",
     "deprecation": {
       "package": "Denne pakken er utfaset.",
       "version": "Denne versjonen er utfaset.",
@@ -482,6 +494,7 @@
       "issues": "saker",
       "jsr": "jsr",
       "code": "kode",
+      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "dok",
       "fund": "støtt",
       "compare": "sammenlign",
@@ -523,9 +536,17 @@
     },
     "run": {
       "title": "Kjør",
-      "locally": "Kjør lokalt"
+      "locally": "Kjør lokalt",
+      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
     },
-    "command": {},
+    "command": {
+      "copied_install": "EN TEXT TO REPLACE: Install command copied",
+      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
+      "copied_run": "EN TEXT TO REPLACE: Run command copied",
+      "copied_create": "EN TEXT TO REPLACE: Create command copied",
+      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
+      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+    },
     "readme": {
       "title": "Readme",
       "no_readme": "Ingen README tilgjengelig.",
@@ -623,6 +644,7 @@
     "timeline": {
       "load_more": "Last flere",
       "load_error": "Kunne ikke laste tidslinje. Prøv igjen senere.",
+      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
       "size_increase": "Installasjonsstørrelse økt med {percent}% ({size})",
       "size_decrease": "Installasjonsstørrelse minket med {percent}% ({size})",
       "dep_increase": "{count} avhengigheter lagt til",
@@ -636,23 +658,52 @@
       "trusted_publisher_removed": "Pålitelig publisering fjernet",
       "provenance_added": "Opprinnelse aktivert",
       "provenance_removed": "Opprinnelse fjernet",
+      "deprecated": "EN TEXT TO REPLACE: Deprecated",
       "chart": {
         "tab_aria_label": "Valg av måleparameter",
+        "dependency_size": "EN TEXT TO REPLACE: Dependency Size",
+        "other_dependencies": "EN TEXT TO REPLACE: Other",
         "base_scale": "start y-aksen på null",
         "zoom": "zoom",
         "reset_minimap": "tilbakestill minikart",
         "ordered_versions": "kun stabile versjoner",
+        "sort_label": "EN TEXT TO REPLACE: Sort by",
+        "sort_time": "EN TEXT TO REPLACE: Publish time",
+        "sort_semver": "EN TEXT TO REPLACE: Semver",
         "copy_alt": {
           "key_changes": "Viktige endringer: {version_events}.",
           "version_events": "versjon {version}: {events}",
-          "general_description": "Linjediagram som viser {metric} for {package}-pakken, fra versjon {first} til {last}. {metric} i versjon {first} er {first_value}, i versjon {last} er {last_value} ({overall_progress_percentage}% totalt). {key_changes} {watermark}."
+          "general_description": "Linjediagram som viser {metric} for {package}-pakken, fra versjon {first} til {last}. {metric} i versjon {first} er {first_value}, i versjon {last} er {last_value} ({overall_progress_percentage}% totalt). {key_changes} {watermark}.",
+          "stackbar_segment_share": "EN TEXT TO REPLACE: {segment}: {value} ({percentage})",
+          "stackbar_top_segments": "EN TEXT TO REPLACE: In {version}, the largest segments are {segments}.",
+          "stackbar_largest_increase": "EN TEXT TO REPLACE: The largest increase is {segment}, up {delta}.",
+          "stackbar_largest_decrease": "EN TEXT TO REPLACE: The largest decrease is {segment}, down {delta}."
         }
       }
     },
     "dependencies": {
       "title": "Avhengighet ({count}) | Avhengigheter ({count})",
-      "insights": {},
+      "insights": {
+        "title": "EN TEXT TO REPLACE: Insights",
+        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
+        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
+        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
+        "major_behind": "EN TEXT TO REPLACE: Major behind",
+        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
+        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
+        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
+        "deprecated": "EN TEXT TO REPLACE: Deprecated",
+        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
+        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
+        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
+      },
       "optional": "valgfri",
+      "bundled": "EN TEXT TO REPLACE: bundled",
+      "all": "EN TEXT TO REPLACE: All dependencies",
+      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
+      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
+      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
+      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "Vis sårbarheter",
       "outdated_major": "{count} major-versjon bak (nyeste: {latest}) | {count} major-versjoner bak (nyeste: {latest})",
       "outdated_minor": "{count} minor-versjon bak (nyeste: {latest}) | {count} minor-versjoner bak (nyeste: {latest})",
@@ -695,6 +746,7 @@
       "date_range": "{start} til {end}",
       "date_range_multiline": "{start}\ntil {end}",
       "download_file": "Last ned {fileType}",
+      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "Veksle annotering",
       "toggle_stack_mode": "Veksle stablingsmodus",
       "open_options": "Åpne alternativer",
@@ -729,6 +781,7 @@
         "trend_undefined": "udefinert (utilstrekkelig data)",
         "button_label": "Kopier alternativ tekst",
         "watermark": "Nederst står det et vannmerke: «./npmx en rask, moderne leser for npm-registeret»",
+        "watermark_top": "EN TEXT TO REPLACE: At the top, a watermark reads \"./npmx a fast, modern browser for the npm registry\"",
         "analysis": "{package_name} starter på {start_value} og slutter på {end_value}, og viser en {trend} trend med en stigning på {downloads_slope} nedlastinger per tidsintervall",
         "estimation": "Den endelige verdien er et estimat basert på delvise data for gjeldende periode.",
         "estimations": "De endelige verdiene er estimater basert på delvise data for gjeldende periode.",
@@ -1062,7 +1115,8 @@
     },
     "file_path": "Filsti",
     "binary_file": "Binærfil",
-    "binary_rendering_warning": "Filtypen «{contentType}» støttes ikke for forhåndsvisning."
+    "binary_rendering_warning": "Filtypen «{contentType}» støttes ikke for forhåndsvisning.",
+    "possibly_unnecessary": "EN TEXT TO REPLACE: May be unnecessary in a published package"
   },
   "badges": {
     "provenance": {
@@ -1096,6 +1150,7 @@
     "keywords": "Nøkkelord",
     "more_keywords": "+{count} flere",
     "clear_all": "Fjern alle",
+    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "Fjern {label} filter",
     "chips": {
       "search": "Søk",
@@ -1209,7 +1264,9 @@
       }
     },
     "sponsors": {
-      "title": "Sponsorer"
+      "title": "Sponsorer",
+      "gold": "EN TEXT TO REPLACE: Gold Sponsors",
+      "silver": "EN TEXT TO REPLACE: Silver Sponsors"
     },
     "oss_partners": {
       "title": "OSS-partnere"
@@ -1256,22 +1313,61 @@
     }
   },
   "sponsors_page": {
-    "what_we_do": {},
-    "what_support_means": {},
+    "title": "EN TEXT TO REPLACE: Sponsors",
+    "heading": "EN TEXT TO REPLACE: sponsors",
+    "meta_description": "EN TEXT TO REPLACE: Support npmx and help us accelerate ecosystem work around security, trust, optimization, and research.",
+    "intro": "EN TEXT TO REPLACE: Support npmx and help us grow the ecosystem work we do for developers and maintainers.",
+    "what_we_do": {
+      "title": "EN TEXT TO REPLACE: What we do",
+      "description": "EN TEXT TO REPLACE: We're building an ecosystem that solves problems around security, trust, optimization, and research for the tools we use in everyday development - quickly, conveniently, and with high quality. This project is built by developers for developers. As authors of widely used libraries, we understand team needs and actively study what maintainers and projects need most."
+    },
+    "what_support_means": {
+      "title": "EN TEXT TO REPLACE: What support means",
+      "description": "EN TEXT TO REPLACE: Our plans and connections keep growing, along with our desire to share what we've built and learn from others. Your support helps fund the project, external talks, conferences, and the broader ecosystem, and, most importantly, enables us to keep growing our community."
+    },
+    "cta": "EN TEXT TO REPLACE: See sponsorship tiers",
+    "community_growth_footnote": "EN TEXT TO REPLACE: * According to {link} Q1 2026 research.",
     "what_this_means_for_you": {
+      "title": "EN TEXT TO REPLACE: What this means for you",
+      "description": "EN TEXT TO REPLACE: npmx is not only about improving developer experience and closing critical everyday gaps. In our first six months, we have already become the default source for thousands of teams and a huge number of developers. You get not only a more stable tool for your teams, but also visibility in front of a constantly growing audience of top-tier engineers.",
       "cards": {
-        "people": {},
-        "visitors": {},
-        "stars": {},
-        "community": {},
-        "adoption": {},
-        "default_source": {}
+        "people": {
+          "contributors": "EN TEXT TO REPLACE: contributors",
+          "community_members": "EN TEXT TO REPLACE: community members"
+        },
+        "visitors": {
+          "description": "EN TEXT TO REPLACE: unique monthly visitors"
+        },
+        "stars": {
+          "title": "EN TEXT TO REPLACE: stars"
+        },
+        "community": {
+          "title": "EN TEXT TO REPLACE: fast-growing",
+          "description": "EN TEXT TO REPLACE: We are one of the fastest-growing communities in the ecosystem"
+        },
+        "adoption": {
+          "title": "EN TEXT TO REPLACE: adoption",
+          "description": "EN TEXT TO REPLACE: charts at conferences, talks, and articles rely on our data"
+        },
+        "default_source": {
+          "title": "EN TEXT TO REPLACE: default source",
+          "description": "EN TEXT TO REPLACE: pnpm made npmx the default source, many packages have been configured to link to npmx"
+        }
       }
     },
     "tiers": {
-      "silver": {},
-      "gold": {},
-      "platinum": {}
+      "title": "EN TEXT TO REPLACE: Sponsorship tiers",
+      "per_month": "EN TEXT TO REPLACE: /month",
+      "custom": "EN TEXT TO REPLACE: Custom",
+      "silver": {
+        "name": "EN TEXT TO REPLACE: Silver"
+      },
+      "gold": {
+        "name": "EN TEXT TO REPLACE: Gold"
+      },
+      "platinum": {
+        "name": "EN TEXT TO REPLACE: Platinum"
+      }
     }
   },
   "account_menu": {
@@ -1496,6 +1592,7 @@
     "dev_dependencies": "Utviklingsavhengigheter",
     "peer_dependencies": "Peer-avhengigheter",
     "optional_dependencies": "Valgfrie avhengigheter",
+    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "Ingen avhengighetsendringer",
     "file_filter_option": {
       "all": "Alle ({count})",
@@ -1792,6 +1889,7 @@
       "p2": "Prøv igjen senere eller {viewon}"
     },
     "rate_limit_ungh": "Beklager, GitHubs rate limit er nådd, prøv igjen om et øyeblikk",
-    "version_unavailable": "Den forespurte versjonen er ikke tilgjengelig."
+    "version_unavailable": "Den forespurte versjonen er ikke tilgjengelig.",
+    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
   }
 }

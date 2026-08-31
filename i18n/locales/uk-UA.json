@@ -13,6 +13,7 @@
   "trademark_disclaimer": "npm є зареєстрованою торговою маркою npm, Inc. Цей сайт не пов'язаний з npm, Inc.",
   "footer": {
     "about": "про проєкт",
+    "sponsors": "EN TEXT TO REPLACE: sponsors",
     "blog": "блог",
     "docs": "документація",
     "source": "код",
@@ -23,7 +24,8 @@
     "brand": "бренд",
     "resources": "Ресурси",
     "features": "Функції",
-    "other": "Інше"
+    "other": "Інше",
+    "sponsored_by": "EN TEXT TO REPLACE: Sponsored by {list}"
   },
   "shortcuts": {
     "section": {
@@ -39,6 +41,7 @@
     "settings": "Відкрити налаштування",
     "compare": "Відкрити порівняння",
     "compare_from_package": "Відкрити порівняння (з поточним пакетом)",
+    "changelog": "EN TEXT TO REPLACE: Open changelog",
     "navigate_results": "Навігація результатами",
     "go_to_result": "Перейти до результату",
     "open_code_view": "Відкрити перегляд коду",
@@ -46,7 +49,8 @@
     "disable_shortcuts": "Ви можете вимкнути гарячі клавіші в {settings}.",
     "open_main": "Відкрити основну інформацію",
     "open_diff": "Відкрити порівняння версій",
-    "open_timeline": "Відкрити хронологію"
+    "open_timeline": "Відкрити хронологію",
+    "open_stats": "EN TEXT TO REPLACE: Open stats"
   },
   "search": {
     "label": "Пошук пакетів npm",
@@ -98,7 +102,11 @@
     "current": "поточна",
     "here": "ви тут",
     "connected": "підключено",
-    "keyboard_shortcuts": {},
+    "keyboard_shortcuts": {
+      "navigate": "EN TEXT TO REPLACE: to navigate",
+      "select": "EN TEXT TO REPLACE: to select",
+      "close": "EN TEXT TO REPLACE: to close"
+    },
     "state": {
       "on": "увімкнено",
       "off": "вимкнено"
@@ -154,7 +162,9 @@
       "code": "Код",
       "diff": "Різниця",
       "compare": "Порівняти цей пакет",
-      "download": "Завантажити tarball"
+      "download": "Завантажити tarball",
+      "changelog": "EN TEXT TO REPLACE: Changelog",
+      "stats": "EN TEXT TO REPLACE: Stats"
     },
     "package_actions": {
       "copy_run": "Копіювати команду запуску"
@@ -181,6 +191,7 @@
       "theme_changed": "Тему змінено на {theme}.",
       "accent_color_changed": "Акцентний колір змінено на {color}.",
       "background_theme_changed": "Відтінок фону змінено на {theme}.",
+      "foreground_theme_changed": "EN TEXT TO REPLACE: Foreground shade set to {theme}.",
       "download_started": "Завантаження tarball пакета {package}.",
       "copied_to_clipboard": "Скопійовано до буфера обміну.",
       "npm_disconnected": "npm CLI відключено.",
@@ -230,7 +241,30 @@
     }
   },
   "noodles": {
-    "missing": {}
+    "title": "EN TEXT TO REPLACE: noodles",
+    "meta_description": "EN TEXT TO REPLACE: Every noodle we've ever shown on npmx — the seasonal logos, easter eggs, and the stories behind them.",
+    "latest": "EN TEXT TO REPLACE: Latest noodles",
+    "what_is": "EN TEXT TO REPLACE: What is noodles",
+    "what_is_body": "EN TEXT TO REPLACE: Noodles are the playful variants of the npmx logo we run on the homepage to mark releases, holidays, events, and other moments worth celebrating. Think of them like Google Doodles, but for npm packages.",
+    "empty": "EN TEXT TO REPLACE: No noodles yet.",
+    "load_more": "EN TEXT TO REPLACE: Load {count} more",
+    "dates": "EN TEXT TO REPLACE: Active dates",
+    "shipped_in": "EN TEXT TO REPLACE: Shipped in",
+    "credits": "EN TEXT TO REPLACE: Credits",
+    "learn_more": "EN TEXT TO REPLACE: Learn more",
+    "carousel_prev": "EN TEXT TO REPLACE: Previous image",
+    "carousel_next": "EN TEXT TO REPLACE: Next image",
+    "carousel_dots": "EN TEXT TO REPLACE: Variant image navigation",
+    "carousel_jump": "EN TEXT TO REPLACE: Go to image {index}",
+    "lens_label": "EN TEXT TO REPLACE: {title} — image reel",
+    "lens_slide": "EN TEXT TO REPLACE: image {index}",
+    "lens_slide_position": "EN TEXT TO REPLACE: Slide {index} of {total}",
+    "back_to_archive": "EN TEXT TO REPLACE: Back to all noodles",
+    "missing": {
+      "title": "EN TEXT TO REPLACE: This noodle never made it out of the bowl.",
+      "body": "EN TEXT TO REPLACE: We don't have a “{slug}” noodle on the menu. Either it's still being plated, or it was never written. Either way — back to the archive.",
+      "empty_bowl": "EN TEXT TO REPLACE: empty bowl"
+    }
   },
   "settings": {
     "title": "налаштування",
@@ -287,10 +321,17 @@
       "slate": "Сланцевий",
       "black": "Чорний"
     },
-    "foreground_themes": {},
+    "foreground_themes": {
+      "label": "EN TEXT TO REPLACE: Foreground shade",
+      "contrast": "EN TEXT TO REPLACE: Contrast",
+      "standard": "EN TEXT TO REPLACE: Standard",
+      "muted": "EN TEXT TO REPLACE: Muted"
+    },
     "keyboard_shortcuts_enabled": "Увімкнути гарячі клавіші",
     "keyboard_shortcuts_enabled_description": "Гарячі клавіші можна вимкнути, якщо вони конфліктують з налаштуваннями браузера або системи",
-    "enable_code_ligatures": "Увімкнути лігатури в коді"
+    "enable_code_ligatures": "Увімкнути лігатури в коді",
+    "enable_changelog_autoscroll": "EN TEXT TO REPLACE: Auto scroll to requested version",
+    "enable_changelog_autoscroll_description": "EN TEXT TO REPLACE: Auto scroll to or close to the requested version at package changelog"
   },
   "i18n": {
     "missing_keys": "Відсутній {count} переклад | Відсутні {count} переклади | Відсутні {count} перекладів",
@@ -352,7 +393,8 @@
     "collapse": "Згорнути",
     "collapse_with_name": "Згорнути {name}",
     "expand": "Розгорнути",
-    "expand_with_name": "Розгорнути {name}"
+    "expand_with_name": "Розгорнути {name}",
+    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
   },
   "profile": {
     "display_name": "Відображуване ім'я",
@@ -378,6 +420,7 @@
     "verified_provenance": "Перевірене походження",
     "navigation": "Пакет",
     "copy_name": "Скопіювати назву пакета",
+    "copy_version": "EN TEXT TO REPLACE: Copy package version",
     "deprecation": {
       "package": "Цей пакет більше не підтримується.",
       "version": "Ця версія більше не підтримується.",
@@ -402,6 +445,8 @@
       "example": "Приклад:",
       "native": "Це можна замінити на {replacement}, доступне з Node {nodeVersion}.",
       "native_no_version": "Цей пакет можна замінити на {replacement}.",
+      "simple": "EN TEXT TO REPLACE: This package has been flagged as redundant, with the advice: {replacement}",
+      "documented": "EN TEXT TO REPLACE: This package has been flagged as having more performant alternatives.",
       "none": "Цей пакет було позначено як більше не необхідний, і його функціональність, ймовірно, доступна в усіх системах.",
       "learn_more": "Дізнатися більше",
       "learn_more_above": "Дізнатися більше вище.",
@@ -419,7 +464,10 @@
       "size_tooltip": {
         "unpacked": "{size} у розпакованому вигляді (цей пакет)",
         "total": "{size} загальний розмір у розпакованому вигляді (включно з {count} залежністю для linux-x64) | {size} загальний розмір у розпакованому вигляді (включно з {count} залежностями для linux-x64) | {size} загальний розмір у розпакованому вигляді (включно з {count} залежностями для linux-x64)"
-      }
+      },
+      "main_information": "EN TEXT TO REPLACE: Main Information",
+      "trends": "EN TEXT TO REPLACE: Trends",
+      "version_distribution": "EN TEXT TO REPLACE: Version Distribution"
     },
     "skills": {
       "title": "Навички агента",
@@ -446,11 +494,14 @@
       "issues": "issues",
       "jsr": "jsr",
       "code": "код",
+      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "документація",
       "fund": "спонсорство",
       "compare": "порівняти",
       "timeline": "хронологія",
-      "compare_this_package": "порівняти цей пакет"
+      "stats": "EN TEXT TO REPLACE: stats",
+      "compare_this_package": "порівняти цей пакет",
+      "changelog": "EN TEXT TO REPLACE: changelog"
     },
     "likes": {
       "like": "Подобається цей пакет",
@@ -485,9 +536,17 @@
     },
     "run": {
       "title": "Запустити",
-      "locally": "Запустити локально"
+      "locally": "Запустити локально",
+      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
     },
-    "command": {},
+    "command": {
+      "copied_install": "EN TEXT TO REPLACE: Install command copied",
+      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
+      "copied_run": "EN TEXT TO REPLACE: Run command copied",
+      "copied_create": "EN TEXT TO REPLACE: Create command copied",
+      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
+      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+    },
     "readme": {
       "title": "Readme",
       "no_readme": "README недоступний.",
@@ -531,6 +590,7 @@
       "weekly_downloads": "Завантажень на тиждень",
       "keywords": "Ключові слова",
       "license": "Ліцензія",
+      "version": "EN TEXT TO REPLACE: Version",
       "select": "Обрати пакет",
       "select_maximum": "Можна обрати не більше {count} пакетів"
     },
@@ -584,6 +644,7 @@
     "timeline": {
       "load_more": "Завантажити ще",
       "load_error": "Не вдалося завантажити хронологію. Спробуйте пізніше.",
+      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
       "size_increase": "Розмір встановлення збільшився на {percent}% ({size})",
       "size_decrease": "Розмір встановлення зменшився на {percent}% ({size})",
       "dep_increase": "Додано {count} залежність | Додано {count} залежності | Додано {count} залежностей",
@@ -597,22 +658,52 @@
       "trusted_publisher_removed": "Довірену публікацію видалено",
       "provenance_added": "Походження увімкнено",
       "provenance_removed": "Походження видалено",
+      "deprecated": "EN TEXT TO REPLACE: Deprecated",
       "chart": {
         "tab_aria_label": "Вибір метрики",
+        "dependency_size": "EN TEXT TO REPLACE: Dependency Size",
+        "other_dependencies": "EN TEXT TO REPLACE: Other",
         "base_scale": "починати вісь Y з нуля",
         "zoom": "масштаб",
         "reset_minimap": "скинути мінімапу",
+        "ordered_versions": "EN TEXT TO REPLACE: stable only",
+        "sort_label": "EN TEXT TO REPLACE: Sort by",
+        "sort_time": "EN TEXT TO REPLACE: Publish time",
+        "sort_semver": "EN TEXT TO REPLACE: Semver",
         "copy_alt": {
           "key_changes": "Ключові зміни: {version_events}.",
           "version_events": "версія {version}: {events}",
-          "general_description": "Лінійна діаграма показує {metric} пакета {package} від версії {first} до {last}. {metric} у версії {first} становить {first_value}, у версії {last} — {last_value} ({overall_progress_percentage}% загалом). {key_changes} {watermark}."
+          "general_description": "Лінійна діаграма показує {metric} пакета {package} від версії {first} до {last}. {metric} у версії {first} становить {first_value}, у версії {last} — {last_value} ({overall_progress_percentage}% загалом). {key_changes} {watermark}.",
+          "stackbar_segment_share": "EN TEXT TO REPLACE: {segment}: {value} ({percentage})",
+          "stackbar_top_segments": "EN TEXT TO REPLACE: In {version}, the largest segments are {segments}.",
+          "stackbar_largest_increase": "EN TEXT TO REPLACE: The largest increase is {segment}, up {delta}.",
+          "stackbar_largest_decrease": "EN TEXT TO REPLACE: The largest decrease is {segment}, down {delta}."
         }
       }
     },
     "dependencies": {
       "title": "Залежності ({count})",
-      "insights": {},
+      "insights": {
+        "title": "EN TEXT TO REPLACE: Insights",
+        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
+        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
+        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
+        "major_behind": "EN TEXT TO REPLACE: Major behind",
+        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
+        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
+        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
+        "deprecated": "EN TEXT TO REPLACE: Deprecated",
+        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
+        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
+        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
+      },
       "optional": "опціонально",
+      "bundled": "EN TEXT TO REPLACE: bundled",
+      "all": "EN TEXT TO REPLACE: All dependencies",
+      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
+      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
+      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
+      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "Переглянути вразливості",
       "outdated_major": "{count} мажорна версія позаду (остання: {latest}) | {count} мажорні версії позаду (остання: {latest}) | {count} мажорних версій позаду (остання: {latest})",
       "outdated_minor": "{count} мінорна версія позаду (остання: {latest}) | {count} мінорні версії позаду (остання: {latest}) | {count} мінорних версій позаду (остання: {latest})",
@@ -655,6 +746,7 @@
       "date_range": "{start} до {end}",
       "date_range_multiline": "{start}\nдо {end}",
       "download_file": "Завантажити {fileType}",
+      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "Перемкнути анотатор",
       "toggle_stack_mode": "Перемкнути режим стека",
       "open_options": "Відкрити параметри",
@@ -689,6 +781,7 @@
         "trend_undefined": "невизначена (недостатньо даних)",
         "button_label": "Копіювати альтернативний текст",
         "watermark": "Знизу є водяний знак із текстом \"./npmx a fast, modern browser for the npm registry\"",
+        "watermark_top": "EN TEXT TO REPLACE: At the top, a watermark reads \"./npmx a fast, modern browser for the npm registry\"",
         "analysis": "{package_name} починається зі значення {start_value} і закінчується на {end_value}, демонструючи {trend} тенденцію з нахилом {downloads_slope} завантажень за часовий інтервал",
         "estimation": "Кінцеве значення є оцінкою, заснованою на часткових даних за поточний період.",
         "estimations": "Кінцеві значення є оцінками, заснованими на часткових даних за поточний період.",
@@ -698,10 +791,16 @@
         "facet_bar_general_description": "Горизонтальна стовпчаста діаграма для {packages}, порівнюється {facet} ({description}). {facet_analysis} {watermark}.",
         "facet_bar_analysis": "{package_name} має значення {value}."
       },
-      "embedding": {}
+      "embedding": {
+        "chart": "EN TEXT TO REPLACE: Embed this chart",
+        "copy_url": "EN TEXT TO REPLACE: Copy this URL to embed the chart into your website",
+        "preview": "EN TEXT TO REPLACE: Preview",
+        "tip": "EN TEXT TO REPLACE: If startDate and endDate are not provided in the URL, the graph will display the last 12 months by default."
+      }
     },
     "downloads": {
       "title": "Завантажень на тиждень",
+      "version_distribution_title": "EN TEXT TO REPLACE: weekly downloads for version {version}",
       "community_distribution": "Переглянути розподіл впровадження у спільноті",
       "subtitle": "Для всіх версій",
       "sparkline_nav_hint": "Використовуйте ← →"
@@ -1016,7 +1115,8 @@
     },
     "file_path": "Шлях до файлу",
     "binary_file": "Бінарний файл",
-    "binary_rendering_warning": "Попередній перегляд файлів типу \"{contentType}\" не підтримується"
+    "binary_rendering_warning": "Попередній перегляд файлів типу \"{contentType}\" не підтримується",
+    "possibly_unnecessary": "EN TEXT TO REPLACE: May be unnecessary in a published package"
   },
   "badges": {
     "provenance": {
@@ -1050,6 +1150,7 @@
     "keywords": "Ключові слова",
     "more_keywords": "+{count} більше",
     "clear_all": "Очистити все",
+    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "Видалити фільтр {label}",
     "chips": {
       "search": "Пошук",
@@ -1163,13 +1264,18 @@
       }
     },
     "sponsors": {
-      "title": "Спонсори"
+      "title": "Спонсори",
+      "gold": "EN TEXT TO REPLACE: Gold Sponsors",
+      "silver": "EN TEXT TO REPLACE: Silver Sponsors"
     },
     "oss_partners": {
       "title": "Партнери відкритого ПЗ"
     },
     "team": {
       "title": "Команда",
+      "core": "EN TEXT TO REPLACE: Core",
+      "maintainers": "EN TEXT TO REPLACE: Maintainers",
+      "role_core": "EN TEXT TO REPLACE: core",
       "role_steward": "стюард",
       "role_maintainer": "супроводжувач",
       "sponsor": "спонсор",
@@ -1207,22 +1313,61 @@
     }
   },
   "sponsors_page": {
-    "what_we_do": {},
-    "what_support_means": {},
+    "title": "EN TEXT TO REPLACE: Sponsors",
+    "heading": "EN TEXT TO REPLACE: sponsors",
+    "meta_description": "EN TEXT TO REPLACE: Support npmx and help us accelerate ecosystem work around security, trust, optimization, and research.",
+    "intro": "EN TEXT TO REPLACE: Support npmx and help us grow the ecosystem work we do for developers and maintainers.",
+    "what_we_do": {
+      "title": "EN TEXT TO REPLACE: What we do",
+      "description": "EN TEXT TO REPLACE: We're building an ecosystem that solves problems around security, trust, optimization, and research for the tools we use in everyday development - quickly, conveniently, and with high quality. This project is built by developers for developers. As authors of widely used libraries, we understand team needs and actively study what maintainers and projects need most."
+    },
+    "what_support_means": {
+      "title": "EN TEXT TO REPLACE: What support means",
+      "description": "EN TEXT TO REPLACE: Our plans and connections keep growing, along with our desire to share what we've built and learn from others. Your support helps fund the project, external talks, conferences, and the broader ecosystem, and, most importantly, enables us to keep growing our community."
+    },
+    "cta": "EN TEXT TO REPLACE: See sponsorship tiers",
+    "community_growth_footnote": "EN TEXT TO REPLACE: * According to {link} Q1 2026 research.",
     "what_this_means_for_you": {
+      "title": "EN TEXT TO REPLACE: What this means for you",
+      "description": "EN TEXT TO REPLACE: npmx is not only about improving developer experience and closing critical everyday gaps. In our first six months, we have already become the default source for thousands of teams and a huge number of developers. You get not only a more stable tool for your teams, but also visibility in front of a constantly growing audience of top-tier engineers.",
       "cards": {
-        "people": {},
-        "visitors": {},
-        "stars": {},
-        "community": {},
-        "adoption": {},
-        "default_source": {}
+        "people": {
+          "contributors": "EN TEXT TO REPLACE: contributors",
+          "community_members": "EN TEXT TO REPLACE: community members"
+        },
+        "visitors": {
+          "description": "EN TEXT TO REPLACE: unique monthly visitors"
+        },
+        "stars": {
+          "title": "EN TEXT TO REPLACE: stars"
+        },
+        "community": {
+          "title": "EN TEXT TO REPLACE: fast-growing",
+          "description": "EN TEXT TO REPLACE: We are one of the fastest-growing communities in the ecosystem"
+        },
+        "adoption": {
+          "title": "EN TEXT TO REPLACE: adoption",
+          "description": "EN TEXT TO REPLACE: charts at conferences, talks, and articles rely on our data"
+        },
+        "default_source": {
+          "title": "EN TEXT TO REPLACE: default source",
+          "description": "EN TEXT TO REPLACE: pnpm made npmx the default source, many packages have been configured to link to npmx"
+        }
       }
     },
     "tiers": {
-      "silver": {},
-      "gold": {},
-      "platinum": {}
+      "title": "EN TEXT TO REPLACE: Sponsorship tiers",
+      "per_month": "EN TEXT TO REPLACE: /month",
+      "custom": "EN TEXT TO REPLACE: Custom",
+      "silver": {
+        "name": "EN TEXT TO REPLACE: Silver"
+      },
+      "gold": {
+        "name": "EN TEXT TO REPLACE: Gold"
+      },
+      "platinum": {
+        "name": "EN TEXT TO REPLACE: Platinum"
+      }
     }
   },
   "account_menu": {
@@ -1399,7 +1544,10 @@
           "label": "Зірки GitHub",
           "description": "Кількість зірок у репозиторії GitHub"
         },
-        "githubForks": {},
+        "githubForks": {
+          "label": "EN TEXT TO REPLACE: GitHub Forks",
+          "description": "EN TEXT TO REPLACE: Number of forks on the GitHub repository"
+        },
         "githubIssues": {
           "label": "Issues GitHub",
           "description": "Кількість issues у репозиторії GitHub"
@@ -1444,6 +1592,7 @@
     "dev_dependencies": "Dev-залежності",
     "peer_dependencies": "Peer-залежності",
     "optional_dependencies": "Опціональні залежності",
+    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "Змін у залежностях немає",
     "file_filter_option": {
       "all": "Усі ({count})",
@@ -1467,6 +1616,9 @@
     "change_ratio": "Відношення змін",
     "char_edits": "Правки символів",
     "diff_distance": "Відстань різниці",
+    "diff_truncated": "EN TEXT TO REPLACE: Diff truncated for performance. Showing the first changed lines only.",
+    "large_diff_mode": "EN TEXT TO REPLACE: Large file diff shown with inline edit merging disabled for performance.",
+    "large_diff_options_disabled": "EN TEXT TO REPLACE: Large file mode disables inline edit merging for performance.",
     "loading_diff": "Завантаження порівняння...",
     "loading_diff_error": "Не вдалося завантажити порівняння",
     "merge_modified_lines": "Об'єднати змінені рядки",
@@ -1729,6 +1881,15 @@
   },
   "alt_logo_kawaii": "Мила, округла й барвиста версія логотипу npmx.",
   "changelog": {
-    "error": {}
+    "pre_release": "EN TEXT TO REPLACE: Pre-release",
+    "draft": "EN TEXT TO REPLACE: Draft",
+    "no_logs": "EN TEXT TO REPLACE: Sorry, this package does not publish changelogs or its changelog format is not supported.",
+    "error": {
+      "p1": "EN TEXT TO REPLACE: Sorry, the changelog for {package} couldn't be loaded",
+      "p2": "EN TEXT TO REPLACE: Please try again later or {viewon}"
+    },
+    "rate_limit_ungh": "EN TEXT TO REPLACE: Sorry, Github's rate limit has been hit, try again in a moment",
+    "version_unavailable": "EN TEXT TO REPLACE: The requested version is not available.",
+    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
   }
 }

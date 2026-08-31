@@ -98,7 +98,7 @@ const sectionTriggerText = computed(() => {
   const total = props.sections?.length ?? 0
   const active = activeSectionsValue.value
   if (total > 0 && active.length === total) {
-    return t('filters.security_options.all')
+    return t('package.dependencies.all')
   }
   if (active.length === 1) {
     return getSectionLabel(active[0]!)
@@ -193,7 +193,7 @@ const showFilteredCount = computed(() => props.filter && props.filteredCount !==
                     {{
                       activeSectionsValue.length === sections.length
                         ? t('filters.clear_all')
-                        : t('compare.facets.select_all')
+                        : t('filters.select_all')
                     }}
                   </button>
                 </div>

@@ -13,6 +13,7 @@
   "trademark_disclaimer": "npm 是 npm, Inc. 的註冊商標。本網站與 npm, Inc. 無任何隸屬關係。",
   "footer": {
     "about": "關於",
+    "sponsors": "EN TEXT TO REPLACE: sponsors",
     "blog": "部落格",
     "docs": "文件",
     "source": "原始碼",
@@ -20,7 +21,11 @@
     "chat": "聊天",
     "builders_chat": "開發者聊天",
     "keyboard_shortcuts": "鍵盤快捷鍵",
-    "brand": "品牌"
+    "brand": "品牌",
+    "resources": "EN TEXT TO REPLACE: Resources",
+    "features": "EN TEXT TO REPLACE: Features",
+    "other": "EN TEXT TO REPLACE: Other",
+    "sponsored_by": "EN TEXT TO REPLACE: Sponsored by {list}"
   },
   "shortcuts": {
     "section": {
@@ -36,13 +41,16 @@
     "settings": "開啟設定",
     "compare": "開啟比較",
     "compare_from_package": "開啟比較（預填目前套件）",
+    "changelog": "EN TEXT TO REPLACE: Open changelog",
     "navigate_results": "瀏覽搜尋結果",
     "go_to_result": "前往搜尋結果",
     "open_code_view": "開啟程式碼檢視",
     "open_docs": "開啟文件",
     "disable_shortcuts": "你可以在 {settings} 中停用鍵盤快速鍵。",
     "open_main": "開啟主要資訊",
-    "open_diff": "開啟版本差異"
+    "open_diff": "開啟版本差異",
+    "open_timeline": "EN TEXT TO REPLACE: Open timeline",
+    "open_stats": "EN TEXT TO REPLACE: Open stats"
   },
   "search": {
     "label": "搜尋 npm 套件",
@@ -94,7 +102,11 @@
     "current": "目前",
     "here": "你所在的位置",
     "connected": "已連線",
-    "keyboard_shortcuts": {},
+    "keyboard_shortcuts": {
+      "navigate": "EN TEXT TO REPLACE: to navigate",
+      "select": "EN TEXT TO REPLACE: to select",
+      "close": "EN TEXT TO REPLACE: to close"
+    },
     "state": {
       "on": "開",
       "off": "關"
@@ -150,7 +162,9 @@
       "code": "程式碼",
       "diff": "差異",
       "compare": "比較這個套件",
-      "download": "下載 tarball"
+      "download": "下載 tarball",
+      "changelog": "EN TEXT TO REPLACE: Changelog",
+      "stats": "EN TEXT TO REPLACE: Stats"
     },
     "package_actions": {
       "copy_run": "複製執行指令"
@@ -177,6 +191,7 @@
       "theme_changed": "主題已設為 {theme}。",
       "accent_color_changed": "強調色已設為 {color}。",
       "background_theme_changed": "背景色調已設為 {theme}。",
+      "foreground_theme_changed": "EN TEXT TO REPLACE: Foreground shade set to {theme}.",
       "download_started": "正在下載 {package} tarball。",
       "copied_to_clipboard": "已複製到剪貼簿。",
       "npm_disconnected": "npm CLI 已中斷連線。",
@@ -226,7 +241,30 @@
     }
   },
   "noodles": {
-    "missing": {}
+    "title": "EN TEXT TO REPLACE: noodles",
+    "meta_description": "EN TEXT TO REPLACE: Every noodle we've ever shown on npmx — the seasonal logos, easter eggs, and the stories behind them.",
+    "latest": "EN TEXT TO REPLACE: Latest noodles",
+    "what_is": "EN TEXT TO REPLACE: What is noodles",
+    "what_is_body": "EN TEXT TO REPLACE: Noodles are the playful variants of the npmx logo we run on the homepage to mark releases, holidays, events, and other moments worth celebrating. Think of them like Google Doodles, but for npm packages.",
+    "empty": "EN TEXT TO REPLACE: No noodles yet.",
+    "load_more": "EN TEXT TO REPLACE: Load {count} more",
+    "dates": "EN TEXT TO REPLACE: Active dates",
+    "shipped_in": "EN TEXT TO REPLACE: Shipped in",
+    "credits": "EN TEXT TO REPLACE: Credits",
+    "learn_more": "EN TEXT TO REPLACE: Learn more",
+    "carousel_prev": "EN TEXT TO REPLACE: Previous image",
+    "carousel_next": "EN TEXT TO REPLACE: Next image",
+    "carousel_dots": "EN TEXT TO REPLACE: Variant image navigation",
+    "carousel_jump": "EN TEXT TO REPLACE: Go to image {index}",
+    "lens_label": "EN TEXT TO REPLACE: {title} — image reel",
+    "lens_slide": "EN TEXT TO REPLACE: image {index}",
+    "lens_slide_position": "EN TEXT TO REPLACE: Slide {index} of {total}",
+    "back_to_archive": "EN TEXT TO REPLACE: Back to all noodles",
+    "missing": {
+      "title": "EN TEXT TO REPLACE: This noodle never made it out of the bowl.",
+      "body": "EN TEXT TO REPLACE: We don't have a “{slug}” noodle on the menu. Either it's still being plated, or it was never written. Either way — back to the archive.",
+      "empty_bowl": "EN TEXT TO REPLACE: empty bowl"
+    }
   },
   "settings": {
     "title": "設定",
@@ -283,9 +321,17 @@
       "slate": "板岩灰",
       "black": "黑色"
     },
-    "foreground_themes": {},
+    "foreground_themes": {
+      "label": "EN TEXT TO REPLACE: Foreground shade",
+      "contrast": "EN TEXT TO REPLACE: Contrast",
+      "standard": "EN TEXT TO REPLACE: Standard",
+      "muted": "EN TEXT TO REPLACE: Muted"
+    },
     "keyboard_shortcuts_enabled": "啟用鍵盤快速鍵",
-    "keyboard_shortcuts_enabled_description": "若與其他瀏覽器或系統快捷鍵衝突，可停用鍵盤快速鍵"
+    "keyboard_shortcuts_enabled_description": "若與其他瀏覽器或系統快捷鍵衝突，可停用鍵盤快速鍵",
+    "enable_code_ligatures": "EN TEXT TO REPLACE: Enable ligatures in code",
+    "enable_changelog_autoscroll": "EN TEXT TO REPLACE: Auto scroll to requested version",
+    "enable_changelog_autoscroll_description": "EN TEXT TO REPLACE: Auto scroll to or close to the requested version at package changelog"
   },
   "i18n": {
     "missing_keys": "{count} 項缺少翻譯",
@@ -317,6 +363,7 @@
     "warnings": "警告：",
     "go_back_home": "回到首頁",
     "per_week": "/ 週",
+    "per_week_short": "EN TEXT TO REPLACE: /wk",
     "vanity_downloads_hint": "顯示下載量：未顯示套件 | 顯示下載量：顯示的套件 | 顯示下載量：顯示的 {count} 個套件總和",
     "sort": {
       "name": "名稱",
@@ -339,13 +386,15 @@
       "gitea": "在 Gitea 上檢視",
       "gitee": "在 Gitee 上檢視",
       "radicle": "在 Radicle 上檢視",
+      "socket_dev": "EN TEXT TO REPLACE: View on socket.dev",
       "sourcehut": "在 SourceHut 上檢視",
       "tangled": "在 Tangled 上檢視"
     },
     "collapse": "收合",
     "collapse_with_name": "收合 {name}",
     "expand": "展開",
-    "expand_with_name": "展開 {name}"
+    "expand_with_name": "展開 {name}",
+    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
   },
   "profile": {
     "display_name": "顯示名稱",
@@ -371,6 +420,7 @@
     "verified_provenance": "已驗證的來源",
     "navigation": "套件導覽",
     "copy_name": "複製套件名稱",
+    "copy_version": "EN TEXT TO REPLACE: Copy package version",
     "deprecation": {
       "package": "此套件已被棄用。",
       "version": "此版本已被棄用。",
@@ -383,10 +433,20 @@
       "size": "安裝大小增加了 {percent}（多出 {size}）",
       "deps": "增加了 {count} 個相依套件"
     },
-    "size_decrease": {},
+    "size_decrease": {
+      "title_size": "EN TEXT TO REPLACE: Package size decreased since v{version}!",
+      "title_deps": "EN TEXT TO REPLACE: Dependency count decreased since v{version}!",
+      "title_both": "EN TEXT TO REPLACE: Package size and dependency count decreased since v{version}!",
+      "size": "EN TEXT TO REPLACE: Install size reduced by {percent} ({size} smaller)",
+      "deps": "EN TEXT TO REPLACE: {count} fewer dependency | {count} fewer dependencies"
+    },
     "replacement": {
       "title": "你可能不需要這個相依套件。",
+      "example": "EN TEXT TO REPLACE: Example:",
       "native": "此功能自 Node.js {nodeVersion} 起已內建，可直接使用 {replacement} 取代。",
+      "native_no_version": "EN TEXT TO REPLACE: This package can be replaced with {replacement}.",
+      "simple": "EN TEXT TO REPLACE: This package has been flagged as redundant, with the advice: {replacement}",
+      "documented": "EN TEXT TO REPLACE: This package has been flagged as having more performant alternatives.",
       "none": "此套件已被標記為不再需要，其功能很可能已由所有引擎原生提供。",
       "learn_more": "了解更多",
       "learn_more_above": "參閱上方說明",
@@ -404,7 +464,10 @@
       "size_tooltip": {
         "unpacked": "未壓縮大小（此套件）：{size}",
         "total": "總未壓縮大小（包含 {count} 個相依套件）：{size}"
-      }
+      },
+      "main_information": "EN TEXT TO REPLACE: Main Information",
+      "trends": "EN TEXT TO REPLACE: Trends",
+      "version_distribution": "EN TEXT TO REPLACE: Version Distribution"
     },
     "skills": {
       "title": "代理技能",
@@ -431,14 +494,21 @@
       "issues": "Issues",
       "jsr": "jsr",
       "code": "程式碼",
+      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "文件",
       "fund": "贊助",
       "compare": "比較",
-      "compare_this_package": "比較這個套件"
+      "timeline": "EN TEXT TO REPLACE: timeline",
+      "stats": "EN TEXT TO REPLACE: stats",
+      "compare_this_package": "比較這個套件",
+      "changelog": "EN TEXT TO REPLACE: changelog"
     },
     "likes": {
       "like": "喜歡這個套件",
-      "unlike": "取消喜歡這個套件"
+      "unlike": "取消喜歡這個套件",
+      "top_rank_tooltip": "EN TEXT TO REPLACE: This is among the top 10 most liked packages on npmx! (#{rank})",
+      "top_rank_label": "EN TEXT TO REPLACE: #{rank}",
+      "top_rank_link_label": "EN TEXT TO REPLACE: View likes leaderboard. This package is ranked #{rank}."
     },
     "docs": {
       "contents": "目錄",
@@ -466,9 +536,17 @@
     },
     "run": {
       "title": "執行",
-      "locally": "在本機執行"
+      "locally": "在本機執行",
+      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
     },
-    "command": {},
+    "command": {
+      "copied_install": "EN TEXT TO REPLACE: Install command copied",
+      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
+      "copied_run": "EN TEXT TO REPLACE: Run command copied",
+      "copied_create": "EN TEXT TO REPLACE: Create command copied",
+      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
+      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+    },
     "readme": {
       "title": "README",
       "no_readme": "沒有可用的 README。",
@@ -480,7 +558,8 @@
         "warning": "警告",
         "caution": "小心"
       },
-      "copy_as_markdown": "複製 README 為 Markdown 格式"
+      "copy_as_markdown": "複製 README 為 Markdown 格式",
+      "error_loading": "EN TEXT TO REPLACE: Failed to load README details"
     },
     "provenance_section": {
       "title": "來源",
@@ -511,6 +590,7 @@
       "weekly_downloads": "每週下載量",
       "keywords": "關鍵字",
       "license": "授權",
+      "version": "EN TEXT TO REPLACE: Version",
       "select": "選擇套件",
       "select_maximum": "最多 {count} 個套件可以選擇"
     },
@@ -549,6 +629,9 @@
       "filter_help": "語義化版本範圍篩選說明",
       "filter_tooltip": "使用 {link} 篩選版本。例如：^3.0.0 會顯示所有 3.x 版本。",
       "filter_tooltip_link": "語義化版本範圍",
+      "license_change_help": "EN TEXT TO REPLACE: License Change Details",
+      "license_change_warning": "EN TEXT TO REPLACE: License changed since previous version.",
+      "license_change_record": "EN TEXT TO REPLACE: The license of this package changed from \"{from}\" to \"{to}\".",
       "no_matches": "沒有符合此範圍的版本",
       "copy_alt": {
         "per_version_analysis": "{version} 版本下載了 {downloads} 次",
@@ -559,15 +642,68 @@
       "no_match_filter": "沒有版本符合 {filter}"
     },
     "timeline": {
+      "load_more": "EN TEXT TO REPLACE: Load more",
+      "load_error": "EN TEXT TO REPLACE: Failed to load timeline. Please try again later.",
+      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
+      "size_increase": "EN TEXT TO REPLACE: Install size increased by {percent}% ({size})",
+      "size_decrease": "EN TEXT TO REPLACE: Install size decreased by {percent}% ({size})",
+      "dep_increase": "EN TEXT TO REPLACE: {count} dependency added | {count} dependencies added",
+      "dep_decrease": "EN TEXT TO REPLACE: {count} dependency removed | {count} dependencies removed",
+      "license_change": "EN TEXT TO REPLACE: License changed from {from} to {to}",
+      "esm_added": "EN TEXT TO REPLACE: Module type changed to ESM",
+      "esm_removed": "EN TEXT TO REPLACE: Module type changed from ESM to CJS",
+      "types_added": "EN TEXT TO REPLACE: TypeScript types added",
+      "types_removed": "EN TEXT TO REPLACE: TypeScript types removed",
+      "trusted_publisher_added": "EN TEXT TO REPLACE: Trusted publishing enabled",
+      "trusted_publisher_removed": "EN TEXT TO REPLACE: Trusted publishing removed",
+      "provenance_added": "EN TEXT TO REPLACE: Provenance enabled",
+      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed",
       "deprecated": "已棄用",
       "chart": {
-        "copy_alt": {}
+        "tab_aria_label": "EN TEXT TO REPLACE: Metric selection",
+        "dependency_size": "EN TEXT TO REPLACE: Dependency Size",
+        "other_dependencies": "EN TEXT TO REPLACE: Other",
+        "base_scale": "EN TEXT TO REPLACE: start y-axis at zero",
+        "zoom": "EN TEXT TO REPLACE: zoom",
+        "reset_minimap": "EN TEXT TO REPLACE: reset minimap",
+        "ordered_versions": "EN TEXT TO REPLACE: stable only",
+        "sort_label": "EN TEXT TO REPLACE: Sort by",
+        "sort_time": "EN TEXT TO REPLACE: Publish time",
+        "sort_semver": "EN TEXT TO REPLACE: Semver",
+        "copy_alt": {
+          "key_changes": "EN TEXT TO REPLACE: Key changes: {version_events}.",
+          "version_events": "EN TEXT TO REPLACE: version {version}: {events}",
+          "general_description": "EN TEXT TO REPLACE: Line chart showing the {metric} of the {package} package, from version {first} to {last}. The {metric} in version {first} is {first_value}, in version {last} is {last_value} ({overall_progress_percentage}% overall). {key_changes} {watermark}.",
+          "stackbar_segment_share": "EN TEXT TO REPLACE: {segment}: {value} ({percentage})",
+          "stackbar_top_segments": "EN TEXT TO REPLACE: In {version}, the largest segments are {segments}.",
+          "stackbar_largest_increase": "EN TEXT TO REPLACE: The largest increase is {segment}, up {delta}.",
+          "stackbar_largest_decrease": "EN TEXT TO REPLACE: The largest decrease is {segment}, down {delta}."
+        }
       }
     },
     "dependencies": {
       "title": "相依（{count} 個）",
-      "insights": {},
+      "insights": {
+        "title": "EN TEXT TO REPLACE: Insights",
+        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
+        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
+        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
+        "major_behind": "EN TEXT TO REPLACE: Major behind",
+        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
+        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
+        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
+        "deprecated": "EN TEXT TO REPLACE: Deprecated",
+        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
+        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
+        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
+      },
       "optional": "選用",
+      "bundled": "EN TEXT TO REPLACE: bundled",
+      "all": "EN TEXT TO REPLACE: All dependencies",
+      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
+      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
+      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
+      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "檢視漏洞",
       "outdated_major": "落後 {count} 個主要版本（最新：{latest}）",
       "outdated_minor": "落後 {count} 個次要版本（最新：{latest}）",
@@ -610,6 +746,7 @@
       "date_range": "{start} 到 {end}",
       "date_range_multiline": "{start}\n到 {end}",
       "download_file": "下載 {fileType}",
+      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "切換標註工具",
       "toggle_stack_mode": "切換堆疊模式",
       "open_options": "開啟選項",
@@ -644,6 +781,7 @@
         "trend_undefined": "未定義（數據不足）",
         "button_label": "複製替代文字",
         "watermark": "底部附有「./npmx a fast, modern browser for the npm registry」浮水印",
+        "watermark_top": "EN TEXT TO REPLACE: At the top, a watermark reads \"./npmx a fast, modern browser for the npm registry\"",
         "analysis": "{package_name} 的起始數值為 {start_value}，到 {end_value} 為止， 呈現 {trend} 趨勢，平均每個時間間隔的增減率為 {downloads_slope} 次下載",
         "estimation": "最終數值是根據當前週期的部分數據所做的預估值。",
         "estimations": "最終數值是根據當前週期的部分數據所做的預估值。",
@@ -653,7 +791,12 @@
         "facet_bar_general_description": "水平長條圖: {package} 的 {facet} 對比({description}). {facet_analysis} {watermark}.",
         "facet_bar_analysis": "{package_name} 值為 {value}."
       },
-      "embedding": {}
+      "embedding": {
+        "chart": "EN TEXT TO REPLACE: Embed this chart",
+        "copy_url": "EN TEXT TO REPLACE: Copy this URL to embed the chart into your website",
+        "preview": "EN TEXT TO REPLACE: Preview",
+        "tip": "EN TEXT TO REPLACE: If startDate and endDate are not provided in the URL, the graph will display the last 12 months by default."
+      }
     },
     "downloads": {
       "title": "每週下載量",
@@ -757,7 +900,14 @@
     }
   },
   "leaderboard": {
-    "likes": {}
+    "likes": {
+      "title": "EN TEXT TO REPLACE: Likes Leaderboard",
+      "description": "EN TEXT TO REPLACE: The 10 most liked packages on npmx right now.",
+      "rank": "EN TEXT TO REPLACE: Rank",
+      "likes": "EN TEXT TO REPLACE: Likes",
+      "unavailable_title": "EN TEXT TO REPLACE: No likes leaderboard yet",
+      "unavailable_description": "EN TEXT TO REPLACE: We don't have a likes leaderboard to show right now."
+    }
   },
   "connector": {
     "modal": {
@@ -965,7 +1115,8 @@
     },
     "file_path": "檔案路徑",
     "binary_file": "二進位檔案",
-    "binary_rendering_warning": "檔案類型 \"{contentType}\" 不支援預覽。"
+    "binary_rendering_warning": "檔案類型 \"{contentType}\" 不支援預覽。",
+    "possibly_unnecessary": "EN TEXT TO REPLACE: May be unnecessary in a published package"
   },
   "badges": {
     "provenance": {
@@ -999,6 +1150,7 @@
     "keywords": "關鍵字",
     "more_keywords": "+ {count} 個更多",
     "clear_all": "清除全部",
+    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "移除 {label} 篩選",
     "chips": {
       "search": "搜尋",
@@ -1112,13 +1264,18 @@
       }
     },
     "sponsors": {
-      "title": "贊助者"
+      "title": "贊助者",
+      "gold": "EN TEXT TO REPLACE: Gold Sponsors",
+      "silver": "EN TEXT TO REPLACE: Silver Sponsors"
     },
     "oss_partners": {
       "title": "開源軟體夥伴"
     },
     "team": {
       "title": "團隊",
+      "core": "EN TEXT TO REPLACE: Core",
+      "maintainers": "EN TEXT TO REPLACE: Maintainers",
+      "role_core": "EN TEXT TO REPLACE: core",
       "role_steward": "管理者",
       "role_maintainer": "維護者",
       "sponsor": "贊助",
@@ -1156,22 +1313,61 @@
     }
   },
   "sponsors_page": {
-    "what_we_do": {},
-    "what_support_means": {},
+    "title": "EN TEXT TO REPLACE: Sponsors",
+    "heading": "EN TEXT TO REPLACE: sponsors",
+    "meta_description": "EN TEXT TO REPLACE: Support npmx and help us accelerate ecosystem work around security, trust, optimization, and research.",
+    "intro": "EN TEXT TO REPLACE: Support npmx and help us grow the ecosystem work we do for developers and maintainers.",
+    "what_we_do": {
+      "title": "EN TEXT TO REPLACE: What we do",
+      "description": "EN TEXT TO REPLACE: We're building an ecosystem that solves problems around security, trust, optimization, and research for the tools we use in everyday development - quickly, conveniently, and with high quality. This project is built by developers for developers. As authors of widely used libraries, we understand team needs and actively study what maintainers and projects need most."
+    },
+    "what_support_means": {
+      "title": "EN TEXT TO REPLACE: What support means",
+      "description": "EN TEXT TO REPLACE: Our plans and connections keep growing, along with our desire to share what we've built and learn from others. Your support helps fund the project, external talks, conferences, and the broader ecosystem, and, most importantly, enables us to keep growing our community."
+    },
+    "cta": "EN TEXT TO REPLACE: See sponsorship tiers",
+    "community_growth_footnote": "EN TEXT TO REPLACE: * According to {link} Q1 2026 research.",
     "what_this_means_for_you": {
+      "title": "EN TEXT TO REPLACE: What this means for you",
+      "description": "EN TEXT TO REPLACE: npmx is not only about improving developer experience and closing critical everyday gaps. In our first six months, we have already become the default source for thousands of teams and a huge number of developers. You get not only a more stable tool for your teams, but also visibility in front of a constantly growing audience of top-tier engineers.",
       "cards": {
-        "people": {},
-        "visitors": {},
-        "stars": {},
-        "community": {},
-        "adoption": {},
-        "default_source": {}
+        "people": {
+          "contributors": "EN TEXT TO REPLACE: contributors",
+          "community_members": "EN TEXT TO REPLACE: community members"
+        },
+        "visitors": {
+          "description": "EN TEXT TO REPLACE: unique monthly visitors"
+        },
+        "stars": {
+          "title": "EN TEXT TO REPLACE: stars"
+        },
+        "community": {
+          "title": "EN TEXT TO REPLACE: fast-growing",
+          "description": "EN TEXT TO REPLACE: We are one of the fastest-growing communities in the ecosystem"
+        },
+        "adoption": {
+          "title": "EN TEXT TO REPLACE: adoption",
+          "description": "EN TEXT TO REPLACE: charts at conferences, talks, and articles rely on our data"
+        },
+        "default_source": {
+          "title": "EN TEXT TO REPLACE: default source",
+          "description": "EN TEXT TO REPLACE: pnpm made npmx the default source, many packages have been configured to link to npmx"
+        }
       }
     },
     "tiers": {
-      "silver": {},
-      "gold": {},
-      "platinum": {}
+      "title": "EN TEXT TO REPLACE: Sponsorship tiers",
+      "per_month": "EN TEXT TO REPLACE: /month",
+      "custom": "EN TEXT TO REPLACE: Custom",
+      "silver": {
+        "name": "EN TEXT TO REPLACE: Silver"
+      },
+      "gold": {
+        "name": "EN TEXT TO REPLACE: Gold"
+      },
+      "platinum": {
+        "name": "EN TEXT TO REPLACE: Platinum"
+      }
     }
   },
   "account_menu": {
@@ -1344,10 +1540,22 @@
           "label": "漏洞",
           "description": "已知安全漏洞"
         },
-        "githubStars": {},
-        "githubForks": {},
-        "githubIssues": {},
-        "createdAt": {}
+        "githubStars": {
+          "label": "EN TEXT TO REPLACE: GitHub Stars",
+          "description": "EN TEXT TO REPLACE: Number of stars on the GitHub repository"
+        },
+        "githubForks": {
+          "label": "EN TEXT TO REPLACE: GitHub Forks",
+          "description": "EN TEXT TO REPLACE: Number of forks on the GitHub repository"
+        },
+        "githubIssues": {
+          "label": "EN TEXT TO REPLACE: GitHub Issues",
+          "description": "EN TEXT TO REPLACE: Number of issues on the GitHub repository"
+        },
+        "createdAt": {
+          "label": "EN TEXT TO REPLACE: Created At",
+          "description": "EN TEXT TO REPLACE: When the package was created"
+        }
       },
       "values": {
         "any": "不限",
@@ -1384,6 +1592,7 @@
     "dev_dependencies": "開發相依套件",
     "peer_dependencies": "peer 相依套件",
     "optional_dependencies": "選用相依套件",
+    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "相依套件沒有變更",
     "file_filter_option": {
       "all": "全部（{count}）",
@@ -1407,6 +1616,9 @@
     "change_ratio": "變更比例",
     "char_edits": "字元編輯數",
     "diff_distance": "差異距離",
+    "diff_truncated": "EN TEXT TO REPLACE: Diff truncated for performance. Showing the first changed lines only.",
+    "large_diff_mode": "EN TEXT TO REPLACE: Large file diff shown with inline edit merging disabled for performance.",
+    "large_diff_options_disabled": "EN TEXT TO REPLACE: Large file mode disables inline edit merging for performance.",
     "loading_diff": "載入差異中…",
     "loading_diff_error": "載入差異失敗",
     "merge_modified_lines": "合併修改過的行",
@@ -1669,6 +1881,15 @@
   },
   "alt_logo_kawaii": "一個可愛、圓潤且色彩繽紛的 npmx 標誌版本。",
   "changelog": {
-    "error": {}
+    "pre_release": "EN TEXT TO REPLACE: Pre-release",
+    "draft": "EN TEXT TO REPLACE: Draft",
+    "no_logs": "EN TEXT TO REPLACE: Sorry, this package does not publish changelogs or its changelog format is not supported.",
+    "error": {
+      "p1": "EN TEXT TO REPLACE: Sorry, the changelog for {package} couldn't be loaded",
+      "p2": "EN TEXT TO REPLACE: Please try again later or {viewon}"
+    },
+    "rate_limit_ungh": "EN TEXT TO REPLACE: Sorry, Github's rate limit has been hit, try again in a moment",
+    "version_unavailable": "EN TEXT TO REPLACE: The requested version is not available.",
+    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
   }
 }

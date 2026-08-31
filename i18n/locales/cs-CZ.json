@@ -13,6 +13,7 @@
   "trademark_disclaimer": "npm je registrovaná ochranná známka společnosti npm, Inc. Tato stránka není spojena s npm, Inc.",
   "footer": {
     "about": "o projektu",
+    "sponsors": "EN TEXT TO REPLACE: sponsors",
     "blog": "blog",
     "docs": "dokumentace",
     "source": "zdrojový kód",
@@ -23,7 +24,8 @@
     "brand": "značka",
     "resources": "Zdroje",
     "features": "Funkce",
-    "other": "Ostatní"
+    "other": "Ostatní",
+    "sponsored_by": "EN TEXT TO REPLACE: Sponsored by {list}"
   },
   "shortcuts": {
     "section": {
@@ -39,6 +41,7 @@
     "settings": "Otevřít nastavení",
     "compare": "Otevřít porovnání",
     "compare_from_package": "Otevřít porovnání (předvyplněno aktuálním balíčkem)",
+    "changelog": "EN TEXT TO REPLACE: Open changelog",
     "navigate_results": "Procházet výsledky",
     "go_to_result": "Přejít na výsledek",
     "open_code_view": "Otevřít zobrazení kódu",
@@ -188,6 +191,7 @@
       "theme_changed": "Téma nastaveno na {theme}.",
       "accent_color_changed": "Akcentová barva nastavena na {color}.",
       "background_theme_changed": "Odstín pozadí nastaven na {theme}.",
+      "foreground_theme_changed": "EN TEXT TO REPLACE: Foreground shade set to {theme}.",
       "download_started": "Stahování tarballu {package} zahájeno.",
       "copied_to_clipboard": "Zkopírováno do schránky.",
       "npm_disconnected": "Odpojeno od npm CLI.",
@@ -258,7 +262,8 @@
     "back_to_archive": "Zpět na všechny noodly",
     "missing": {
       "title": "Tento noodle ještě nebyl uvařen.",
-      "body": "Na menu noodle “{slug}” ještě nemáme. Buď se stále připravuje, nebo nám chybí receptura. Každopádně — zpět do archivu."
+      "body": "Na menu noodle “{slug}” ještě nemáme. Buď se stále připravuje, nebo nám chybí receptura. Každopádně — zpět do archivu.",
+      "empty_bowl": "EN TEXT TO REPLACE: empty bowl"
     }
   },
   "settings": {
@@ -316,7 +321,12 @@
       "slate": "Břidlice",
       "black": "Černá"
     },
-    "foreground_themes": {},
+    "foreground_themes": {
+      "label": "EN TEXT TO REPLACE: Foreground shade",
+      "contrast": "EN TEXT TO REPLACE: Contrast",
+      "standard": "EN TEXT TO REPLACE: Standard",
+      "muted": "EN TEXT TO REPLACE: Muted"
+    },
     "keyboard_shortcuts_enabled": "Povolit klávesové zkratky",
     "keyboard_shortcuts_enabled_description": "Klávesové zkratky lze zakázat, pokud se střetávají s jinými zkratkami prohlížeče nebo systému",
     "enable_code_ligatures": "Zapnout ligatury v kódu",
@@ -383,7 +393,8 @@
     "collapse": "Sbalit",
     "collapse_with_name": "Sbalit sekci {name}",
     "expand": "Rozbalit",
-    "expand_with_name": "Rozbalit sekci {name}"
+    "expand_with_name": "Rozbalit sekci {name}",
+    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
   },
   "profile": {
     "display_name": "Zobrazované jméno",
@@ -409,6 +420,7 @@
     "verified_provenance": "Ověřený původ",
     "navigation": "Navigace balíčku",
     "copy_name": "Zkopírovat název balíčku",
+    "copy_version": "EN TEXT TO REPLACE: Copy package version",
     "deprecation": {
       "package": "Tento balíček byl označen jako zastaralý.",
       "version": "Tato verze byla označena jako zastaralá.",
@@ -482,6 +494,7 @@
       "issues": "úkoly",
       "jsr": "jsr",
       "code": "kód",
+      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "dokumentace",
       "fund": "financovat",
       "compare": "porovnat",
@@ -523,9 +536,17 @@
     },
     "run": {
       "title": "Spustit",
-      "locally": "Spustit lokálně"
+      "locally": "Spustit lokálně",
+      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
     },
-    "command": {},
+    "command": {
+      "copied_install": "EN TEXT TO REPLACE: Install command copied",
+      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
+      "copied_run": "EN TEXT TO REPLACE: Run command copied",
+      "copied_create": "EN TEXT TO REPLACE: Create command copied",
+      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
+      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+    },
     "readme": {
       "title": "ČTI MĚ",
       "no_readme": "Žádné ČTI MĚ NENÍ k dispozici.",
@@ -623,6 +644,7 @@
     "timeline": {
       "load_more": "Načíst více",
       "load_error": "Nepodařilo se načíst časovou osu. Zkuste to prosím později.",
+      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
       "size_increase": "Velikost instalace se zvýšila o {percent} % ({size})",
       "size_decrease": "Velikost instalace se snížila o {percent} % ({size})",
       "dep_increase": "{count} závislost přidána | {count} závislosti přidány | {count} závislostí přidáno",
@@ -636,23 +658,52 @@
       "trusted_publisher_removed": "Důvěryhodné publikování bylo vypnuto",
       "provenance_added": "Provenience byla zapnuta",
       "provenance_removed": "Provenience byla vypnuta",
+      "deprecated": "EN TEXT TO REPLACE: Deprecated",
       "chart": {
         "tab_aria_label": "Výběr metriky",
+        "dependency_size": "EN TEXT TO REPLACE: Dependency Size",
+        "other_dependencies": "EN TEXT TO REPLACE: Other",
         "base_scale": "začít osu y od nuly",
         "zoom": "přiblížit",
         "reset_minimap": "obnovit minimapu",
         "ordered_versions": "pouze stabilní verze",
+        "sort_label": "EN TEXT TO REPLACE: Sort by",
+        "sort_time": "EN TEXT TO REPLACE: Publish time",
+        "sort_semver": "EN TEXT TO REPLACE: Semver",
         "copy_alt": {
           "key_changes": "Klíčové změny: {version_events}.",
           "version_events": "verze {version}: {events}",
-          "general_description": "Graf zobrazující {metric} balíčku {package}, od verze {first} do verze {last}. {metric} ve verzi {first} je {first_value}, ve verzi {last} je {last_value} ({overall_progress_percentage} % celkem). {key_changes} {watermark}."
+          "general_description": "Graf zobrazující {metric} balíčku {package}, od verze {first} do verze {last}. {metric} ve verzi {first} je {first_value}, ve verzi {last} je {last_value} ({overall_progress_percentage} % celkem). {key_changes} {watermark}.",
+          "stackbar_segment_share": "EN TEXT TO REPLACE: {segment}: {value} ({percentage})",
+          "stackbar_top_segments": "EN TEXT TO REPLACE: In {version}, the largest segments are {segments}.",
+          "stackbar_largest_increase": "EN TEXT TO REPLACE: The largest increase is {segment}, up {delta}.",
+          "stackbar_largest_decrease": "EN TEXT TO REPLACE: The largest decrease is {segment}, down {delta}."
         }
       }
     },
     "dependencies": {
       "title": "Závislosti ({count})",
-      "insights": {},
+      "insights": {
+        "title": "EN TEXT TO REPLACE: Insights",
+        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
+        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
+        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
+        "major_behind": "EN TEXT TO REPLACE: Major behind",
+        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
+        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
+        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
+        "deprecated": "EN TEXT TO REPLACE: Deprecated",
+        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
+        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
+        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
+      },
       "optional": "volitelné",
+      "bundled": "EN TEXT TO REPLACE: bundled",
+      "all": "EN TEXT TO REPLACE: All dependencies",
+      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
+      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
+      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
+      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "Zobrazit zranitelnosti",
       "outdated_major": "o {count} hlavní verzi pozadu (nejnovější: {latest}) | o {count} hlavní verze pozadu (nejnovější: {latest}) | o {count} hlavních verzích pozadu (nejnovější: {latest})",
       "outdated_minor": "o {count} vedlejší verzi pozadu (nejnovější: {latest}) | o {count} vedlejší verze pozadu (nejnovější: {latest}) | o {count} vedlejších verzích pozadu (nejnovější: {latest})",
@@ -695,6 +746,7 @@
       "date_range": "od {start} do {end}",
       "date_range_multiline": "od {start}\ndo {end}",
       "download_file": "Stáhnout {fileType}",
+      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "Přepnout popisovač",
       "toggle_stack_mode": "Přepnout zobrazení nad sebou",
       "open_options": "Otevřít možnosti",
@@ -729,6 +781,7 @@
         "trend_undefined": "neznámý (nedostatečná data)",
         "button_label": "Kopírovat alt text",
         "watermark": "V dolní části je vodoznak s textem \"./npmx rychlý a moderní prohlížeč pro registr npm\"",
+        "watermark_top": "EN TEXT TO REPLACE: At the top, a watermark reads \"./npmx a fast, modern browser for the npm registry\"",
         "analysis": "{package_name} začíná na {start_value} a končí na {end_value}, ukazující {trend} trend s sklonem {downloads_slope} stažení za časový interval",
         "estimation": "Konečná hodnota je odhad založený na částečných datech pro aktuální období.",
         "estimations": "Konečné hodnoty jsou odhady založené na částečných datech pro aktuální období.",
@@ -1062,7 +1115,8 @@
     },
     "file_path": "Cesta k souboru",
     "binary_file": "Binární soubor",
-    "binary_rendering_warning": "Náhled pro typy souborů \"{contentType}\" není k dispozici."
+    "binary_rendering_warning": "Náhled pro typy souborů \"{contentType}\" není k dispozici.",
+    "possibly_unnecessary": "EN TEXT TO REPLACE: May be unnecessary in a published package"
   },
   "badges": {
     "provenance": {
@@ -1096,6 +1150,7 @@
     "keywords": "Klíčová slova",
     "more_keywords": "+{count} další",
     "clear_all": "Vymazat vše",
+    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "Odstranit filtr {label}",
     "chips": {
       "search": "Hledání",
@@ -1209,7 +1264,9 @@
       }
     },
     "sponsors": {
-      "title": "Sponzoři"
+      "title": "Sponzoři",
+      "gold": "EN TEXT TO REPLACE: Gold Sponsors",
+      "silver": "EN TEXT TO REPLACE: Silver Sponsors"
     },
     "oss_partners": {
       "title": "OSS partneři"
@@ -1256,22 +1313,61 @@
     }
   },
   "sponsors_page": {
-    "what_we_do": {},
-    "what_support_means": {},
+    "title": "EN TEXT TO REPLACE: Sponsors",
+    "heading": "EN TEXT TO REPLACE: sponsors",
+    "meta_description": "EN TEXT TO REPLACE: Support npmx and help us accelerate ecosystem work around security, trust, optimization, and research.",
+    "intro": "EN TEXT TO REPLACE: Support npmx and help us grow the ecosystem work we do for developers and maintainers.",
+    "what_we_do": {
+      "title": "EN TEXT TO REPLACE: What we do",
+      "description": "EN TEXT TO REPLACE: We're building an ecosystem that solves problems around security, trust, optimization, and research for the tools we use in everyday development - quickly, conveniently, and with high quality. This project is built by developers for developers. As authors of widely used libraries, we understand team needs and actively study what maintainers and projects need most."
+    },
+    "what_support_means": {
+      "title": "EN TEXT TO REPLACE: What support means",
+      "description": "EN TEXT TO REPLACE: Our plans and connections keep growing, along with our desire to share what we've built and learn from others. Your support helps fund the project, external talks, conferences, and the broader ecosystem, and, most importantly, enables us to keep growing our community."
+    },
+    "cta": "EN TEXT TO REPLACE: See sponsorship tiers",
+    "community_growth_footnote": "EN TEXT TO REPLACE: * According to {link} Q1 2026 research.",
     "what_this_means_for_you": {
+      "title": "EN TEXT TO REPLACE: What this means for you",
+      "description": "EN TEXT TO REPLACE: npmx is not only about improving developer experience and closing critical everyday gaps. In our first six months, we have already become the default source for thousands of teams and a huge number of developers. You get not only a more stable tool for your teams, but also visibility in front of a constantly growing audience of top-tier engineers.",
       "cards": {
-        "people": {},
-        "visitors": {},
-        "stars": {},
-        "community": {},
-        "adoption": {},
-        "default_source": {}
+        "people": {
+          "contributors": "EN TEXT TO REPLACE: contributors",
+          "community_members": "EN TEXT TO REPLACE: community members"
+        },
+        "visitors": {
+          "description": "EN TEXT TO REPLACE: unique monthly visitors"
+        },
+        "stars": {
+          "title": "EN TEXT TO REPLACE: stars"
+        },
+        "community": {
+          "title": "EN TEXT TO REPLACE: fast-growing",
+          "description": "EN TEXT TO REPLACE: We are one of the fastest-growing communities in the ecosystem"
+        },
+        "adoption": {
+          "title": "EN TEXT TO REPLACE: adoption",
+          "description": "EN TEXT TO REPLACE: charts at conferences, talks, and articles rely on our data"
+        },
+        "default_source": {
+          "title": "EN TEXT TO REPLACE: default source",
+          "description": "EN TEXT TO REPLACE: pnpm made npmx the default source, many packages have been configured to link to npmx"
+        }
       }
     },
     "tiers": {
-      "silver": {},
-      "gold": {},
-      "platinum": {}
+      "title": "EN TEXT TO REPLACE: Sponsorship tiers",
+      "per_month": "EN TEXT TO REPLACE: /month",
+      "custom": "EN TEXT TO REPLACE: Custom",
+      "silver": {
+        "name": "EN TEXT TO REPLACE: Silver"
+      },
+      "gold": {
+        "name": "EN TEXT TO REPLACE: Gold"
+      },
+      "platinum": {
+        "name": "EN TEXT TO REPLACE: Platinum"
+      }
     }
   },
   "account_menu": {
@@ -1496,6 +1592,7 @@
     "dev_dependencies": "Vývojové závislosti",
     "peer_dependencies": "Vzájemné závislosti",
     "optional_dependencies": "Volitelné závislosti",
+    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "Žádné změny závislostí",
     "file_filter_option": {
       "all": "Vše ({count})",
@@ -1792,6 +1889,7 @@
       "p2": "Zkuste to prosím později nebo {viewon}"
     },
     "rate_limit_ungh": "Omlouváme se, byl dosažen limit GitHubu, zkuste to prosím za chvíli znovu",
-    "version_unavailable": "Omlouváme se, požadovaná verze není k dispozici."
+    "version_unavailable": "Omlouváme se, požadovaná verze není k dispozici.",
+    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
   }
 }

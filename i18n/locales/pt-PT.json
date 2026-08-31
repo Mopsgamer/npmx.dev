@@ -13,6 +13,7 @@
   "trademark_disclaimer": "npm é uma marca registada da npm, Inc. Este site não é afiliado à npm, Inc.",
   "footer": {
     "about": "sobre",
+    "sponsors": "EN TEXT TO REPLACE: sponsors",
     "blog": "blog",
     "docs": "documentação",
     "source": "código-fonte",
@@ -23,7 +24,8 @@
     "brand": "marca",
     "resources": "Recursos",
     "features": "Funcionalidades",
-    "other": "Outros"
+    "other": "Outros",
+    "sponsored_by": "EN TEXT TO REPLACE: Sponsored by {list}"
   },
   "shortcuts": {
     "section": {
@@ -39,6 +41,7 @@
     "settings": "Abrir definições",
     "compare": "Abrir comparação",
     "compare_from_package": "Abrir comparação (com o pacote atual)",
+    "changelog": "EN TEXT TO REPLACE: Open changelog",
     "navigate_results": "Navegar resultados",
     "go_to_result": "Ir para resultado",
     "open_code_view": "Abrir vista de código",
@@ -46,7 +49,8 @@
     "disable_shortcuts": "Podes desativar os atalhos de teclado em {settings}.",
     "open_main": "Abrir informação principal",
     "open_diff": "Abrir diferença de versões",
-    "open_timeline": "Abrir linha do tempo"
+    "open_timeline": "Abrir linha do tempo",
+    "open_stats": "EN TEXT TO REPLACE: Open stats"
   },
   "search": {
     "label": "Pesquisar pacotes npm",
@@ -98,7 +102,11 @@
     "current": "atual",
     "here": "estás aqui",
     "connected": "ligado",
-    "keyboard_shortcuts": {},
+    "keyboard_shortcuts": {
+      "navigate": "EN TEXT TO REPLACE: to navigate",
+      "select": "EN TEXT TO REPLACE: to select",
+      "close": "EN TEXT TO REPLACE: to close"
+    },
     "state": {
       "on": "ativado",
       "off": "desativado"
@@ -154,7 +162,9 @@
       "code": "Código",
       "diff": "Diff",
       "compare": "Comparar este pacote",
-      "download": "Transferir tarball"
+      "download": "Transferir tarball",
+      "changelog": "EN TEXT TO REPLACE: Changelog",
+      "stats": "EN TEXT TO REPLACE: Stats"
     },
     "package_actions": {
       "copy_run": "Copiar comando de execução"
@@ -181,6 +191,7 @@
       "theme_changed": "Tema definido para {theme}.",
       "accent_color_changed": "Cor de destaque definida para {color}.",
       "background_theme_changed": "Tonalidade de fundo definida para {theme}.",
+      "foreground_theme_changed": "EN TEXT TO REPLACE: Foreground shade set to {theme}.",
       "download_started": "A transferir tarball de {package}.",
       "copied_to_clipboard": "Copiado para a área de transferência.",
       "npm_disconnected": "npm CLI desligado.",
@@ -230,7 +241,30 @@
     }
   },
   "noodles": {
-    "missing": {}
+    "title": "EN TEXT TO REPLACE: noodles",
+    "meta_description": "EN TEXT TO REPLACE: Every noodle we've ever shown on npmx — the seasonal logos, easter eggs, and the stories behind them.",
+    "latest": "EN TEXT TO REPLACE: Latest noodles",
+    "what_is": "EN TEXT TO REPLACE: What is noodles",
+    "what_is_body": "EN TEXT TO REPLACE: Noodles are the playful variants of the npmx logo we run on the homepage to mark releases, holidays, events, and other moments worth celebrating. Think of them like Google Doodles, but for npm packages.",
+    "empty": "EN TEXT TO REPLACE: No noodles yet.",
+    "load_more": "EN TEXT TO REPLACE: Load {count} more",
+    "dates": "EN TEXT TO REPLACE: Active dates",
+    "shipped_in": "EN TEXT TO REPLACE: Shipped in",
+    "credits": "EN TEXT TO REPLACE: Credits",
+    "learn_more": "EN TEXT TO REPLACE: Learn more",
+    "carousel_prev": "EN TEXT TO REPLACE: Previous image",
+    "carousel_next": "EN TEXT TO REPLACE: Next image",
+    "carousel_dots": "EN TEXT TO REPLACE: Variant image navigation",
+    "carousel_jump": "EN TEXT TO REPLACE: Go to image {index}",
+    "lens_label": "EN TEXT TO REPLACE: {title} — image reel",
+    "lens_slide": "EN TEXT TO REPLACE: image {index}",
+    "lens_slide_position": "EN TEXT TO REPLACE: Slide {index} of {total}",
+    "back_to_archive": "EN TEXT TO REPLACE: Back to all noodles",
+    "missing": {
+      "title": "EN TEXT TO REPLACE: This noodle never made it out of the bowl.",
+      "body": "EN TEXT TO REPLACE: We don't have a “{slug}” noodle on the menu. Either it's still being plated, or it was never written. Either way — back to the archive.",
+      "empty_bowl": "EN TEXT TO REPLACE: empty bowl"
+    }
   },
   "settings": {
     "title": "definições",
@@ -287,10 +321,17 @@
       "slate": "Ardósia",
       "black": "Preto"
     },
-    "foreground_themes": {},
+    "foreground_themes": {
+      "label": "EN TEXT TO REPLACE: Foreground shade",
+      "contrast": "EN TEXT TO REPLACE: Contrast",
+      "standard": "EN TEXT TO REPLACE: Standard",
+      "muted": "EN TEXT TO REPLACE: Muted"
+    },
     "keyboard_shortcuts_enabled": "Ativar atalhos de teclado",
     "keyboard_shortcuts_enabled_description": "Os atalhos de teclado podem ser desativados se entrarem em conflito com outros atalhos do navegador ou do sistema",
-    "enable_code_ligatures": "Ativar ligaturas no código"
+    "enable_code_ligatures": "Ativar ligaturas no código",
+    "enable_changelog_autoscroll": "EN TEXT TO REPLACE: Auto scroll to requested version",
+    "enable_changelog_autoscroll_description": "EN TEXT TO REPLACE: Auto scroll to or close to the requested version at package changelog"
   },
   "i18n": {
     "missing_keys": "{count} tradução em falta | {count} traduções em falta",
@@ -352,7 +393,8 @@
     "collapse": "Recolher",
     "collapse_with_name": "Recolher {name}",
     "expand": "Expandir",
-    "expand_with_name": "Expandir {name}"
+    "expand_with_name": "Expandir {name}",
+    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
   },
   "profile": {
     "display_name": "Nome a apresentar",
@@ -378,6 +420,7 @@
     "verified_provenance": "Proveniência verificada",
     "navigation": "Pacote",
     "copy_name": "Copiar nome do pacote",
+    "copy_version": "EN TEXT TO REPLACE: Copy package version",
     "deprecation": {
       "package": "Este pacote foi descontinuado.",
       "version": "Esta versão foi descontinuada.",
@@ -402,6 +445,8 @@
       "example": "Exemplo:",
       "native": "Este pacote pode ser substituído por {replacement}, disponível desde Node {nodeVersion}.",
       "native_no_version": "Este pacote pode ser substituído por {replacement}.",
+      "simple": "EN TEXT TO REPLACE: This package has been flagged as redundant, with the advice: {replacement}",
+      "documented": "EN TEXT TO REPLACE: This package has been flagged as having more performant alternatives.",
       "none": "Este pacote foi marcado como já não sendo necessário, e a sua funcionalidade provavelmente está disponível nativamente em todas as engines.",
       "learn_more": "Sabe mais",
       "learn_more_above": "Sabe mais acima.",
@@ -419,7 +464,10 @@
       "size_tooltip": {
         "unpacked": "{size} tamanho descompactado (este pacote)",
         "total": "{size} tamanho total descompactado (incluindo {count} dependência para linux-x64) | {size} tamanho total descompactado (incluindo todas as {count} dependências para linux-x64)"
-      }
+      },
+      "main_information": "EN TEXT TO REPLACE: Main Information",
+      "trends": "EN TEXT TO REPLACE: Trends",
+      "version_distribution": "EN TEXT TO REPLACE: Version Distribution"
     },
     "skills": {
       "title": "Agent Skills",
@@ -446,11 +494,14 @@
       "issues": "problemas",
       "jsr": "jsr",
       "code": "código",
+      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "docs",
       "fund": "financiar",
       "compare": "comparar",
       "timeline": "linha do tempo",
-      "compare_this_package": "comparar este pacote"
+      "stats": "EN TEXT TO REPLACE: stats",
+      "compare_this_package": "comparar este pacote",
+      "changelog": "EN TEXT TO REPLACE: changelog"
     },
     "likes": {
       "like": "Gostar deste pacote",
@@ -485,9 +536,17 @@
     },
     "run": {
       "title": "Executar",
-      "locally": "Executar localmente"
+      "locally": "Executar localmente",
+      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
     },
-    "command": {},
+    "command": {
+      "copied_install": "EN TEXT TO REPLACE: Install command copied",
+      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
+      "copied_run": "EN TEXT TO REPLACE: Run command copied",
+      "copied_create": "EN TEXT TO REPLACE: Create command copied",
+      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
+      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+    },
     "readme": {
       "title": "Readme",
       "no_readme": "README indisponível.",
@@ -531,6 +590,7 @@
       "weekly_downloads": "Transferências semanais",
       "keywords": "Palavras-chave",
       "license": "Licença",
+      "version": "EN TEXT TO REPLACE: Version",
       "select": "Selecionar pacote",
       "select_maximum": "Podem ser selecionados {count} pacotes no máximo"
     },
@@ -569,6 +629,9 @@
       "filter_help": "Ajuda do filtro de semver",
       "filter_tooltip": "Filtra as versões usando um {link}. Por exemplo, ^3.0.0 mostra todas as versões 3.x.",
       "filter_tooltip_link": "intervalo semver",
+      "license_change_help": "EN TEXT TO REPLACE: License Change Details",
+      "license_change_warning": "EN TEXT TO REPLACE: License changed since previous version.",
+      "license_change_record": "EN TEXT TO REPLACE: The license of this package changed from \"{from}\" to \"{to}\".",
       "no_matches": "Nenhuma versão corresponde a este intervalo",
       "copy_alt": {
         "per_version_analysis": "A versão {version} foi transferida {downloads} vezes",
@@ -581,6 +644,7 @@
     "timeline": {
       "load_more": "Carregar mais",
       "load_error": "Falha ao carregar a linha do tempo. Tenta novamente mais tarde.",
+      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
       "size_increase": "Tamanho da instalação aumentou em {percent}% ({size})",
       "size_decrease": "Tamanho da instalação diminuiu em {percent}% ({size})",
       "dep_increase": "{count} dependências adicionadas",
@@ -594,14 +658,52 @@
       "trusted_publisher_removed": "Publicação de confiança removida",
       "provenance_added": "Proveniência ativada",
       "provenance_removed": "Proveniência removida",
+      "deprecated": "EN TEXT TO REPLACE: Deprecated",
       "chart": {
-        "copy_alt": {}
+        "tab_aria_label": "EN TEXT TO REPLACE: Metric selection",
+        "dependency_size": "EN TEXT TO REPLACE: Dependency Size",
+        "other_dependencies": "EN TEXT TO REPLACE: Other",
+        "base_scale": "EN TEXT TO REPLACE: start y-axis at zero",
+        "zoom": "EN TEXT TO REPLACE: zoom",
+        "reset_minimap": "EN TEXT TO REPLACE: reset minimap",
+        "ordered_versions": "EN TEXT TO REPLACE: stable only",
+        "sort_label": "EN TEXT TO REPLACE: Sort by",
+        "sort_time": "EN TEXT TO REPLACE: Publish time",
+        "sort_semver": "EN TEXT TO REPLACE: Semver",
+        "copy_alt": {
+          "key_changes": "EN TEXT TO REPLACE: Key changes: {version_events}.",
+          "version_events": "EN TEXT TO REPLACE: version {version}: {events}",
+          "general_description": "EN TEXT TO REPLACE: Line chart showing the {metric} of the {package} package, from version {first} to {last}. The {metric} in version {first} is {first_value}, in version {last} is {last_value} ({overall_progress_percentage}% overall). {key_changes} {watermark}.",
+          "stackbar_segment_share": "EN TEXT TO REPLACE: {segment}: {value} ({percentage})",
+          "stackbar_top_segments": "EN TEXT TO REPLACE: In {version}, the largest segments are {segments}.",
+          "stackbar_largest_increase": "EN TEXT TO REPLACE: The largest increase is {segment}, up {delta}.",
+          "stackbar_largest_decrease": "EN TEXT TO REPLACE: The largest decrease is {segment}, down {delta}."
+        }
       }
     },
     "dependencies": {
       "title": "Dependência ({count}) | Dependências ({count})",
-      "insights": {},
+      "insights": {
+        "title": "EN TEXT TO REPLACE: Insights",
+        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
+        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
+        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
+        "major_behind": "EN TEXT TO REPLACE: Major behind",
+        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
+        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
+        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
+        "deprecated": "EN TEXT TO REPLACE: Deprecated",
+        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
+        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
+        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
+      },
       "optional": "opcional",
+      "bundled": "EN TEXT TO REPLACE: bundled",
+      "all": "EN TEXT TO REPLACE: All dependencies",
+      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
+      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
+      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
+      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "Ver vulnerabilidades",
       "outdated_major": "{count} versão major desatualizada (mais recente: {latest}) | {count} versões major desatualizadas (mais recente: {latest})",
       "outdated_minor": "{count} versão minor desatualizada (mais recente: {latest}) | {count} versões minor desatualizadas (mais recente: {latest})",
@@ -644,6 +746,7 @@
       "date_range": "{start} a {end}",
       "date_range_multiline": "{start}\npara {end}",
       "download_file": "Transferir {fileType}",
+      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "Alternar anotações",
       "toggle_stack_mode": "Alternar modo empilhado",
       "open_options": "Abrir opções",
@@ -678,6 +781,7 @@
         "trend_undefined": "indefinido (dados insuficientes)",
         "button_label": "Copiar texto alternativo",
         "watermark": "Na parte inferior, uma marca d'água diz \"./npmx um navegador rápido e moderno para o registo npm\"",
+        "watermark_top": "EN TEXT TO REPLACE: At the top, a watermark reads \"./npmx a fast, modern browser for the npm registry\"",
         "analysis": "{package_name} começa em {start_value} e termina em {end_value}, mostrando uma tendência {trend} com um declive de {downloads_slope} transferências por período",
         "estimation": "O valor final é uma estimativa baseada em dados parciais do período atual.",
         "estimations": "Os valores finais são estimativas baseadas em dados parciais do período atual.",
@@ -687,10 +791,16 @@
         "facet_bar_general_description": "Gráfico de barras horizontais para: {packages}, comparando {facet} ({description}). {facet_analysis} {watermark}.",
         "facet_bar_analysis": "{package_name} tem um valor de {value}."
       },
-      "embedding": {}
+      "embedding": {
+        "chart": "EN TEXT TO REPLACE: Embed this chart",
+        "copy_url": "EN TEXT TO REPLACE: Copy this URL to embed the chart into your website",
+        "preview": "EN TEXT TO REPLACE: Preview",
+        "tip": "EN TEXT TO REPLACE: If startDate and endDate are not provided in the URL, the graph will display the last 12 months by default."
+      }
     },
     "downloads": {
       "title": "Transferências Semanais",
+      "version_distribution_title": "EN TEXT TO REPLACE: weekly downloads for version {version}",
       "community_distribution": "Ver distribuição de adoção pela comunidade",
       "subtitle": "Em todas as versões",
       "sparkline_nav_hint": "Usa ← →"
@@ -1005,7 +1115,8 @@
     },
     "file_path": "Caminho do ficheiro",
     "binary_file": "Ficheiro binário",
-    "binary_rendering_warning": "Tipo de ficheiro \"{contentType}\" não suportado para pré-visualização."
+    "binary_rendering_warning": "Tipo de ficheiro \"{contentType}\" não suportado para pré-visualização.",
+    "possibly_unnecessary": "EN TEXT TO REPLACE: May be unnecessary in a published package"
   },
   "badges": {
     "provenance": {
@@ -1039,6 +1150,7 @@
     "keywords": "Palavras-chave",
     "more_keywords": "+{count} mais",
     "clear_all": "Limpar tudo",
+    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "Remover filtro {label}",
     "chips": {
       "search": "Procurar",
@@ -1152,13 +1264,18 @@
       }
     },
     "sponsors": {
-      "title": "Patrocinadores"
+      "title": "Patrocinadores",
+      "gold": "EN TEXT TO REPLACE: Gold Sponsors",
+      "silver": "EN TEXT TO REPLACE: Silver Sponsors"
     },
     "oss_partners": {
       "title": "Parceiros OSS"
     },
     "team": {
       "title": "Equipa",
+      "core": "EN TEXT TO REPLACE: Core",
+      "maintainers": "EN TEXT TO REPLACE: Maintainers",
+      "role_core": "EN TEXT TO REPLACE: core",
       "role_steward": "curador",
       "role_maintainer": "responsável",
       "sponsor": "patrocinador",
@@ -1196,22 +1313,61 @@
     }
   },
   "sponsors_page": {
-    "what_we_do": {},
-    "what_support_means": {},
+    "title": "EN TEXT TO REPLACE: Sponsors",
+    "heading": "EN TEXT TO REPLACE: sponsors",
+    "meta_description": "EN TEXT TO REPLACE: Support npmx and help us accelerate ecosystem work around security, trust, optimization, and research.",
+    "intro": "EN TEXT TO REPLACE: Support npmx and help us grow the ecosystem work we do for developers and maintainers.",
+    "what_we_do": {
+      "title": "EN TEXT TO REPLACE: What we do",
+      "description": "EN TEXT TO REPLACE: We're building an ecosystem that solves problems around security, trust, optimization, and research for the tools we use in everyday development - quickly, conveniently, and with high quality. This project is built by developers for developers. As authors of widely used libraries, we understand team needs and actively study what maintainers and projects need most."
+    },
+    "what_support_means": {
+      "title": "EN TEXT TO REPLACE: What support means",
+      "description": "EN TEXT TO REPLACE: Our plans and connections keep growing, along with our desire to share what we've built and learn from others. Your support helps fund the project, external talks, conferences, and the broader ecosystem, and, most importantly, enables us to keep growing our community."
+    },
+    "cta": "EN TEXT TO REPLACE: See sponsorship tiers",
+    "community_growth_footnote": "EN TEXT TO REPLACE: * According to {link} Q1 2026 research.",
     "what_this_means_for_you": {
+      "title": "EN TEXT TO REPLACE: What this means for you",
+      "description": "EN TEXT TO REPLACE: npmx is not only about improving developer experience and closing critical everyday gaps. In our first six months, we have already become the default source for thousands of teams and a huge number of developers. You get not only a more stable tool for your teams, but also visibility in front of a constantly growing audience of top-tier engineers.",
       "cards": {
-        "people": {},
-        "visitors": {},
-        "stars": {},
-        "community": {},
-        "adoption": {},
-        "default_source": {}
+        "people": {
+          "contributors": "EN TEXT TO REPLACE: contributors",
+          "community_members": "EN TEXT TO REPLACE: community members"
+        },
+        "visitors": {
+          "description": "EN TEXT TO REPLACE: unique monthly visitors"
+        },
+        "stars": {
+          "title": "EN TEXT TO REPLACE: stars"
+        },
+        "community": {
+          "title": "EN TEXT TO REPLACE: fast-growing",
+          "description": "EN TEXT TO REPLACE: We are one of the fastest-growing communities in the ecosystem"
+        },
+        "adoption": {
+          "title": "EN TEXT TO REPLACE: adoption",
+          "description": "EN TEXT TO REPLACE: charts at conferences, talks, and articles rely on our data"
+        },
+        "default_source": {
+          "title": "EN TEXT TO REPLACE: default source",
+          "description": "EN TEXT TO REPLACE: pnpm made npmx the default source, many packages have been configured to link to npmx"
+        }
       }
     },
     "tiers": {
-      "silver": {},
-      "gold": {},
-      "platinum": {}
+      "title": "EN TEXT TO REPLACE: Sponsorship tiers",
+      "per_month": "EN TEXT TO REPLACE: /month",
+      "custom": "EN TEXT TO REPLACE: Custom",
+      "silver": {
+        "name": "EN TEXT TO REPLACE: Silver"
+      },
+      "gold": {
+        "name": "EN TEXT TO REPLACE: Gold"
+      },
+      "platinum": {
+        "name": "EN TEXT TO REPLACE: Platinum"
+      }
     }
   },
   "account_menu": {
@@ -1388,7 +1544,10 @@
           "label": "Estrelas no GitHub",
           "description": "Número de estrelas no repositório GitHub"
         },
-        "githubForks": {},
+        "githubForks": {
+          "label": "EN TEXT TO REPLACE: GitHub Forks",
+          "description": "EN TEXT TO REPLACE: Number of forks on the GitHub repository"
+        },
         "githubIssues": {
           "label": "Issues no GitHub",
           "description": "Número de issues no repositório GitHub"
@@ -1433,6 +1592,7 @@
     "dev_dependencies": "Dependências Dev",
     "peer_dependencies": "Dependências Peer",
     "optional_dependencies": "Dependências Opcionais",
+    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "Sem alterações de dependência",
     "file_filter_option": {
       "all": "Todos ({count})",
@@ -1456,6 +1616,9 @@
     "change_ratio": "Proporção de alterações",
     "char_edits": "Edições de caracteres",
     "diff_distance": "Distância de diff",
+    "diff_truncated": "EN TEXT TO REPLACE: Diff truncated for performance. Showing the first changed lines only.",
+    "large_diff_mode": "EN TEXT TO REPLACE: Large file diff shown with inline edit merging disabled for performance.",
+    "large_diff_options_disabled": "EN TEXT TO REPLACE: Large file mode disables inline edit merging for performance.",
     "loading_diff": "A carregar diff...",
     "loading_diff_error": "Falha ao carregar diff",
     "merge_modified_lines": "Fundir linhas modificadas",
@@ -1718,6 +1881,15 @@
   },
   "alt_logo_kawaii": "Uma versão fofa, arredondada e colorida do logótipo do npmx.",
   "changelog": {
-    "error": {}
+    "pre_release": "EN TEXT TO REPLACE: Pre-release",
+    "draft": "EN TEXT TO REPLACE: Draft",
+    "no_logs": "EN TEXT TO REPLACE: Sorry, this package does not publish changelogs or its changelog format is not supported.",
+    "error": {
+      "p1": "EN TEXT TO REPLACE: Sorry, the changelog for {package} couldn't be loaded",
+      "p2": "EN TEXT TO REPLACE: Please try again later or {viewon}"
+    },
+    "rate_limit_ungh": "EN TEXT TO REPLACE: Sorry, Github's rate limit has been hit, try again in a moment",
+    "version_unavailable": "EN TEXT TO REPLACE: The requested version is not available.",
+    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
   }
 }

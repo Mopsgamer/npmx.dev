@@ -191,6 +191,7 @@
       "theme_changed": "Tema cambiado a {theme}.",
       "accent_color_changed": "Color de acento cambiado a {color}.",
       "background_theme_changed": "Tono de fondo cambiado a {theme}.",
+      "foreground_theme_changed": "EN TEXT TO REPLACE: Foreground shade set to {theme}.",
       "download_started": "Descargando tarball de {package}.",
       "copied_to_clipboard": "Copiado al portapapeles.",
       "npm_disconnected": "CLI de npm desconectada.",
@@ -261,7 +262,8 @@
     "back_to_archive": "Volver a todos los noodles",
     "missing": {
       "title": "Este noodle nunca salió del tazón.",
-      "body": "No tenemos ningún noodle con el nombre “{slug}” en el menú. O lo están preparando, o nunca lo escribieron. En cualquier caso, volver al archivo."
+      "body": "No tenemos ningún noodle con el nombre “{slug}” en el menú. O lo están preparando, o nunca lo escribieron. En cualquier caso, volver al archivo.",
+      "empty_bowl": "EN TEXT TO REPLACE: empty bowl"
     }
   },
   "settings": {
@@ -319,7 +321,12 @@
       "slate": "Pizarra",
       "black": "Negro"
     },
-    "foreground_themes": {},
+    "foreground_themes": {
+      "label": "EN TEXT TO REPLACE: Foreground shade",
+      "contrast": "EN TEXT TO REPLACE: Contrast",
+      "standard": "EN TEXT TO REPLACE: Standard",
+      "muted": "EN TEXT TO REPLACE: Muted"
+    },
     "keyboard_shortcuts_enabled": "Activar atajos de teclado",
     "keyboard_shortcuts_enabled_description": "Los atajos de teclado pueden desactivarse si entran en conflicto con otros atajos del navegador o del sistema",
     "enable_code_ligatures": "Activar ligaduras en código",
@@ -386,7 +393,8 @@
     "collapse": "Contraer",
     "collapse_with_name": "Contraer {name}",
     "expand": "Expandir",
-    "expand_with_name": "Expandir {name}"
+    "expand_with_name": "Expandir {name}",
+    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
   },
   "profile": {
     "display_name": "Nombre visible",
@@ -412,6 +420,7 @@
     "verified_provenance": "Procedencia verificada",
     "navigation": "Navegación del paquete",
     "copy_name": "Copiar nombre del paquete",
+    "copy_version": "EN TEXT TO REPLACE: Copy package version",
     "deprecation": {
       "package": "Este paquete está obsoleto.",
       "version": "Esta versión está obsoleta.",
@@ -485,6 +494,7 @@
       "issues": "problemas",
       "jsr": "jsr",
       "code": "código",
+      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "documentación",
       "fund": "financiar",
       "compare": "comparar",
@@ -526,9 +536,17 @@
     },
     "run": {
       "title": "Ejecutar",
-      "locally": "Ejecutar localmente"
+      "locally": "Ejecutar localmente",
+      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
     },
-    "command": {},
+    "command": {
+      "copied_install": "EN TEXT TO REPLACE: Install command copied",
+      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
+      "copied_run": "EN TEXT TO REPLACE: Run command copied",
+      "copied_create": "EN TEXT TO REPLACE: Create command copied",
+      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
+      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+    },
     "readme": {
       "title": "Léeme",
       "no_readme": "No hay README disponible.",
@@ -626,6 +644,7 @@
     "timeline": {
       "load_more": "Cargar más",
       "load_error": "Error al cargar la línea temporal. Inténtalo de nuevo más tarde.",
+      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
       "size_increase": "Tamaño de instalación aumentado un {percent}% ({size})",
       "size_decrease": "Tamaño de instalación reducido un {percent}% ({size})",
       "dep_increase": "{count} dependencias añadidas",
@@ -639,6 +658,7 @@
       "trusted_publisher_removed": "Publicación verificada eliminada",
       "provenance_added": "Procedencia activada",
       "provenance_removed": "Procedencia eliminada",
+      "deprecated": "EN TEXT TO REPLACE: Deprecated",
       "chart": {
         "tab_aria_label": "Selección de métrica",
         "dependency_size": "Tamaño de dependencias",
@@ -647,6 +667,9 @@
         "zoom": "zoom",
         "reset_minimap": "restablecer minimapa",
         "ordered_versions": "solo estables",
+        "sort_label": "EN TEXT TO REPLACE: Sort by",
+        "sort_time": "EN TEXT TO REPLACE: Publish time",
+        "sort_semver": "EN TEXT TO REPLACE: Semver",
         "copy_alt": {
           "key_changes": "Cambios clave: {version_events}.",
           "version_events": "versión {version}: {events}",
@@ -660,8 +683,27 @@
     },
     "dependencies": {
       "title": "Dependencias ({count})",
-      "insights": {},
+      "insights": {
+        "title": "EN TEXT TO REPLACE: Insights",
+        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
+        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
+        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
+        "major_behind": "EN TEXT TO REPLACE: Major behind",
+        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
+        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
+        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
+        "deprecated": "EN TEXT TO REPLACE: Deprecated",
+        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
+        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
+        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
+      },
       "optional": "opcional",
+      "bundled": "EN TEXT TO REPLACE: bundled",
+      "all": "EN TEXT TO REPLACE: All dependencies",
+      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
+      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
+      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
+      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "Ver vulnerabilidades",
       "outdated_major": "{count} versión mayor por detrás (última: {latest}) | {count} versiones mayores por detrás (última: {latest})",
       "outdated_minor": "{count} versión menor por detrás (última: {latest}) | {count} versiones menores por detrás (última: {latest})",
@@ -704,6 +746,7 @@
       "date_range": "{start} a {end}",
       "date_range_multiline": "{start}\na {end}",
       "download_file": "Descargar {fileType}",
+      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "Alternar anotador",
       "toggle_stack_mode": "Alternar modo apilado",
       "open_options": "Abrir opciones",
@@ -1107,6 +1150,7 @@
     "keywords": "Palabras clave",
     "more_keywords": "+{count} más",
     "clear_all": "Limpiar todo",
+    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "Eliminar filtro {label}",
     "chips": {
       "search": "Búsqueda",
@@ -1548,6 +1592,7 @@
     "dev_dependencies": "Dependencias de desarrollo",
     "peer_dependencies": "Dependencias de pares",
     "optional_dependencies": "Dependencias opcionales",
+    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "Sin cambios en las dependencias",
     "file_filter_option": {
       "all": "Todos ({count})",
@@ -1844,6 +1889,7 @@
       "p2": "Inténtalo de nuevo más tarde o {viewon}"
     },
     "rate_limit_ungh": "Lo sentimos, se alcanzó el límite de tasa de GitHub, inténtalo de nuevo en un momento",
-    "version_unavailable": "La versión solicitada no está disponible."
+    "version_unavailable": "La versión solicitada no está disponible.",
+    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
   }
 }

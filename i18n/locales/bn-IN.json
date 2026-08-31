@@ -191,6 +191,7 @@
       "theme_changed": "থিম {theme} এ সেট করা হয়েছে।",
       "accent_color_changed": "এক্সেন্ট রং {color} এ সেট করা হয়েছে।",
       "background_theme_changed": "ব্যাকগ্রাউন্ড ছায়া {theme} এ সেট করা হয়েছে।",
+      "foreground_theme_changed": "EN TEXT TO REPLACE: Foreground shade set to {theme}.",
       "download_started": "{package} টারবল ডাউনলোড করা হচ্ছে।",
       "copied_to_clipboard": "ক্লিপবোর্ডে কপি করা হয়েছে।",
       "npm_disconnected": "npm CLI বিচ্ছিন্ন করা হয়েছে।",
@@ -261,7 +262,8 @@
     "back_to_archive": "সব নুডলে ফিরে যান",
     "missing": {
       "title": "এই নুডলটি কখনও বাটি থেকে বের হয়নি।",
-      "body": "মেনুতে আমাদের কোনো \"{slug}\" নুডল নেই। হয় এটি এখনও প্লেটে সাজানো হচ্ছে, নয়তো এটি কখনও লেখাই হয়নি। যেভাবেই হোক — আর্কাইভে ফিরে যান।"
+      "body": "মেনুতে আমাদের কোনো \"{slug}\" নুডল নেই। হয় এটি এখনও প্লেটে সাজানো হচ্ছে, নয়তো এটি কখনও লেখাই হয়নি। যেভাবেই হোক — আর্কাইভে ফিরে যান।",
+      "empty_bowl": "EN TEXT TO REPLACE: empty bowl"
     }
   },
   "settings": {
@@ -319,7 +321,12 @@
       "slate": "স্লেট",
       "black": "কালো"
     },
-    "foreground_themes": {},
+    "foreground_themes": {
+      "label": "EN TEXT TO REPLACE: Foreground shade",
+      "contrast": "EN TEXT TO REPLACE: Contrast",
+      "standard": "EN TEXT TO REPLACE: Standard",
+      "muted": "EN TEXT TO REPLACE: Muted"
+    },
     "keyboard_shortcuts_enabled": "কীবোর্ড শর্টকাট সক্রিয় করুন",
     "keyboard_shortcuts_enabled_description": "কীবোর্ড শর্টকাট নিষ্ক্রিয় করা যেতে পারে যদি তারা অন্যান্য ব্রাউজার বা সিস্টেম শর্টকাটের সঙ্গে দুইপাশের সমস্যা তৈরি করে",
     "enable_code_ligatures": "কোডে লিগচারস সক্রিয় করুন",
@@ -386,7 +393,8 @@
     "collapse": "সংকুচিত করুন",
     "collapse_with_name": "{name} সঙ্কুচিত করুন",
     "expand": "বিস্তৃত করুন",
-    "expand_with_name": "{name} বিস্তৃত করুন"
+    "expand_with_name": "{name} বিস্তৃত করুন",
+    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
   },
   "profile": {
     "display_name": "প্রদর্শনের নাম",
@@ -412,6 +420,7 @@
     "verified_provenance": "যাচাইকৃত প্রোভেন্স",
     "navigation": "প্যাকেজ",
     "copy_name": "প্যাকেজের নাম কপি করুন",
+    "copy_version": "EN TEXT TO REPLACE: Copy package version",
     "deprecation": {
       "package": "এই প্যাকেজটি নিষ্ক্রিয় করা হয়েছে।",
       "version": "এই ভার্সনটি নিষ্ক্রিয় করা হয়েছে।",
@@ -485,6 +494,7 @@
       "issues": "সমস্যা",
       "jsr": "jsr",
       "code": "কোড",
+      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "ডকুমেন্টেশন",
       "fund": "অর্থায়ন করুন",
       "compare": "তুলনা করুন",
@@ -526,9 +536,17 @@
     },
     "run": {
       "title": "চালান",
-      "locally": "স্থানীয়ভাবে চালান"
+      "locally": "স্থানীয়ভাবে চালান",
+      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
     },
-    "command": {},
+    "command": {
+      "copied_install": "EN TEXT TO REPLACE: Install command copied",
+      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
+      "copied_run": "EN TEXT TO REPLACE: Run command copied",
+      "copied_create": "EN TEXT TO REPLACE: Create command copied",
+      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
+      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+    },
     "readme": {
       "title": "রিডমি",
       "no_readme": "README উপলব্ধ নেই।",
@@ -626,6 +644,7 @@
     "timeline": {
       "load_more": "আরো লোড করুন",
       "load_error": "টাইমলাইন লোড করা যায়নি। অনুগ্রহ করে পরে আবার চেষ্টা করুন।",
+      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
       "size_increase": "ইনস্টল সাইজ {percent}% বৃদ্ধি পেয়েছে ({size})",
       "size_decrease": "ইনস্টল সাইজ {percent}% কমেছে ({size})",
       "dep_increase": "{count}টি ডিপেনডেন্সি যোগ হয়েছে",
@@ -639,6 +658,7 @@
       "trusted_publisher_removed": "বিশ্বস্ত প্রকাশনা সরানো হয়েছে",
       "provenance_added": "প্রোভেন্যান্স সক্রিয় করা হয়েছে",
       "provenance_removed": "প্রোভেন্যান্স সরানো হয়েছে",
+      "deprecated": "EN TEXT TO REPLACE: Deprecated",
       "chart": {
         "tab_aria_label": "মেট্রিক নির্বাচন",
         "dependency_size": "ডিপেন্ডেন্সি সাইজ",
@@ -647,6 +667,9 @@
         "zoom": "জুম",
         "reset_minimap": "মিনিম্যাপ রিসেট করুন",
         "ordered_versions": "শুধুমাত্র স্থিতিশীল",
+        "sort_label": "EN TEXT TO REPLACE: Sort by",
+        "sort_time": "EN TEXT TO REPLACE: Publish time",
+        "sort_semver": "EN TEXT TO REPLACE: Semver",
         "copy_alt": {
           "key_changes": "মূল পরিবর্তনসমূহ: {version_events}।",
           "version_events": "ভার্সন {version}: {events}",
@@ -660,8 +683,27 @@
     },
     "dependencies": {
       "title": "নির্ভরতা ({count})",
-      "insights": {},
+      "insights": {
+        "title": "EN TEXT TO REPLACE: Insights",
+        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
+        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
+        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
+        "major_behind": "EN TEXT TO REPLACE: Major behind",
+        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
+        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
+        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
+        "deprecated": "EN TEXT TO REPLACE: Deprecated",
+        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
+        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
+        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
+      },
       "optional": "ঐচ্ছিক",
+      "bundled": "EN TEXT TO REPLACE: bundled",
+      "all": "EN TEXT TO REPLACE: All dependencies",
+      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
+      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
+      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
+      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "দুর্বলতা দেখুন",
       "outdated_major": "{count}টি মেজর ভার্সন পিছিয়ে (সর্বশেষ: {latest}) | {count}টি মেজর ভার্সন পিছিয়ে (সর্বশেষ: {latest})",
       "outdated_minor": "{count}টি মাইনর ভার্সন পিছিয়ে (সর্বশেষ: {latest}) | {count}টি মাইনর ভার্সন পিছিয়ে (সর্বশেষ: {latest})",
@@ -704,6 +746,7 @@
       "date_range": "{start} থেকে {end}",
       "date_range_multiline": "{start}\nথেকে {end}",
       "download_file": "{fileType} ডাউনলোড করুন",
+      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "অ্যানোটেটর টগল করুন",
       "toggle_stack_mode": "স্ট্যাক মোড পরিবর্তন করুন",
       "open_options": "অপশন খুলুন",
@@ -1072,7 +1115,8 @@
     },
     "file_path": "ফাইল পাথ",
     "binary_file": "বাইনারি ফাইল",
-    "binary_rendering_warning": "ফাইল টাইপ \"{contentType}\" প্রিভিউয়ের জন্য সমর্থিত নয়."
+    "binary_rendering_warning": "ফাইল টাইপ \"{contentType}\" প্রিভিউয়ের জন্য সমর্থিত নয়.",
+    "possibly_unnecessary": "EN TEXT TO REPLACE: May be unnecessary in a published package"
   },
   "badges": {
     "provenance": {
@@ -1106,6 +1150,7 @@
     "keywords": "কীওয়ার্ড",
     "more_keywords": "+{count}টি আরো",
     "clear_all": "সব সাফ করুন",
+    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "{label} ফিল্টার সরান",
     "chips": {
       "search": "অনুসন্ধান",
@@ -1547,6 +1592,7 @@
     "dev_dependencies": "ডেভ নির্ভরতা",
     "peer_dependencies": "পিয়ার নির্ভরতা",
     "optional_dependencies": "ঐচ্ছিক নির্ভরতা",
+    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "কোনো নির্ভরতা পরিবর্তন নেই",
     "file_filter_option": {
       "all": "সব ({count})",
@@ -1843,6 +1889,7 @@
       "p2": "অনুগ্রহ করে পরে আবার চেষ্টা করুন বা {viewon} দেখুন"
     },
     "rate_limit_ungh": "দুঃখিত, GitHub-এর রেট লিমিট শেষ হয়ে গেছে, একটু পরে আবার চেষ্টা করুন",
-    "version_unavailable": "অনুরোধকৃত ভার্সনটি উপলব্ধ নয়।"
+    "version_unavailable": "অনুরোধকৃত ভার্সনটি উপলব্ধ নয়।",
+    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
   }
 }

@@ -2101,6 +2101,9 @@
             "bundled": {
               "type": "string"
             },
+            "all": {
+              "type": "string"
+            },
             "none": {
               "type": "string"
             },
@@ -3449,6 +3452,9 @@
           "type": "string"
         },
         "clear_all": {
+          "type": "string"
+        },
+        "select_all": {
           "type": "string"
         },
         "remove_filter": {

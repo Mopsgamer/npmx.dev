@@ -13,6 +13,7 @@
   "trademark_disclaimer": "npm este o marcă comercială înregistrată a npm, Inc. Acest site nu este afiliat cu npm, Inc.",
   "footer": {
     "about": "despre",
+    "sponsors": "EN TEXT TO REPLACE: sponsors",
     "blog": "blog",
     "docs": "docs",
     "source": "sursă",
@@ -23,7 +24,8 @@
     "brand": "marcă",
     "resources": "Resurse",
     "features": "Funcționalități",
-    "other": "Altele"
+    "other": "Altele",
+    "sponsored_by": "EN TEXT TO REPLACE: Sponsored by {list}"
   },
   "shortcuts": {
     "section": {
@@ -39,6 +41,7 @@
     "settings": "Deschide setările",
     "compare": "Deschide comparația",
     "compare_from_package": "Deschide comparația (cu pachetul curent)",
+    "changelog": "EN TEXT TO REPLACE: Open changelog",
     "navigate_results": "Navighează rezultatele",
     "go_to_result": "Sari la rezultat",
     "open_code_view": "Deschide vizualizarea codului",
@@ -46,7 +49,8 @@
     "disable_shortcuts": "Poți dezactiva scurtăturile de la tastatură în {settings}.",
     "open_main": "Deschide informațiile principale",
     "open_diff": "Deschide diferențele de versiune",
-    "open_timeline": "Deschide cronologia"
+    "open_timeline": "Deschide cronologia",
+    "open_stats": "EN TEXT TO REPLACE: Open stats"
   },
   "search": {
     "label": "Caută pachete npm",
@@ -98,7 +102,11 @@
     "current": "actual",
     "here": "ești aici",
     "connected": "conectat",
-    "keyboard_shortcuts": {},
+    "keyboard_shortcuts": {
+      "navigate": "EN TEXT TO REPLACE: to navigate",
+      "select": "EN TEXT TO REPLACE: to select",
+      "close": "EN TEXT TO REPLACE: to close"
+    },
     "state": {
       "on": "activată",
       "off": "dezactivată"
@@ -154,7 +162,9 @@
       "code": "Cod",
       "diff": "Diff",
       "compare": "Compară acest pachet",
-      "download": "Descarcă arhiva tar"
+      "download": "Descarcă arhiva tar",
+      "changelog": "EN TEXT TO REPLACE: Changelog",
+      "stats": "EN TEXT TO REPLACE: Stats"
     },
     "package_actions": {
       "copy_run": "Copiază comandă de execuție"
@@ -181,6 +191,7 @@
       "theme_changed": "Tema este setată la {theme}.",
       "accent_color_changed": "Culoarea de accent este setată la {color}.",
       "background_theme_changed": "Umbra de fundal este setată la {theme}.",
+      "foreground_theme_changed": "EN TEXT TO REPLACE: Foreground shade set to {theme}.",
       "download_started": "Se descarcă arhiva tar {package}.",
       "copied_to_clipboard": "Copiat în clipboard.",
       "npm_disconnected": "npm CLI deconectat.",
@@ -230,7 +241,30 @@
     }
   },
   "noodles": {
-    "missing": {}
+    "title": "EN TEXT TO REPLACE: noodles",
+    "meta_description": "EN TEXT TO REPLACE: Every noodle we've ever shown on npmx — the seasonal logos, easter eggs, and the stories behind them.",
+    "latest": "EN TEXT TO REPLACE: Latest noodles",
+    "what_is": "EN TEXT TO REPLACE: What is noodles",
+    "what_is_body": "EN TEXT TO REPLACE: Noodles are the playful variants of the npmx logo we run on the homepage to mark releases, holidays, events, and other moments worth celebrating. Think of them like Google Doodles, but for npm packages.",
+    "empty": "EN TEXT TO REPLACE: No noodles yet.",
+    "load_more": "EN TEXT TO REPLACE: Load {count} more",
+    "dates": "EN TEXT TO REPLACE: Active dates",
+    "shipped_in": "EN TEXT TO REPLACE: Shipped in",
+    "credits": "EN TEXT TO REPLACE: Credits",
+    "learn_more": "EN TEXT TO REPLACE: Learn more",
+    "carousel_prev": "EN TEXT TO REPLACE: Previous image",
+    "carousel_next": "EN TEXT TO REPLACE: Next image",
+    "carousel_dots": "EN TEXT TO REPLACE: Variant image navigation",
+    "carousel_jump": "EN TEXT TO REPLACE: Go to image {index}",
+    "lens_label": "EN TEXT TO REPLACE: {title} — image reel",
+    "lens_slide": "EN TEXT TO REPLACE: image {index}",
+    "lens_slide_position": "EN TEXT TO REPLACE: Slide {index} of {total}",
+    "back_to_archive": "EN TEXT TO REPLACE: Back to all noodles",
+    "missing": {
+      "title": "EN TEXT TO REPLACE: This noodle never made it out of the bowl.",
+      "body": "EN TEXT TO REPLACE: We don't have a “{slug}” noodle on the menu. Either it's still being plated, or it was never written. Either way — back to the archive.",
+      "empty_bowl": "EN TEXT TO REPLACE: empty bowl"
+    }
   },
   "settings": {
     "title": "setări",
@@ -287,10 +321,17 @@
       "slate": "Ardezie",
       "black": "Negru"
     },
-    "foreground_themes": {},
+    "foreground_themes": {
+      "label": "EN TEXT TO REPLACE: Foreground shade",
+      "contrast": "EN TEXT TO REPLACE: Contrast",
+      "standard": "EN TEXT TO REPLACE: Standard",
+      "muted": "EN TEXT TO REPLACE: Muted"
+    },
     "keyboard_shortcuts_enabled": "Activează comenzile rapide de la tastatură",
     "keyboard_shortcuts_enabled_description": "Comenzile rapide de la tastatură pot fi dezactivate dacă intră în conflict cu alte comenzi rapide ale browserului sau ale sistemului",
-    "enable_code_ligatures": "Activează litere ligaturate în cod"
+    "enable_code_ligatures": "Activează litere ligaturate în cod",
+    "enable_changelog_autoscroll": "EN TEXT TO REPLACE: Auto scroll to requested version",
+    "enable_changelog_autoscroll_description": "EN TEXT TO REPLACE: Auto scroll to or close to the requested version at package changelog"
   },
   "i18n": {
     "missing_keys": "{count} traducere lipsește | {count} traduceri lipsesc",
@@ -352,7 +393,8 @@
     "collapse": "Reduce",
     "collapse_with_name": "Reduce {name}",
     "expand": "Extinde",
-    "expand_with_name": "Extinde {name}"
+    "expand_with_name": "Extinde {name}",
+    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
   },
   "profile": {
     "display_name": "Nume afișat",
@@ -378,6 +420,7 @@
     "verified_provenance": "Proveniență verificată",
     "navigation": "Pachet",
     "copy_name": "Copiază numele pachetului",
+    "copy_version": "EN TEXT TO REPLACE: Copy package version",
     "deprecation": {
       "package": "Acest pachet a fost declarat învechit.",
       "version": "Această versiune a fost declarată învechită.",
@@ -402,6 +445,8 @@
       "example": "Exemplu:",
       "native": "Acest pachet poate fi înlocuit cu {replacement}, disponibil de la Node {nodeVersion}.",
       "native_no_version": "Acest pachet poate fi înlocuit cu {replacement}.",
+      "simple": "EN TEXT TO REPLACE: This package has been flagged as redundant, with the advice: {replacement}",
+      "documented": "EN TEXT TO REPLACE: This package has been flagged as having more performant alternatives.",
       "none": "Acest pachet a fost semnalat ca nu mai este necesar, și funcționalitatea este probabil disponibil nativ în toate motorii.",
       "learn_more": "Află mai multe",
       "learn_more_above": "Află mai multe mai sus.",
@@ -419,7 +464,10 @@
       "size_tooltip": {
         "unpacked": "{size} dimensiune după despachetare (acest pachet)",
         "total": "{size} dimensiune totală după despachetare (inclusiv {count} dependențe pentru linux-x64) | {size} dimensiune totală după despachetare (inclusiv toate {count} dependențele pentru linux-x64)"
-      }
+      },
+      "main_information": "EN TEXT TO REPLACE: Main Information",
+      "trends": "EN TEXT TO REPLACE: Trends",
+      "version_distribution": "EN TEXT TO REPLACE: Version Distribution"
     },
     "skills": {
       "title": "Competențele agentului",
@@ -446,11 +494,14 @@
       "issues": "probleme",
       "jsr": "jsr",
       "code": "cod",
+      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "documente",
       "fund": "finanțează",
       "compare": "compară",
       "timeline": "cronologie",
-      "compare_this_package": "compară acest pachet"
+      "stats": "EN TEXT TO REPLACE: stats",
+      "compare_this_package": "compară acest pachet",
+      "changelog": "EN TEXT TO REPLACE: changelog"
     },
     "likes": {
       "like": "Dă 'Like' la acest pachet",
@@ -485,9 +536,17 @@
     },
     "run": {
       "title": "Pornește",
-      "locally": "Pornește local"
+      "locally": "Pornește local",
+      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
     },
-    "command": {},
+    "command": {
+      "copied_install": "EN TEXT TO REPLACE: Install command copied",
+      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
+      "copied_run": "EN TEXT TO REPLACE: Run command copied",
+      "copied_create": "EN TEXT TO REPLACE: Create command copied",
+      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
+      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+    },
     "readme": {
       "title": "Readme",
       "no_readme": "Niciun README disponibil.",
@@ -531,6 +590,7 @@
       "weekly_downloads": "Descărcări săptămânale",
       "keywords": "Cuvinte cheie",
       "license": "Licență",
+      "version": "EN TEXT TO REPLACE: Version",
       "select": "Selectează pachetul",
       "select_maximum": "Se pot selecta maximum {count} pachete"
     },
@@ -569,6 +629,9 @@
       "filter_help": "Ajutor pentru filtrul de intervale Semver",
       "filter_tooltip": "Filtrează versiunile folosind un {link}. De exemplu, ^3.0.0 afișează toate versiunile 3.x.",
       "filter_tooltip_link": "interval semver",
+      "license_change_help": "EN TEXT TO REPLACE: License Change Details",
+      "license_change_warning": "EN TEXT TO REPLACE: License changed since previous version.",
+      "license_change_record": "EN TEXT TO REPLACE: The license of this package changed from \"{from}\" to \"{to}\".",
       "no_matches": "Nu există versiuni care să corespundă acestui interval",
       "copy_alt": {
         "per_version_analysis": "Versiunea {version} a fost descărcată de {downloads} ori",
@@ -581,6 +644,7 @@
     "timeline": {
       "load_more": "Încarcă mai multe",
       "load_error": "Nu s-a putut încărca cronologia. Încearcă din nou mai târziu.",
+      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
       "size_increase": "Dimensiunea instalării a crescut cu {percent}% ({size})",
       "size_decrease": "Dimensiunea instalării a scăzut cu {percent}% ({size})",
       "dep_increase": "{count} dependențe adăugate",
@@ -594,22 +658,52 @@
       "trusted_publisher_removed": "Funcția de publicare de încredere este dezactivată",
       "provenance_added": "Funcția de proveniență este activată",
       "provenance_removed": "Funcția de proveniență este dezactivată",
+      "deprecated": "EN TEXT TO REPLACE: Deprecated",
       "chart": {
         "tab_aria_label": "Selectarea sistemului metric",
+        "dependency_size": "EN TEXT TO REPLACE: Dependency Size",
+        "other_dependencies": "EN TEXT TO REPLACE: Other",
         "base_scale": "inițializează ordonatele la zero",
         "zoom": "zoom",
         "reset_minimap": "resetare minimapă",
+        "ordered_versions": "EN TEXT TO REPLACE: stable only",
+        "sort_label": "EN TEXT TO REPLACE: Sort by",
+        "sort_time": "EN TEXT TO REPLACE: Publish time",
+        "sort_semver": "EN TEXT TO REPLACE: Semver",
         "copy_alt": {
           "key_changes": "Modificări importante: {version_events}.",
           "version_events": "versiune {version}: {events}",
-          "general_description": "Grafic liniar care prezintă {metric} pentru pachetul {package}, de la versiunea {first} la {last}. Valoarea {metric} în versiunea {first} este {first_value}, iar în versiunea {last} este {last_value} ({overall_progress_percentage}% în total). {key_changes} {watermark}."
+          "general_description": "Grafic liniar care prezintă {metric} pentru pachetul {package}, de la versiunea {first} la {last}. Valoarea {metric} în versiunea {first} este {first_value}, iar în versiunea {last} este {last_value} ({overall_progress_percentage}% în total). {key_changes} {watermark}.",
+          "stackbar_segment_share": "EN TEXT TO REPLACE: {segment}: {value} ({percentage})",
+          "stackbar_top_segments": "EN TEXT TO REPLACE: In {version}, the largest segments are {segments}.",
+          "stackbar_largest_increase": "EN TEXT TO REPLACE: The largest increase is {segment}, up {delta}.",
+          "stackbar_largest_decrease": "EN TEXT TO REPLACE: The largest decrease is {segment}, down {delta}."
         }
       }
     },
     "dependencies": {
       "title": "Dependență ({count}) | Dependențe ({count})",
-      "insights": {},
+      "insights": {
+        "title": "EN TEXT TO REPLACE: Insights",
+        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
+        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
+        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
+        "major_behind": "EN TEXT TO REPLACE: Major behind",
+        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
+        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
+        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
+        "deprecated": "EN TEXT TO REPLACE: Deprecated",
+        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
+        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
+        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
+      },
       "optional": "opțional",
+      "bundled": "EN TEXT TO REPLACE: bundled",
+      "all": "EN TEXT TO REPLACE: All dependencies",
+      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
+      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
+      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
+      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "Afișează vulnerabilitățile",
       "outdated_major": "{count} versiuni majore în urmă (ultima: {latest}) | {count} versiuni majore în urmă (ultima: {latest})",
       "outdated_minor": "{count} versiuni minore în urmă (ultima: {latest}) | {count} versiuni minore în urmă (ultima: {latest})",
@@ -652,6 +746,7 @@
       "date_range": "{start} la {end}",
       "date_range_multiline": "{start}\nla {end}",
       "download_file": "Descărcare {fileType}",
+      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "Comută anotatorul",
       "toggle_stack_mode": "Comută modul stivă",
       "open_options": "Deschide opțiunile",
@@ -686,6 +781,7 @@
         "trend_undefined": "nedefinit (date insuficiente)",
         "button_label": "Copiază textul alternativ",
         "watermark": "În partea de jos, un filigran afișează textul \"./npmx – un browser rapid și modern pentru registrul npm\"",
+        "watermark_top": "EN TEXT TO REPLACE: At the top, a watermark reads \"./npmx a fast, modern browser for the npm registry\"",
         "analysis": "{package_name} începe de la {start_value} și se termină la {end_value}, prezentând o tendință de {trend} cu o pantă de {downloads_slope} descărcări pe interval de timp",
         "estimation": "Valoarea finală este o estimare bazată pe date parțiale pentru perioada curentă.",
         "estimations": "Valorile finale sunt estimări bazate pe date parțiale pentru perioada curentă.",
@@ -695,10 +791,16 @@
         "facet_bar_general_description": "Diagramă cu bare orizontale pentru: {packages}, comparând {facet} ({description}). {facet_analysis} {watermark}.",
         "facet_bar_analysis": "{package_name} are valoarea {value}."
       },
-      "embedding": {}
+      "embedding": {
+        "chart": "EN TEXT TO REPLACE: Embed this chart",
+        "copy_url": "EN TEXT TO REPLACE: Copy this URL to embed the chart into your website",
+        "preview": "EN TEXT TO REPLACE: Preview",
+        "tip": "EN TEXT TO REPLACE: If startDate and endDate are not provided in the URL, the graph will display the last 12 months by default."
+      }
     },
     "downloads": {
       "title": "Descărcări Săptămânale",
+      "version_distribution_title": "EN TEXT TO REPLACE: weekly downloads for version {version}",
       "community_distribution": "Vizualizează distribuția adoptării în comunitate",
       "subtitle": "Pe toate versiunile",
       "sparkline_nav_hint": "Folosește ← →"
@@ -1013,7 +1115,8 @@
     },
     "file_path": "Calea fișierului",
     "binary_file": "Fișier binar",
-    "binary_rendering_warning": "Tipul de fișier \"{contentType}\" nu este suportat pentru previzualizare."
+    "binary_rendering_warning": "Tipul de fișier \"{contentType}\" nu este suportat pentru previzualizare.",
+    "possibly_unnecessary": "EN TEXT TO REPLACE: May be unnecessary in a published package"
   },
   "badges": {
     "provenance": {
@@ -1047,6 +1150,7 @@
     "keywords": "Cuvinte cheie",
     "more_keywords": "+{count} mai multe",
     "clear_all": "Șterge toate",
+    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "Șterge filtrul {label}",
     "chips": {
       "search": "Caută",
@@ -1160,13 +1264,18 @@
       }
     },
     "sponsors": {
-      "title": "Sponsori"
+      "title": "Sponsori",
+      "gold": "EN TEXT TO REPLACE: Gold Sponsors",
+      "silver": "EN TEXT TO REPLACE: Silver Sponsors"
     },
     "oss_partners": {
       "title": "Partneri OSS"
     },
     "team": {
       "title": "Echipă",
+      "core": "EN TEXT TO REPLACE: Core",
+      "maintainers": "EN TEXT TO REPLACE: Maintainers",
+      "role_core": "EN TEXT TO REPLACE: core",
       "role_steward": "steward",
       "role_maintainer": "menținător(toare)",
       "sponsor": "sponsor",
@@ -1204,22 +1313,61 @@
     }
   },
   "sponsors_page": {
-    "what_we_do": {},
-    "what_support_means": {},
+    "title": "EN TEXT TO REPLACE: Sponsors",
+    "heading": "EN TEXT TO REPLACE: sponsors",
+    "meta_description": "EN TEXT TO REPLACE: Support npmx and help us accelerate ecosystem work around security, trust, optimization, and research.",
+    "intro": "EN TEXT TO REPLACE: Support npmx and help us grow the ecosystem work we do for developers and maintainers.",
+    "what_we_do": {
+      "title": "EN TEXT TO REPLACE: What we do",
+      "description": "EN TEXT TO REPLACE: We're building an ecosystem that solves problems around security, trust, optimization, and research for the tools we use in everyday development - quickly, conveniently, and with high quality. This project is built by developers for developers. As authors of widely used libraries, we understand team needs and actively study what maintainers and projects need most."
+    },
+    "what_support_means": {
+      "title": "EN TEXT TO REPLACE: What support means",
+      "description": "EN TEXT TO REPLACE: Our plans and connections keep growing, along with our desire to share what we've built and learn from others. Your support helps fund the project, external talks, conferences, and the broader ecosystem, and, most importantly, enables us to keep growing our community."
+    },
+    "cta": "EN TEXT TO REPLACE: See sponsorship tiers",
+    "community_growth_footnote": "EN TEXT TO REPLACE: * According to {link} Q1 2026 research.",
     "what_this_means_for_you": {
+      "title": "EN TEXT TO REPLACE: What this means for you",
+      "description": "EN TEXT TO REPLACE: npmx is not only about improving developer experience and closing critical everyday gaps. In our first six months, we have already become the default source for thousands of teams and a huge number of developers. You get not only a more stable tool for your teams, but also visibility in front of a constantly growing audience of top-tier engineers.",
       "cards": {
-        "people": {},
-        "visitors": {},
-        "stars": {},
-        "community": {},
-        "adoption": {},
-        "default_source": {}
+        "people": {
+          "contributors": "EN TEXT TO REPLACE: contributors",
+          "community_members": "EN TEXT TO REPLACE: community members"
+        },
+        "visitors": {
+          "description": "EN TEXT TO REPLACE: unique monthly visitors"
+        },
+        "stars": {
+          "title": "EN TEXT TO REPLACE: stars"
+        },
+        "community": {
+          "title": "EN TEXT TO REPLACE: fast-growing",
+          "description": "EN TEXT TO REPLACE: We are one of the fastest-growing communities in the ecosystem"
+        },
+        "adoption": {
+          "title": "EN TEXT TO REPLACE: adoption",
+          "description": "EN TEXT TO REPLACE: charts at conferences, talks, and articles rely on our data"
+        },
+        "default_source": {
+          "title": "EN TEXT TO REPLACE: default source",
+          "description": "EN TEXT TO REPLACE: pnpm made npmx the default source, many packages have been configured to link to npmx"
+        }
       }
     },
     "tiers": {
-      "silver": {},
-      "gold": {},
-      "platinum": {}
+      "title": "EN TEXT TO REPLACE: Sponsorship tiers",
+      "per_month": "EN TEXT TO REPLACE: /month",
+      "custom": "EN TEXT TO REPLACE: Custom",
+      "silver": {
+        "name": "EN TEXT TO REPLACE: Silver"
+      },
+      "gold": {
+        "name": "EN TEXT TO REPLACE: Gold"
+      },
+      "platinum": {
+        "name": "EN TEXT TO REPLACE: Platinum"
+      }
     }
   },
   "account_menu": {
@@ -1396,7 +1544,10 @@
           "label": "Stele GitHub",
           "description": "Numărul de stele din repository-ul GitHub"
         },
-        "githubForks": {},
+        "githubForks": {
+          "label": "EN TEXT TO REPLACE: GitHub Forks",
+          "description": "EN TEXT TO REPLACE: Number of forks on the GitHub repository"
+        },
         "githubIssues": {
           "label": "Probleme GitHub",
           "description": "Numărul de probleme din repository-ul GitHub"
@@ -1441,6 +1592,7 @@
     "dev_dependencies": "Dependențe Dev",
     "peer_dependencies": "Dependențe Peer",
     "optional_dependencies": "Dependențe Opționale",
+    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "Nu există modificări de dependențe",
     "file_filter_option": {
       "all": "Toate ({count})",
@@ -1464,6 +1616,9 @@
     "change_ratio": "Raportul de modificării",
     "char_edits": "Modificări de caractere",
     "diff_distance": "Distanța de diff",
+    "diff_truncated": "EN TEXT TO REPLACE: Diff truncated for performance. Showing the first changed lines only.",
+    "large_diff_mode": "EN TEXT TO REPLACE: Large file diff shown with inline edit merging disabled for performance.",
+    "large_diff_options_disabled": "EN TEXT TO REPLACE: Large file mode disables inline edit merging for performance.",
     "loading_diff": "Se încarcă diff...",
     "loading_diff_error": "Eroare la încărcarea diff",
     "merge_modified_lines": "Îmbină linii modificate",
@@ -1726,6 +1881,15 @@
   },
   "alt_logo_kawaii": "O versiune drăguță, rotunjită și colorată a logo-ului npmx.",
   "changelog": {
-    "error": {}
+    "pre_release": "EN TEXT TO REPLACE: Pre-release",
+    "draft": "EN TEXT TO REPLACE: Draft",
+    "no_logs": "EN TEXT TO REPLACE: Sorry, this package does not publish changelogs or its changelog format is not supported.",
+    "error": {
+      "p1": "EN TEXT TO REPLACE: Sorry, the changelog for {package} couldn't be loaded",
+      "p2": "EN TEXT TO REPLACE: Please try again later or {viewon}"
+    },
+    "rate_limit_ungh": "EN TEXT TO REPLACE: Sorry, Github's rate limit has been hit, try again in a moment",
+    "version_unavailable": "EN TEXT TO REPLACE: The requested version is not available.",
+    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
   }
 }

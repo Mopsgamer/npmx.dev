@@ -13,11 +13,19 @@
   "trademark_disclaimer": "az npm az npm, Inc. bejegyzett védjegye. Ez az oldal nem áll kapcsolatban az npm, Inc.-el.",
   "footer": {
     "about": "rólunk",
+    "sponsors": "EN TEXT TO REPLACE: sponsors",
+    "blog": "EN TEXT TO REPLACE: blog",
     "docs": "dokumentáció",
     "source": "forráskód",
     "social": "közösség",
     "chat": "chat",
-    "keyboard_shortcuts": "billentyűzet parancsikonok"
+    "builders_chat": "EN TEXT TO REPLACE: builders",
+    "keyboard_shortcuts": "billentyűzet parancsikonok",
+    "brand": "EN TEXT TO REPLACE: brand",
+    "resources": "EN TEXT TO REPLACE: Resources",
+    "features": "EN TEXT TO REPLACE: Features",
+    "other": "EN TEXT TO REPLACE: Other",
+    "sponsored_by": "EN TEXT TO REPLACE: Sponsored by {list}"
   },
   "shortcuts": {
     "section": {
@@ -25,16 +33,24 @@
       "search": "Keresés",
       "package": "Csomag"
     },
+    "ctrl_key": "EN TEXT TO REPLACE: Ctrl",
+    "command_palette": "EN TEXT TO REPLACE: Open command palette",
+    "command_palette_description": "EN TEXT TO REPLACE: Use the command palette to jump between pages, package views, settings, and external links without leaving the keyboard. On macOS, press ⌘K. On Windows and Linux, press {ctrlKey}+K.",
     "focus_search": "Keresésre fókusz",
     "show_kbd_hints": "Billentyűzet megjelenítésének kiemelése",
     "settings": "Beállítások megnyitása",
     "compare": "Összehasonlítás megnyitása",
     "compare_from_package": "Összehasonlítás megnyitása (előkitöltve az aktuális csomaggal)",
+    "changelog": "EN TEXT TO REPLACE: Open changelog",
     "navigate_results": "Eredmények közötti navigáció",
     "go_to_result": "Eredményre ugrás",
     "open_code_view": "Kódnézet megnyitása",
     "open_docs": "Dokumentáció megnyitása",
-    "disable_shortcuts": "A billentyűzet parancsikonokat a {settings} menüben letilthatod."
+    "disable_shortcuts": "A billentyűzet parancsikonokat a {settings} menüben letilthatod.",
+    "open_main": "EN TEXT TO REPLACE: Open main information",
+    "open_diff": "EN TEXT TO REPLACE: Open version differences",
+    "open_timeline": "EN TEXT TO REPLACE: Open timeline",
+    "open_stats": "EN TEXT TO REPLACE: Open stats"
   },
   "search": {
     "label": "npm csomagok keresése",
@@ -63,25 +79,128 @@
       "org": "szervezet",
       "view_user_packages": "E felhasználó csomagjainak megtekintése",
       "view_org_packages": "E szervezet csomagjainak megtekintése"
-    }
+    },
+    "instant_search": "EN TEXT TO REPLACE: Instant search",
+    "instant_search_on": "EN TEXT TO REPLACE: on",
+    "instant_search_off": "EN TEXT TO REPLACE: off",
+    "instant_search_turn_on": "EN TEXT TO REPLACE: turn on",
+    "instant_search_turn_off": "EN TEXT TO REPLACE: turn off",
+    "instant_search_advisory": "EN TEXT TO REPLACE: {label} {state} — {action}"
   },
   "command_palette": {
-    "keyboard_shortcuts": {},
-    "state": {},
-    "groups": {},
-    "actions": {},
-    "connections": {},
-    "navigation": {},
-    "links": {},
-    "package_links": {},
-    "theme": {},
-    "package": {},
-    "package_actions": {},
-    "code": {},
-    "diff": {},
-    "version": {},
-    "status": {},
-    "announcements": {}
+    "title": "EN TEXT TO REPLACE: command palette",
+    "quick_actions": "EN TEXT TO REPLACE: jump to...",
+    "subtitle": "EN TEXT TO REPLACE: navigate across npmx and switch settings quickly",
+    "subtitle_languages": "EN TEXT TO REPLACE: choose a language or help improve translations",
+    "instructions": "EN TEXT TO REPLACE: Type to filter commands. Use the arrow keys to move through results and Enter to run a command.",
+    "input_label": "EN TEXT TO REPLACE: Command palette search",
+    "results_label": "EN TEXT TO REPLACE: Command results",
+    "placeholder": "EN TEXT TO REPLACE: type a command...",
+    "back": "EN TEXT TO REPLACE: Back",
+    "empty": "EN TEXT TO REPLACE: No matching commands",
+    "empty_search_hint": "EN TEXT TO REPLACE: Press Enter to search for \"{query}\".",
+    "current": "EN TEXT TO REPLACE: current",
+    "here": "EN TEXT TO REPLACE: you are here",
+    "connected": "EN TEXT TO REPLACE: connected",
+    "keyboard_shortcuts": {
+      "navigate": "EN TEXT TO REPLACE: to navigate",
+      "select": "EN TEXT TO REPLACE: to select",
+      "close": "EN TEXT TO REPLACE: to close"
+    },
+    "state": {
+      "on": "EN TEXT TO REPLACE: on",
+      "off": "EN TEXT TO REPLACE: off"
+    },
+    "groups": {
+      "actions": "EN TEXT TO REPLACE: Actions",
+      "help": "EN TEXT TO REPLACE: Help",
+      "language": "EN TEXT TO REPLACE: Language",
+      "connections": "EN TEXT TO REPLACE: Connections",
+      "navigation": "EN TEXT TO REPLACE: Navigation",
+      "links": "EN TEXT TO REPLACE: Links",
+      "npmx": "EN TEXT TO REPLACE: npmx",
+      "package": "EN TEXT TO REPLACE: Package",
+      "package_with_name": "EN TEXT TO REPLACE: Package ({name})",
+      "versions": "EN TEXT TO REPLACE: Versions",
+      "versions_with_name": "EN TEXT TO REPLACE: Versions of {name}"
+    },
+    "actions": {
+      "search": "EN TEXT TO REPLACE: Search",
+      "search_for": "EN TEXT TO REPLACE: Search for \"{query}\"",
+      "keyboard_shortcuts": "EN TEXT TO REPLACE: Keyboard shortcuts",
+      "help_translate": "EN TEXT TO REPLACE: Help translate"
+    },
+    "connections": {
+      "npm_connect": "EN TEXT TO REPLACE: Connect to npm CLI",
+      "npm_connected": "EN TEXT TO REPLACE: npm CLI (~{username})",
+      "npm_disconnect": "EN TEXT TO REPLACE: Disconnect npm CLI",
+      "atmosphere_connect": "EN TEXT TO REPLACE: Connect to Atmosphere",
+      "atmosphere_connected": "EN TEXT TO REPLACE: atmosphere ({'@'}{handle})",
+      "atmosphere_disconnect": "EN TEXT TO REPLACE: Disconnect Atmosphere"
+    },
+    "navigation": {
+      "home": "EN TEXT TO REPLACE: home",
+      "packages": "EN TEXT TO REPLACE: packages (~{username})",
+      "orgs": "EN TEXT TO REPLACE: orgs (~{username})",
+      "profile": "EN TEXT TO REPLACE: profile ({'@'}{handle})"
+    },
+    "links": {
+      "external": "EN TEXT TO REPLACE: External link"
+    },
+    "package_links": {
+      "stars": "EN TEXT TO REPLACE: Repository stars",
+      "forks": "EN TEXT TO REPLACE: Repository forks"
+    },
+    "theme": {
+      "system": "EN TEXT TO REPLACE: Use system theme",
+      "light": "EN TEXT TO REPLACE: Use light theme",
+      "dark": "EN TEXT TO REPLACE: Use dark theme"
+    },
+    "package": {
+      "main": "EN TEXT TO REPLACE: Package page",
+      "docs": "EN TEXT TO REPLACE: Docs",
+      "code": "EN TEXT TO REPLACE: Code",
+      "diff": "EN TEXT TO REPLACE: Diff",
+      "compare": "EN TEXT TO REPLACE: Compare this package",
+      "download": "EN TEXT TO REPLACE: Download tarball",
+      "changelog": "EN TEXT TO REPLACE: Changelog",
+      "stats": "EN TEXT TO REPLACE: Stats"
+    },
+    "package_actions": {
+      "copy_run": "EN TEXT TO REPLACE: Copy run command"
+    },
+    "code": {
+      "copy_file": "EN TEXT TO REPLACE: Copy file contents"
+    },
+    "diff": {
+      "merge_modified_lines": "EN TEXT TO REPLACE: Merge modified lines",
+      "word_wrap": "EN TEXT TO REPLACE: Word wrap"
+    },
+    "version": {
+      "label": "EN TEXT TO REPLACE: {version}"
+    },
+    "status": {
+      "available_in_context": "EN TEXT TO REPLACE: {context}. No commands available | {context}. 1 command available | {context}. {count} commands available",
+      "matching_in_context": "EN TEXT TO REPLACE: {context}. No matching commands | {context}. 1 matching command | {context}. {count} matching commands",
+      "no_matches_search_in_context": "EN TEXT TO REPLACE: {context}. No matching commands. Press Enter to search for \"{query}\"."
+    },
+    "announcements": {
+      "language_changed": "EN TEXT TO REPLACE: Language set to {language}.",
+      "relative_dates_on": "EN TEXT TO REPLACE: Relative dates on.",
+      "relative_dates_off": "EN TEXT TO REPLACE: Relative dates off.",
+      "theme_changed": "EN TEXT TO REPLACE: Theme set to {theme}.",
+      "accent_color_changed": "EN TEXT TO REPLACE: Accent color set to {color}.",
+      "background_theme_changed": "EN TEXT TO REPLACE: Background shade set to {theme}.",
+      "foreground_theme_changed": "EN TEXT TO REPLACE: Foreground shade set to {theme}.",
+      "download_started": "EN TEXT TO REPLACE: Downloading {package} tarball.",
+      "copied_to_clipboard": "EN TEXT TO REPLACE: Copied to clipboard.",
+      "npm_disconnected": "EN TEXT TO REPLACE: npm CLI disconnected.",
+      "atmosphere_disconnected": "EN TEXT TO REPLACE: Atmosphere disconnected.",
+      "facets_all_selected": "EN TEXT TO REPLACE: All facets selected.",
+      "facets_all_deselected": "EN TEXT TO REPLACE: All facets deselected.",
+      "view_switched": "EN TEXT TO REPLACE: Switched to {view} view.",
+      "setting_toggled": "EN TEXT TO REPLACE: {setting} {state}."
+    }
   },
   "nav": {
     "main_navigation": "Főmenü",
@@ -96,11 +215,56 @@
     "tap_to_search": "Koppints a kereséshez"
   },
   "blog": {
-    "author": {},
-    "atproto": {}
+    "title": "EN TEXT TO REPLACE: Blog",
+    "heading": "EN TEXT TO REPLACE: blog",
+    "meta_description": "EN TEXT TO REPLACE: Insights and updates from the npmx community",
+    "author": {
+      "view_profile": "EN TEXT TO REPLACE: View {name}'s profile on Bluesky"
+    },
+    "draft_badge": "EN TEXT TO REPLACE: Draft",
+    "draft_banner": "EN TEXT TO REPLACE: This is an unpublished draft. It may be incomplete or contain inaccuracies.",
+    "no_posts": "EN TEXT TO REPLACE: No posts found.",
+    "atproto": {
+      "view_on_bluesky": "EN TEXT TO REPLACE: View on Bluesky",
+      "reply_on_bluesky": "EN TEXT TO REPLACE: Reply on Bluesky",
+      "likes_on_bluesky": "EN TEXT TO REPLACE: Likes on Bluesky",
+      "like_or_reply_on_bluesky": "EN TEXT TO REPLACE: Like this post or add your comment on Bluesky",
+      "no_comments_yet": "EN TEXT TO REPLACE: No comments yet.",
+      "could_not_load_comments": "EN TEXT TO REPLACE: Could not load comments.",
+      "comments": "EN TEXT TO REPLACE: Comments",
+      "loading_comments": "EN TEXT TO REPLACE: Loading comments...",
+      "updating": "EN TEXT TO REPLACE: Updating...",
+      "reply_count": "EN TEXT TO REPLACE: {count} reply | {count} replies",
+      "like_count": "EN TEXT TO REPLACE: {count} like | {count} likes",
+      "repost_count": "EN TEXT TO REPLACE: {count} repost | {count} reposts",
+      "more_replies": "EN TEXT TO REPLACE: {count} more reply... | {count} more replies..."
+    }
   },
   "noodles": {
-    "missing": {}
+    "title": "EN TEXT TO REPLACE: noodles",
+    "meta_description": "EN TEXT TO REPLACE: Every noodle we've ever shown on npmx — the seasonal logos, easter eggs, and the stories behind them.",
+    "latest": "EN TEXT TO REPLACE: Latest noodles",
+    "what_is": "EN TEXT TO REPLACE: What is noodles",
+    "what_is_body": "EN TEXT TO REPLACE: Noodles are the playful variants of the npmx logo we run on the homepage to mark releases, holidays, events, and other moments worth celebrating. Think of them like Google Doodles, but for npm packages.",
+    "empty": "EN TEXT TO REPLACE: No noodles yet.",
+    "load_more": "EN TEXT TO REPLACE: Load {count} more",
+    "dates": "EN TEXT TO REPLACE: Active dates",
+    "shipped_in": "EN TEXT TO REPLACE: Shipped in",
+    "credits": "EN TEXT TO REPLACE: Credits",
+    "learn_more": "EN TEXT TO REPLACE: Learn more",
+    "carousel_prev": "EN TEXT TO REPLACE: Previous image",
+    "carousel_next": "EN TEXT TO REPLACE: Next image",
+    "carousel_dots": "EN TEXT TO REPLACE: Variant image navigation",
+    "carousel_jump": "EN TEXT TO REPLACE: Go to image {index}",
+    "lens_label": "EN TEXT TO REPLACE: {title} — image reel",
+    "lens_slide": "EN TEXT TO REPLACE: image {index}",
+    "lens_slide_position": "EN TEXT TO REPLACE: Slide {index} of {total}",
+    "back_to_archive": "EN TEXT TO REPLACE: Back to all noodles",
+    "missing": {
+      "title": "EN TEXT TO REPLACE: This noodle never made it out of the bowl.",
+      "body": "EN TEXT TO REPLACE: We don't have a “{slug}” noodle on the menu. Either it's still being plated, or it was never written. Either way — back to the archive.",
+      "empty_bowl": "EN TEXT TO REPLACE: empty bowl"
+    }
   },
   "settings": {
     "title": "beállítások",
@@ -121,28 +285,53 @@
       "algolia": "Algolia",
       "algolia_description": "Az Algolia-t használ a gyorsabb kereséshez, szervezeti és felhasználó oldalakhoz."
     },
+    "instant_search": "EN TEXT TO REPLACE: Instant search",
+    "instant_search_description": "EN TEXT TO REPLACE: Navigates to the search page and updates the results as you type.",
     "relative_dates": "Relatív dátumok",
     "include_types": "{'@'}types hozzáadása telepítéskor",
     "include_types_description": "Adja hozzá a {'@'}types csomagot a telepítési parancshoz típus nélküli csomagoknál",
     "hide_platform_packages": "Platform-specifikus csomagok elrejtése a keresőben",
     "hide_platform_packages_description": "Natív bináris csomagok (pl. {'@'}esbuild/linux-x64) elrejtése az eredmények közül",
+    "enable_graph_pulse_loop": "EN TEXT TO REPLACE: Enable looping of pulse effect on mini graph",
+    "enable_graph_pulse_loop_description": "EN TEXT TO REPLACE: Activate a continuous pulse animation on the weekly download graph. This animation may be distracting for some users.",
     "theme": "Téma",
     "theme_light": "Világos",
     "theme_dark": "Sötét",
     "theme_system": "Rendszer",
     "language": "Nyelv",
     "help_translate": "Segíts lefordítani az npmx-et",
+    "translation_status": "EN TEXT TO REPLACE: Check global translation status",
     "accent_colors": {
-      "label": "Akcentus színek"
+      "label": "Akcentus színek",
+      "neutral": "EN TEXT TO REPLACE: Neutral",
+      "sky": "EN TEXT TO REPLACE: Sky",
+      "coral": "EN TEXT TO REPLACE: Coral",
+      "amber": "EN TEXT TO REPLACE: Amber",
+      "emerald": "EN TEXT TO REPLACE: Emerald",
+      "violet": "EN TEXT TO REPLACE: Violet",
+      "magenta": "EN TEXT TO REPLACE: Magenta"
     },
     "clear_accent": "Akcentus szín törlése",
     "translation_progress": "Fordítás állapota",
     "background_themes": {
-      "label": "Háttér árnyalata"
+      "label": "Háttér árnyalata",
+      "neutral": "EN TEXT TO REPLACE: Neutral",
+      "stone": "EN TEXT TO REPLACE: Stone",
+      "zinc": "EN TEXT TO REPLACE: Zinc",
+      "slate": "EN TEXT TO REPLACE: Slate",
+      "black": "EN TEXT TO REPLACE: Black"
     },
-    "foreground_themes": {},
+    "foreground_themes": {
+      "label": "EN TEXT TO REPLACE: Foreground shade",
+      "contrast": "EN TEXT TO REPLACE: Contrast",
+      "standard": "EN TEXT TO REPLACE: Standard",
+      "muted": "EN TEXT TO REPLACE: Muted"
+    },
     "keyboard_shortcuts_enabled": "Billentyűzet parancsikonok engedélyezése",
-    "keyboard_shortcuts_enabled_description": "A billentyűzet parancsikonok letilthatók, ha ütköznek más böngésző vagy rendszer parancsikonokkal"
+    "keyboard_shortcuts_enabled_description": "A billentyűzet parancsikonok letilthatók, ha ütköznek más böngésző vagy rendszer parancsikonokkal",
+    "enable_code_ligatures": "EN TEXT TO REPLACE: Enable ligatures in code",
+    "enable_changelog_autoscroll": "EN TEXT TO REPLACE: Auto scroll to requested version",
+    "enable_changelog_autoscroll_description": "EN TEXT TO REPLACE: Auto scroll to or close to the requested version at package changelog"
   },
   "i18n": {
     "missing_keys": "{count} hiányzó fordítás | {count} hiányzó fordítás",
@@ -152,7 +341,13 @@
     "edit_on_github": "Szerkesztés GitHub-on",
     "view_guide": "Fordítási útmutató"
   },
-  "error": {},
+  "error": {
+    "401": "EN TEXT TO REPLACE: Unauthorized",
+    "404": "EN TEXT TO REPLACE: Page not found",
+    "500": "EN TEXT TO REPLACE: Internal server error",
+    "503": "EN TEXT TO REPLACE: Service unavailable",
+    "default": "EN TEXT TO REPLACE: Something went wrong"
+  },
   "common": {
     "loading": "Betöltés...",
     "loading_more": "Továbbiak betöltése...",
@@ -168,6 +363,7 @@
     "warnings": "Figyelmeztetések:",
     "go_back_home": "Vissza a főoldalra",
     "per_week": "/ hét",
+    "per_week_short": "EN TEXT TO REPLACE: /wk",
     "vanity_downloads_hint": "Vanity szám: nincsenek csomagok megjelenítve | Vanity szám: a megjelenített csomagra | Vanity szám: {count} megjelenített csomag összege",
     "sort": {
       "name": "név",
@@ -181,8 +377,24 @@
     "error": "Hiba",
     "view_on": {
       "npm": "megtekintés npm-en",
-      "github": "Megtekintés GitHubon"
-    }
+      "github": "Megtekintés GitHubon",
+      "gitlab": "EN TEXT TO REPLACE: View on GitLab",
+      "bitbucket": "EN TEXT TO REPLACE: View on Bitbucket",
+      "codeberg": "EN TEXT TO REPLACE: View on Codeberg",
+      "git_repo": "EN TEXT TO REPLACE: View on Git repository",
+      "forgejo": "EN TEXT TO REPLACE: View on Forgejo",
+      "gitea": "EN TEXT TO REPLACE: View on Gitea",
+      "gitee": "EN TEXT TO REPLACE: View on Gitee",
+      "radicle": "EN TEXT TO REPLACE: View on Radicle",
+      "socket_dev": "EN TEXT TO REPLACE: View on socket.dev",
+      "sourcehut": "EN TEXT TO REPLACE: View on SourceHut",
+      "tangled": "EN TEXT TO REPLACE: View on Tangled"
+    },
+    "collapse": "EN TEXT TO REPLACE: Collapse",
+    "collapse_with_name": "EN TEXT TO REPLACE: Collapse {name}",
+    "expand": "EN TEXT TO REPLACE: Expand",
+    "expand_with_name": "EN TEXT TO REPLACE: Expand {name}",
+    "copyMdError": "EN TEXT TO REPLACE: Failed to load markdown, try again later"
   },
   "profile": {
     "display_name": "Megjelenítési név",
@@ -208,6 +420,7 @@
     "verified_provenance": "Hitelesített eredet",
     "navigation": "Csomag",
     "copy_name": "Csomagnév másolása",
+    "copy_version": "EN TEXT TO REPLACE: Copy package version",
     "deprecation": {
       "package": "Ez a csomag elavult (deprecated).",
       "version": "Ez a verzió elavult (deprecated).",
@@ -220,10 +433,20 @@
       "size": "A telepítési méret {percent}-kal nőtt ({size} nagyobb)",
       "deps": "{count} további függőség"
     },
-    "size_decrease": {},
+    "size_decrease": {
+      "title_size": "EN TEXT TO REPLACE: Package size decreased since v{version}!",
+      "title_deps": "EN TEXT TO REPLACE: Dependency count decreased since v{version}!",
+      "title_both": "EN TEXT TO REPLACE: Package size and dependency count decreased since v{version}!",
+      "size": "EN TEXT TO REPLACE: Install size reduced by {percent} ({size} smaller)",
+      "deps": "EN TEXT TO REPLACE: {count} fewer dependency | {count} fewer dependencies"
+    },
     "replacement": {
       "title": "Lehet, hogy nincs szükséged erre a függőségre.",
+      "example": "EN TEXT TO REPLACE: Example:",
       "native": "Ez helyettesíthető a következővel: {replacement}, amely elérhető a Node {nodeVersion} verzió óta.",
+      "native_no_version": "EN TEXT TO REPLACE: This package can be replaced with {replacement}.",
+      "simple": "EN TEXT TO REPLACE: This package has been flagged as redundant, with the advice: {replacement}",
+      "documented": "EN TEXT TO REPLACE: This package has been flagged as having more performant alternatives.",
       "none": "Ez a csomag feleslegesnek lett jelölve, a funkció valószínűleg natívan elérhető.",
       "learn_more": "Tudj meg többet",
       "learn_more_above": "Tudj meg többet fentebb.",
@@ -241,7 +464,10 @@
       "size_tooltip": {
         "unpacked": "{size} kicsomagolt méret (ez a csomag)",
         "total": "{size} teljes kicsomagolt méret ({count} függőséggel együtt linux-x64-en) | {size} teljes kicsomagolt méret (az összes {count} függőséggel együtt linux-x64-en)"
-      }
+      },
+      "main_information": "EN TEXT TO REPLACE: Main Information",
+      "trends": "EN TEXT TO REPLACE: Trends",
+      "version_distribution": "EN TEXT TO REPLACE: Version Distribution"
     },
     "skills": {
       "title": "Agent Skills",
@@ -258,25 +484,42 @@
         "refs": "{count} ref | {count} ref",
         "assets": "{count} eszköz | {count} eszköz"
       },
-      "view_source": "Forrás megtekintése"
+      "view_source": "Forrás megtekintése",
+      "skills_cli": "EN TEXT TO REPLACE: skills CLI"
     },
     "links": {
+      "main": "EN TEXT TO REPLACE: main",
       "repo": "repo",
       "homepage": "honlap",
       "issues": "hibák",
       "jsr": "jsr",
       "code": "kód",
+      "dependencies": "EN TEXT TO REPLACE: dependencies",
       "docs": "dokumentáció",
       "fund": "támogatás",
-      "compare": "összehasonlítás"
+      "compare": "összehasonlítás",
+      "timeline": "EN TEXT TO REPLACE: timeline",
+      "stats": "EN TEXT TO REPLACE: stats",
+      "compare_this_package": "EN TEXT TO REPLACE: compare this package",
+      "changelog": "EN TEXT TO REPLACE: changelog"
     },
     "likes": {
       "like": "Szeretem ezt a csomagot",
-      "unlike": "Nem szeretem ezt a csomagot"
+      "unlike": "Nem szeretem ezt a csomagot",
+      "top_rank_tooltip": "EN TEXT TO REPLACE: This is among the top 10 most liked packages on npmx! (#{rank})",
+      "top_rank_label": "EN TEXT TO REPLACE: #{rank}",
+      "top_rank_link_label": "EN TEXT TO REPLACE: View likes leaderboard. This package is ranked #{rank}."
     },
     "docs": {
+      "contents": "EN TEXT TO REPLACE: Contents",
+      "default_not_available": "EN TEXT TO REPLACE: Docs are not available for this version.",
       "not_available": "Dokumentáció nem elérhető",
-      "not_available_detail": "Nem sikerült legenerálni a dokumentációt ehhez a verzióhoz."
+      "not_available_detail": "Nem sikerült legenerálni a dokumentációt ehhez a verzióhoz.",
+      "page_title": "EN TEXT TO REPLACE: API Docs - npmx",
+      "page_title_name": "EN TEXT TO REPLACE: {name} docs - npmx",
+      "page_title_version": "EN TEXT TO REPLACE: {name} docs - npmx",
+      "og_title": "EN TEXT TO REPLACE: {name} - Docs",
+      "view_package": "EN TEXT TO REPLACE: View package"
     },
     "get_started": {
       "title": "Kezdő lépések",
@@ -293,9 +536,17 @@
     },
     "run": {
       "title": "Futtatás",
-      "locally": "Futtatás helyileg"
+      "locally": "Futtatás helyileg",
+      "copy_command": "EN TEXT TO REPLACE: Copy command to run locally"
     },
-    "command": {},
+    "command": {
+      "copied_install": "EN TEXT TO REPLACE: Install command copied",
+      "copied_dev_install": "EN TEXT TO REPLACE: Dev install command copied",
+      "copied_run": "EN TEXT TO REPLACE: Run command copied",
+      "copied_create": "EN TEXT TO REPLACE: Create command copied",
+      "copied_execute": "EN TEXT TO REPLACE: Execute command copied",
+      "copied_skills": "EN TEXT TO REPLACE: Skills command copied"
+    },
     "readme": {
       "title": "Readme",
       "no_readme": "Nincs elérhető README.",
@@ -307,7 +558,8 @@
         "warning": "Figyelmeztetés",
         "caution": "Óvatosság"
       },
-      "copy_as_markdown": "README másolása Markdownként"
+      "copy_as_markdown": "README másolása Markdownként",
+      "error_loading": "EN TEXT TO REPLACE: Failed to load README details"
     },
     "provenance_section": {
       "title": "Eredet",
@@ -337,7 +589,10 @@
       "published": "Közzétéve",
       "weekly_downloads": "Heti letöltések",
       "keywords": "Kulcsszavak",
-      "license": "Licenc"
+      "license": "Licenc",
+      "version": "EN TEXT TO REPLACE: Version",
+      "select": "EN TEXT TO REPLACE: Select package",
+      "select_maximum": "EN TEXT TO REPLACE: Maximum {count} packages can be selected"
     },
     "versions": {
       "title": "Verziók",
@@ -352,16 +607,20 @@
       "all_covered": "Minden verziót lefednek a fenti címkék",
       "deprecated_title": "{version} (elavult)",
       "view_all": "{count} verzió megtekintése | Az összes {count} verzió megtekintése",
+      "view_all_versions": "EN TEXT TO REPLACE: View all versions",
       "distribution_title": "Semver csoport",
       "distribution_range_date_same_year": "{from} -tól {to} -ig, {endYear}",
       "distribution_range_date_multiple_years": "{from} -tól, {startYear} -ben {to} -ig, {endYear}",
       "grouping_major": "Fő",
       "grouping_minor": "Nem fő",
       "grouping_versions_title": "Verziók",
+      "grouping_versions_about": "EN TEXT TO REPLACE: About version grouping",
       "grouping_versions_all": "Összes",
       "grouping_versions_only_recent": "Csak a közelmúltbeli",
       "grouping_usage_title": "Használat",
+      "grouping_usage_about": "EN TEXT TO REPLACE: About usage grouping",
       "grouping_usage_all": "Összes",
+      "grouping_usage_most_used": "EN TEXT TO REPLACE: Most used",
       "recent_versions_only_tooltip": "Csak az elmúlt év során közzétett verziókat mutasd meg.",
       "show_low_usage_tooltip": "Tartalmazzon olyan verziós csoportokat az összes letöltés 1%-ánál kevesebb.",
       "y_axis_label": "Letöltések",
@@ -370,21 +629,81 @@
       "filter_help": "Semver tartomány szűrési súgó",
       "filter_tooltip": "Verziók szűrése {link} segítségével. Például a ^3.0.0 az összes 3.x verziókat mutatja.",
       "filter_tooltip_link": "semver tartomány",
+      "license_change_help": "EN TEXT TO REPLACE: License Change Details",
+      "license_change_warning": "EN TEXT TO REPLACE: License changed since previous version.",
+      "license_change_record": "EN TEXT TO REPLACE: The license of this package changed from \"{from}\" to \"{to}\".",
       "no_matches": "Nincs verzió, amely megfelel ennek a tartománynak",
       "copy_alt": {
         "per_version_analysis": "A(z) {version} verzió {downloads} alkalommal lett letöltve",
         "general_description": "Sávdiagram, amely a(z) {package_name} csomag {semver_grouping_mode} verzióinak verzió szerinti letöltéseit mutatja, {date_range_label} a(z) {first_version} verziótól a(z) {last_version} verzióig. A legtöbbször letöltött verzió a(z) {max_downloaded_version}, {max_version_downloads} letöltéssel. {per_version_analysis}. {watermark}."
-      }
+      },
+      "page_title": "EN TEXT TO REPLACE: Version History",
+      "current_tags": "EN TEXT TO REPLACE: Current Tags",
+      "no_match_filter": "EN TEXT TO REPLACE: No versions match {filter}"
     },
     "timeline": {
+      "load_more": "EN TEXT TO REPLACE: Load more",
+      "load_error": "EN TEXT TO REPLACE: Failed to load timeline. Please try again later.",
+      "no_stable_versions": "EN TEXT TO REPLACE: No stable versions to show. Turn off “stable only” to include pre-releases.",
+      "size_increase": "EN TEXT TO REPLACE: Install size increased by {percent}% ({size})",
+      "size_decrease": "EN TEXT TO REPLACE: Install size decreased by {percent}% ({size})",
+      "dep_increase": "EN TEXT TO REPLACE: {count} dependency added | {count} dependencies added",
+      "dep_decrease": "EN TEXT TO REPLACE: {count} dependency removed | {count} dependencies removed",
+      "license_change": "EN TEXT TO REPLACE: License changed from {from} to {to}",
+      "esm_added": "EN TEXT TO REPLACE: Module type changed to ESM",
+      "esm_removed": "EN TEXT TO REPLACE: Module type changed from ESM to CJS",
+      "types_added": "EN TEXT TO REPLACE: TypeScript types added",
+      "types_removed": "EN TEXT TO REPLACE: TypeScript types removed",
+      "trusted_publisher_added": "EN TEXT TO REPLACE: Trusted publishing enabled",
+      "trusted_publisher_removed": "EN TEXT TO REPLACE: Trusted publishing removed",
+      "provenance_added": "EN TEXT TO REPLACE: Provenance enabled",
+      "provenance_removed": "EN TEXT TO REPLACE: Provenance removed",
+      "deprecated": "EN TEXT TO REPLACE: Deprecated",
       "chart": {
-        "copy_alt": {}
+        "tab_aria_label": "EN TEXT TO REPLACE: Metric selection",
+        "dependency_size": "EN TEXT TO REPLACE: Dependency Size",
+        "other_dependencies": "EN TEXT TO REPLACE: Other",
+        "base_scale": "EN TEXT TO REPLACE: start y-axis at zero",
+        "zoom": "EN TEXT TO REPLACE: zoom",
+        "reset_minimap": "EN TEXT TO REPLACE: reset minimap",
+        "ordered_versions": "EN TEXT TO REPLACE: stable only",
+        "sort_label": "EN TEXT TO REPLACE: Sort by",
+        "sort_time": "EN TEXT TO REPLACE: Publish time",
+        "sort_semver": "EN TEXT TO REPLACE: Semver",
+        "copy_alt": {
+          "key_changes": "EN TEXT TO REPLACE: Key changes: {version_events}.",
+          "version_events": "EN TEXT TO REPLACE: version {version}: {events}",
+          "general_description": "EN TEXT TO REPLACE: Line chart showing the {metric} of the {package} package, from version {first} to {last}. The {metric} in version {first} is {first_value}, in version {last} is {last_value} ({overall_progress_percentage}% overall). {key_changes} {watermark}.",
+          "stackbar_segment_share": "EN TEXT TO REPLACE: {segment}: {value} ({percentage})",
+          "stackbar_top_segments": "EN TEXT TO REPLACE: In {version}, the largest segments are {segments}.",
+          "stackbar_largest_increase": "EN TEXT TO REPLACE: The largest increase is {segment}, up {delta}.",
+          "stackbar_largest_decrease": "EN TEXT TO REPLACE: The largest decrease is {segment}, down {delta}."
+        }
       }
     },
     "dependencies": {
       "title": "Függőség ({count}) | Függőségek ({count})",
-      "insights": {},
+      "insights": {
+        "title": "EN TEXT TO REPLACE: Insights",
+        "subtitle": "EN TEXT TO REPLACE: Across all direct dependencies",
+        "tooltip_urgent": "EN TEXT TO REPLACE: Urgent (prod & bundled)",
+        "tooltip_other": "EN TEXT TO REPLACE: Other (dev, peer & optional)",
+        "major_behind": "EN TEXT TO REPLACE: Major behind",
+        "minor_behind": "EN TEXT TO REPLACE: Minor behind",
+        "patch_behind": "EN TEXT TO REPLACE: Patch behind",
+        "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
+        "deprecated": "EN TEXT TO REPLACE: Deprecated",
+        "replacements_available": "EN TEXT TO REPLACE: Replacements available",
+        "clear_filter": "EN TEXT TO REPLACE: Clear filter ({filter})",
+        "filter_by": "EN TEXT TO REPLACE: Filter dependencies by {filter}"
+      },
       "optional": "opcionális",
+      "bundled": "EN TEXT TO REPLACE: bundled",
+      "all": "EN TEXT TO REPLACE: All dependencies",
+      "none": "EN TEXT TO REPLACE: This version has no dependencies.",
+      "no_matches": "EN TEXT TO REPLACE: No dependencies match your filter.",
+      "filter_placeholder": "EN TEXT TO REPLACE: Filter dependencies...",
+      "vulnerable": "EN TEXT TO REPLACE: Vulnerable",
       "view_vulnerabilities": "Sebezhetőségek megtekintése",
       "outdated_major": "{count} major verzió lemaradva (legutóbbi: {latest}) | {count} major verzió lemaradva (legutóbbi: {latest})",
       "outdated_minor": "{count} minor verzió lemaradva (legutóbbi: {latest}) | {count} minor verzió lemaradva (legutóbbi: {latest})",
@@ -403,10 +722,19 @@
       "cancel_add": "Mégse",
       "add_owner": "+ Tulajdonos hozzáadása",
       "show_more": "(további {count} megjelenítése)",
-      "show_less": "(kevesebb megjelenítése)"
+      "show_less": "(kevesebb megjelenítése)",
+      "maintainer_template": "EN TEXT TO REPLACE: {avatar} {char126}{name}"
     },
     "trends": {
-      "chart_assistive_text": {},
+      "chart_assistive_text": {
+        "keyboard_navigation_horizontal": "EN TEXT TO REPLACE: Use the left and right arrow keys to cycle through data points.",
+        "keyboard_navigation_vertical": "EN TEXT TO REPLACE: Use the up and down arrow keys to cycle through data points.",
+        "table_available": "EN TEXT TO REPLACE: A data table for this chart is available below.",
+        "table_caption": "EN TEXT TO REPLACE: Chart data table"
+      },
+      "chart_view_toggle": "EN TEXT TO REPLACE: Toggle view",
+      "chart_view_combined": "EN TEXT TO REPLACE: Combined view",
+      "chart_view_split": "EN TEXT TO REPLACE: Split view",
       "granularity": "Bontás",
       "granularity_daily": "Napi",
       "granularity_weekly": "Heti",
@@ -418,8 +746,11 @@
       "date_range": "{start} - {end}",
       "date_range_multiline": "{start}\n- {end}",
       "download_file": "{fileType} letöltése",
+      "copy_file": "EN TEXT TO REPLACE: Copy {fileType}",
       "toggle_annotator": "Magyarázó kapcsolása",
       "toggle_stack_mode": "Verem mód kapcsolása",
+      "open_options": "EN TEXT TO REPLACE: Open options",
+      "close_options": "EN TEXT TO REPLACE: Close options",
       "legend_estimation": "Becslés",
       "no_data": "Nincs elérhető adat",
       "y_axis_label": "{granularity} {facet}",
@@ -434,6 +765,7 @@
       "data_correction": "Adatkorrekció",
       "average_window": "Átlagos ablak",
       "smoothing": "Simítás",
+      "prediction": "EN TEXT TO REPLACE: Prediction",
       "known_anomalies": "Ismert anomáliák",
       "known_anomalies_description": "Interpolálja a botok vagy CI-problémák által okozott ismert letöltési csúcsokat.",
       "known_anomalies_ranges": "Anomália tartományok",
@@ -449,19 +781,29 @@
         "trend_undefined": "meghatározatlan (nincs elegendő adat)",
         "button_label": "Alt szöveg másolása",
         "watermark": "Az alján egy vízjel olvasható: \"./npmx egy gyors, modern böngésző az npm regiszterhez\"",
+        "watermark_top": "EN TEXT TO REPLACE: At the top, a watermark reads \"./npmx a fast, modern browser for the npm registry\"",
         "analysis": "{package_name} {start_value} -ből indul és {end_value} -ben ér véget, {trend} trendet mutat {downloads_slope} letöltés/időköz meredekséggel",
         "estimation": "A végső érték a jelenlegi időszak részleges adatain alapuló becslés.",
         "estimations": "A végső értékek a jelenlegi időszak részleges adatain alapuló becslések.",
         "compare": "Csomag letöltési összehasonlítás vonaldiagram: {packages}.",
         "single_package": "A(z) {package} csomag letöltési vonaldiagramja.",
-        "general_description": "Az Y tengely a letöltések számát ábrázolja. Az X tengely a dátumtartományt ábrázolja, {start_date} -től {end_date} -ig, {granularity} időszakkal.{estimation_notice} {packages_analysis}. {watermark}."
+        "general_description": "Az Y tengely a letöltések számát ábrázolja. Az X tengely a dátumtartományt ábrázolja, {start_date} -től {end_date} -ig, {granularity} időszakkal.{estimation_notice} {packages_analysis}. {watermark}.",
+        "facet_bar_general_description": "EN TEXT TO REPLACE: Horizontal bar chart for: {packages}, comparing {facet} ({description}). {facet_analysis} {watermark}.",
+        "facet_bar_analysis": "EN TEXT TO REPLACE: {package_name} has a value of {value}."
       },
-      "embedding": {}
+      "embedding": {
+        "chart": "EN TEXT TO REPLACE: Embed this chart",
+        "copy_url": "EN TEXT TO REPLACE: Copy this URL to embed the chart into your website",
+        "preview": "EN TEXT TO REPLACE: Preview",
+        "tip": "EN TEXT TO REPLACE: If startDate and endDate are not provided in the URL, the graph will display the last 12 months by default."
+      }
     },
     "downloads": {
       "title": "Heti letöltések",
+      "version_distribution_title": "EN TEXT TO REPLACE: weekly downloads for version {version}",
       "community_distribution": "Közösségi bevezetés eloszlásának megtekintése",
-      "subtitle": "Minden verzióban"
+      "subtitle": "Minden verzióban",
+      "sparkline_nav_hint": "EN TEXT TO REPLACE: Use ← →"
     },
     "install_scripts": {
       "title": "Telepítő scriptek",
@@ -477,6 +819,7 @@
       "esm": "ES Modulok támogatva",
       "cjs": "CommonJS támogatva",
       "no_esm": "Nincs ES Modul támogatás",
+      "wasm": "EN TEXT TO REPLACE: Has WebAssembly",
       "types_label": "Típusok",
       "types_included": "Típusok mellékelve",
       "types_available": "Típusok elérhetők: {package}",
@@ -551,10 +894,20 @@
       "kb": "{size} kB",
       "mb": "{size} MB"
     },
-    "download": {}
+    "download": {
+      "button": "EN TEXT TO REPLACE: Download",
+      "tarball": "EN TEXT TO REPLACE: Download Tarball as .tar.gz"
+    }
   },
   "leaderboard": {
-    "likes": {}
+    "likes": {
+      "title": "EN TEXT TO REPLACE: Likes Leaderboard",
+      "description": "EN TEXT TO REPLACE: The 10 most liked packages on npmx right now.",
+      "rank": "EN TEXT TO REPLACE: Rank",
+      "likes": "EN TEXT TO REPLACE: Likes",
+      "unavailable_title": "EN TEXT TO REPLACE: No likes leaderboard yet",
+      "unavailable_description": "EN TEXT TO REPLACE: We don't have a likes leaderboard to show right now."
+    }
   },
   "connector": {
     "modal": {
@@ -737,8 +1090,12 @@
     "lines": "{count} sor | {count} sor",
     "toggle_tree": "Fájlfa kapcsolása",
     "close_tree": "Fájlfa bezárása",
+    "copy_content": "EN TEXT TO REPLACE: Copy file content",
     "copy_link": "Link másolása",
     "view_raw": "Nyers fájl megtekintése",
+    "toggle_container": "EN TEXT TO REPLACE: Toggle code container width",
+    "open_raw_file": "EN TEXT TO REPLACE: Open raw file",
+    "open_path_dropdown": "EN TEXT TO REPLACE: Open path segments dropdown",
     "file_too_large": "A fájl túl nagy az előnézethez",
     "file_size_warning": "{size} meghaladja az 500KB-os limitet a szintaxis alapú formázáshoz",
     "failed_to_load": "Nem sikerült betölteni a fájlt",
@@ -756,7 +1113,10 @@
       "preview": "előnézet",
       "code": "kód"
     },
-    "file_path": "Fájl elérési útja"
+    "file_path": "Fájl elérési útja",
+    "binary_file": "EN TEXT TO REPLACE: Binary file",
+    "binary_rendering_warning": "EN TEXT TO REPLACE: File type \"{contentType}\" is not supported for preview.",
+    "possibly_unnecessary": "EN TEXT TO REPLACE: May be unnecessary in a published package"
   },
   "badges": {
     "provenance": {
@@ -790,6 +1150,7 @@
     "keywords": "Kulcsszavak",
     "more_keywords": "+{count} további",
     "clear_all": "Összes törlése",
+    "select_all": "EN TEXT TO REPLACE: Select all",
     "remove_filter": "{label} szűrő eltávolítása",
     "chips": {
       "search": "Keresés",
@@ -818,6 +1179,8 @@
       "secure": "Figyelmeztetés nélkül",
       "insecure": "Figyelmeztetéssel"
     },
+    "view_selected": "EN TEXT TO REPLACE: View selected",
+    "clear_selected_label": "EN TEXT TO REPLACE: Clear selected",
     "sort": {
       "label": "Csomagok rendezése",
       "toggle_direction": "Rendezési irány váltása",
@@ -843,7 +1206,8 @@
       "published": "Utoljára közzétéve",
       "maintainers": "Karbantartók",
       "keywords": "Kulcsszavak",
-      "security": "Biztonság"
+      "security": "Biztonság",
+      "selection": "EN TEXT TO REPLACE: Select package"
     },
     "view_mode": {
       "label": "Nézet mód",
@@ -900,13 +1264,18 @@
       }
     },
     "sponsors": {
-      "title": "Szponzorok"
+      "title": "Szponzorok",
+      "gold": "EN TEXT TO REPLACE: Gold Sponsors",
+      "silver": "EN TEXT TO REPLACE: Silver Sponsors"
     },
     "oss_partners": {
       "title": "OSS partnerek"
     },
     "team": {
       "title": "Csapat",
+      "core": "EN TEXT TO REPLACE: Core",
+      "maintainers": "EN TEXT TO REPLACE: Maintainers",
+      "role_core": "EN TEXT TO REPLACE: core",
       "role_steward": "gondnok",
       "role_maintainer": "karbantartó",
       "sponsor": "szponzor",
@@ -931,7 +1300,11 @@
         "description": "Chat, kérdések és ötletelés.",
         "cta": "Csatlakozás a Discord-hoz"
       },
-      "builders": {},
+      "builders": {
+        "title": "EN TEXT TO REPLACE: Help build npmx",
+        "description": "EN TEXT TO REPLACE: Join the builders shaping the future of npmx.",
+        "cta": "EN TEXT TO REPLACE: Join Builders Discord"
+      },
       "follow": {
         "title": "Maradj naprakész",
         "description": "Értesülj a legújabb npmx hírekről.",
@@ -940,22 +1313,61 @@
     }
   },
   "sponsors_page": {
-    "what_we_do": {},
-    "what_support_means": {},
+    "title": "EN TEXT TO REPLACE: Sponsors",
+    "heading": "EN TEXT TO REPLACE: sponsors",
+    "meta_description": "EN TEXT TO REPLACE: Support npmx and help us accelerate ecosystem work around security, trust, optimization, and research.",
+    "intro": "EN TEXT TO REPLACE: Support npmx and help us grow the ecosystem work we do for developers and maintainers.",
+    "what_we_do": {
+      "title": "EN TEXT TO REPLACE: What we do",
+      "description": "EN TEXT TO REPLACE: We're building an ecosystem that solves problems around security, trust, optimization, and research for the tools we use in everyday development - quickly, conveniently, and with high quality. This project is built by developers for developers. As authors of widely used libraries, we understand team needs and actively study what maintainers and projects need most."
+    },
+    "what_support_means": {
+      "title": "EN TEXT TO REPLACE: What support means",
+      "description": "EN TEXT TO REPLACE: Our plans and connections keep growing, along with our desire to share what we've built and learn from others. Your support helps fund the project, external talks, conferences, and the broader ecosystem, and, most importantly, enables us to keep growing our community."
+    },
+    "cta": "EN TEXT TO REPLACE: See sponsorship tiers",
+    "community_growth_footnote": "EN TEXT TO REPLACE: * According to {link} Q1 2026 research.",
     "what_this_means_for_you": {
+      "title": "EN TEXT TO REPLACE: What this means for you",
+      "description": "EN TEXT TO REPLACE: npmx is not only about improving developer experience and closing critical everyday gaps. In our first six months, we have already become the default source for thousands of teams and a huge number of developers. You get not only a more stable tool for your teams, but also visibility in front of a constantly growing audience of top-tier engineers.",
       "cards": {
-        "people": {},
-        "visitors": {},
-        "stars": {},
-        "community": {},
-        "adoption": {},
-        "default_source": {}
+        "people": {
+          "contributors": "EN TEXT TO REPLACE: contributors",
+          "community_members": "EN TEXT TO REPLACE: community members"
+        },
+        "visitors": {
+          "description": "EN TEXT TO REPLACE: unique monthly visitors"
+        },
+        "stars": {
+          "title": "EN TEXT TO REPLACE: stars"
+        },
+        "community": {
+          "title": "EN TEXT TO REPLACE: fast-growing",
+          "description": "EN TEXT TO REPLACE: We are one of the fastest-growing communities in the ecosystem"
+        },
+        "adoption": {
+          "title": "EN TEXT TO REPLACE: adoption",
+          "description": "EN TEXT TO REPLACE: charts at conferences, talks, and articles rely on our data"
+        },
+        "default_source": {
+          "title": "EN TEXT TO REPLACE: default source",
+          "description": "EN TEXT TO REPLACE: pnpm made npmx the default source, many packages have been configured to link to npmx"
+        }
       }
     },
     "tiers": {
-      "silver": {},
-      "gold": {},
-      "platinum": {}
+      "title": "EN TEXT TO REPLACE: Sponsorship tiers",
+      "per_month": "EN TEXT TO REPLACE: /month",
+      "custom": "EN TEXT TO REPLACE: Custom",
+      "silver": {
+        "name": "EN TEXT TO REPLACE: Silver"
+      },
+      "gold": {
+        "name": "EN TEXT TO REPLACE: Gold"
+      },
+      "platinum": {
+        "name": "EN TEXT TO REPLACE: Platinum"
+      }
     }
   },
   "account_menu": {
@@ -1004,7 +1416,8 @@
       "error": "Nem sikerült betölteni a szervezeteket",
       "empty": "Nincsenek szervezetek",
       "view_all": "Összes megtekintése"
-    }
+    },
+    "pr": "EN TEXT TO REPLACE: Open GitHub pull request #{prNumber}"
   },
   "compare": {
     "packages": {
@@ -1021,7 +1434,12 @@
       "loading": "Csomag adatainak betöltése...",
       "error": "Nem sikerült betölteni a csomag adatait. Próbáld újra.",
       "empty_title": "Válassz csomagokat az összehasonlításhoz",
-      "empty_description": "Keress és adj hozzá legalább 2 csomagot fentebb, hogy lásd az oldalirányú összehasonlítást a metrikák között."
+      "empty_description": "Keress és adj hozzá legalább 2 csomagot fentebb, hogy lásd az oldalirányú összehasonlítást a metrikák között.",
+      "table_view": "EN TEXT TO REPLACE: Table",
+      "charts_view": "EN TEXT TO REPLACE: Charts",
+      "no_chartable_data": "EN TEXT TO REPLACE: No chartable data available for the selected facets.",
+      "bar_chart_nav_hint": "EN TEXT TO REPLACE: Use ↑ ↓",
+      "line_chart_nav_hint": "EN TEXT TO REPLACE: Use ← →"
     },
     "selector": {
       "search_label": "Csomagok keresése",
@@ -1033,7 +1451,15 @@
       "add_hint": "Adj hozzá legalább 2 csomagot az összehasonlításhoz."
     },
     "scatter_chart": {
-      "copy_alt": {}
+      "title": "EN TEXT TO REPLACE: Compare {x} vs {y}",
+      "freshness_score": "EN TEXT TO REPLACE: Freshness score",
+      "copy_alt": {
+        "analysis": "EN TEXT TO REPLACE: {package} : {x_name} ({x_value}) and {y_name} ({y_value})",
+        "description": "EN TEXT TO REPLACE: Scatter plot chart mapping {x_name} versus {y_name} for the {packages} packages. {analysis}. {watermark}"
+      },
+      "filename": "EN TEXT TO REPLACE: {x}-vs-{y}-scatter-chart",
+      "x_axis": "EN TEXT TO REPLACE: X-AXIS ↦",
+      "y_axis": "EN TEXT TO REPLACE: Y-AXIS ↥"
     },
     "no_dependency": {
       "label": "(Nincs függőség)",
@@ -1047,6 +1473,10 @@
     "facets": {
       "all": "összes",
       "none": "nincs",
+      "select_all_category_facets": "EN TEXT TO REPLACE: Select all {category} facets",
+      "deselect_all_category_facets": "EN TEXT TO REPLACE: Deselect all {category} facets",
+      "selected_all_category_facets": "EN TEXT TO REPLACE: Selected all {category} facets",
+      "deselected_all_category_facets": "EN TEXT TO REPLACE: Deselected all {category} facets",
       "coming_soon": "Hamarosan",
       "select_all": "Az összes aspektus kiválasztása",
       "deselect_all": "Az összes aspektus kijelölésének törlése",
@@ -1110,10 +1540,22 @@
           "label": "Sebezhetőségek",
           "description": "Ismert biztonsági sebezhetőségek"
         },
-        "githubStars": {},
-        "githubForks": {},
-        "githubIssues": {},
-        "createdAt": {}
+        "githubStars": {
+          "label": "EN TEXT TO REPLACE: GitHub Stars",
+          "description": "EN TEXT TO REPLACE: Number of stars on the GitHub repository"
+        },
+        "githubForks": {
+          "label": "EN TEXT TO REPLACE: GitHub Forks",
+          "description": "EN TEXT TO REPLACE: Number of forks on the GitHub repository"
+        },
+        "githubIssues": {
+          "label": "EN TEXT TO REPLACE: GitHub Issues",
+          "description": "EN TEXT TO REPLACE: Number of issues on the GitHub repository"
+        },
+        "createdAt": {
+          "label": "EN TEXT TO REPLACE: Created At",
+          "description": "EN TEXT TO REPLACE: When the package was created"
+        }
       },
       "values": {
         "any": "Bármely",
@@ -1134,13 +1576,23 @@
     "files_count": "{count} fájl",
     "lines_hidden": "{count} sor elrejtve",
     "compare_versions": "diff",
-    "version_invalid_url_format": {},
+    "compare_versions_title": "EN TEXT TO REPLACE: Compare with latest version",
+    "comparing_versions_label": "EN TEXT TO REPLACE: Comparing versions...",
+    "version_back_to_package": "EN TEXT TO REPLACE: Back to package",
+    "version_error_message": "EN TEXT TO REPLACE: Failed to compare versions.",
+    "version_invalid_url_format": {
+      "hint": "EN TEXT TO REPLACE: Invalid comparison URL. Use format: {0}",
+      "from_version": "EN TEXT TO REPLACE: from",
+      "to_version": "EN TEXT TO REPLACE: to"
+    },
+    "version_selector_title": "EN TEXT TO REPLACE: Compare with version",
     "summary": "Összegzés",
     "deps_count": "{count} függ",
     "dependencies": "Függőségek",
     "dev_dependencies": "Dev függőségek",
     "peer_dependencies": "Peer függőségek",
     "optional_dependencies": "Opcionális függőségek",
+    "bundled_dependencies": "EN TEXT TO REPLACE: Bundled Dependencies",
     "no_dependency_changes": "Nincs függőség módosítás",
     "file_filter_option": {
       "all": "Összes ({count})",
@@ -1160,12 +1612,49 @@
     "files_button": "Fájlok",
     "select_file_prompt": "Válassz egy fájlt az oldalsávból a diff megtekintéséhez",
     "close_files_panel": "Fájlok panel bezárása",
-    "filter_files_label": "Fájlok szűrése módosítás típusa szerint"
+    "filter_files_label": "Fájlok szűrése módosítás típusa szerint",
+    "change_ratio": "EN TEXT TO REPLACE: Change ratio",
+    "char_edits": "EN TEXT TO REPLACE: Char edits",
+    "diff_distance": "EN TEXT TO REPLACE: Diff distance",
+    "diff_truncated": "EN TEXT TO REPLACE: Diff truncated for performance. Showing the first changed lines only.",
+    "large_diff_mode": "EN TEXT TO REPLACE: Large file diff shown with inline edit merging disabled for performance.",
+    "large_diff_options_disabled": "EN TEXT TO REPLACE: Large file mode disables inline edit merging for performance.",
+    "loading_diff": "EN TEXT TO REPLACE: Loading diff...",
+    "loading_diff_error": "EN TEXT TO REPLACE: Failed to load diff",
+    "merge_modified_lines": "EN TEXT TO REPLACE: Merge modified lines",
+    "no_content_changes": "EN TEXT TO REPLACE: No content changes detected",
+    "options": "EN TEXT TO REPLACE: Options",
+    "view_file": "EN TEXT TO REPLACE: View file",
+    "view_in_code_browser": "EN TEXT TO REPLACE: View in code browser",
+    "word_wrap": "EN TEXT TO REPLACE: Word wrap"
   },
   "pds": {
-    "join": {},
-    "server": {},
-    "community": {}
+    "title": "EN TEXT TO REPLACE: npmx.social",
+    "meta_description": "EN TEXT TO REPLACE: The official AT Protocol Personal Data Server (PDS) for the npmx community.",
+    "join": {
+      "title": "EN TEXT TO REPLACE: Join the Community",
+      "description": "EN TEXT TO REPLACE: Whether you are creating your first account on the atmosphere or migrating an existing one, you belong here. You can migrate your current account without losing your handle, your posts, or your followers.",
+      "migrate": "EN TEXT TO REPLACE: Migrate with PDS MOOver"
+    },
+    "server": {
+      "title": "EN TEXT TO REPLACE: Server Details",
+      "location_label": "EN TEXT TO REPLACE: Location:",
+      "location_value": "EN TEXT TO REPLACE: Nuremberg, Germany",
+      "infrastructure_label": "EN TEXT TO REPLACE: Infrastructure:",
+      "infrastructure_value": "EN TEXT TO REPLACE: Hosted on Hetzner",
+      "privacy_label": "EN TEXT TO REPLACE: Privacy:",
+      "privacy_value": "EN TEXT TO REPLACE: Subject to strict EU Data Protection laws",
+      "learn_more": "EN TEXT TO REPLACE: Learn how npmx uses the Atmosphere"
+    },
+    "community": {
+      "title": "EN TEXT TO REPLACE: Who is here",
+      "description": "EN TEXT TO REPLACE: Some of the {count} accounts that are already calling npmx.social home:",
+      "loading": "EN TEXT TO REPLACE: Loading PDS community...",
+      "error": "EN TEXT TO REPLACE: Failed to load PDS community.",
+      "empty": "EN TEXT TO REPLACE: No community members to display.",
+      "view_profile": "EN TEXT TO REPLACE: View {handle}'s profile",
+      "new_accounts": "EN TEXT TO REPLACE: ...plus {count} more that are new to the atmosphere"
+    }
   },
   "privacy_policy": {
     "title": "adatvédelmi nyilatkozat",
@@ -1278,25 +1767,129 @@
     }
   },
   "translation_status": {
-    "table": {}
-  },
-  "vacations": {
-    "what": {},
-    "meantime": {},
-    "return": {},
-    "stats": {
-      "subtitle": {}
+    "title": "EN TEXT TO REPLACE: translation status",
+    "generated_at": "EN TEXT TO REPLACE: Generation date: {date}",
+    "welcome": "EN TEXT TO REPLACE: If you're interested in helping us to translate {npmx} into one of the languages listed below, you've come to the right place! This auto-updating page always lists all the content that could use your help right now.",
+    "p1": "EN TEXT TO REPLACE: We use {lang} as the default language, with a total of {count}. If you'd like to help add translations, locate the language in {bylang} and expand the details.",
+    "p1_lang": "EN TEXT TO REPLACE: American English (en-US)",
+    "p1_count": "EN TEXT TO REPLACE: 0 messages | 1 message |{count} messages",
+    "p2": "EN TEXT TO REPLACE: Before starting, please read our {guide} to learn about our translation process and how you can get involved.",
+    "guide": "EN TEXT TO REPLACE: localization (i18n) guide",
+    "by_locale": "EN TEXT TO REPLACE: Translation progress by locale",
+    "by_file": "EN TEXT TO REPLACE: Translation progress by file",
+    "complete_text": "EN TEXT TO REPLACE: This translation is complete, amazing job!",
+    "missing_text": "EN TEXT TO REPLACE: missing",
+    "missing_keys": "EN TEXT TO REPLACE: There is no missing translations | Missing translation | Missing translations",
+    "progress_label": "EN TEXT TO REPLACE: Progress status for {locale}",
+    "table": {
+      "file": "EN TEXT TO REPLACE: File",
+      "status": "EN TEXT TO REPLACE: Status",
+      "error": "EN TEXT TO REPLACE: Error while loading file list.",
+      "empty": "EN TEXT TO REPLACE: No files found",
+      "file_link": "EN TEXT TO REPLACE: Edit {file} ({lang}) on GitHub"
     }
   },
-  "action_bar": {},
-  "logo_menu": {},
-  "brand": {
-    "logos": {},
-    "customize": {},
-    "typography": {},
-    "guidelines": {}
+  "vacations": {
+    "title": "EN TEXT TO REPLACE: on vacation",
+    "meta_description": "EN TEXT TO REPLACE: The npmx team was recharging. Discord reopened after a week.",
+    "heading": "EN TEXT TO REPLACE: recharging",
+    "subtitle": "EN TEXT TO REPLACE: we were building npmx at a pace that was costing {some} of us sleep. we didn't want that to be the norm! so we took a week off. together.",
+    "illustration_alt": "EN TEXT TO REPLACE: a single row of cosy icons",
+    "poke_log": "EN TEXT TO REPLACE: Poke the campfire",
+    "what": {
+      "title": "EN TEXT TO REPLACE: what happened",
+      "p1": "EN TEXT TO REPLACE: discord was closed {dates}.",
+      "dates": "EN TEXT TO REPLACE: February 14 – 21",
+      "p2": "EN TEXT TO REPLACE: all invite links were gone and channels were locked – except {garden}, which stayed open for folks who wanted to keep hanging out.",
+      "garden": "EN TEXT TO REPLACE: #garden"
+    },
+    "meantime": {
+      "title": "EN TEXT TO REPLACE: in the meantime",
+      "p1": "EN TEXT TO REPLACE: {site} and {repo} stayed open – people still dug in, filed some issues, opened a few PRs, but mainly everyone spent time somewhere near a cosy fireplace.",
+      "repo_link": "EN TEXT TO REPLACE: the repo"
+    },
+    "return": {
+      "title": "EN TEXT TO REPLACE: we came back!",
+      "p1": "EN TEXT TO REPLACE: we came back recharged and ready for the final push to March 3rd. {social} for updates.",
+      "social_link": "EN TEXT TO REPLACE: follow us on Bluesky"
+    },
+    "stats": {
+      "contributors": "EN TEXT TO REPLACE: Contributors",
+      "commits": "EN TEXT TO REPLACE: Commits",
+      "pr": "EN TEXT TO REPLACE: PRs Merged",
+      "subtitle": {
+        "some": "EN TEXT TO REPLACE: some",
+        "all": "EN TEXT TO REPLACE: all"
+      }
+    }
   },
+  "action_bar": {
+    "title": "EN TEXT TO REPLACE: action bar",
+    "selection": "EN TEXT TO REPLACE: 0 selected | 1 selected | {count} selected",
+    "shortcut": "EN TEXT TO REPLACE: Press \"{key}\" to focus actions",
+    "button_close_aria_label": "EN TEXT TO REPLACE: Close action bar"
+  },
+  "logo_menu": {
+    "copy_svg": "EN TEXT TO REPLACE: Copy logo as SVG",
+    "copied": "EN TEXT TO REPLACE: Copied!",
+    "browse_brand": "EN TEXT TO REPLACE: Browse brand kit"
+  },
+  "brand": {
+    "title": "EN TEXT TO REPLACE: Brand",
+    "heading": "EN TEXT TO REPLACE: brand",
+    "meta_description": "EN TEXT TO REPLACE: npmx brand guidelines, logos, colors, and typography for use in press and media.",
+    "intro": "EN TEXT TO REPLACE: Resources and guidelines for using the npmx brand in your projects, articles, and media.",
+    "logos": {
+      "title": "EN TEXT TO REPLACE: logos",
+      "description": "EN TEXT TO REPLACE: Download npmx logos in SVG and PNG formats. Use the appropriate variant for your background.",
+      "wordmark": "EN TEXT TO REPLACE: FULL WORDMARK",
+      "wordmark_alt": "EN TEXT TO REPLACE: npmx full wordmark logo with blue slash on dark background",
+      "wordmark_light_alt": "EN TEXT TO REPLACE: npmx full wordmark logo with accent slash on light background",
+      "mark": "EN TEXT TO REPLACE: LOGO MARK",
+      "mark_alt": "EN TEXT TO REPLACE: npmx logo mark with dot and slash on dark background",
+      "mark_light_alt": "EN TEXT TO REPLACE: npmx logo mark with dot and slash on light background",
+      "on_dark": "EN TEXT TO REPLACE: on dark",
+      "on_light": "EN TEXT TO REPLACE: on light",
+      "download_svg": "EN TEXT TO REPLACE: SVG",
+      "download_png": "EN TEXT TO REPLACE: PNG",
+      "download_svg_aria": "EN TEXT TO REPLACE: Download {name} as SVG",
+      "download_png_aria": "EN TEXT TO REPLACE: Download {name} as PNG"
+    },
+    "customize": {
+      "title": "EN TEXT TO REPLACE: customize your logo",
+      "description": "EN TEXT TO REPLACE: Preview the npmx logo with your accent color and background. The preview reflects your current settings — pick a color, toggle the background, and download.",
+      "accent_label": "EN TEXT TO REPLACE: accent",
+      "bg_label": "EN TEXT TO REPLACE: background",
+      "download_svg_aria": "EN TEXT TO REPLACE: Download customized logo as SVG",
+      "download_png_aria": "EN TEXT TO REPLACE: Download customized logo as PNG"
+    },
+    "typography": {
+      "title": "EN TEXT TO REPLACE: typography",
+      "description": "EN TEXT TO REPLACE: npmx uses the Geist font family by Vercel for both interface text and code.",
+      "sans": "EN TEXT TO REPLACE: Geist Sans",
+      "sans_desc": "EN TEXT TO REPLACE: Used for body text and UI elements.",
+      "mono": "EN TEXT TO REPLACE: Geist Mono",
+      "mono_desc": "EN TEXT TO REPLACE: Used for code, headings, and technical content.",
+      "pangram": "EN TEXT TO REPLACE: The quick brown fox jumps over the lazy dog",
+      "numbers": "EN TEXT TO REPLACE: 0123456789"
+    },
+    "guidelines": {
+      "title": "EN TEXT TO REPLACE: just a note",
+      "message": "EN TEXT TO REPLACE: Accessibility matters to us, and we would love you to follow us in this vision. When using mentioned media, ensure there is enough contrast against the background, and don't go smaller than 24px. If you need any other resources or additional information about the project, feel free to reach us at {link}.",
+      "discord_link_text": "EN TEXT TO REPLACE: chat.npmx.dev"
+    }
+  },
+  "alt_logo_kawaii": "EN TEXT TO REPLACE: A cute, rounded, and colorful version of the npmx logo.",
   "changelog": {
-    "error": {}
+    "pre_release": "EN TEXT TO REPLACE: Pre-release",
+    "draft": "EN TEXT TO REPLACE: Draft",
+    "no_logs": "EN TEXT TO REPLACE: Sorry, this package does not publish changelogs or its changelog format is not supported.",
+    "error": {
+      "p1": "EN TEXT TO REPLACE: Sorry, the changelog for {package} couldn't be loaded",
+      "p2": "EN TEXT TO REPLACE: Please try again later or {viewon}"
+    },
+    "rate_limit_ungh": "EN TEXT TO REPLACE: Sorry, Github's rate limit has been hit, try again in a moment",
+    "version_unavailable": "EN TEXT TO REPLACE: The requested version is not available.",
+    "copy_as_markdown": "EN TEXT TO REPLACE: Copy changelog as Markdown"
   }
 }
