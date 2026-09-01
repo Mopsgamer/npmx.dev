@@ -81,14 +81,6 @@ export function getVersionClass(
     // Normal
     return 'text-fg-subtle'
   }
-  // Green for up-to-date (e.g. "latest" constraint)
-  if (
-    outdated.majorsBehind === 0 &&
-    outdated.minorsBehind === 0 &&
-    outdated.resolved === outdated.latest
-  ) {
-    return 'text-green-700 dark:text-green-500'
-  }
   // Red for major versions behind
   if (outdated.majorsBehind > 0) return 'text-red-700 dark:text-red-500'
   // if (info.majorsBehind > 0) return 'text-#db0000 dark:text-red-500'

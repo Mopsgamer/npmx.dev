@@ -10,19 +10,13 @@ import type { DependencySpec } from '~/utils/npm/package-dependency-sections'
 
 const BATCH_SIZE = 50
 
-function resolveOutdated(
+export function resolveOutdated(
   versions: string[],
   latestTag: string,
   constraint: string,
 ): OutdatedDependencyInfo | null {
   if (constraint === 'latest') {
-    return {
-      resolved: latestTag,
-      latest: latestTag,
-      majorsBehind: 0,
-      minorsBehind: 0,
-      diffType: null,
-    }
+    return null
   }
 
   let filteredVersions = versions
