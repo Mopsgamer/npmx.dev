@@ -75,12 +75,12 @@ const { t } = useI18n()
   </PackageTableRow>
 
   <!-- Skeleton row -->
-  <tr v-else class="border-b border-border">
+  <tr v-else class="border-b border-border relative">
     <!-- Name (always visible) -->
-    <td class="py-2 px-3">
+    <td class="py-2 px-3 inline-flex items-center gap-2">
       <NuxtLink
         :to="packageUrl"
-        class="row-link font-mono text-sm transition-colors duration-200 inline-flex items-center gap-2 min-w-0"
+        class="row-link font-mono text-sm transition-colors duration-200 inline-flex items-center gap-2 min-w-0 after:content-[''] after:absolute after:inset-0"
         :data-result-index="index"
         dir="ltr"
       >
@@ -93,10 +93,19 @@ const { t } = useI18n()
           class="relative z-10"
         />
       </NuxtLink>
+      <DependenciesStatusIndicators
+        :name="item.name"
+        :package-name="targetName"
+        :flags="item.flags"
+        class="relative z-10"
+      />
     </td>
 
     <!-- Version -->
-    <td v-if="isColumnVisible('version')" class="py-2 px-3 font-mono text-xs text-fg-subtle">
+    <td
+      v-if="isColumnVisible('version')"
+      class="py-2 px-3 font-mono text-xs text-fg-subtle relative z-10"
+    >
       <span dir="ltr">{{ item.range }}</span>
     </td>
 

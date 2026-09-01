@@ -45,18 +45,20 @@ const healthStatusAlert = computed(() => {
 </script>
 
 <template>
-  <div class="inline-flex items-center gap-1.5 shrink-0">
+  <div class="z-20 inline-flex items-center gap-1.5 shrink-0">
     <template v-for="attribute in flags" :key="attribute">
       <TooltipApp
         v-if="structuralMeta[attribute]"
         :text="structuralMeta[attribute].text"
         class="inline-flex shrink-0"
       >
-        <span
-          :class="structuralMeta[attribute].icon"
-          class="w-3 h-3 text-fg-subtle"
-          aria-hidden="true"
-        />
+        <div class="inline-flex p-1.5">
+          <span
+            :class="structuralMeta[attribute].icon"
+            class="w-3.5 h-3.5 text-fg-subtle"
+            aria-hidden="true"
+          />
+        </div>
       </TooltipApp>
     </template>
 
@@ -65,11 +67,13 @@ const healthStatusAlert = computed(() => {
       :text="healthStatusAlert.tooltipText"
       class="inline-flex shrink-0"
     >
-      <span
-        :class="[healthStatusAlert.icon, healthStatusAlert.cssClass]"
-        class="w-3.5 h-3.5"
-        aria-hidden="true"
-      />
+      <div class="inline-flex p-1.5">
+        <span
+          :class="[healthStatusAlert.icon, healthStatusAlert.cssClass]"
+          class="w-3.5 h-3.5"
+          aria-hidden="true"
+        />
+      </div>
     </TooltipApp>
   </div>
 </template>

@@ -98,17 +98,23 @@ const numberFormatter = useNumberFormatter()
         <NuxtLink
           :to="packageUrl"
           :prefetch-on="prefetch ? 'visibility' : 'interaction'"
-          class="decoration-none hover:text-accent-fallback"
+          class="decoration-none hover:text-accent-fallback after:content-[''] after:absolute after:inset-0 inline-flex items-center gap-2 min-w-0"
           :data-result-index="index"
           dir="ltr"
-          >{{ result.package.name }}</NuxtLink
         >
+          <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+          <span class="truncate">{{ result.package.name }}</span>
+        </NuxtLink>
         <slot name="status-indicators" :insights="insights">
-          <DependenciesStatusIndicators :name="result.package.name" :insights="insights" />
+          <DependenciesStatusIndicators
+            :name="result.package.name"
+            :insights="insights"
+            class="relative z-10"
+          />
         </slot>
         <span
           v-if="isExactMatch"
-          class="text-xs px-1.5 py-0.5 ms-2 rounded bg-bg-elevated border border-border-hover text-fg"
+          class="text-xs px-1.5 py-0.5 ms-2 rounded bg-bg-elevated border border-border-hover text-fg relative z-10"
           >{{ $t('search.exact_match') }}</span
         >
       </component>
@@ -119,6 +125,7 @@ const numberFormatter = useNumberFormatter()
         :disabled="!canSelectMore && !isSelected"
         :checked="isSelected"
         @change="togglePackageSelection"
+        class="relative z-10"
       />
     </header>
 
@@ -135,10 +142,23 @@ const numberFormatter = useNumberFormatter()
         compact
       />
       <dl class="contents m-0">
-        <div v-if="result.package.version" class="flex items-center gap-1.5 min-w-0">
+        <div v-if="result.package.version" class="flex items-center gap-1.5 min-w-0 relative z-10">
           <dt class="sr-only">{{ $t('package.card.version') }}</dt>
           <dd class="font-mono truncate max-w-32" :title="result.package.version">
-            {{ versionIsRange ? '' : 'v' }}{{ result.package.version }}
+            <TooltipApp
+              v-if="insights.outdatedDeps.value[result.package.name]"
+              :text="getOutdatedTooltip(insights.outdatedDeps.value[result.package.name]!, $t)"
+              position="top"
+            >
+              <span
+                :class="getVersionClass(result.package.name, insights)"
+                class="flex items-center gap-1 cursor-help"
+              >
+                <span class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                <span>{{ versionIsRange ? '' : 'v' }}{{ result.package.version }}</span>
+              </span>
+            </TooltipApp>
+            <span v-else> {{ versionIsRange ? '' : 'v' }}{{ result.package.version }} </span>
           </dd>
         </div>
         <div v-if="result.package.date" class="flex items-center gap-1.5">
@@ -200,7 +220,7 @@ const numberFormatter = useNumberFormatter()
 
     <div
       v-if="hasExtra"
-      class="flex items-center justify-between gap-2 mt-3 pt-3 border-t border-border relative z-10"
+      class="flex items-center justify-between gap-2 mt-3 pt-3 border-t border-border"
     >
       <div class="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs shrink-0">
         <span

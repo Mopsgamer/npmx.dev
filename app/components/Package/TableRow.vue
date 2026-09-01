@@ -82,29 +82,27 @@ const { selectable } = usePackageSelectionContext()
       />
     </td>
     <!-- Name (always visible) -->
-    <td class="py-2 px-3">
+    <td class="py-2 px-3 inline-flex items-center gap-2">
       <NuxtLink
         :to="packageUrl"
-        class="row-link font-mono text-sm transition-colors duration-200 inline-flex items-center gap-2 min-w-0"
+        class="row-link font-mono text-sm transition-colors duration-200 inline-flex items-center gap-2 min-w-0 after:content-[''] after:absolute after:inset-0"
         :class="packageTextColorClass"
         :data-result-index="index"
         dir="ltr"
       >
         <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
         <span class="truncate">{{ pkg.name }}</span>
-
-        <slot name="status-indicators" :insights="insights">
-          <DependenciesStatusIndicators
-            :name="pkg.name"
-            :insights="insights"
-            class="relative z-10"
-          />
-        </slot>
       </NuxtLink>
+      <slot name="status-indicators" :insights="insights">
+        <DependenciesStatusIndicators :name="pkg.name" :insights="insights" class="relative z-10" />
+      </slot>
     </td>
 
     <!-- Version -->
-    <td v-if="isColumnVisible('version')" class="py-2 px-3 font-mono text-xs text-fg-subtle">
+    <td
+      v-if="isColumnVisible('version')"
+      class="py-2 px-3 font-mono text-xs text-fg-subtle relative z-10"
+    >
       <slot name="version" :version="pkg.version">
         <span dir="ltr">{{ pkg.version }}</span>
       </slot>

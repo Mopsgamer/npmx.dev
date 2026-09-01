@@ -33,17 +33,23 @@ const packageUrl = computed(() => packageRoute(targetName.value))
       >
         <NuxtLink
           :to="packageUrl"
-          class="decoration-none hover:text-accent-fallback"
+          class="decoration-none hover:text-accent-fallback after:content-[''] after:absolute after:inset-0 inline-flex items-center gap-2 min-w-0"
           :data-result-index="index"
           dir="ltr"
-          >{{ item.name }}</NuxtLink
         >
-        <DependenciesStatusIndicators :name="targetName" :flags="item.flags" />
+          <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+          <span class="truncate">{{ item.name }}</span>
+        </NuxtLink>
+        <DependenciesStatusIndicators
+          :name="targetName"
+          :flags="item.flags"
+          class="relative z-10"
+        />
       </h2>
     </header>
     <SkeletonBlock class="h-5 w-full mb-2 sm:mb-3" />
     <div class="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-2 text-xs text-fg-muted">
-      <div class="flex items-center gap-1.5 min-w-0">
+      <div class="flex items-center gap-1.5 min-w-0 relative z-10">
         <dl>
           <dt class="sr-only">{{ $t('package.card.version') }}</dt>
           <dd class="font-mono truncate max-w-32" :title="item.range">{{ item.range }}</dd>
