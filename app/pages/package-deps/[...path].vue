@@ -90,6 +90,10 @@ watch(
 
 const displayVersion = computed(() => pkg.value?.requestedVersion ?? null)
 
+const isPkgLoading = computed(
+  () => resolvedStatus.value === 'pending' || (!pkg.value && pkgStatus.value !== 'error'),
+)
+
 const sections = computed(() => getPackageDependencySections(displayVersion.value))
 
 const DEFAULT_SORT: DependencySortOption = 'name-asc'
@@ -411,10 +415,7 @@ const showSkeleton = shallowRef(false)
       page="dependencies"
     />
 
-    <div
-      v-if="!resolvedVersion || pkgStatus === 'pending' || pkgStatus === 'idle'"
-      class="container py-20 text-center"
-    >
+    <div v-if="isPkgLoading" class="container py-20 text-center">
       <div class="i-svg-spinners:ring-resize w-8 h-8 mx-auto text-fg-muted" />
     </div>
 
@@ -434,7 +435,10 @@ const showSkeleton = shallowRef(false)
       }}</LinkBase>
     </div>
 
-    <div v-else-if="sections.length === 0" class="container py-20 text-center">
+    <div
+      v-else-if="sections.length === 0 && pkgStatus === 'success'"
+      class="container py-20 text-center"
+    >
       <p class="text-fg-muted mb-4">{{ $t('package.dependencies.none') }}</p>
       <LinkBase variant="button-secondary" :to="packageRoute(packageName, requestedVersion)">{{
         $t('code.back_to_package')
