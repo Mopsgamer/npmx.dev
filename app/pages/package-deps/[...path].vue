@@ -447,47 +447,49 @@ const showSkeleton = shallowRef(false)
       class="container w-full"
       dir="ltr"
     >
-      <DependenciesInsightsSummary
-        v-model:selected-insights="selectedInsights"
-        :sections="sections"
-        :show-skeleton="showSkeleton"
-        :insights="insights"
-        :package-name="packageName"
-      />
-
-      <div class="py-4">
-        <DependenciesToolbar
-          v-model:filter="filter"
-          v-model:sort="sort"
-          v-model:view-mode="viewMode"
-          v-model:active-sections="activeSections"
-          :columns="columns"
-          :filtered-count="filteredItems.length"
-          :total-count="allSectionItems.length"
+      <ClientOnly>
+        <DependenciesInsightsSummary
+          v-model:selected-insights="selectedInsights"
           :sections="sections"
-          @toggle-column="toggleColumn"
-          @reset-columns="resetColumns"
-        />
-
-        <div v-if="isInsightsLoading" class="py-12 text-center">
-          <div class="i-svg-spinners:ring-resize w-6 h-6 mx-auto text-fg-muted" />
-        </div>
-
-        <DependenciesList
-          v-else-if="filteredItems.length > 0"
-          :items="filteredItems"
-          :view-mode="viewMode"
-          :columns="columns"
           :show-skeleton="showSkeleton"
-          :sort="sort"
           :insights="insights"
-          @update:sort="sort = $event"
+          :package-name="packageName"
         />
 
-        <p v-else class="py-12 text-center text-fg-subtle font-mono text-sm">
-          {{ $t('package.dependencies.no_matches') }}
-        </p>
-      </div>
+        <div class="py-4">
+          <DependenciesToolbar
+            v-model:filter="filter"
+            v-model:sort="sort"
+            v-model:view-mode="viewMode"
+            v-model:active-sections="activeSections"
+            :columns="columns"
+            :filtered-count="filteredItems.length"
+            :total-count="allSectionItems.length"
+            :sections="sections"
+            @toggle-column="toggleColumn"
+            @reset-columns="resetColumns"
+          />
+
+          <div v-if="isInsightsLoading" class="py-12 text-center">
+            <div class="i-svg-spinners:ring-resize w-6 h-6 mx-auto text-fg-muted" />
+          </div>
+
+          <DependenciesList
+            v-else-if="filteredItems.length > 0"
+            :items="filteredItems"
+            :view-mode="viewMode"
+            :columns="columns"
+            :show-skeleton="showSkeleton"
+            :sort="sort"
+            :insights="insights"
+            @update:sort="sort = $event"
+          />
+
+          <p v-else class="py-12 text-center text-fg-subtle font-mono text-sm">
+            {{ $t('package.dependencies.no_matches') }}
+          </p>
+        </div>
+      </ClientOnly>
     </article>
   </main>
 </template>
