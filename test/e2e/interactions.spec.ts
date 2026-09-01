@@ -461,9 +461,9 @@ test.describe('Package Dependencies Page', () => {
     page,
     goto,
   }) => {
-    await goto('/package-deps/strip-ansi/v/0.1.0', { waitUntil: 'hydration' })
+    await goto('/package-deps/react/v/19.2.5', { waitUntil: 'hydration' })
 
-    await expect(page.locator('h1').first()).toContainText('strip-ansi')
+    await expect(page.locator('h1').first()).toContainText('react')
 
     await expect(page.locator('text=This version has no dependencies')).toBeVisible({
       timeout: 15_000,
