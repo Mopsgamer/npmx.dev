@@ -51,8 +51,8 @@ export function normalizeDependencies(
 
 export function getNormalizedDependenciesFromPackageVersion(
   reqVer: Partial<PackumentVersion> | null | undefined,
-): Record<string, DependencySpec> {
-  if (!reqVer) return {}
+): Record<string, DependencySpec> | undefined {
+  if (!reqVer) return undefined
   const rawRecord: Record<string, string> = {
     ...reqVer.dependencies,
     ...reqVer.devDependencies,
