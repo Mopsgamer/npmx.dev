@@ -31,10 +31,11 @@ if (import.meta.server && packageName.value) {
   assertValidPackageName(packageName.value)
 }
 
-const { data: resolvedVersion, status: resolvedStatus } = await useResolvedVersion(
-  packageName,
-  requestedVersion,
-)
+const {
+  data: resolvedVersion,
+  status: resolvedStatus,
+  pending: resolvedPending,
+} = await useResolvedVersion(packageName, requestedVersion)
 
 if (
   import.meta.server &&
@@ -92,7 +93,7 @@ watch(
 const displayVersion = computed(() => pkg.value?.requestedVersion ?? null)
 
 const isPkgLoading = computed(
-  () => resolvedStatus.value === 'pending' || (!pkg.value && pkgStatus.value !== 'error'),
+  () => resolvedPending.value || pkgStatus.value === 'idle' || pkgStatus.value === 'pending',
 )
 
 const sections = computed(() => getPackageDependencySections(displayVersion.value))
@@ -465,7 +466,7 @@ function handleKeywordClick(keyword: string) {
     </div>
 
     <div
-      v-else-if="sections.length === 0 && pkgStatus === 'success'"
+      v-else-if="sections.length === 0 && pkgStatus === 'success' && resolvedStatus === 'success'"
       class="container py-20 text-center"
     >
       <p class="text-fg-muted mb-4">{{ $t('package.dependencies.none') }}</p>

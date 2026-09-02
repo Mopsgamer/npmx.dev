@@ -139,26 +139,28 @@ const metrics = computed<InsightMetric[]>(() => [
     nonUrgentCount: stats.value.nonUrgent.replacement,
   },
 ])
+
+function isItemZero(item: InsightMetric): boolean {
+  return item.nonUrgentCount === 0 && item.urgentCount === 0
+}
+
+function isItemInteractive(item: InsightMetric): boolean {
+  return props.interactive && !isItemZero(item)
+}
 </script>
 
 <template>
-  <section class="w-full py-4 mt-6">
+  <section id="dependency-health" class="w-full py-4 mt-6">
     <div class="flex items-center justify-between mb-2">
       <div class="flex items-center gap-1.5">
-        <h2 class="text-fg-muted uppercase text-xs font-semibold tracking-wider">
+        <h2 class="text-fg-muted uppercase">
           {{ $t('package.dependencies.insights.title') }}
         </h2>
         <TooltipApp
           :text="`${$t('package.dependencies.insights.subtitle')} — ${$t('package.dependencies.insights.tooltip_urgent')} / ${$t('package.dependencies.insights.tooltip_other')}`"
           position="bottom"
         >
-          <button
-            type="button"
-            class="inline-flex items-center cursor-help text-fg-subtle hover:text-fg p-0.5 rounded"
-            :aria-label="$t('package.dependencies.insights.title')"
-          >
-            <span class="i-lucide:info w-3.5 h-3.5" aria-hidden="true" />
-          </button>
+          <span class="i-lucide:info w-3.5 h-3.5" aria-hidden="true" />
         </TooltipApp>
       </div>
 
@@ -177,28 +179,28 @@ const metrics = computed<InsightMetric[]>(() => [
       class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-3 gap-x-4 border-y-border border-y py-3"
     >
       <component
-        :is="interactive ? 'button' : 'div'"
+        :is="isItemInteractive(item) ? 'button' : 'div'"
         v-for="item in metrics"
         :key="item.id"
-        :type="interactive ? 'button' : undefined"
+        :type="isItemInteractive(item) ? 'button' : undefined"
         class="py-1.5 px-2 rounded-md text-start transition-colors duration-200"
         :class="[
-          interactive
+          isItemInteractive(item)
             ? 'focus-visible:(outline-2 outline-accent/70 outline-offset-1) hover:bg-bg-subtle cursor-pointer'
             : '',
-          interactive && selectedInsights.includes(item.id)
+          isItemInteractive(item) && selectedInsights.includes(item.id)
             ? 'bg-bg-muted ring-1 ring-border-hover'
             : '',
         ]"
-        :aria-pressed="interactive ? selectedInsights.includes(item.id) : undefined"
+        :aria-pressed="isItemInteractive(item) ? selectedInsights.includes(item.id) : undefined"
         :aria-label="
-          interactive
+          isItemInteractive(item)
             ? selectedInsights.includes(item.id)
               ? $t('package.dependencies.insights.clear_filter', { filter: item.label })
               : $t('package.dependencies.insights.filter_by', { filter: item.label })
             : undefined
         "
-        @click="interactive ? toggleInsight(item.id) : undefined"
+        @click="isItemInteractive(item) ? toggleInsight(item.id) : undefined"
       >
         <span class="text-xs text-fg-muted lowercase flex items-center gap-1.5 truncate">
           <span class="truncate">{{ item.label }}</span>
@@ -206,26 +208,22 @@ const metrics = computed<InsightMetric[]>(() => [
         </span>
         <span class="text-sm font-mono mt-1 block">
           <template v-if="showSkeleton || item.loading">
-            <span
-              aria-hidden="true"
-              class="block w-4 h-4 border-2 border-fg-subtle border-t-fg rounded-full motion-safe:animate-spin"
-            />
+            <span class="inline-flex items-center gap-1 text-fg-subtle">
+              <span class="i-svg-spinners:ring-resize w-3 h-3" aria-hidden="true" />
+            </span>
           </template>
           <template v-else>
-            <span class="flex items-baseline gap-1">
-              <span
-                class="tabular-nums"
-                :class="item.urgentCount > 0 ? 'text-fg font-medium' : 'text-fg-subtle'"
-              >
+            <span class="flex text-sm items-center text-fg-subtle gap-1">
+              <span v-if="isItemZero(item)" class="i-lucide:check w-3 h-3" aria-hidden="true" />
+              <span class="tabular-nums" :class="item.urgentCount > 0 ? 'text-fg font-medium' : ''">
                 {{ item.urgentCount }}
               </span>
-              <span class="text-fg-subtle px-0.5">/</span>
-              <span
-                class="tabular-nums"
-                :class="item.nonUrgentCount > 0 ? 'text-fg-muted' : 'text-fg-subtle'"
-              >
-                {{ item.nonUrgentCount }}
-              </span>
+              <template v-if="!isItemZero(item)">
+                <span class="px-0.5">/</span>
+                <span class="tabular-nums" :class="item.nonUrgentCount > 0 ? 'text-fg-muted' : ''">
+                  {{ item.nonUrgentCount }}
+                </span>
+              </template>
             </span>
           </template>
         </span>
