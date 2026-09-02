@@ -17,6 +17,7 @@ const props = withDefaults(
   defineProps<{
     insights?: PackageDependencyInsights
     sections: PackageDependencySection[]
+    activeSections?: string[]
     showSkeleton: boolean
     packageName?: string
     interactive?: boolean
@@ -29,29 +30,47 @@ const props = withDefaults(
 const stats = computed(() => {
   const urgent = { major: 0, minor: 0, patch: 0, vulnerable: 0, deprecated: 0, replacement: 0 }
   const nonUrgent = { major: 0, minor: 0, patch: 0, vulnerable: 0, deprecated: 0, replacement: 0 }
+  const active = { major: 0, minor: 0, patch: 0, vulnerable: 0, deprecated: 0, replacement: 0 }
 
-  if (!props.insights) return { urgent, nonUrgent }
+  if (!props.insights) return { urgent, nonUrgent, active }
 
   for (const section of props.sections) {
     const isUrgent = ['dependencies', 'bundledDependencies'].includes(section.id)
+    const isActive = !props.activeSections || props.activeSections.includes(section.id)
     const target = isUrgent ? urgent : nonUrgent
 
     for (const item of section.items) {
       const outdated = props.insights.outdatedDeps.value[item.name]
       if (outdated) {
-        if (outdated.majorsBehind > 0) target.major++
-        else if (outdated.minorsBehind > 0) target.minor++
-        else target.patch++
+        if (outdated.majorsBehind > 0) {
+          target.major++
+          if (isActive) active.major++
+        } else if (outdated.minorsBehind > 0) {
+          target.minor++
+          if (isActive) active.minor++
+        } else if (outdated.resolved !== outdated.latest) {
+          target.patch++
+          if (isActive) active.patch++
+        }
       }
 
-      if (props.insights.replacementDeps.value[item.name]) target.replacement++
+      if (props.insights.replacementDeps.value[item.name]) {
+        target.replacement++
+        if (isActive) active.replacement++
+      }
       const realName = item.packageName || item.name
-      if (getVulnerableDepInfo(realName, props.insights.vulnTree.value)) target.vulnerable++
-      if (getDeprecatedDepInfo(realName, props.insights.vulnTree.value)) target.deprecated++
+      if (getVulnerableDepInfo(realName, props.insights.vulnTree.value)) {
+        target.vulnerable++
+        if (isActive) active.vulnerable++
+      }
+      if (getDeprecatedDepInfo(realName, props.insights.vulnTree.value)) {
+        target.deprecated++
+        if (isActive) active.deprecated++
+      }
     }
   }
 
-  return { urgent, nonUrgent }
+  return { urgent, nonUrgent, active }
 })
 
 const vulnLoading = computed(
@@ -81,6 +100,8 @@ interface InsightMetric {
   loading: boolean
   urgentCount: number
   nonUrgentCount: number
+  totalCount: number
+  activeCount: number
 }
 
 const metrics = computed<InsightMetric[]>(() => [
@@ -92,6 +113,8 @@ const metrics = computed<InsightMetric[]>(() => [
     loading: outdatedLoading.value,
     urgentCount: stats.value.urgent.major,
     nonUrgentCount: stats.value.nonUrgent.major,
+    totalCount: stats.value.urgent.major + stats.value.nonUrgent.major,
+    activeCount: stats.value.active.major,
   },
   {
     id: 'minor',
@@ -101,6 +124,8 @@ const metrics = computed<InsightMetric[]>(() => [
     loading: outdatedLoading.value,
     urgentCount: stats.value.urgent.minor,
     nonUrgentCount: stats.value.nonUrgent.minor,
+    totalCount: stats.value.urgent.minor + stats.value.nonUrgent.minor,
+    activeCount: stats.value.active.minor,
   },
   {
     id: 'patch',
@@ -110,6 +135,8 @@ const metrics = computed<InsightMetric[]>(() => [
     loading: outdatedLoading.value,
     urgentCount: stats.value.urgent.patch,
     nonUrgentCount: stats.value.nonUrgent.patch,
+    totalCount: stats.value.urgent.patch + stats.value.nonUrgent.patch,
+    activeCount: stats.value.active.patch,
   },
   {
     id: 'vulnerable',
@@ -119,6 +146,8 @@ const metrics = computed<InsightMetric[]>(() => [
     loading: vulnLoading.value,
     urgentCount: stats.value.urgent.vulnerable,
     nonUrgentCount: stats.value.nonUrgent.vulnerable,
+    totalCount: stats.value.urgent.vulnerable + stats.value.nonUrgent.vulnerable,
+    activeCount: stats.value.active.vulnerable,
   },
   {
     id: 'deprecated',
@@ -128,6 +157,8 @@ const metrics = computed<InsightMetric[]>(() => [
     loading: vulnLoading.value,
     urgentCount: stats.value.urgent.deprecated,
     nonUrgentCount: stats.value.nonUrgent.deprecated,
+    totalCount: stats.value.urgent.deprecated + stats.value.nonUrgent.deprecated,
+    activeCount: stats.value.active.deprecated,
   },
   {
     id: 'replacement',
@@ -137,16 +168,18 @@ const metrics = computed<InsightMetric[]>(() => [
     loading: replacementLoading.value,
     urgentCount: stats.value.urgent.replacement,
     nonUrgentCount: stats.value.nonUrgent.replacement,
+    totalCount: stats.value.urgent.replacement + stats.value.nonUrgent.replacement,
+    activeCount: stats.value.active.replacement,
   },
 ])
 
-function isItemZero(item: InsightMetric): boolean {
-  return item.nonUrgentCount === 0 && item.urgentCount === 0
+function isItemInteractive(item: InsightMetric): boolean {
+  return props.interactive && item.totalCount > 0
 }
 
-function isItemInteractive(item: InsightMetric): boolean {
-  return props.interactive && !isItemZero(item)
-}
+const tooltipText = computed(() => {
+  return `${$t('package.dependencies.insights.subtitle')} — ${$t('package.dependencies.insights.tooltip_urgent')} / ${$t('package.dependencies.insights.tooltip_other')}`
+})
 </script>
 
 <template>
@@ -156,10 +189,7 @@ function isItemInteractive(item: InsightMetric): boolean {
         <h2 class="text-fg-muted uppercase">
           {{ $t('package.dependencies.insights.title') }}
         </h2>
-        <TooltipApp
-          :text="`${$t('package.dependencies.insights.subtitle')} — ${$t('package.dependencies.insights.tooltip_urgent')} / ${$t('package.dependencies.insights.tooltip_other')}`"
-          position="bottom"
-        >
+        <TooltipApp :text="tooltipText" position="bottom">
           <span class="i-lucide:info w-3.5 h-3.5" aria-hidden="true" />
         </TooltipApp>
       </div>
@@ -202,8 +232,20 @@ function isItemInteractive(item: InsightMetric): boolean {
         "
         @click="isItemInteractive(item) ? toggleInsight(item.id) : undefined"
       >
-        <span class="text-xs text-fg-muted lowercase flex items-center gap-1.5 truncate">
-          <span class="truncate">{{ item.label }}</span>
+        <span
+          class="text-xs text-fg-muted lowercase flex items-center justify-between gap-1.5 w-full min-w-0"
+        >
+          <span class="flex items-center gap-1.5 truncate min-w-0">
+            <input
+              v-if="interactive && item.totalCount > 0"
+              type="checkbox"
+              :checked="selectedInsights.includes(item.id)"
+              tabindex="-1"
+              aria-hidden="true"
+              class="w-3.5 h-3.5 accent-fg bg-bg-muted border-border rounded cursor-pointer shrink-0 pointer-events-none"
+            />
+            <span class="truncate">{{ item.label }}</span>
+          </span>
           <span :class="[item.icon, item.iconColor, 'w-3.5 h-3.5 shrink-0']" aria-hidden="true" />
         </span>
         <span class="text-sm font-mono mt-1 block">
@@ -214,14 +256,18 @@ function isItemInteractive(item: InsightMetric): boolean {
           </template>
           <template v-else>
             <span class="flex text-sm items-center text-fg-subtle gap-1">
-              <span v-if="isItemZero(item)" class="i-lucide:check w-3 h-3" aria-hidden="true" />
+              <span
+                v-if="item.totalCount === 0"
+                class="i-lucide:check w-3 h-3"
+                aria-hidden="true"
+              />
               <span class="tabular-nums" :class="item.urgentCount > 0 ? 'text-fg font-medium' : ''">
                 {{ item.urgentCount }}
               </span>
-              <template v-if="!isItemZero(item)">
+              <template v-if="item.totalCount > 0">
                 <span class="px-0.5">/</span>
-                <span class="tabular-nums" :class="item.nonUrgentCount > 0 ? 'text-fg-muted' : ''">
-                  {{ item.nonUrgentCount }}
+                <span class="tabular-nums text-fg-muted">
+                  {{ item.totalCount }}
                 </span>
               </template>
             </span>

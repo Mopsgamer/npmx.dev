@@ -2091,6 +2091,12 @@
                 },
                 "filter_by": {
                   "type": "string"
+                },
+                "unselected_sections_warning": {
+                  "type": "string"
+                },
+                "enable_sections": {
+                  "type": "string"
                 }
               },
               "additionalProperties": false

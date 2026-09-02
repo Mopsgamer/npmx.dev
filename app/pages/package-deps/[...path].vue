@@ -420,6 +420,55 @@ function handleKeywordClick(keyword: string) {
 
   globalSearchModel.value = queryStr
 }
+
+const unselectedSectionsWithMatchingItems = computed(() => {
+  if (selectedInsights.value.length === 0) return []
+
+  const unselectedSections = sections.value.filter(s => !activeSections.value.includes(s.id))
+  if (unselectedSections.length === 0) return []
+
+  const matchingSections: typeof sections.value = []
+
+  for (const section of unselectedSections) {
+    const hasMatch = section.items.some(item => {
+      const targetName = item.packageName || item.name
+      const outdated = insights.outdatedDeps.value[item.name]
+      return selectedInsights.value.some(id => {
+        switch (id) {
+          case 'major':
+            return outdated ? outdated.majorsBehind > 0 : false
+          case 'minor':
+            return outdated ? outdated.majorsBehind === 0 && outdated.minorsBehind > 0 : false
+          case 'patch':
+            return outdated
+              ? outdated.majorsBehind === 0 &&
+                  outdated.minorsBehind === 0 &&
+                  outdated.resolved !== outdated.latest
+              : false
+          case 'vulnerable':
+            return !!getVulnerableDepInfo(targetName, insights.vulnTree.value)
+          case 'deprecated':
+            return !!getDeprecatedDepInfo(targetName, insights.vulnTree.value)
+          case 'replacement':
+            return !!insights.replacementDeps.value[item.name]
+          default:
+            return false
+        }
+      })
+    })
+
+    if (hasMatch) {
+      matchingSections.push(section)
+    }
+  }
+
+  return matchingSections
+})
+
+function enableUnselectedSections() {
+  const idsToAdd = unselectedSectionsWithMatchingItems.value.map(s => s.id)
+  activeSections.value = Array.from(new Set([...activeSections.value, ...idsToAdd]))
+}
 </script>
 
 <template>
@@ -503,6 +552,30 @@ function handleKeywordClick(keyword: string) {
             @toggle-column="toggleColumn"
             @reset-columns="resetColumns"
           />
+
+          <div
+            v-if="unselectedSectionsWithMatchingItems.length > 0"
+            class="my-3 p-3 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-800 dark:text-amber-200 text-xs font-mono flex items-center justify-between gap-2"
+          >
+            <div class="flex items-center gap-2">
+              <span
+                class="i-lucide:triangle-alert w-4 h-4 shrink-0 text-amber-600 dark:text-amber-400"
+                aria-hidden="true"
+              />
+              <span>{{
+                $t('package.dependencies.insights.unselected_sections_warning', {
+                  sections: unselectedSectionsWithMatchingItems.map(s => s.id).join(', '),
+                })
+              }}</span>
+            </div>
+            <button
+              type="button"
+              class="underline font-sans font-medium hover:text-fg transition-colors cursor-pointer shrink-0"
+              @click="enableUnselectedSections"
+            >
+              {{ $t('package.dependencies.insights.enable_sections') }}
+            </button>
+          </div>
 
           <div v-if="isInsightsLoading" class="py-12 text-center">
             <div class="i-svg-spinners:ring-resize w-6 h-6 mx-auto text-fg-muted" />

@@ -687,7 +687,7 @@
         "title": "Dependency Health",
         "subtitle": "Across all direct dependencies",
         "tooltip_urgent": "Urgent (prod & bundled)",
-        "tooltip_other": "Other (dev, peer & optional)",
+        "tooltip_other": "Total (all sections)",
         "major_behind": "Major behind",
         "minor_behind": "Minor behind",
         "patch_behind": "Patch behind",
@@ -695,7 +695,9 @@
         "deprecated": "Deprecated",
         "replacements_available": "Replacements available",
         "clear_filter": "Clear filter ({filter})",
-        "filter_by": "Filter dependencies by {filter}"
+        "filter_by": "Filter dependencies by {filter}",
+        "unselected_sections_warning": "Matching dependencies exist in unselected sections ({sections}).",
+        "enable_sections": "Show these sections"
       },
       "optional": "optional",
       "bundled": "bundled",
