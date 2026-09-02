@@ -200,7 +200,7 @@ const numberFormatter = useNumberFormatter()
         <ButtonBase
           class="pointer-events-auto"
           size="sm"
-          :aria-pressed="props.filters?.keywords.includes(keyword)"
+          :aria-pressed="props.filters?.keywords?.includes(keyword)"
           :title="`Filter by ${keyword}`"
           @click.stop="emit('clickKeyword', keyword)"
         >

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { PackageDependencyItem } from '#shared/types/package-dependencies'
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
-import type { ColumnConfig } from '#shared/types/preferences'
-import { DEFAULT_COLUMNS } from '#shared/types/preferences'
+import type { ColumnConfig, StructuredFilters } from '#shared/types/preferences'
+import { DEFAULT_COLUMNS, DEFAULT_FILTERS } from '#shared/types/preferences'
 import { getVersionClass, getOutdatedTooltip } from '~/utils/npm/problematic-dependencies'
 
 const props = defineProps<{
@@ -11,7 +11,20 @@ const props = defineProps<{
   showSkeleton: boolean
   index?: number
   columns?: ColumnConfig[]
+  filters?: StructuredFilters
 }>()
+
+const { model: globalSearchQuery } = useGlobalSearch()
+
+const activeFilters = computed<StructuredFilters>(() => {
+  if (props.filters) return props.filters
+  const parsed = parseSearchOperators(globalSearchQuery.value)
+  return {
+    ...DEFAULT_FILTERS,
+    keywords: parsed.keywords ?? [],
+    text: parsed.text ?? '',
+  }
+})
 
 const item = computed(() => props.item)
 
@@ -41,6 +54,10 @@ const outdated = computed(() => props.insights?.outdatedDeps.value[item.value.na
 const versionClass = computed(() => getVersionClass(item.value.name, props.insights))
 
 const { t } = useI18n()
+
+const emit = defineEmits<{
+  clickKeyword: [keyword: string]
+}>()
 </script>
 
 <template>
@@ -50,7 +67,9 @@ const { t } = useI18n()
     :columns="activeColumns"
     :index="index"
     :insights="insights || undefined"
+    :filters="activeFilters"
     :to="packageUrl"
+    @click-keyword="emit('clickKeyword', $event)"
   >
     <template #version="{ version }">
       <TooltipApp v-if="outdated" :text="getOutdatedTooltip(outdated, t)" position="top">

@@ -3,7 +3,7 @@ import type {
   DependencySortOption,
   PackageDependencyItem,
 } from '#shared/types/package-dependencies'
-import type { ColumnConfig, ColumnId } from '#shared/types/preferences'
+import type { ColumnConfig, ColumnId, StructuredFilters } from '#shared/types/preferences'
 import { DEFAULT_COLUMNS } from '#shared/types/preferences'
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 
@@ -13,10 +13,12 @@ const props = defineProps<{
   showSkeleton: boolean
   insights?: PackageDependencyInsights
   columns?: ColumnConfig[]
+  filters?: StructuredFilters
 }>()
 
 const emit = defineEmits<{
   'update:sort': [value: DependencySortOption]
+  'clickKeyword': [keyword: string]
 }>()
 
 function toggleNameSort() {
@@ -153,6 +155,8 @@ function getColumnLabel(id: ColumnId): string {
           :show-skeleton="showSkeleton"
           :insights="insights"
           :columns="activeColumns"
+          :filters="filters"
+          @click-keyword="emit('clickKeyword', $event)"
         />
       </tbody>
     </table>

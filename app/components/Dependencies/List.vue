@@ -3,7 +3,7 @@ import type {
   DependencySortOption,
   PackageDependencyItem,
 } from '#shared/types/package-dependencies'
-import type { ColumnConfig, ViewMode } from '#shared/types/preferences'
+import type { ColumnConfig, StructuredFilters, ViewMode } from '#shared/types/preferences'
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 import { onKeyDown } from '@vueuse/core'
 
@@ -14,10 +14,12 @@ defineProps<{
   sort: DependencySortOption
   showSkeleton: boolean
   insights?: PackageDependencyInsights
+  filters?: StructuredFilters
 }>()
 
 const emit = defineEmits<{
   'update:sort': [value: DependencySortOption]
+  'clickKeyword': [keyword: string]
 }>()
 
 const keyboardShortcuts = useKeyboardShortcuts()
@@ -97,8 +99,10 @@ onKeyDown(['ArrowDown', 'ArrowUp', 'Enter'], handleResultsKeydown)
     :columns="columns"
     :show-skeleton="showSkeleton"
     :insights="insights"
+    :filters="filters"
     class="dependencies-list-element"
     @update:sort="emit('update:sort', $event)"
+    @click-keyword="emit('clickKeyword', $event)"
   />
   <ol
     v-show="viewMode === 'cards'"
@@ -110,6 +114,8 @@ onKeyDown(['ArrowDown', 'ArrowUp', 'Enter'], handleResultsKeydown)
         :index="index"
         :show-skeleton="showSkeleton"
         :insights="insights"
+        :filters="filters"
+        @click-keyword="emit('clickKeyword', $event)"
       />
     </li>
   </ol>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from 'vue-router'
 import { setResponseHeader } from 'h3'
+import { DEFAULT_FILTERS } from '#shared/types/preferences'
 import type { DepSectionId, DependencySortOption } from '#shared/types/package-dependencies'
 import { assertValidPackageName } from '#shared/utils/npm'
 import { normalizeSearchParam } from '#shared/utils/url'
@@ -390,6 +391,34 @@ useSeoMeta({
 })
 
 const showSkeleton = shallowRef(false)
+
+const { model: globalSearchModel } = useGlobalSearch()
+
+const structuredFilters = computed(() => {
+  const parsed = parseSearchOperators(globalSearchModel.value)
+  return {
+    ...DEFAULT_FILTERS,
+    keywords: parsed.keywords ?? [],
+    text: parsed.text ?? '',
+  }
+})
+
+function handleKeywordClick(keyword: string) {
+  const currentQuery = globalSearchModel.value.trim()
+  const parsed = parseSearchOperators(currentQuery)
+  const alreadyExists = parsed.keywords?.includes(keyword)
+
+  let queryStr: string
+  if (alreadyExists) {
+    queryStr = removeKeywordFromQuery(currentQuery, keyword)
+  } else if (currentQuery) {
+    queryStr = `${currentQuery} keyword:${keyword}`
+  } else {
+    queryStr = `keyword:${keyword}`
+  }
+
+  globalSearchModel.value = queryStr
+}
 </script>
 
 <template>
@@ -486,7 +515,9 @@ const showSkeleton = shallowRef(false)
             :show-skeleton="showSkeleton"
             :sort="sort"
             :insights="insights"
+            :filters="structuredFilters"
             @update:sort="sort = $event"
+            @click-keyword="handleKeywordClick"
           />
 
           <p v-else class="py-12 text-center text-fg-subtle font-mono text-sm">

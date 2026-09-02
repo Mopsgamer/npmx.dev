@@ -1,13 +1,28 @@
 <script setup lang="ts">
 import type { PackageDependencyItem } from '#shared/types/package-dependencies'
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
+import type { StructuredFilters } from '#shared/types/preferences'
+import { DEFAULT_FILTERS } from '#shared/types/preferences'
 
 const props = defineProps<{
   insights?: PackageDependencyInsights
   item: PackageDependencyItem
   showSkeleton: boolean
   index?: number
+  filters?: StructuredFilters
 }>()
+
+const { model: globalSearchQuery } = useGlobalSearch()
+
+const activeFilters = computed<StructuredFilters>(() => {
+  if (props.filters) return props.filters
+  const parsed = parseSearchOperators(globalSearchQuery.value)
+  return {
+    ...DEFAULT_FILTERS,
+    keywords: parsed.keywords ?? [],
+    text: parsed.text ?? '',
+  }
+})
 
 const targetName = computed(() => props.item.packageName || props.item.name)
 
@@ -23,6 +38,10 @@ const searchResult = computed(() => {
 })
 
 const packageUrl = computed(() => packageRoute(targetName.value))
+
+const emit = defineEmits<{
+  clickKeyword: [keyword: string]
+}>()
 </script>
 
 <template>
@@ -67,8 +86,10 @@ const packageUrl = computed(() => packageRoute(targetName.value))
     :result="searchResult"
     :index="index"
     :insights="insights || undefined"
+    :filters="activeFilters"
     :to="packageUrl"
     version-is-range
+    @click-keyword="emit('clickKeyword', $event)"
   >
     <template #status-indicators="{ insights }">
       <DependenciesStatusIndicators :name="targetName" :flags="item.flags" v-bind="{ insights }" />

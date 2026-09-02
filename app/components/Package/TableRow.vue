@@ -182,10 +182,9 @@ const { selectable } = usePackageSelectionContext()
           v-for="keyword in pkg.keywords.slice(0, 3)"
           :key="keyword"
           size="sm"
-          :aria-pressed="props.filters?.keywords.includes(keyword)"
+          :aria-pressed="props.filters?.keywords?.includes(keyword)"
           :title="`Filter by ${keyword}`"
           @click.stop="emit('clickKeyword', keyword)"
-          :class="{ 'group-hover:bg-bg-elevated': !props.filters?.keywords.includes(keyword) }"
         >
           {{ keyword }}
         </ButtonBase>
