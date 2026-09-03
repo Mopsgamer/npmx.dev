@@ -112,7 +112,8 @@ export function useOutdatedDependencies(
 ) {
   const key = computed(() => {
     const deps = toValue(dependencies)
-    if (!deps || Object.keys(deps).length === 0) return 'outdated:none'
+    if (deps === undefined) return ''
+    if (Object.keys(deps).length === 0) return 'outdated:none'
     const sortedKeys = Object.keys(deps).sort()
     return `outdated:${sortedKeys.map(k => `${k}@${deps[k]!.version}`).join(',')}`
   })

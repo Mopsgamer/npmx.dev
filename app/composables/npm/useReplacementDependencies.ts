@@ -58,7 +58,8 @@ export function useReplacementDependencies(
 ) {
   const key = computed(() => {
     const deps = toValue(dependencies)
-    if (!deps || Object.keys(deps).length === 0) return 'replacements:none'
+    if (deps === undefined) return ''
+    if (Object.keys(deps).length === 0) return 'replacements:none'
     const sortedKeys = Object.keys(deps).sort()
     return `replacements:${sortedKeys.map(k => `${k}@${deps[k]!.version}`).join(',')}`
   })

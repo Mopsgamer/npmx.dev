@@ -43,7 +43,7 @@ function createPackument(
 }
 
 describe('transformPackument', () => {
-  it('returns null requestedVersion when requestedVersion is null or not provided', () => {
+  it('resolves latest dist-tag version when requestedVersion is null, undefined, or a dist-tag', () => {
     const packument = createPackument(
       {
         '1.0.0': createVersion('1.0.0'),
@@ -59,10 +59,16 @@ describe('transformPackument', () => {
     )
 
     const transformedNull = transformPackument(packument, null)
-    expect(transformedNull.requestedVersion).toBeNull()
+    expect(transformedNull.requestedVersion?.version).toBe('1.0.1')
+    expect(transformedNull.requestedVersion?.dependencies).toEqual({ bar: '^1.0.0' })
 
     const transformedUndefined = transformPackument(packument, undefined)
-    expect(transformedUndefined.requestedVersion).toBeNull()
+    expect(transformedUndefined.requestedVersion?.version).toBe('1.0.1')
+    expect(transformedUndefined.requestedVersion?.dependencies).toEqual({ bar: '^1.0.0' })
+
+    const transformedTag = transformPackument(packument, 'latest')
+    expect(transformedTag.requestedVersion?.version).toBe('1.0.1')
+    expect(transformedTag.requestedVersion?.dependencies).toEqual({ bar: '^1.0.0' })
   })
 
   it('uses specific requestedVersion when provided and available', () => {
