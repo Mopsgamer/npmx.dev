@@ -63,7 +63,10 @@ watch(
   { immediate: true },
 )
 
-const { data: pkg, status: pkgStatus } = await usePackage(packageName, resolvedVersion)
+const { data: pkg, status: pkgStatus } = await usePackage(
+  packageName,
+  () => resolvedVersion.value ?? requestedVersion.value,
+)
 const { versions: commandPaletteVersions, ensureLoaded: ensureCommandPaletteVersionsLoaded } =
   useCommandPalettePackageVersions(packageName)
 

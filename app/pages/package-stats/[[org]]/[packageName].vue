@@ -19,7 +19,12 @@ const packageName = computed(() =>
 )
 const version = computed(() => route.params.version)
 
-const { data: pkg, status: pkgStatus } = await usePackage(packageName, version)
+const { data: resolvedVersion } = await useResolvedVersion(packageName, version)
+
+const { data: pkg, status: pkgStatus } = await usePackage(
+  packageName,
+  () => resolvedVersion.value ?? version.value,
+)
 
 const displayVersion = computed(() => pkg.value?.requestedVersion ?? null)
 const sections = computed(() => getPackageDependencySections(displayVersion.value))
@@ -28,7 +33,7 @@ const allDependencies = computed(() => {
   return getNormalizedDependenciesFromPackageVersion(pkg.value?.requestedVersion)
 })
 
-const insights = usePackageDependencyInsights(packageName, version, allDependencies)
+const insights = usePackageDependencyInsights(packageName, resolvedVersion, allDependencies)
 
 const { versions: commandPaletteVersions, ensureLoaded: ensureCommandPaletteVersionsLoaded } =
   useCommandPalettePackageVersions(packageName)
