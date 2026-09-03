@@ -49,7 +49,7 @@ function isColumnVisible(id: string): boolean {
   return activeColumns.value.find(c => c.id === id)?.visible ?? false
 }
 
-const outdated = computed(() => props.insights?.outdatedDeps.value[item.value.name])
+const outdated = computed(() => props.insights?.outdatedDeps.value?.[item.value.name])
 
 const versionClass = computed(() => getVersionClass(item.value.name, props.insights))
 

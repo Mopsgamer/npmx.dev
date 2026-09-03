@@ -1,5 +1,4 @@
 import type { ModuleReplacement, ModuleReplacementMapping } from 'module-replacements'
-import { ref, shallowRef, watch, toValue } from 'vue'
 import type { DependencySpec } from '~/utils/npm/package-dependency-sections'
 
 async function fetchReplacements(
@@ -52,58 +51,35 @@ async function fetchReplacements(
 
 /**
  * Fetch module replacement suggestions for a set of dependencies.
- * Returns a reactive map of dependency name to ModuleReplacement.
+ * Returns an AsyncData result.
  */
 export function useReplacementDependencies(
   dependencies: MaybeRefOrGetter<Record<string, DependencySpec> | undefined>,
 ) {
-  const replacements = shallowRef<Record<string, ModuleReplacement>>({})
-  const status = ref<'idle' | 'pending' | 'success' | 'error'>('idle')
-  const error = ref<Error | null>(null)
-  let generation = 0
+  const key = computed(() => {
+    const deps = toValue(dependencies)
+    if (!deps || Object.keys(deps).length === 0) return 'replacements:none'
+    const sortedKeys = Object.keys(deps).sort()
+    return `replacements:${sortedKeys.map(k => `${k}@${deps[k]!.version}`).join(',')}`
+  })
 
-  // On the server, replacements are a client-only enhancement — mark as success immediately
-  // so isLoading doesn't get stuck waiting for a watcher that won't run on SSR.
-  if (!import.meta.client) {
-    status.value = 'success'
-    return { data: replacements, status, error }
-  }
-
-  watch(
-    () => toValue(dependencies),
-    async deps => {
-      const currentGeneration = ++generation
-      status.value = 'pending'
-      error.value = null
-
-      try {
-        if (!deps || Object.keys(deps).length === 0) {
-          if (currentGeneration === generation) {
-            replacements.value = {}
-            // 'success' (not 'idle') — no deps means nothing to fetch, not "hasn't started yet"
-            status.value = 'success'
-          }
-          return
-        }
-
-        const result = await fetchReplacements(deps)
-
-        if (currentGeneration === generation) {
-          replacements.value = result
-          status.value = 'success'
-        }
-      } catch (err) {
-        if (currentGeneration === generation) {
-          error.value = err instanceof Error ? err : new Error(String(err))
-          status.value = 'error'
-        }
+  const { data, status, error } = useAsyncData<Record<string, ModuleReplacement>>(
+    () => key.value,
+    async () => {
+      const deps = toValue(dependencies)
+      if (!deps || Object.keys(deps).length === 0) {
+        return {}
       }
+      return await fetchReplacements(deps)
     },
-    { immediate: true },
+    {
+      watch: [key],
+      default: () => ({}),
+    },
   )
 
   return {
-    data: replacements,
+    data,
     status,
     error,
   }

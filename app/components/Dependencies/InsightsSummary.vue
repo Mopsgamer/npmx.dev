@@ -40,7 +40,7 @@ const stats = computed(() => {
     const target = isUrgent ? urgent : nonUrgent
 
     for (const item of section.items) {
-      const outdated = props.insights.outdatedDeps.value[item.name]
+      const outdated = props.insights.outdatedDeps.value?.[item.name]
       if (outdated) {
         if (outdated.majorsBehind > 0) {
           target.major++
@@ -54,7 +54,7 @@ const stats = computed(() => {
         }
       }
 
-      if (props.insights.replacementDeps.value[item.name]) {
+      if (props.insights.replacementDeps.value?.[item.name]) {
         target.replacement++
         if (isActive) active.replacement++
       }
@@ -233,17 +233,21 @@ const tooltipText = computed(() => {
         @click="isItemInteractive(item) ? toggleInsight(item.id) : undefined"
       >
         <span
-          class="text-xs text-fg-muted lowercase flex items-center justify-between gap-1.5 w-full min-w-0"
+          class="text-xs text-fg-muted lowercase flex items-center justify-start gap-1.5 w-full min-w-0"
         >
           <span class="flex items-center gap-1.5 truncate min-w-0">
-            <input
+            <span
               v-if="interactive && item.totalCount > 0"
-              type="checkbox"
-              :checked="selectedInsights.includes(item.id)"
-              tabindex="-1"
               aria-hidden="true"
-              class="w-3.5 h-3.5 accent-fg bg-bg-muted border-border rounded cursor-pointer shrink-0 pointer-events-none"
-            />
+              class="w-3.5 h-3.5 border rounded shrink-0 flex items-center justify-center transition-colors pointer-events-none"
+              :class="
+                selectedInsights.includes(item.id)
+                  ? 'bg-fg border-fg text-bg'
+                  : 'border-border bg-bg-muted'
+              "
+            >
+              <span v-if="selectedInsights.includes(item.id)" class="i-lucide:check w-2.5 h-2.5" />
+            </span>
             <span class="truncate">{{ item.label }}</span>
           </span>
           <span :class="[item.icon, item.iconColor, 'w-3.5 h-3.5 shrink-0']" aria-hidden="true" />

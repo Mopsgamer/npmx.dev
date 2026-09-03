@@ -63,7 +63,7 @@ watch(
   { immediate: true },
 )
 
-const { data: pkg, status: pkgStatus } = usePackage(packageName, resolvedVersion)
+const { data: pkg, status: pkgStatus } = await usePackage(packageName, resolvedVersion)
 const { versions: commandPaletteVersions, ensureLoaded: ensureCommandPaletteVersionsLoaded } =
   useCommandPalettePackageVersions(packageName)
 
@@ -305,7 +305,7 @@ const filteredItems = computed(() => {
   if (selectedInsights.value.length > 0) {
     result = result.filter(item => {
       const targetName = item.packageName || item.name
-      const outdated = insights.outdatedDeps.value[item.name]
+      const outdated = insights.outdatedDeps.value?.[item.name]
       return selectedInsights.value.some(id => {
         switch (id) {
           case 'major':
@@ -323,7 +323,7 @@ const filteredItems = computed(() => {
           case 'deprecated':
             return !!getDeprecatedDepInfo(targetName, insights.vulnTree.value)
           case 'replacement':
-            return !!insights.replacementDeps.value[item.name]
+            return !!insights.replacementDeps.value?.[item.name]
           default:
             return false
         }
@@ -432,7 +432,7 @@ const unselectedSectionsWithMatchingItems = computed(() => {
   for (const section of unselectedSections) {
     const hasMatch = section.items.some(item => {
       const targetName = item.packageName || item.name
-      const outdated = insights.outdatedDeps.value[item.name]
+      const outdated = insights.outdatedDeps.value?.[item.name]
       return selectedInsights.value.some(id => {
         switch (id) {
           case 'major':
@@ -450,7 +450,7 @@ const unselectedSectionsWithMatchingItems = computed(() => {
           case 'deprecated':
             return !!getDeprecatedDepInfo(targetName, insights.vulnTree.value)
           case 'replacement':
-            return !!insights.replacementDeps.value[item.name]
+            return !!insights.replacementDeps.value?.[item.name]
           default:
             return false
         }
@@ -530,75 +530,73 @@ function enableUnselectedSections() {
       class="container w-full"
       dir="ltr"
     >
-      <ClientOnly>
-        <DependenciesInsightsSummary
-          v-model:selected-insights="selectedInsights"
+      <DependenciesInsightsSummary
+        v-model:selected-insights="selectedInsights"
+        :sections="sections"
+        :show-skeleton="showSkeleton"
+        :insights="insights"
+        :package-name="packageName"
+      />
+
+      <div class="py-4">
+        <DependenciesToolbar
+          v-model:filter="filter"
+          v-model:sort="sort"
+          v-model:view-mode="viewMode"
+          v-model:active-sections="activeSections"
+          :columns="columns"
+          :filtered-count="filteredItems.length"
+          :total-count="allSectionItems.length"
           :sections="sections"
-          :show-skeleton="showSkeleton"
-          :insights="insights"
-          :package-name="packageName"
+          @toggle-column="toggleColumn"
+          @reset-columns="resetColumns"
         />
 
-        <div class="py-4">
-          <DependenciesToolbar
-            v-model:filter="filter"
-            v-model:sort="sort"
-            v-model:view-mode="viewMode"
-            v-model:active-sections="activeSections"
-            :columns="columns"
-            :filtered-count="filteredItems.length"
-            :total-count="allSectionItems.length"
-            :sections="sections"
-            @toggle-column="toggleColumn"
-            @reset-columns="resetColumns"
-          />
-
-          <div
-            v-if="unselectedSectionsWithMatchingItems.length > 0"
-            class="my-3 p-3 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-800 dark:text-amber-200 text-xs font-mono flex items-center justify-between gap-2"
+        <div
+          v-if="unselectedSectionsWithMatchingItems.length > 0"
+          class="my-3 p-3 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-800 dark:text-amber-200 text-xs font-mono flex items-center justify-between gap-2"
+        >
+          <div class="flex items-center gap-2">
+            <span
+              class="i-lucide:triangle-alert w-4 h-4 shrink-0 text-amber-600 dark:text-amber-400"
+              aria-hidden="true"
+            />
+            <span>{{
+              $t('package.dependencies.insights.unselected_sections_warning', {
+                sections: unselectedSectionsWithMatchingItems.map(s => s.id).join(', '),
+              })
+            }}</span>
+          </div>
+          <button
+            type="button"
+            class="underline font-sans font-medium hover:text-fg transition-colors cursor-pointer shrink-0"
+            @click="enableUnselectedSections"
           >
-            <div class="flex items-center gap-2">
-              <span
-                class="i-lucide:triangle-alert w-4 h-4 shrink-0 text-amber-600 dark:text-amber-400"
-                aria-hidden="true"
-              />
-              <span>{{
-                $t('package.dependencies.insights.unselected_sections_warning', {
-                  sections: unselectedSectionsWithMatchingItems.map(s => s.id).join(', '),
-                })
-              }}</span>
-            </div>
-            <button
-              type="button"
-              class="underline font-sans font-medium hover:text-fg transition-colors cursor-pointer shrink-0"
-              @click="enableUnselectedSections"
-            >
-              {{ $t('package.dependencies.insights.enable_sections') }}
-            </button>
-          </div>
-
-          <div v-if="isInsightsLoading" class="py-12 text-center">
-            <div class="i-svg-spinners:ring-resize w-6 h-6 mx-auto text-fg-muted" />
-          </div>
-
-          <DependenciesList
-            v-else-if="filteredItems.length > 0"
-            :items="filteredItems"
-            :view-mode="viewMode"
-            :columns="columns"
-            :show-skeleton="showSkeleton"
-            :sort="sort"
-            :insights="insights"
-            :filters="structuredFilters"
-            @update:sort="sort = $event"
-            @click-keyword="handleKeywordClick"
-          />
-
-          <p v-else class="py-12 text-center text-fg-subtle font-mono text-sm">
-            {{ $t('package.dependencies.no_matches') }}
-          </p>
+            {{ $t('package.dependencies.insights.enable_sections') }}
+          </button>
         </div>
-      </ClientOnly>
+
+        <div v-if="isInsightsLoading" class="py-12 text-center">
+          <div class="i-svg-spinners:ring-resize w-6 h-6 mx-auto text-fg-muted" />
+        </div>
+
+        <DependenciesList
+          v-else-if="filteredItems.length > 0"
+          :items="filteredItems"
+          :view-mode="viewMode"
+          :columns="columns"
+          :show-skeleton="showSkeleton"
+          :sort="sort"
+          :insights="insights"
+          :filters="structuredFilters"
+          @update:sort="sort = $event"
+          @click-keyword="handleKeywordClick"
+        />
+
+        <p v-else class="py-12 text-center text-fg-subtle font-mono text-sm">
+          {{ $t('package.dependencies.no_matches') }}
+        </p>
+      </div>
     </article>
   </main>
 </template>

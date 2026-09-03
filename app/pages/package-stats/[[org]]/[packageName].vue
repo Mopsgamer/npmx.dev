@@ -19,7 +19,7 @@ const packageName = computed(() =>
 )
 const version = computed(() => route.params.version)
 
-const { data: pkg, status: pkgStatus } = usePackage(packageName, version)
+const { data: pkg, status: pkgStatus } = await usePackage(packageName, version)
 
 const displayVersion = computed(() => pkg.value?.requestedVersion ?? null)
 const sections = computed(() => getPackageDependencySections(displayVersion.value))

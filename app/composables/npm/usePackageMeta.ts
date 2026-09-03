@@ -23,16 +23,20 @@ export function usePackageMeta(packageName: MaybeRefOrGetter<string | undefined>
   const cache = usePackageMetaState()
   const name = computed(() => toValue(packageName))
 
-  const meta = computed(() => (name.value ? (cache.value[name.value] ?? null) : null))
-
-  watch(
-    name,
-    pkgName => {
-      if (!pkgName || cache.value[pkgName]) return
-      fetchPackageMeta(pkgName).catch(() => {})
+  return useAsyncData<PackageMetaResponse | null>(
+    () => `package-meta:${name.value}`,
+    async () => {
+      const pkgName = name.value
+      if (!pkgName) return null
+      if (cache.value[pkgName]) {
+        return cache.value[pkgName]!
+      }
+      const data = await fetchPackageMeta(pkgName)
+      return data
     },
-    { immediate: true },
+    {
+      watch: [name],
+      default: () => (name.value ? (cache.value[name.value] ?? null) : null),
+    },
   )
-
-  return { data: meta }
 }

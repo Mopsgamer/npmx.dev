@@ -79,8 +79,8 @@ const deprDepInfo = computed(() =>
 // Any insights such as vulnerabilities and replacements
 const hasExtra = computed(
   () =>
-    !!insights.outdatedDeps.value[props.result.package.name] ||
-    !!insights.replacementDeps.value[props.result.package.name] ||
+    !!insights.outdatedDeps.value?.[props.result.package.name] ||
+    !!insights.replacementDeps.value?.[props.result.package.name] ||
     !!vulnDepInfo.value ||
     !!deprDepInfo.value,
 )
@@ -146,7 +146,7 @@ const numberFormatter = useNumberFormatter()
           <dt class="sr-only">{{ $t('package.card.version') }}</dt>
           <dd class="font-mono truncate max-w-32" :title="result.package.version">
             <TooltipApp
-              v-if="insights.outdatedDeps.value[result.package.name]"
+              v-if="insights.outdatedDeps.value?.[result.package.name]"
               :text="getOutdatedTooltip(insights.outdatedDeps.value[result.package.name]!, $t)"
               position="top"
             >
@@ -224,7 +224,7 @@ const numberFormatter = useNumberFormatter()
     >
       <div class="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs shrink-0">
         <span
-          v-if="insights.outdatedDeps.value[result.package.name]"
+          v-if="insights.outdatedDeps.value?.[result.package.name]"
           class="flex items-center gap-1"
           :class="getVersionClass(result.package.name, insights)"
         >
@@ -232,7 +232,7 @@ const numberFormatter = useNumberFormatter()
           {{ getOutdatedTooltip(insights.outdatedDeps.value[result.package.name]!, $t) }}
         </span>
         <span
-          v-if="insights.replacementDeps.value[result.package.name]"
+          v-if="insights.replacementDeps.value?.[result.package.name]"
           class="flex items-center gap-1 text-amber-700 dark:text-amber-500"
         >
           <span class="i-lucide:lightbulb w-3.5 h-3.5 shrink-0" aria-hidden="true" />

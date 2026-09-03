@@ -58,7 +58,7 @@ const packageTextColorClass = computed(() => {
   if (getVulnerableDepInfo(dependencyName, insights.vulnTree.value)) return 'text-red-600'
   if (getDeprecatedDepInfo(dependencyName, insights.vulnTree.value))
     return 'text-purple-700 dark:text-purple-500'
-  if (insights.replacementDeps.value[dependencyName]) return 'text-amber-700 dark:text-amber-500'
+  if (insights.replacementDeps.value?.[dependencyName]) return 'text-amber-700 dark:text-amber-500'
 
   return 'text-fg hover:text-accent-fallback'
 })

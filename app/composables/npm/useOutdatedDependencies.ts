@@ -47,131 +47,93 @@ export function resolveOutdated(
   }
 }
 
+async function fetchOutdatedMap(
+  deps: Record<string, DependencySpec>,
+): Promise<Record<string, OutdatedDependencyInfo>> {
+  const semverEntries = Object.entries(deps).filter(
+    ([, spec]) => !isNonSemverConstraint(spec.version),
+  )
+
+  if (semverEntries.length === 0) {
+    return {}
+  }
+
+  const uniquePackageNames = Array.from(new Set(semverEntries.map(([, spec]) => spec.name)))
+
+  const chunks: string[][] = []
+  for (let i = 0; i < uniquePackageNames.length; i += BATCH_SIZE) {
+    chunks.push(uniquePackageNames.slice(i, i + BATCH_SIZE))
+  }
+
+  const batchResults = await Promise.allSettled(
+    chunks.map(chunk => getVersionsBatch(chunk, { throw: false })),
+  )
+
+  let anyChunkFailed = false
+  const allVersionData = batchResults.flatMap(result => {
+    if (result.status === 'fulfilled') return result.value
+    anyChunkFailed = true
+    return []
+  })
+
+  const versionMap = new Map<string, PackageVersionsInfo>()
+  for (const data of allVersionData) {
+    if ('error' in data) continue
+    versionMap.set(data.name, data)
+  }
+
+  const results: Record<string, OutdatedDependencyInfo> = {}
+  for (const [key, spec] of semverEntries) {
+    const data = versionMap.get(spec.name)
+    if (!data) continue
+
+    const latestTag = data.distTags.latest
+    if (!latestTag) continue
+
+    const info = resolveOutdated(data.versions, latestTag, spec.version)
+    if (info) {
+      results[key] = info
+    }
+  }
+
+  if (anyChunkFailed && Object.keys(results).length === 0) {
+    throw new Error('Failed to fetch version data for all dependency chunks')
+  }
+
+  return results
+}
+
 /**
  * Check for outdated dependencies via fast-npm-meta batch version lookups.
- * Returns a reactive map of dependency name to outdated info.
+ * Returns an AsyncData result.
  */
 export function useOutdatedDependencies(
   dependencies: MaybeRefOrGetter<Record<string, DependencySpec> | undefined>,
 ) {
-  const outdated = shallowRef<Record<string, OutdatedDependencyInfo>>({})
-  const status = ref<'idle' | 'pending' | 'success' | 'error'>('idle')
-  const error = ref<Error | null>(null)
-  let currentEpoch = 0
+  const key = computed(() => {
+    const deps = toValue(dependencies)
+    if (!deps || Object.keys(deps).length === 0) return 'outdated:none'
+    const sortedKeys = Object.keys(deps).sort()
+    return `outdated:${sortedKeys.map(k => `${k}@${deps[k]!.version}`).join(',')}`
+  })
 
-  async function fetchOutdatedInfo(
-    deps: Record<string, DependencySpec> | undefined,
-    epoch: number,
-  ) {
-    if (epoch !== currentEpoch) return
-    status.value = 'pending'
-    error.value = null
-
-    try {
+  const { data, status, error } = useAsyncData<Record<string, OutdatedDependencyInfo>>(
+    () => key.value,
+    async () => {
+      const deps = toValue(dependencies)
       if (!deps || Object.keys(deps).length === 0) {
-        if (epoch !== currentEpoch) return
-        outdated.value = {}
-        status.value = 'success'
-        return
+        return {}
       }
-
-      const semverEntries = Object.entries(deps).filter(
-        ([, spec]) => !isNonSemverConstraint(spec.version),
-      )
-
-      if (semverEntries.length === 0) {
-        if (epoch !== currentEpoch) return
-        outdated.value = {}
-        status.value = 'success'
-        return
-      }
-
-      const uniquePackageNames = Array.from(new Set(semverEntries.map(([, spec]) => spec.name)))
-
-      const chunks: string[][] = []
-      for (let i = 0; i < uniquePackageNames.length; i += BATCH_SIZE) {
-        chunks.push(uniquePackageNames.slice(i, i + BATCH_SIZE))
-      }
-
-      // Use allSettled so a failing chunk doesn't discard results from successful ones
-      const batchResults = await Promise.allSettled(
-        chunks.map(chunk => getVersionsBatch(chunk, { throw: false })),
-      )
-
-      if (epoch !== currentEpoch) return
-
-      let anyChunkFailed = false
-      const allVersionData = batchResults.flatMap(result => {
-        if (result.status === 'fulfilled') return result.value
-        anyChunkFailed = true
-        return []
-      })
-
-      // Build a lookup map from package name to version data
-      const versionMap = new Map<string, PackageVersionsInfo>()
-      for (const data of allVersionData) {
-        if ('error' in data) continue
-        versionMap.set(data.name, data)
-      }
-
-      const results: Record<string, OutdatedDependencyInfo> = {}
-      for (const [key, spec] of semverEntries) {
-        const data = versionMap.get(spec.name)
-        if (!data) continue
-
-        const latestTag = data.distTags.latest
-        if (!latestTag) continue
-
-        const info = resolveOutdated(data.versions, latestTag, spec.version)
-        if (info) {
-          results[key] = info
-        }
-      }
-
-      if (epoch !== currentEpoch) return
-      outdated.value = results
-      // Keep partial results from successful chunks; only surface error if ALL chunks failed
-      if (anyChunkFailed && Object.keys(results).length === 0) {
-        status.value = 'error'
-        error.value = new Error('Failed to fetch version data for all dependency chunks')
-      } else {
-        status.value = 'success'
-      }
-    } catch (err) {
-      if (epoch !== currentEpoch) return
-      error.value = err instanceof Error ? err : new Error(String(err))
-      status.value = 'error'
-    }
-  }
-
-  watch(
-    () => toValue(dependencies),
-    deps => {
-      const epoch = ++currentEpoch
-
-      if (!deps) {
-        outdated.value = {}
-        status.value = 'idle'
-        return
-      }
-
-      if (Object.keys(deps).length === 0) {
-        outdated.value = {}
-        status.value = 'success'
-        return
-      }
-
-      fetchOutdatedInfo(deps, epoch).catch(err => {
-        if (epoch !== currentEpoch) return
-        error.value = err instanceof Error ? err : new Error(String(err))
-        status.value = 'error'
-      })
+      return await fetchOutdatedMap(deps)
     },
-    { immediate: true },
+    {
+      watch: [key],
+      default: () => ({}),
+    },
   )
 
   return {
-    data: outdated,
+    data,
     status,
     error,
   }
