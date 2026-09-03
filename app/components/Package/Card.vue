@@ -100,10 +100,9 @@ const numberFormatter = useNumberFormatter()
           :prefetch-on="prefetch ? 'visibility' : 'interaction'"
           class="decoration-none hover:text-accent-fallback after:content-[''] after:absolute after:inset-0 inline-flex items-center gap-2 min-w-0"
           :data-result-index="index"
-          dir="ltr"
         >
           <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-          <span class="truncate">{{ result.package.name }}</span>
+          <span class="truncate" dir="ltr">{{ result.package.name }}</span>
         </NuxtLink>
         <slot name="status-indicators" :insights="insights">
           <DependenciesStatusIndicators

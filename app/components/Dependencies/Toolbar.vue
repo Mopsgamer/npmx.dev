@@ -255,7 +255,7 @@ const showFilteredCount = computed(() => props.filter && props.filteredCount !==
         <div class="flex-1 relative min-w-0">
           <label for="deps-filter" class="sr-only">{{ $t('package.list.filter_label') }}</label>
           <div
-            class="absolute h-full w-10 flex items-center justify-center text-fg-subtle pointer-events-none"
+            class="absolute inset-is-0 h-full w-10 flex items-center justify-center text-fg-subtle pointer-events-none"
             aria-hidden="true"
           >
             <span class="i-lucide:search w-4 h-4" />

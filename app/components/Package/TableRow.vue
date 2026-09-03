@@ -88,10 +88,9 @@ const { selectable } = usePackageSelectionContext()
         class="row-link font-mono text-sm transition-colors duration-200 inline-flex items-center gap-2 min-w-0 after:content-[''] after:absolute after:inset-0"
         :class="packageTextColorClass"
         :data-result-index="index"
-        dir="ltr"
       >
         <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-        <span class="truncate">{{ pkg.name }}</span>
+        <span class="truncate" dir="ltr">{{ pkg.name }}</span>
       </NuxtLink>
       <slot name="status-indicators" :insights="insights">
         <DependenciesStatusIndicators :name="pkg.name" :insights="insights" class="relative z-10" />

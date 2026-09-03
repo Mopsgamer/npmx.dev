@@ -54,10 +54,9 @@ const emit = defineEmits<{
           :to="packageUrl"
           class="decoration-none hover:text-accent-fallback after:content-[''] after:absolute after:inset-0 inline-flex items-center gap-2 min-w-0"
           :data-result-index="index"
-          dir="ltr"
         >
           <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-          <span class="truncate">{{ item.name }}</span>
+          <span class="truncate" dir="ltr">{{ item.name }}</span>
         </NuxtLink>
         <DependenciesStatusIndicators
           :name="targetName"

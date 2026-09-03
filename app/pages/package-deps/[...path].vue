@@ -527,12 +527,7 @@ function enableUnselectedSections() {
       }}</LinkBase>
     </div>
 
-    <article
-      v-else-if="sections.length > 0"
-      id="package-article"
-      class="container w-full"
-      dir="ltr"
-    >
+    <article v-else-if="sections.length > 0" id="package-article" class="container w-full">
       <DependenciesInsightsSummary
         v-model:selected-insights="selectedInsights"
         :sections="sections"
