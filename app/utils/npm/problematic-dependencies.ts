@@ -103,9 +103,22 @@ export function getVulnerableDepInfo(
 export function getDeprecatedDepInfo(
   depName: string,
   vulnTree: VulnerabilityTreeResult | undefined,
+  fallbackDeprecated?: string | boolean,
 ) {
-  if (!vulnTree?.deprecatedPackages) return null
-  return vulnTree.deprecatedPackages.find(
-    p => p.name === depName && (p.depth === 'root' || p.depth === 'direct'),
-  )
+  if (vulnTree?.deprecatedPackages) {
+    const found = vulnTree.deprecatedPackages.find(
+      p => p.name === depName && (p.depth === 'root' || p.depth === 'direct'),
+    )
+    if (found) return found
+  }
+  if (fallbackDeprecated) {
+    return {
+      name: depName,
+      version: '',
+      depth: 'root' as const,
+      path: [depName],
+      message: typeof fallbackDeprecated === 'string' ? fallbackDeprecated : '',
+    }
+  }
+  return null
 }

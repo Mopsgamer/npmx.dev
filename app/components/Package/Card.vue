@@ -57,22 +57,46 @@ const pkgDescription = useMarkdown(() => ({
 
 const insights = computed(() => props.insights)
 
+const standaloneReplacementRes = useModuleReplacement(() => props.result.package.name)
+const standaloneDepAnalysisRes = useDependencyAnalysis(
+  () => props.result.package.name,
+  () => props.result.package.version,
+)
+
+const hasReplacement = computed(() => {
+  if (insights.value) {
+    return !!unref(insights.value.replacementDeps)?.[props.result.package.name]
+  }
+  return !!standaloneReplacementRes.data.value?.replacement
+})
+
+const effectiveVulnTree = computed(() => {
+  if (insights.value) {
+    return unref(insights.value.vulnTree)
+  }
+  return standaloneDepAnalysisRes.data.value ?? undefined
+})
+
 const vulnDepInfo = computed(() =>
-  insights.value && props.result.package.name
-    ? getVulnerableDepInfo(props.result.package.name, insights.value.vulnTree.value)
+  props.result.package.name
+    ? getVulnerableDepInfo(props.result.package.name, effectiveVulnTree.value)
     : undefined,
 )
 const deprDepInfo = computed(() =>
-  insights.value && props.result.package.name
-    ? getDeprecatedDepInfo(props.result.package.name, insights.value.vulnTree.value)
+  props.result.package.name
+    ? getDeprecatedDepInfo(
+        props.result.package.name,
+        effectiveVulnTree.value,
+        props.result.package.deprecated,
+      )
     : undefined,
 )
 
 // Any insights such as vulnerabilities and replacements
 const hasExtra = computed(
   () =>
-    !!insights.value?.outdatedDeps.value?.[props.result.package.name] ||
-    !!insights.value?.replacementDeps.value?.[props.result.package.name] ||
+    !!unref(insights.value?.outdatedDeps)?.[props.result.package.name] ||
+    hasReplacement.value ||
     !!vulnDepInfo.value ||
     !!deprDepInfo.value,
 )
@@ -99,6 +123,9 @@ const numberFormatter = useNumberFormatter()
         <slot name="status-indicators" :insights="insights">
           <DependenciesStatusIndicators
             :name="result.package.name"
+            :deprecated="result.package.deprecated"
+            :has-replacement="hasReplacement"
+            :vuln-tree="effectiveVulnTree"
             :insights="insights"
             class="relative z-10"
           />
@@ -210,20 +237,20 @@ const numberFormatter = useNumberFormatter()
     </ul>
 
     <div
-      v-if="hasExtra && insights"
+      v-if="hasExtra"
       class="flex items-center justify-between gap-2 mt-3 pt-3 border-t border-border"
     >
       <div class="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs shrink-0">
         <span
-          v-if="insights.outdatedDeps.value?.[result.package.name]"
+          v-if="unref(insights?.outdatedDeps)?.[result.package.name]"
           class="flex items-center gap-1"
           :class="getVersionClass(result.package.name, insights)"
         >
           <span class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-          {{ getOutdatedTooltip(insights.outdatedDeps.value[result.package.name]!, $t) }}
+          {{ getOutdatedTooltip(unref(insights!.outdatedDeps)![result.package.name]!, $t) }}
         </span>
         <span
-          v-if="insights.replacementDeps.value?.[result.package.name]"
+          v-if="hasReplacement"
           class="flex items-center gap-1 text-amber-700 dark:text-amber-500"
         >
           <span class="i-lucide:lightbulb w-3.5 h-3.5 shrink-0" aria-hidden="true" />
@@ -240,9 +267,9 @@ const numberFormatter = useNumberFormatter()
         </LinkBase>
         <LinkBase
           v-if="deprDepInfo"
-          :to="packageRoute(result.package.name, deprDepInfo!.version)"
+          :to="packageRoute(result.package.name, deprDepInfo!.version || result.package.version)"
           class="flex items-center gap-1 shrink-0 text-purple-700 dark:text-purple-500"
-          :title="deprDepInfo!.message"
+          :title="deprDepInfo!.message || undefined"
         >
           <span class="i-lucide:octagon-alert w-3.5 h-3.5 shrink-0" aria-hidden="true" />
           {{ $t('package.deprecated.label') }}

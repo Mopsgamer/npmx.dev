@@ -38,14 +38,34 @@ const allMaintainersText = computed(() => {
   return pkg.value.maintainers.map(m => m.name || m.email).join(', ')
 })
 
+const standaloneReplacementRes = useModuleReplacement(() => props.result.package.name)
+const standaloneDepAnalysisRes = useDependencyAnalysis(
+  () => props.result.package.name,
+  () => props.result.package.version,
+)
+
+const hasReplacement = computed(() => {
+  if (insights.value) {
+    return !!unref(insights.value.replacementDeps)?.[props.result.package.name]
+  }
+  return !!standaloneReplacementRes.data.value?.replacement
+})
+
+const effectiveVulnTree = computed(() => {
+  if (insights.value) {
+    return unref(insights.value.vulnTree)
+  }
+  return standaloneDepAnalysisRes.data.value ?? undefined
+})
+
 const packageTextColorClass = computed(() => {
-  if (!insights.value) return 'text-fg hover:text-accent-fallback'
   const dependencyName = pkg.value.name
-  if (getVulnerableDepInfo(dependencyName, insights.value.vulnTree.value)) return 'text-red-600'
-  if (getDeprecatedDepInfo(dependencyName, insights.value.vulnTree.value))
+  if (getVulnerableDepInfo(dependencyName, effectiveVulnTree.value)) return 'text-red-600'
+  if (
+    getDeprecatedDepInfo(dependencyName, effectiveVulnTree.value, props.result.package.deprecated)
+  )
     return 'text-purple-700 dark:text-purple-500'
-  if (insights.value.replacementDeps.value?.[dependencyName])
-    return 'text-amber-700 dark:text-amber-500'
+  if (hasReplacement.value) return 'text-amber-700 dark:text-amber-500'
 
   return 'text-fg hover:text-accent-fallback'
 })
@@ -80,7 +100,14 @@ const { selectable } = usePackageSelectionContext()
         <span class="truncate" dir="ltr">{{ pkg.name }}</span>
       </NuxtLink>
       <slot name="status-indicators" :insights="insights">
-        <DependenciesStatusIndicators :name="pkg.name" :insights="insights" class="relative z-10" />
+        <DependenciesStatusIndicators
+          :name="pkg.name"
+          :deprecated="result.package.deprecated"
+          :has-replacement="hasReplacement"
+          :vuln-tree="effectiveVulnTree"
+          :insights="insights"
+          class="relative z-10"
+        />
       </slot>
     </td>
 

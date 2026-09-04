@@ -31,8 +31,10 @@ async function fetchReplacements(
 export function useReplacementDependencies(
   dependencies: MaybeRefOrGetter<Record<string, DependencySpec> | undefined>,
 ) {
+  const depsRef = computed(() => toValue(dependencies))
+
   const key = computed(() => {
-    const deps = toValue(dependencies)
+    const deps = depsRef.value
     if (!deps) return 'replacements:none'
     const sorted = Object.keys(deps).sort()
     return sorted.length === 0
@@ -41,14 +43,14 @@ export function useReplacementDependencies(
   })
 
   return useAsyncData<Record<string, ModuleReplacement>>(
-    key,
+    key.value,
     async () => {
-      const deps = toValue(dependencies)
+      const deps = depsRef.value
       if (!deps || Object.keys(deps).length === 0) return {}
       return await fetchReplacements(deps)
     },
     {
-      watch: [key],
+      watch: [depsRef],
       default: () => ({}),
     },
   )

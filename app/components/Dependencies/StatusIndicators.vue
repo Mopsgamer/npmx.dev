@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
+import type { VulnerabilityTreeResult } from '#shared/types/dependency-analysis'
 import { getVulnerableDepInfo, getDeprecatedDepInfo } from '~/utils/npm/problematic-dependencies'
 
 const props = defineProps<{
@@ -7,6 +8,9 @@ const props = defineProps<{
   packageName?: string
   flags?: string[]
   insights?: PackageDependencyInsights
+  deprecated?: boolean | string
+  hasReplacement?: boolean
+  vulnTree?: VulnerabilityTreeResult
 }>()
 
 const structuralMeta = computed<Record<string, { icon: string; text: string }>>(() => ({
@@ -17,23 +21,29 @@ const structuralMeta = computed<Record<string, { icon: string; text: string }>>(
 const realPackageName = computed(() => props.packageName || props.name)
 
 const healthStatusAlert = computed(() => {
-  if (!props.name || !props.insights) return null
+  if (!props.name) return null
 
-  if (getVulnerableDepInfo(realPackageName.value, props.insights.vulnTree.value))
+  const effectiveVulnTree = props.insights ? unref(props.insights.vulnTree) : props.vulnTree
+
+  if (getVulnerableDepInfo(realPackageName.value, effectiveVulnTree))
     return {
       icon: 'i-lucide:shield-alert',
       cssClass: 'text-red-600',
       tooltipText: $t('package.dependencies.vulnerable'),
     }
 
-  if (getDeprecatedDepInfo(realPackageName.value, props.insights.vulnTree.value))
+  if (getDeprecatedDepInfo(realPackageName.value, effectiveVulnTree, props.deprecated))
     return {
       icon: 'i-lucide:octagon-alert',
       cssClass: 'text-purple-700 dark:text-purple-500',
       tooltipText: $t('package.deprecated.label'),
     }
 
-  if (props.insights.replacementDeps?.value?.[props.name])
+  const replacementAvailable = props.insights
+    ? !!unref(props.insights.replacementDeps)?.[props.name]
+    : !!props.hasReplacement
+
+  if (replacementAvailable)
     return {
       icon: 'i-lucide:lightbulb',
       cssClass: 'text-amber-700 dark:text-amber-500',
