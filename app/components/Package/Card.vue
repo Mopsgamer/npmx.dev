@@ -7,7 +7,6 @@ import {
   getVulnerableDepInfo,
   getDeprecatedDepInfo,
 } from '~/utils/npm/problematic-dependencies'
-import { normalizeDependencies } from '~/utils/npm/package-dependency-sections'
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 
 const props = defineProps<{
@@ -56,31 +55,24 @@ const pkgDescription = useMarkdown(() => ({
   plain: true,
 }))
 
-const dependencies = computed(() => {
-  if (!props.result.package.name || !props.result.package.version) return undefined
-  return normalizeDependencies({ [props.result.package.name]: props.result.package.version })
-})
-
-const insights =
-  props.insights ||
-  usePackageDependencyInsights(
-    computed(() => props.result.package.name),
-    computed(() => props.result.package.version),
-    dependencies,
-  )
+const insights = computed(() => props.insights)
 
 const vulnDepInfo = computed(() =>
-  getVulnerableDepInfo(props.result.package.name, insights.vulnTree.value),
+  insights.value && props.result.package.name
+    ? getVulnerableDepInfo(props.result.package.name, insights.value.vulnTree.value)
+    : undefined,
 )
 const deprDepInfo = computed(() =>
-  getDeprecatedDepInfo(props.result.package.name, insights.vulnTree.value),
+  insights.value && props.result.package.name
+    ? getDeprecatedDepInfo(props.result.package.name, insights.value.vulnTree.value)
+    : undefined,
 )
 
 // Any insights such as vulnerabilities and replacements
 const hasExtra = computed(
   () =>
-    !!insights.outdatedDeps.value?.[props.result.package.name] ||
-    !!insights.replacementDeps.value?.[props.result.package.name] ||
+    !!insights.value?.outdatedDeps.value?.[props.result.package.name] ||
+    !!insights.value?.replacementDeps.value?.[props.result.package.name] ||
     !!vulnDepInfo.value ||
     !!deprDepInfo.value,
 )
@@ -145,7 +137,7 @@ const numberFormatter = useNumberFormatter()
           <dt class="sr-only">{{ $t('package.card.version') }}</dt>
           <dd class="font-mono truncate max-w-32" :title="result.package.version">
             <TooltipApp
-              v-if="insights.outdatedDeps.value?.[result.package.name]"
+              v-if="insights?.outdatedDeps.value?.[result.package.name]"
               :text="getOutdatedTooltip(insights.outdatedDeps.value[result.package.name]!, $t)"
               position="top"
             >
@@ -218,7 +210,7 @@ const numberFormatter = useNumberFormatter()
     </ul>
 
     <div
-      v-if="hasExtra"
+      v-if="hasExtra && insights"
       class="flex items-center justify-between gap-2 mt-3 pt-3 border-t border-border"
     >
       <div class="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs shrink-0">

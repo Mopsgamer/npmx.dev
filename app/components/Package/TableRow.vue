@@ -3,11 +3,7 @@ import type { RouteLocationRaw } from 'vue-router'
 import type { NpmSearchResult } from '#shared/types/npm-registry'
 import type { ColumnConfig, StructuredFilters } from '#shared/types/preferences'
 import { getVulnerableDepInfo, getDeprecatedDepInfo } from '~/utils/npm/problematic-dependencies'
-import { normalizeDependencies } from '~/utils/npm/package-dependency-sections'
-import {
-  usePackageDependencyInsights,
-  type PackageDependencyInsights,
-} from '~/composables/usePackageDependencyInsights'
+import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 
 const props = defineProps<{
   result: NpmSearchResult
@@ -23,18 +19,7 @@ const emit = defineEmits<{
 }>()
 
 const pkg = computed(() => props.result.package)
-const dependencies = computed(() => {
-  if (!pkg.value.name || !pkg.value.version) return undefined
-  return normalizeDependencies({ [pkg.value.name]: pkg.value.version })
-})
-
-const insights =
-  props.insights ||
-  usePackageDependencyInsights(
-    computed(() => pkg.value.name),
-    computed(() => pkg.value.version),
-    dependencies,
-  )
+const insights = computed(() => props.insights)
 
 const updatedDate = computed(() => props.result.package.date)
 const { isPackageSelected, togglePackageSelection, canSelectMore } = usePackageSelection()
@@ -54,11 +39,13 @@ const allMaintainersText = computed(() => {
 })
 
 const packageTextColorClass = computed(() => {
+  if (!insights.value) return 'text-fg hover:text-accent-fallback'
   const dependencyName = pkg.value.name
-  if (getVulnerableDepInfo(dependencyName, insights.vulnTree.value)) return 'text-red-600'
-  if (getDeprecatedDepInfo(dependencyName, insights.vulnTree.value))
+  if (getVulnerableDepInfo(dependencyName, insights.value.vulnTree.value)) return 'text-red-600'
+  if (getDeprecatedDepInfo(dependencyName, insights.value.vulnTree.value))
     return 'text-purple-700 dark:text-purple-500'
-  if (insights.replacementDeps.value?.[dependencyName]) return 'text-amber-700 dark:text-amber-500'
+  if (insights.value.replacementDeps.value?.[dependencyName])
+    return 'text-amber-700 dark:text-amber-500'
 
   return 'text-fg hover:text-accent-fallback'
 })

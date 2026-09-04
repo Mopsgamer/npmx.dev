@@ -143,8 +143,8 @@ watch(
 
 /**
  * Preserves the optional pre-computed `props.insights` override.
- * When `props.insights` is undefined, child components (`PackageCard` and `PackageTableRow`)
- * fall back to computing dependency insights scoped to their own result's package name and version.
+ * Child components (`PackageCard` and `PackageTableRow`) render security and dependency insights
+ * when `props.insights` is passed from parent components (e.g. dependency tree views).
  */
 const insights = computed(() => props.insights)
 
