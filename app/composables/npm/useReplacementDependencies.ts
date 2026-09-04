@@ -1,4 +1,4 @@
-import type { ModuleReplacement, ModuleReplacementMapping } from 'module-replacements'
+import type { ModuleReplacement } from 'module-replacements'
 import type { DependencySpec } from '~/utils/npm/package-dependency-sections'
 
 async function fetchReplacements(
@@ -7,41 +7,16 @@ async function fetchReplacements(
   const entries = Object.entries(deps)
   if (entries.length === 0) return {}
 
-  const uniquePackageNames = Array.from(new Set(entries.map(([, spec]) => spec.name)))
-
-  if (uniquePackageNames.length === 1) {
-    const packageName = uniquePackageNames[0]!
-    try {
-      const response = await $fetch<{
-        mapping: ModuleReplacementMapping
-        replacement: ModuleReplacement
-      } | null>(`/api/replacements/${encodeURIComponent(packageName)}`)
-
-      if (!response?.replacement) return {}
-      const map: Record<string, ModuleReplacement> = {}
-      for (const [key, spec] of entries) {
-        if (spec.name === packageName) {
-          map[key] = response.replacement
-        }
-      }
-      return map
-    } catch {
-      return {}
-    }
-  }
-
+  const names = Array.from(new Set(entries.map(([, spec]) => spec.name)))
   try {
-    const query = uniquePackageNames.map(encodeURIComponent).join(',')
-    const response = await $fetch<
-      Record<string, { mapping: ModuleReplacementMapping; replacement: ModuleReplacement }>
-    >(`/api/replacements/${query}`)
+    const isSingle = names.length === 1
+    const res = await $fetch<any>(`/api/replacements/${names.map(encodeURIComponent).join(',')}`)
+    if (!res) return {}
 
     const map: Record<string, ModuleReplacement> = {}
     for (const [key, spec] of entries) {
-      const match = response?.[spec.name]
-      if (match?.replacement) {
-        map[key] = match.replacement
-      }
+      const match = isSingle ? res : res[spec.name]
+      if (match?.replacement) map[key] = match.replacement
     }
     return map
   } catch {
@@ -58,19 +33,18 @@ export function useReplacementDependencies(
 ) {
   const key = computed(() => {
     const deps = toValue(dependencies)
-    if (deps === undefined) return ''
-    if (Object.keys(deps).length === 0) return 'replacements:none'
-    const sortedKeys = Object.keys(deps).sort()
-    return `replacements:${sortedKeys.map(k => `${k}@${deps[k]!.version}`).join(',')}`
+    if (!deps) return 'replacements:none'
+    const sorted = Object.keys(deps).sort()
+    return sorted.length === 0
+      ? 'replacements:none'
+      : `replacements:${sorted.map(k => `${k}@${deps[k]!.version}`).join(',')}`
   })
 
-  const { data, status, error } = useAsyncData<Record<string, ModuleReplacement>>(
-    () => key.value,
+  return useAsyncData<Record<string, ModuleReplacement>>(
+    key,
     async () => {
       const deps = toValue(dependencies)
-      if (!deps || Object.keys(deps).length === 0) {
-        return {}
-      }
+      if (!deps || Object.keys(deps).length === 0) return {}
       return await fetchReplacements(deps)
     },
     {
@@ -78,10 +52,4 @@ export function useReplacementDependencies(
       default: () => ({}),
     },
   )
-
-  return {
-    data,
-    status,
-    error,
-  }
 }
