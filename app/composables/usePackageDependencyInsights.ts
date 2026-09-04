@@ -21,6 +21,8 @@ export function usePackageDependencyInsights(
   const minVersion = computed((): string | undefined => {
     const ver = toValue(version)
     if (!ver) return undefined
+    const deps = toValue(dependencies)
+    if (!deps || Object.keys(deps).length === 0) return undefined
     const min = findMinimumForRange(ver)
     return (min && normalize(min)) || ver
   })
