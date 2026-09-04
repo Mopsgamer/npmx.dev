@@ -180,10 +180,12 @@ function isItemInteractive(item: InsightMetric): boolean {
 const tooltipText = computed(() => {
   return `${$t('package.dependencies.insights.subtitle')} — ${$t('package.dependencies.insights.tooltip_urgent')} / ${$t('package.dependencies.insights.tooltip_other')}`
 })
+
+const hasDependencies = computed(() => props.sections.some(s => s.items.length > 0))
 </script>
 
 <template>
-  <section id="dependency-health" class="w-full py-4 mt-6">
+  <section v-if="hasDependencies" id="dependency-health" class="w-full py-4 mt-6">
     <div class="flex items-center justify-between mb-2">
       <div class="flex items-center gap-1.5">
         <h2 class="text-fg-muted uppercase">
