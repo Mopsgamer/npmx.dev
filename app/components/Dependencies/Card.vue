@@ -37,7 +37,20 @@ const searchResult = computed(() => {
   return result
 })
 
-const packageUrl = computed(() => packageRoute(targetName.value))
+const minVersion = computed(() => resolveMinVersion(props.item.range))
+
+const packageUrl = computed(() => packageRoute(targetName.value, minVersion.value))
+
+const isLoadingData = computed(() => {
+  if (props.insights) {
+    const vStatus = unref(props.insights.vulnStatus)
+    const rStatus = unref(props.insights.replacementStatus)
+    return (
+      vStatus === 'pending' || vStatus === 'idle' || rStatus === 'pending' || rStatus === 'idle'
+    )
+  }
+  return false
+})
 
 const emit = defineEmits<{
   clickKeyword: [keyword: string]
@@ -61,7 +74,9 @@ const emit = defineEmits<{
         <DependenciesStatusIndicators
           :name="targetName"
           :flags="item.flags"
-          class="relative z-10"
+          :deprecated="searchResult?.package.deprecated"
+          :is-loading="isLoadingData"
+          class="z-10"
         />
       </h2>
     </header>
@@ -70,7 +85,7 @@ const emit = defineEmits<{
       <div class="flex items-center gap-1.5 min-w-0 relative z-10">
         <dl>
           <dt class="sr-only">{{ $t('package.card.version') }}</dt>
-          <dd class="font-mono truncate max-w-32" :title="item.range">{{ item.range }}</dd>
+          <dd class="font-mono truncate max-w-32">{{ item.range }}</dd>
         </dl>
       </div>
       <SkeletonBlock class="h-4 w-8ch" />
@@ -91,7 +106,13 @@ const emit = defineEmits<{
     @click-keyword="emit('clickKeyword', $event)"
   >
     <template #status-indicators="{ insights }">
-      <DependenciesStatusIndicators :name="targetName" :flags="item.flags" v-bind="{ insights }" />
+      <DependenciesStatusIndicators
+        :name="targetName"
+        :flags="item.flags"
+        :deprecated="searchResult?.package.deprecated"
+        v-bind="{ insights }"
+        :is-loading="isLoadingData"
+      />
     </template>
   </PackageCard>
 </template>

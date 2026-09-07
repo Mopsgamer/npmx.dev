@@ -44,6 +44,25 @@ const standaloneDepAnalysisRes = useDependencyAnalysis(
   () => props.result.package.version,
 )
 
+const isLoadingData = computed(() => {
+  if (insights.value) {
+    const vStatus = unref(insights.value.vulnStatus)
+    const rStatus = unref(insights.value.replacementStatus)
+    return (
+      vStatus === 'pending' || vStatus === 'idle' || rStatus === 'pending' || rStatus === 'idle'
+    )
+  }
+  const vulnPending =
+    standaloneDepAnalysisRes.status.value === 'pending' ||
+    (standaloneDepAnalysisRes.status.value === 'idle' &&
+      standaloneDepAnalysisRes.data.value === undefined)
+  const replacementPending =
+    standaloneReplacementRes.status.value === 'pending' ||
+    (standaloneReplacementRes.status.value === 'idle' &&
+      standaloneReplacementRes.data.value === undefined)
+  return vulnPending || replacementPending
+})
+
 const hasReplacement = computed(() => {
   if (insights.value) {
     return !!unref(insights.value.replacementDeps)?.[props.result.package.name]
@@ -79,7 +98,7 @@ const { selectable } = usePackageSelectionContext()
   <tr
     class="group relative scale-100 [clip-path:inset(0)] border-b border-border hover:bg-bg-muted transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-fg focus-visible:ring-inset focus-visible:outline-none focus:bg-bg-muted focus-within:bg-bg-muted"
   >
-    <td class="ps-3" v-if="selectable">
+    <td class="ps-3 align-middle" v-if="selectable">
       <PackageSelectionCheckbox
         :package-name="result.package.name"
         :disabled="!canSelectMore && !isSelected"
@@ -89,33 +108,33 @@ const { selectable } = usePackageSelectionContext()
       />
     </td>
     <!-- Name (always visible) -->
-    <td class="py-2 px-3 inline-flex items-center gap-2">
-      <NuxtLink
-        :to="packageUrl"
-        class="row-link font-mono text-sm transition-colors duration-200 inline-flex items-center gap-2 min-w-0 after:content-[''] after:absolute after:inset-0"
-        :class="packageTextColorClass"
-        :data-result-index="index"
-      >
-        <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-        <span class="truncate" dir="ltr">{{ pkg.name }}</span>
-      </NuxtLink>
-      <slot name="status-indicators" :insights="insights">
-        <DependenciesStatusIndicators
-          :name="pkg.name"
-          :deprecated="result.package.deprecated"
-          :has-replacement="hasReplacement"
-          :vuln-tree="effectiveVulnTree"
-          :insights="insights"
-          class="relative z-10"
-        />
-      </slot>
+    <td class="py-2 px-3 align-middle">
+      <div class="inline-flex items-center gap-2">
+        <NuxtLink
+          :to="packageUrl"
+          class="row-link font-mono text-sm transition-colors duration-200 inline-flex items-center gap-2 min-w-0 after:content-[''] after:absolute after:inset-0"
+          :class="packageTextColorClass"
+          :data-result-index="index"
+        >
+          <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+          <span class="truncate" dir="ltr">{{ pkg.name }}</span>
+        </NuxtLink>
+        <slot name="status-indicators" :insights="insights">
+          <DependenciesStatusIndicators
+            :name="pkg.name"
+            :deprecated="result.package.deprecated"
+            :has-replacement="hasReplacement"
+            :vuln-tree="effectiveVulnTree"
+            :insights="insights"
+            :is-loading="isLoadingData"
+            class="z-10"
+          />
+        </slot>
+      </div>
     </td>
 
     <!-- Version -->
-    <td
-      v-if="isColumnVisible('version')"
-      class="py-2 px-3 font-mono text-xs text-fg-subtle relative z-10"
-    >
+    <td v-if="isColumnVisible('version')" class="py-2 px-3 font-mono text-xs text-fg-subtle z-10">
       <slot name="version" :version="pkg.version">
         <span dir="ltr">{{ pkg.version }}</span>
       </slot>

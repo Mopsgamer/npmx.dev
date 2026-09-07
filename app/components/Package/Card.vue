@@ -1,12 +1,7 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from 'vue-router'
 import type { StructuredFilters } from '#shared/types/preferences'
-import {
-  getOutdatedTooltip,
-  getVersionClass,
-  getVulnerableDepInfo,
-  getDeprecatedDepInfo,
-} from '~/utils/npm/problematic-dependencies'
+import { getOutdatedTooltip, getVersionClass } from '~/utils/npm/problematic-dependencies'
 import type { PackageDependencyInsights } from '~/composables/usePackageDependencyInsights'
 
 const props = defineProps<{
@@ -77,29 +72,24 @@ const effectiveVulnTree = computed(() => {
   return standaloneDepAnalysisRes.data.value ?? undefined
 })
 
-const vulnDepInfo = computed(() =>
-  props.result.package.name
-    ? getVulnerableDepInfo(props.result.package.name, effectiveVulnTree.value)
-    : undefined,
-)
-const deprDepInfo = computed(() =>
-  props.result.package.name
-    ? getDeprecatedDepInfo(
-        props.result.package.name,
-        effectiveVulnTree.value,
-        props.result.package.deprecated,
-      )
-    : undefined,
-)
-
-// Any insights such as vulnerabilities and replacements
-const hasExtra = computed(
-  () =>
-    !!unref(insights.value?.outdatedDeps)?.[props.result.package.name] ||
-    hasReplacement.value ||
-    !!vulnDepInfo.value ||
-    !!deprDepInfo.value,
-)
+const isLoadingData = computed(() => {
+  if (insights.value) {
+    const vStatus = unref(insights.value.vulnStatus)
+    const rStatus = unref(insights.value.replacementStatus)
+    return (
+      vStatus === 'pending' || vStatus === 'idle' || rStatus === 'pending' || rStatus === 'idle'
+    )
+  }
+  const vulnPending =
+    standaloneDepAnalysisRes.status.value === 'pending' ||
+    (standaloneDepAnalysisRes.status.value === 'idle' &&
+      standaloneDepAnalysisRes.data.value === undefined)
+  const replacementPending =
+    standaloneReplacementRes.status.value === 'pending' ||
+    (standaloneReplacementRes.status.value === 'idle' &&
+      standaloneReplacementRes.data.value === undefined)
+  return vulnPending || replacementPending
+})
 
 const numberFormatter = useNumberFormatter()
 </script>
@@ -127,12 +117,13 @@ const numberFormatter = useNumberFormatter()
             :has-replacement="hasReplacement"
             :vuln-tree="effectiveVulnTree"
             :insights="insights"
-            class="relative z-10"
+            :is-loading="isLoadingData"
+            class="z-10"
           />
         </slot>
         <span
           v-if="isExactMatch"
-          class="text-xs px-1.5 py-0.5 ms-2 rounded bg-bg-elevated border border-border-hover text-fg relative z-10"
+          class="text-xs px-1.5 py-0.5 ms-2 rounded bg-bg-elevated border border-border-hover text-fg z-10"
           >{{ $t('search.exact_match') }}</span
         >
       </component>
@@ -160,23 +151,25 @@ const numberFormatter = useNumberFormatter()
         compact
       />
       <dl class="contents m-0">
-        <div v-if="result.package.version" class="flex items-center gap-1.5 min-w-0 relative z-10">
+        <div v-if="result.package.version" class="flex items-center gap-1.5 min-w-0">
           <dt class="sr-only">{{ $t('package.card.version') }}</dt>
-          <dd class="font-mono truncate max-w-32" :title="result.package.version">
+          <dd class="font-mono truncate max-w-32">
             <TooltipApp
               v-if="insights?.outdatedDeps.value?.[result.package.name]"
               :text="getOutdatedTooltip(insights.outdatedDeps.value[result.package.name]!, $t)"
               position="top"
             >
-              <span
+              <div
                 :class="getVersionClass(result.package.name, insights)"
-                class="flex items-center gap-1 cursor-help"
+                class="inline-flex items-center gap-1 cursor-help py-3 -my-3 z-10"
               >
                 <span class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                 <span>{{ versionIsRange ? '' : 'v' }}{{ result.package.version }}</span>
-              </span>
+              </div>
             </TooltipApp>
-            <span v-else> {{ versionIsRange ? '' : 'v' }}{{ result.package.version }} </span>
+            <div v-else class="inline-flex items-center gap-1 py-3 -my-3 z-10">
+              <span> {{ versionIsRange ? '' : 'v' }}{{ result.package.version }} </span>
+            </div>
           </dd>
         </div>
         <div v-if="result.package.date" class="flex items-center gap-1.5">
@@ -235,47 +228,6 @@ const numberFormatter = useNumberFormatter()
         </span>
       </li>
     </ul>
-
-    <div
-      v-if="hasExtra"
-      class="flex items-center justify-between gap-2 mt-3 pt-3 border-t border-border"
-    >
-      <div class="flex flex-wrap items-center gap-x-5 gap-y-1 text-xs shrink-0">
-        <span
-          v-if="unref(insights?.outdatedDeps)?.[result.package.name]"
-          class="flex items-center gap-1"
-          :class="getVersionClass(result.package.name, insights)"
-        >
-          <span class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-          {{ getOutdatedTooltip(unref(insights!.outdatedDeps)![result.package.name]!, $t) }}
-        </span>
-        <span
-          v-if="hasReplacement"
-          class="flex items-center gap-1 text-amber-700 dark:text-amber-500"
-        >
-          <span class="i-lucide:lightbulb w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-          {{ $t('package.dependencies.has_replacement') }}
-        </span>
-        <LinkBase
-          v-if="vulnDepInfo"
-          :to="packageRoute(result.package.name, vulnDepInfo!.version)"
-          class="flex items-center gap-1 shrink-0"
-          :class="SEVERITY_TEXT_COLORS[getHighestSeverity(vulnDepInfo!.counts)]"
-        >
-          <span class="i-lucide:shield-alert w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-          {{ $t('package.dependencies.view_vulnerabilities') }}
-        </LinkBase>
-        <LinkBase
-          v-if="deprDepInfo"
-          :to="packageRoute(result.package.name, deprDepInfo!.version || result.package.version)"
-          class="flex items-center gap-1 shrink-0 text-purple-700 dark:text-purple-500"
-          :title="deprDepInfo!.message || undefined"
-        >
-          <span class="i-lucide:octagon-alert w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-          {{ $t('package.deprecated.label') }}
-        </LinkBase>
-      </div>
-    </div>
 
     <slot name="extra" />
   </BaseCard>

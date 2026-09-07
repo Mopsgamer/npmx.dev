@@ -41,7 +41,9 @@ const searchResult = computed(() => {
   return result
 })
 
-const packageUrl = computed(() => packageRoute(targetName.value))
+const minVersion = computed(() => resolveMinVersion(item.value.range))
+
+const packageUrl = computed(() => packageRoute(targetName.value, minVersion.value))
 
 const activeColumns = computed(() => props.columns ?? DEFAULT_COLUMNS)
 
@@ -52,6 +54,17 @@ function isColumnVisible(id: string): boolean {
 const outdated = computed(() => props.insights?.outdatedDeps.value?.[item.value.name])
 
 const versionClass = computed(() => getVersionClass(item.value.name, props.insights))
+
+const isLoadingData = computed(() => {
+  if (props.insights) {
+    const vStatus = unref(props.insights.vulnStatus)
+    const rStatus = unref(props.insights.replacementStatus)
+    return (
+      vStatus === 'pending' || vStatus === 'idle' || rStatus === 'pending' || rStatus === 'idle'
+    )
+  }
+  return false
+})
 
 const { t } = useI18n()
 
@@ -73,12 +86,12 @@ const emit = defineEmits<{
   >
     <template #version="{ version }">
       <TooltipApp v-if="outdated" :text="getOutdatedTooltip(outdated, t)" position="top">
-        <div :class="versionClass" class="flex items-center gap-1.5 cursor-help">
+        <div :class="versionClass" class="flex items-center gap-1.5 cursor-help z-10 py-3 -my-3">
           <span class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0" aria-hidden="true" />
           <span>{{ version }}</span>
         </div>
       </TooltipApp>
-      <div v-else class="flex items-center gap-1.5">
+      <div v-else class="flex items-center gap-1.5 z-10">
         <span>{{ version }}</span>
       </div>
     </template>
@@ -87,8 +100,10 @@ const emit = defineEmits<{
         :name="item.name"
         :package-name="targetName"
         :flags="item.flags"
+        :deprecated="searchResult?.package.deprecated"
         v-bind="{ insights }"
-        class="relative z-10"
+        :is-loading="isLoadingData"
+        class="z-10"
       />
     </template>
   </PackageTableRow>
@@ -96,34 +111,30 @@ const emit = defineEmits<{
   <!-- Skeleton row -->
   <tr v-else class="border-b border-border relative">
     <!-- Name (always visible) -->
-    <td class="py-2 px-3 inline-flex items-center gap-2">
-      <NuxtLink
-        :to="packageUrl"
-        class="row-link font-mono text-sm transition-colors duration-200 inline-flex items-center gap-2 min-w-0 after:content-[''] after:absolute after:inset-0"
-        :data-result-index="index"
-      >
-        <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-        <span class="truncate" dir="ltr">{{ item.name }}</span>
+    <td class="py-2 px-3 align-middle">
+      <div class="inline-flex items-center gap-2">
+        <NuxtLink
+          :to="packageUrl"
+          class="row-link font-mono text-sm transition-colors duration-200 inline-flex items-center gap-2 min-w-0 after:content-[''] after:absolute after:inset-0"
+          :data-result-index="index"
+        >
+          <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+          <span class="truncate" dir="ltr">{{ item.name }}</span>
+        </NuxtLink>
         <DependenciesStatusIndicators
           :name="item.name"
           :package-name="targetName"
           :flags="item.flags"
-          class="relative z-10"
+          :deprecated="searchResult?.package.deprecated"
+          v-bind="{ insights }"
+          :is-loading="isLoadingData"
+          class="z-10"
         />
-      </NuxtLink>
-      <DependenciesStatusIndicators
-        :name="item.name"
-        :package-name="targetName"
-        :flags="item.flags"
-        class="relative z-10"
-      />
+      </div>
     </td>
 
     <!-- Version -->
-    <td
-      v-if="isColumnVisible('version')"
-      class="py-2 px-3 font-mono text-xs text-fg-subtle relative z-10"
-    >
+    <td v-if="isColumnVisible('version')" class="py-2 px-3 font-mono text-xs text-fg-subtle z-10">
       <span dir="ltr">{{ item.range }}</span>
     </td>
 

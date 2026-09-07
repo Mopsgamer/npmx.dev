@@ -9,16 +9,21 @@ export function useDependencyAnalysis(
   packageName: MaybeRefOrGetter<string>,
   version: MaybeRefOrGetter<string | null | undefined>,
 ) {
+  const resolvedVersion = computed((): string | undefined => {
+    const ver = toValue(version)
+    return resolveMinVersion(ver) ?? undefined
+  })
+
   return useFetch<VulnerabilityTreeResult>(
     () => {
       const pkg = toValue(packageName)
-      const ver = toValue(version)
+      const ver = resolvedVersion.value
       if (!pkg || !ver) return ''
       return `/api/registry/vulnerabilities/${encodePackageName(pkg)}/v/${ver}`
     },
     {
-      key: () => `vuln:${toValue(packageName)}:${toValue(version)}`,
-      watch: [() => toValue(packageName), () => toValue(version)],
+      key: () => `vuln:${toValue(packageName)}:${resolvedVersion.value}`,
+      watch: [() => toValue(packageName), resolvedVersion],
       server: false,
       lazy: true,
     },

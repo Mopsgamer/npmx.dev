@@ -1,4 +1,3 @@
-import { findMinimumForRange, normalize } from 'verkit'
 import type { DependencySpec } from '~/utils/npm/package-dependency-sections'
 
 export function usePackageDependencyInsights(
@@ -18,20 +17,11 @@ export function usePackageDependencyInsights(
     error: replacementError,
   } = useReplacementDependencies(dependencies)
 
-  const minVersion = computed((): string | undefined => {
-    const ver = toValue(version)
-    if (!ver) return undefined
-    const deps = toValue(dependencies)
-    if (!deps || Object.keys(deps).length === 0) return undefined
-    const min = findMinimumForRange(ver)
-    return (min && normalize(min)) || ver
-  })
-
   const {
     data: vulnTree,
     status: vulnStatus,
     error: vulnError,
-  } = useDependencyAnalysis(packageName, minVersion)
+  } = useDependencyAnalysis(packageName, version)
 
   const hasError = computed(() => {
     return !!(vulnError.value || outdatedError.value || replacementError.value)

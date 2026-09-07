@@ -11,6 +11,7 @@ const props = defineProps<{
   deprecated?: boolean | string
   hasReplacement?: boolean
   vulnTree?: VulnerabilityTreeResult
+  isLoading?: boolean
 }>()
 
 const structuralMeta = computed<Record<string, { icon: string; text: string }>>(() => ({
@@ -20,49 +21,73 @@ const structuralMeta = computed<Record<string, { icon: string; text: string }>>(
 
 const realPackageName = computed(() => props.packageName || props.name)
 
-const healthStatusAlert = computed(() => {
-  if (!props.name) return null
+const isDataLoading = computed(() => {
+  if (props.isLoading !== undefined) return props.isLoading
+  if (props.insights) {
+    return (
+      unref(props.insights.vulnStatus) === 'pending' ||
+      unref(props.insights.replacementStatus) === 'pending'
+    )
+  }
+  return false
+})
+
+const healthStatusAlerts = computed(() => {
+  if (!props.name) return []
+
+  const alerts: Array<{
+    key: string
+    icon: string
+    cssClass: string
+    tooltipText: string
+  }> = []
 
   const effectiveVulnTree = props.insights ? unref(props.insights.vulnTree) : props.vulnTree
 
-  if (getVulnerableDepInfo(realPackageName.value, effectiveVulnTree))
-    return {
+  if (getVulnerableDepInfo(realPackageName.value, effectiveVulnTree)) {
+    alerts.push({
+      key: 'vulnerable',
       icon: 'i-lucide:shield-alert',
       cssClass: 'text-red-600',
       tooltipText: $t('package.dependencies.vulnerable'),
-    }
+    })
+  }
 
-  if (getDeprecatedDepInfo(realPackageName.value, effectiveVulnTree, props.deprecated))
-    return {
+  if (getDeprecatedDepInfo(realPackageName.value, effectiveVulnTree, props.deprecated)) {
+    alerts.push({
+      key: 'deprecated',
       icon: 'i-lucide:octagon-alert',
       cssClass: 'text-purple-700 dark:text-purple-500',
       tooltipText: $t('package.deprecated.label'),
-    }
+    })
+  }
 
   const replacementAvailable = props.insights
     ? !!unref(props.insights.replacementDeps)?.[props.name]
     : !!props.hasReplacement
 
-  if (replacementAvailable)
-    return {
+  if (replacementAvailable) {
+    alerts.push({
+      key: 'replacement',
       icon: 'i-lucide:lightbulb',
       cssClass: 'text-amber-700 dark:text-amber-500',
       tooltipText: $t('package.dependencies.has_replacement'),
-    }
+    })
+  }
 
-  return null
+  return alerts
 })
 </script>
 
 <template>
-  <div class="z-20 inline-flex items-center gap-1.5 shrink-0">
+  <div class="inline-flex shrink-0 z-20">
     <template v-for="attribute in flags" :key="attribute">
       <TooltipApp
         v-if="structuralMeta[attribute]"
         :text="structuralMeta[attribute].text"
-        class="inline-flex shrink-0"
+        class="inline-flex items-center shrink-0"
       >
-        <div class="inline-flex p-1.5">
+        <div class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
           <span
             :class="structuralMeta[attribute].icon"
             class="w-3.5 h-3.5 text-fg-subtle"
@@ -73,16 +98,23 @@ const healthStatusAlert = computed(() => {
     </template>
 
     <TooltipApp
-      v-if="healthStatusAlert"
-      :text="healthStatusAlert.tooltipText"
-      class="inline-flex shrink-0"
+      v-if="isDataLoading"
+      :text="$t('common.loading')"
+      class="inline-flex items-center shrink-0"
     >
-      <div class="inline-flex p-1.5">
-        <span
-          :class="[healthStatusAlert.icon, healthStatusAlert.cssClass]"
-          class="w-3.5 h-3.5"
-          aria-hidden="true"
-        />
+      <div class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
+        <span class="i-svg-spinners:ring-resize w-3.5 h-3.5 text-fg-subtle" aria-hidden="true" />
+      </div>
+    </TooltipApp>
+
+    <TooltipApp
+      v-for="alert in healthStatusAlerts"
+      :key="alert.key"
+      :text="alert.tooltipText"
+      class="inline-flex items-center shrink-0"
+    >
+      <div class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
+        <span :class="[alert.icon, alert.cssClass]" class="w-3.5 h-3.5" aria-hidden="true" />
       </div>
     </TooltipApp>
   </div>
