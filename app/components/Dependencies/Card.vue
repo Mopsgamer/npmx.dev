@@ -60,17 +60,19 @@ const emit = defineEmits<{
 <template>
   <BaseCard v-if="!searchResult || showSkeleton">
     <header class="mb-4 flex items-baseline justify-between gap-2">
-      <h2
-        class="font-mono text-sm sm:text-base font-medium text-fg group-hover:text-fg transition-colors duration-200 min-w-0 break-all inline-flex items-center gap-2"
-      >
-        <NuxtLink
-          :to="packageUrl"
-          class="decoration-none hover:text-accent-fallback after:content-[''] after:absolute after:inset-0 inline-flex items-center gap-2 min-w-0"
-          :data-result-index="index"
+      <div class="flex items-baseline justify-start gap-2">
+        <h2
+          class="font-mono text-sm sm:text-base font-medium text-fg group-hover:text-fg transition-colors duration-200 min-w-0 break-all inline-flex items-center gap-2"
         >
-          <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-          <span class="truncate" dir="ltr">{{ item.name }}</span>
-        </NuxtLink>
+          <NuxtLink
+            :to="packageUrl"
+            class="decoration-none hover:text-accent-fallback after:content-[''] after:absolute after:inset-0 inline-flex items-center gap-2 min-w-0"
+            :data-result-index="index"
+          >
+            <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+            <span class="truncate" dir="ltr">{{ item.name }}</span>
+          </NuxtLink>
+        </h2>
         <DependenciesStatusIndicators
           :name="targetName"
           :flags="item.flags"
@@ -78,7 +80,7 @@ const emit = defineEmits<{
           :is-loading="isLoadingData"
           class="z-10"
         />
-      </h2>
+      </div>
     </header>
     <SkeletonBlock class="h-5 w-full mb-2 sm:mb-3" />
     <div class="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-2 text-xs text-fg-muted">

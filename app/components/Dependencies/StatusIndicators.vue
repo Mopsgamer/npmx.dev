@@ -82,52 +82,48 @@ const healthStatusAlerts = computed(() => {
 </script>
 
 <template>
-  <div class="inline-flex shrink-0 z-20">
+  <span class="inline-flex shrink-0 z-20">
     <TooltipApp
       v-if="isAliased"
       :text="$t('package.dependencies.aliased_to', { name: realPackageName })"
-      class="inline-flex items-center shrink-0"
+      class="items-center shrink-0"
     >
-      <div class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
+      <span class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
         <span class="i-lucide:arrow-right-left w-3.5 h-3.5 text-fg-subtle" aria-hidden="true" />
-      </div>
+      </span>
     </TooltipApp>
 
     <template v-for="attribute in flags" :key="attribute">
       <TooltipApp
         v-if="structuralMeta[attribute]"
         :text="structuralMeta[attribute].text"
-        class="inline-flex items-center shrink-0"
+        class="items-center shrink-0"
       >
-        <div class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
+        <span class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
           <span
             :class="structuralMeta[attribute].icon"
             class="w-3.5 h-3.5 text-fg-subtle"
             aria-hidden="true"
           />
-        </div>
+        </span>
       </TooltipApp>
     </template>
 
-    <TooltipApp
-      v-if="isDataLoading"
-      :text="$t('common.loading')"
-      class="inline-flex items-center shrink-0"
-    >
-      <div class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
+    <TooltipApp v-if="isDataLoading" :text="$t('common.loading')" class="items-center shrink-0">
+      <span class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
         <span class="i-svg-spinners:ring-resize w-3.5 h-3.5 text-fg-subtle" aria-hidden="true" />
-      </div>
+      </span>
     </TooltipApp>
 
     <TooltipApp
       v-for="alert in healthStatusAlerts"
       :key="alert.key"
       :text="alert.tooltipText"
-      class="inline-flex items-center shrink-0"
+      class="items-center shrink-0"
     >
-      <div class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
+      <span class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
         <span :class="[alert.icon, alert.cssClass]" class="w-3.5 h-3.5" aria-hidden="true" />
-      </div>
+      </span>
     </TooltipApp>
-  </div>
+  </span>
 </template>

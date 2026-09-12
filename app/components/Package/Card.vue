@@ -97,19 +97,26 @@ const numberFormatter = useNumberFormatter()
 <template>
   <BaseCard :selected="isSelected" :isExactMatch="isExactMatch">
     <header class="mb-4 flex items-baseline justify-between gap-2">
-      <component
-        :is="headingLevel ?? 'h3'"
-        class="font-mono text-sm sm:text-base font-medium text-fg group-hover:text-fg transition-colors duration-200 min-w-0 break-all inline-flex items-center gap-2"
-      >
-        <NuxtLink
-          :to="packageUrl"
-          :prefetch-on="prefetch ? 'visibility' : 'interaction'"
-          class="decoration-none hover:text-accent-fallback after:content-[''] after:absolute after:inset-0 inline-flex items-center gap-2 min-w-0"
-          :data-result-index="index"
+      <div class="flex items-baseline justify-start gap-2">
+        <component
+          :is="headingLevel ?? 'h3'"
+          class="font-mono text-sm sm:text-base font-medium text-fg group-hover:text-fg transition-colors duration-200 min-w-0 break-all inline-flex items-center gap-2"
         >
-          <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-          <span class="truncate" dir="ltr">{{ result.package.name }}</span>
-        </NuxtLink>
+          <NuxtLink
+            :to="packageUrl"
+            :prefetch-on="prefetch ? 'visibility' : 'interaction'"
+            class="decoration-none hover:text-accent-fallback after:content-[''] after:absolute after:inset-0 inline-flex items-center gap-2 min-w-0"
+            :data-result-index="index"
+          >
+            <span class="i-simple-icons:npm w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+            <span class="truncate" dir="ltr">{{ result.package.name }}</span>
+          </NuxtLink>
+          <span
+            v-if="isExactMatch"
+            class="text-xs px-1.5 py-0.5 ms-2 rounded bg-bg-elevated border border-border-hover text-fg z-10"
+            >{{ $t('search.exact_match') }}</span
+          >
+        </component>
         <slot name="status-indicators" :insights="insights">
           <DependenciesStatusIndicators
             :name="result.package.name"
@@ -121,12 +128,7 @@ const numberFormatter = useNumberFormatter()
             class="z-10"
           />
         </slot>
-        <span
-          v-if="isExactMatch"
-          class="text-xs px-1.5 py-0.5 ms-2 rounded bg-bg-elevated border border-border-hover text-fg z-10"
-          >{{ $t('search.exact_match') }}</span
-        >
-      </component>
+      </div>
 
       <PackageSelectionCheckbox
         v-if="selectable"
@@ -134,7 +136,7 @@ const numberFormatter = useNumberFormatter()
         :disabled="!canSelectMore && !isSelected"
         :checked="isSelected"
         @change="togglePackageSelection"
-        class="relative z-10"
+        class="z-10"
       />
     </header>
 
@@ -151,9 +153,9 @@ const numberFormatter = useNumberFormatter()
         compact
       />
       <dl class="contents m-0">
-        <div v-if="result.package.version" class="flex items-center gap-1.5 min-w-0">
+        <div v-if="result.package.version" class="contents">
           <dt class="sr-only">{{ $t('package.card.version') }}</dt>
-          <dd class="font-mono truncate max-w-32">
+          <dd class="flex items-center gap-1.5 font-mono max-w-32">
             <TooltipApp
               v-if="insights?.outdatedDeps.value?.[result.package.name]"
               :text="getOutdatedTooltip(insights.outdatedDeps.value[result.package.name]!, $t)"
@@ -161,10 +163,12 @@ const numberFormatter = useNumberFormatter()
             >
               <div
                 :class="getVersionClass(result.package.name, insights)"
-                class="inline-flex items-center gap-1 cursor-help py-3 -my-3 z-10"
+                class="inline-flex items-center gap-1 cursor-help py-3 -my-3 z-50 max-w-32"
               >
                 <span class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-                <span>{{ versionIsRange ? '' : 'v' }}{{ result.package.version }}</span>
+                <span class="truncate"
+                  >{{ versionIsRange ? '' : 'v' }}{{ result.package.version }}</span
+                >
               </div>
             </TooltipApp>
             <div v-else class="inline-flex items-center gap-1 py-3 -my-3 z-10">
@@ -202,7 +206,6 @@ const numberFormatter = useNumberFormatter()
     </div>
 
     <ul
-      role="list"
       v-if="result.package.keywords?.length"
       :aria-label="$t('package.card.keywords')"
       class="relative z-10 flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-border list-none m-0 p-0 pointer-events-none items-center"

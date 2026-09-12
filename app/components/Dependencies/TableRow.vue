@@ -85,7 +85,12 @@ const emit = defineEmits<{
     @click-keyword="emit('clickKeyword', $event)"
   >
     <template #version="{ version }">
-      <TooltipApp v-if="outdated" :text="getOutdatedTooltip(outdated, t)" position="top">
+      <TooltipApp
+        v-if="outdated"
+        class="flex items-center"
+        :text="getOutdatedTooltip(outdated, t)"
+        position="top"
+      >
         <div :class="versionClass" class="flex items-center gap-1.5 cursor-help z-10 py-3 -my-3">
           <span class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0" aria-hidden="true" />
           <span>{{ version }}</span>
@@ -111,8 +116,8 @@ const emit = defineEmits<{
   <!-- Skeleton row -->
   <tr v-else class="border-b border-border relative">
     <!-- Name (always visible) -->
-    <td class="py-2 px-3 align-middle">
-      <div class="inline-flex items-center gap-2">
+    <td class="py-2 px-3">
+      <div class="flex items-center gap-2">
         <NuxtLink
           :to="packageUrl"
           class="row-link font-mono text-sm transition-colors duration-200 inline-flex items-center gap-2 min-w-0 after:content-[''] after:absolute after:inset-0"

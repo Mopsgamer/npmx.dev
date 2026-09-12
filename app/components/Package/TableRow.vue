@@ -98,7 +98,7 @@ const { selectable } = usePackageSelectionContext()
   <tr
     class="group relative scale-100 [clip-path:inset(0)] border-b border-border hover:bg-bg-muted transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-fg focus-visible:ring-inset focus-visible:outline-none focus:bg-bg-muted focus-within:bg-bg-muted"
   >
-    <td class="ps-3 align-middle" v-if="selectable">
+    <td class="ps-3" v-if="selectable">
       <PackageSelectionCheckbox
         :package-name="result.package.name"
         :disabled="!canSelectMore && !isSelected"
@@ -108,8 +108,8 @@ const { selectable } = usePackageSelectionContext()
       />
     </td>
     <!-- Name (always visible) -->
-    <td class="py-2 px-3 align-middle">
-      <div class="inline-flex items-center gap-2">
+    <td class="py-2 px-3">
+      <div class="flex items-center gap-2">
         <NuxtLink
           :to="packageUrl"
           class="row-link font-mono text-sm transition-colors duration-200 inline-flex items-center gap-2 min-w-0 after:content-[''] after:absolute after:inset-0"
