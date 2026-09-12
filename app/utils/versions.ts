@@ -1,6 +1,7 @@
 import {
   compare,
   findMinimumForRange,
+  isValidRange,
   normalize,
   normalizeRange,
   satisfies,
@@ -17,6 +18,7 @@ import {
  */
 export function resolveMinVersion(range: string | null | undefined): string | null {
   if (!range) return null
+  if (!isValidRange(range)) return range
   const min = findMinimumForRange(range)
   return (min && normalize(min)) || range
 }

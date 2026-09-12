@@ -1,6 +1,14 @@
 import type { PackageVersionsInfo } from 'fast-npm-meta'
 import { getVersionsBatch } from 'fast-npm-meta'
-import { difference, findMaxSatisfying, getMajor, getMinor, isGreater, isStable } from 'verkit'
+import {
+  difference,
+  findMaxSatisfying,
+  getMajor,
+  getMinor,
+  isGreater,
+  isStable,
+  isValidRange,
+} from 'verkit'
 import { parseDependencyVersion } from '#shared/utils/npm'
 import {
   type OutdatedDependencyInfo,
@@ -13,7 +21,7 @@ export function resolveOutdated(
   latestTag: string,
   constraint: string,
 ): OutdatedDependencyInfo | null {
-  if (constraint === 'latest') return null
+  if (constraint === 'latest' || !isValidRange(constraint)) return null
 
   let filteredVersions = versions
   if (!constraintIncludesPrerelease(constraint)) {
