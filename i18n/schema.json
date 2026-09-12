@@ -2094,9 +2094,6 @@
                 },
                 "enable_sections": {
                   "type": "string"
-                },
-                "aliased_to": {
-                  "type": "string"
                 }
               },
               "additionalProperties": false
@@ -2132,6 +2129,9 @@
               "type": "string"
             },
             "has_replacement": {
+              "type": "string"
+            },
+            "aliased_to": {
               "type": "string"
             }
           },
