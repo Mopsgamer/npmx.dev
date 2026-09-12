@@ -49,7 +49,7 @@ async function fetchOutdatedMap(
 ): Promise<Record<string, OutdatedDependencyInfo>> {
   const semverEntries = Object.entries(deps).filter(([, spec]) => {
     const parsed = parseDependencyVersion(spec.version)
-    return parsed.name && parsed.range
+    return parsed.range !== null
   })
   if (semverEntries.length === 0) return {}
 
@@ -64,10 +64,11 @@ async function fetchOutdatedMap(
   const results: Record<string, OutdatedDependencyInfo> = {}
   for (const [key, spec] of semverEntries) {
     const data = versionMap.get(spec.name)
-    if (data?.distTags?.latest) {
-      const info = resolveOutdated(data.versions, data.distTags.latest, spec.version)
-      if (info) results[key] = info
-    }
+    if (!data?.distTags?.latest) continue
+    const parsed = parseDependencyVersion(spec.version)
+    const constraint = parsed.range ?? spec.version
+    const info = resolveOutdated(data.versions, data.distTags.latest, constraint)
+    if (info) results[key] = info
   }
 
   return results
