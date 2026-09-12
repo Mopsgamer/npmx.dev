@@ -1504,9 +1504,6 @@
             "stats": {
               "type": "string"
             },
-            "compare_this_package": {
-              "type": "string"
-            },
             "changelog": {
               "type": "string"
             }
@@ -2096,6 +2093,9 @@
                   "type": "string"
                 },
                 "enable_sections": {
+                  "type": "string"
+                },
+                "aliased_to": {
                   "type": "string"
                 }
               },

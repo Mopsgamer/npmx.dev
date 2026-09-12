@@ -500,7 +500,6 @@
       "compare": "compare",
       "timeline": "timeline",
       "stats": "stats",
-      "compare_this_package": "compare this package",
       "changelog": "changelog"
     },
     "likes": {
@@ -709,7 +708,18 @@
       "outdated_major": "{count} major version behind (latest: {latest}) | {count} major versions behind (latest: {latest})",
       "outdated_minor": "{count} minor version behind (latest: {latest}) | {count} minor versions behind (latest: {latest})",
       "outdated_patch": "Patch update available (latest: {latest})",
-      "has_replacement": "This dependency has suggested replacements"
+      "has_replacement": "This dependency has suggested replacements",
+      "aliased_to": "Aliased to {name}"
+    },
+    "peer_dependencies": {
+      "title": "Peer Dependency ({count}) | Peer Dependencies ({count})",
+      "list_label": "Package peer dependencies",
+      "show_all": "show {count} peer dep | show all {count} peer deps"
+    },
+    "optional_dependencies": {
+      "title": "Optional Dependency ({count}) | Optional Dependencies ({count})",
+      "list_label": "Package optional dependencies",
+      "show_all": "show {count} optional dep | show all {count} optional deps"
     },
     "maintainers": {
       "title": "Maintainers",

@@ -1,9 +1,9 @@
 import type { PackageVersionsInfo } from 'fast-npm-meta'
 import { getVersionsBatch } from 'fast-npm-meta'
 import { difference, findMaxSatisfying, getMajor, getMinor, isGreater, isStable } from 'verkit'
+import { parseDependencyVersion } from '#shared/utils/npm'
 import {
   type OutdatedDependencyInfo,
-  isNonSemverConstraint,
   constraintIncludesPrerelease,
 } from '~/utils/npm/problematic-dependencies'
 import type { DependencySpec } from '~/utils/npm/package-dependency-sections'
@@ -39,9 +39,10 @@ export function resolveOutdated(
 async function fetchOutdatedMap(
   deps: Record<string, DependencySpec>,
 ): Promise<Record<string, OutdatedDependencyInfo>> {
-  const semverEntries = Object.entries(deps).filter(
-    ([, spec]) => !isNonSemverConstraint(spec.version),
-  )
+  const semverEntries = Object.entries(deps).filter(([, spec]) => {
+    const parsed = parseDependencyVersion(spec.version)
+    return parsed.name && parsed.range
+  })
   if (semverEntries.length === 0) return {}
 
   const names = Array.from(new Set(semverEntries.map(([, spec]) => spec.name)))

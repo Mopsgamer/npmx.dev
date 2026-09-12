@@ -622,7 +622,18 @@
       "outdated_major": "{count} Hauptversion zurück (neueste: {latest}) | {count} Hauptversionen zurück (neueste: {latest})",
       "outdated_minor": "{count} Nebenversion zurück (neueste: {latest}) | {count} Nebenversionen zurück (neueste: {latest})",
       "outdated_patch": "Patch-Update verfügbar (aktuellste: {latest})",
-      "has_replacement": "Für diese Abhängigkeit gibt es empfohlene Alternativen"
+      "has_replacement": "Für diese Abhängigkeit gibt es empfohlene Alternativen",
+      "aliased_to": "Alias für {name}"
+    },
+    "peer_dependencies": {
+      "title": "Peer-Abhängigkeit ({count}) | Peer-Abhängigkeiten ({count})",
+      "list_label": "Peer-Abhängigkeiten des Pakets",
+      "show_all": "{count} Peer-Abhängigkeit anzeigen | alle {count} Peer-Abhängigkeiten anzeigen"
+    },
+    "optional_dependencies": {
+      "title": "Optionale Abhängigkeit ({count}) | Optionale Abhängigkeiten ({count})",
+      "list_label": "Optionale Abhängigkeiten des Pakets",
+      "show_all": "{count} optionale Abhängigkeit anzeigen | alle {count} optionalen Abhängigkeiten anzeigen"
     },
     "maintainers": {
       "title": "Maintainer",
