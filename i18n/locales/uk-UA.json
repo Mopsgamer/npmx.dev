@@ -612,12 +612,13 @@
       "title": "Залежності ({count})",
       "insights": {},
       "optional": "опціонально",
-      "view_vulnerabilities": "Переглянути вразливості",
       "outdated_major": "{count} мажорна версія позаду (остання: {latest}) | {count} мажорні версії позаду (остання: {latest}) | {count} мажорних версій позаду (остання: {latest})",
       "outdated_minor": "{count} мінорна версія позаду (остання: {latest}) | {count} мінорні версії позаду (остання: {latest}) | {count} мінорних версій позаду (остання: {latest})",
       "outdated_patch": "Доступне оновлення (остання версія: {latest})",
       "has_replacement": "Ця залежність має рекомендовані заміни"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "Супроводжувачі",
       "list_label": "Супроводжувачі пакета",

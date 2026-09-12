@@ -433,12 +433,13 @@
       "title": "Zależności ({count})",
       "insights": {},
       "optional": "opcjonalne",
-      "view_vulnerabilities": "Zobacz luki",
       "outdated_major": "{count} wersji głównych w tyle (najnowsza: {latest}) | {count} wersja główna w tyle (najnowsza: {latest}) | {count} wersje główne w tyle (najnowsza: {latest}) | {count} wersji głównych w tyle (najnowsza: {latest}) | {count} wersji głównych w tyle (najnowsza: {latest})",
       "outdated_minor": "{count} wersji minor w tyle (najnowsza: {latest}) | {count} wersja minor w tyle (najnowsza: {latest}) | {count} wersje minor w tyle (najnowsza: {latest}) | {count} wersji minor w tyle (najnowsza: {latest}) | {count} wersji minor w tyle (najnowsza: {latest})",
       "outdated_patch": "Dostępna poprawka (najnowsza: {latest})",
       "has_replacement": "Ta zależność ma sugerowane zamienniki"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "Opiekunowie",
       "list_label": "Opiekunowie pakietu",

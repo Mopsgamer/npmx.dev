@@ -348,12 +348,13 @@
       "title": "التبعيات ({count})",
       "insights": {},
       "optional": "اختياري",
-      "view_vulnerabilities": "عرض الثغرات",
       "outdated_major": "أقدم بـ{count} إصدار رئيسي (الأحدث: {latest}) | أقدم بإصدار رئيسي واحد (الأحدث: {latest}) | أقدم بإصدارين رئيسيين (الأحدث: {latest}) | أقدم بـ{count} إصدارات رئيسية (الأحدث: {latest}) | أقدم بـ{count} إصدار رئيسي (الأحدث: {latest}) | أقدم بـ{count} إصدار رئيسي (الأحدث: {latest})",
       "outdated_minor": "أقدم بـ{count} إصدار ثانوي (الأحدث: {latest}) | أقدم بإصدار ثانوي واحد (الأحدث: {latest}) | أقدم بإصدارين ثانويين (الأحدث: {latest}) | أقدم بـ{count} إصدارات ثانوية (الأحدث: {latest}) | أقدم بـ{count} إصدار ثانوي (الأحدث: {latest}) | أقدم بـ{count} إصدار ثانوي (الأحدث: {latest})",
       "outdated_patch": "تحديث تصحيحي متاح (الأحدث: {latest})",
       "has_replacement": "هذه التبعية لها بدائل مقترحة"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "المشرفون",
       "list_label": "مشرفو الحزمة",

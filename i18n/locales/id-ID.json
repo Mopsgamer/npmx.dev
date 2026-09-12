@@ -470,12 +470,13 @@
       "title": "Dependensi ({count})",
       "insights": {},
       "optional": "opsional",
-      "view_vulnerabilities": "Lihat kerentanan",
       "outdated_major": "Tertinggal {count} versi major (terbaru: {latest}) | Tertinggal {count} versi major (terbaru: {latest})",
       "outdated_minor": "Tertinggal {count} versi minor (terbaru: {latest}) | Tertinggal {count} versi minor (terbaru: {latest})",
       "outdated_patch": "Pembaruan patch tersedia (terbaru: {latest})",
       "has_replacement": "Ketergantungan ini telah menyarankan beberapa alternatif"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "Pemelihara",
       "list_label": "Pemelihara paket",

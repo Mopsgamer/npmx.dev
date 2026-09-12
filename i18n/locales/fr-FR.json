@@ -618,12 +618,13 @@
       "title": "Dépendances ({count})",
       "insights": {},
       "optional": "optionnelle",
-      "view_vulnerabilities": "Voir les vulnérabilités",
       "outdated_major": "{count} version majeure en retard (dernière : {latest}) | {count} versions majeures en retard (dernière : {latest})",
       "outdated_minor": "{count} version mineure en retard (dernière : {latest}) | {count} versions mineures en retard (dernière : {latest})",
       "outdated_patch": "Mise à jour patch disponible (dernière : {latest})",
       "has_replacement": "Cette dépendance a des remplacements suggérés"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "Mainteneurs",
       "list_label": "Mainteneurs du paquet",

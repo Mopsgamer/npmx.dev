@@ -670,12 +670,13 @@
       "title": "Dependency ({count}) | Dependencies ({count})",
       "insights": {},
       "optional": "optioneel",
-      "view_vulnerabilities": "Bekijk kwetsbaarheden",
       "outdated_major": "{count} hoofdversie achter (nieuwste: {latest}) | {count} hoofdversies achter (nieuwste: {latest})",
       "outdated_minor": "{count} subversie achter (nieuwste: {latest}) | {count} subversies achter (nieuwste: {latest})",
       "outdated_patch": "Patch update beschikbaar (nieuwste: {latest})",
       "has_replacement": "Deze dependency heeft voorgesteld alternatieven"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "Beheerders",
       "list_label": "Pakket beheerders",

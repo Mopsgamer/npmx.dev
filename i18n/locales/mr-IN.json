@@ -439,12 +439,13 @@
       "title": "{count} निर्भरता | {count} निर्भरता",
       "insights": {},
       "optional": "ऐच्छिक",
-      "view_vulnerabilities": "असुरक्षा पहा",
       "outdated_major": "{count} प्रमुख आवृत्ती मागे (नवीनतम: {latest}) | {count} प्रमुख आवृत्त्या मागे (नवीनतम: {latest})",
       "outdated_minor": "{count} लघु आवृत्ती मागे (नवीनतम: {latest}) | {count} लघु आवृत्त्या मागे (नवीनतम: {latest})",
       "outdated_patch": "पॅच अद्यतन उपलब्ध (नवीनतम: {latest})",
       "has_replacement": "या निर्भरतेसाठी पर्यायी सूचना आहेत"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "देखभालकर्ते",
       "list_label": "पॅकेज देखभालकर्ते",

@@ -652,12 +652,13 @@
       "title": "Avhengighet ({count}) | Avhengigheter ({count})",
       "insights": {},
       "optional": "valgfri",
-      "view_vulnerabilities": "Vis sårbarheter",
       "outdated_major": "{count} major-versjon bak (nyeste: {latest}) | {count} major-versjoner bak (nyeste: {latest})",
       "outdated_minor": "{count} minor-versjon bak (nyeste: {latest}) | {count} minor-versjoner bak (nyeste: {latest})",
       "outdated_patch": "Patch-oppdatering tilgjengelig (nyeste: {latest})",
       "has_replacement": "Denne avhengigheten har foreslåtte erstatninger"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "Vedlikeholdere",
       "list_label": "Pakkens vedlikeholdere",

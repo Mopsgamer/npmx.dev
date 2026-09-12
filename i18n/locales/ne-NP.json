@@ -661,12 +661,13 @@
       "title": "डिपेन्डेन्सी ({count}) | डिपेन्डेन्सीहरू ({count})",
       "insights": {},
       "optional": "वैकल्पिक",
-      "view_vulnerabilities": "कमजोरीहरू हेर्नुहोस्",
       "outdated_major": "{count} मेजर संस्करण पछाडि (नवीनतम: {latest}) | {count} मेजर संस्करणहरू पछाडि (नवीनतम: {latest})",
       "outdated_minor": "{count} माइनर संस्करण पछाडि (नवीनतम: {latest}) | {count} माइनर संस्करणहरू पछाडि (नवीनतम: {latest})",
       "outdated_patch": "प्याच अपडेट उपलब्ध (नवीनतम: {latest})",
       "has_replacement": "यस डिपेन्डेन्सीका लागि विकल्पहरू सुझाइएका छन्"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "मेन्टेनरहरू",
       "list_label": "प्याकेज मेन्टेनरहरू",

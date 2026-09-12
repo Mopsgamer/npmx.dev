@@ -613,12 +613,13 @@
       "title": "依赖（{count} 个）",
       "insights": {},
       "optional": "可选",
-      "view_vulnerabilities": "查看漏洞",
       "outdated_major": "落后 {count} 个主要版本（最新：{latest}）",
       "outdated_minor": "落后 {count} 个次要版本（最新：{latest}）",
       "outdated_patch": "有可用的补丁更新（最新：{latest}）",
       "has_replacement": "该依赖有推荐的替代包。"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "维护者",
       "list_label": "包维护者",

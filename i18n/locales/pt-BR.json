@@ -597,12 +597,13 @@
       "title": "Dependências ({count})",
       "insights": {},
       "optional": "opcional",
-      "view_vulnerabilities": "Ver vulnerabilidades",
       "outdated_major": "{count} versão principal desatualizada (mais recente: {latest}) | {count} versões principais desatualizadas (mais recente: {latest})",
       "outdated_minor": "{count} versão secundária desatualizada (mais recente: {latest}) | {count} versões secundárias desatualizadas (mais recente: {latest})",
       "outdated_patch": "Atualização de patch disponível (mais recente: {latest})",
       "has_replacement": "Esta dependência tem substituições sugeridas"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "Mantenedores",
       "list_label": "Mantenedores do pacote",

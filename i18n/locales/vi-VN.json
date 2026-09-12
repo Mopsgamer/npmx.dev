@@ -470,12 +470,13 @@
       "title": "Dependency ({count}) | Dependency ({count})",
       "insights": {},
       "optional": "tùy chọn",
-      "view_vulnerabilities": "Xem lỗ hổng",
       "outdated_major": "Chậm {count} major (mới nhất: {latest}) | Chậm {count} major (mới nhất: {latest})",
       "outdated_minor": "Chậm {count} minor (mới nhất: {latest}) | Chậm {count} minor (mới nhất: {latest})",
       "outdated_patch": "Có bản cập nhật patch (mới nhất: {latest})",
       "has_replacement": "Dependency này có gợi ý thay thế"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "Người duy trì",
       "list_label": "Người duy trì gói",

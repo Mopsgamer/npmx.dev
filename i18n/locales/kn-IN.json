@@ -264,11 +264,12 @@
       "title": "ಅವಲಂಬನೆಗಳು ({count})",
       "insights": {},
       "optional": "ಐಚ್ಛಿಕ",
-      "view_vulnerabilities": "ಭದ್ರತಾ ದುರ್ಬಲತೆಗಳನ್ನು ನೋಡಿ",
       "outdated_major": "{count} ಮೇಜರ್ ಆವೃತ್ತಿ ಹಿಂದುಳಿದಿದೆ (ಇತ್ತೀಚಿನದು: {latest}) | {count} ಮೇಜರ್ ಆವೃತ್ತಿಗಳು ಹಿಂದುಳಿದಿವೆ (ಇತ್ತೀಚಿನದು: {latest})",
       "outdated_minor": "{count} ಮೈನರ್ ಆವೃತ್ತಿ ಹಿಂದುಳಿದಿದೆ (ಇತ್ತೀಚಿನದು: {latest}) | {count} ಮೈನರ್ ಆವೃತ್ತಿಗಳು ಹಿಂದುಳಿದಿವೆ (ಇತ್ತೀಚಿನದು: {latest})",
       "outdated_patch": "ಪ್ಯಾಚ್ ನವೀಕರಣ ಲಭ್ಯವಿದೆ (ಇತ್ತೀಚಿನದು: {latest})"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "ನಿರ್ವಹಕರು",
       "list_label": "ಪ್ಯಾಕೇಜ್ ನಿರ್ವಹಕರು",

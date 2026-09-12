@@ -470,12 +470,13 @@
       "title": "Zavisnost ({count}) | Zavisnosti ({count})",
       "insights": {},
       "optional": "opciono",
-      "view_vulnerabilities": "Pogledajte ranljivosti",
       "outdated_major": "{count} glavna verzija kasni (najnovija: {latest}) | {count} glavne verzije kasne (najnovija: {latest}) | {count} glavnih verzija kasni (najnovija: {latest})",
       "outdated_minor": "{count} sporedna verzija kasni (najnovija: {latest}) | {count} sporedne verzije kasne (najnovija: {latest}) | {count} sporednih verzija kasni (najnovija: {latest})",
       "outdated_patch": "Dostupno je ažuriranje zakrpe (najnovija: {latest})",
       "has_replacement": "Ova zavisnost ima predložene zamene"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "Održavaoci",
       "list_label": "Održavaoci paketa",

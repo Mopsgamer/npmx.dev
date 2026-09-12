@@ -617,12 +617,13 @@
       "title": "Bağımlılık ({count}) | Bağımlılıklar ({count})",
       "insights": {},
       "optional": "isteğe bağlı",
-      "view_vulnerabilities": "Güvenlik açıklarını göster",
       "outdated_major": "{count} major sürüm geride (son: {latest}) | {count} major sürüm geride (son: {latest})",
       "outdated_minor": "{count} minor sürüm geride (son: {latest}) | {count} minor sürüm geride (son: {latest})",
       "outdated_patch": "Patch güncellemesi mevcut (son: {latest})",
       "has_replacement": "Bu bağımlılığın önerilen alternatifleri var"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "Geliştiriciler",
       "list_label": "Paket geliştiricileri",

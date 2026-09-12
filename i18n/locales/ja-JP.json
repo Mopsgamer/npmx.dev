@@ -655,12 +655,13 @@
       "title": "依存関係（{count}）",
       "insights": {},
       "optional": "オプション",
-      "view_vulnerabilities": "脆弱性情報を表示",
       "outdated_major": "最新から {count} 個のメジャーバージョン遅れています (最新: {latest})",
       "outdated_minor": "最新から {count} 個のマイナーバージョン遅れています (最新: {latest})",
       "outdated_patch": "パッチアップデートがあります (最新: {latest})",
       "has_replacement": "この依存関係には代替の候補があります"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "メンテナ",
       "list_label": "パッケージのメンテナ",

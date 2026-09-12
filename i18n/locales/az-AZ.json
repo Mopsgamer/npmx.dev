@@ -422,12 +422,13 @@
       "title": "Asılılıq ({count}) | Asılılıqlar ({count})",
       "insights": {},
       "optional": "əlavə",
-      "view_vulnerabilities": "Zəiflikləri göstər",
       "outdated_major": "{count} major versiya geridə (son: {latest}) | {count} major versiya geridə (son: {latest})",
       "outdated_minor": "{count} minor versiya geridə (son: {latest}) | {count} minor versiya geridə (son: {latest})",
       "outdated_patch": "Patch yeniləməsi mövcuddur (son: {latest})",
       "has_replacement": "Bu asılılığın tövsiyə olunan əvəzləyiciləri var"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "Dəstəkçilər",
       "list_label": "Paket dəstəkçiləri",

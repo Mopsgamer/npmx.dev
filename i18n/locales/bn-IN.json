@@ -661,12 +661,13 @@
       "title": "নির্ভরতা ({count})",
       "insights": {},
       "optional": "ঐচ্ছিক",
-      "view_vulnerabilities": "দুর্বলতা দেখুন",
       "outdated_major": "{count}টি মেজর ভার্সন পিছিয়ে (সর্বশেষ: {latest}) | {count}টি মেজর ভার্সন পিছিয়ে (সর্বশেষ: {latest})",
       "outdated_minor": "{count}টি মাইনর ভার্সন পিছিয়ে (সর্বশেষ: {latest}) | {count}টি মাইনর ভার্সন পিছিয়ে (সর্বশেষ: {latest})",
       "outdated_patch": "প্যাচ আপডেট উপলব্ধ (সর্বশেষ: {latest})",
       "has_replacement": "এই নির্ভরতা প্রতিস্থাপনের পরামর্শ দিয়েছে"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "রক্ষণাবেক্ষণকারী",
       "list_label": "প্যাকেজ রক্ষণাবেক্ষণকারী",

@@ -618,7 +618,6 @@
       "title": "Abhängigkeit ({count}) | Abhängigkeiten ({count})",
       "insights": {},
       "optional": "optional",
-      "view_vulnerabilities": "Sicherheitslücken anzeigen",
       "outdated_major": "{count} Hauptversion zurück (neueste: {latest}) | {count} Hauptversionen zurück (neueste: {latest})",
       "outdated_minor": "{count} Nebenversion zurück (neueste: {latest}) | {count} Nebenversionen zurück (neueste: {latest})",
       "outdated_patch": "Patch-Update verfügbar (aktuellste: {latest})",

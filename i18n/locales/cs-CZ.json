@@ -652,12 +652,13 @@
       "title": "Závislosti ({count})",
       "insights": {},
       "optional": "volitelné",
-      "view_vulnerabilities": "Zobrazit zranitelnosti",
       "outdated_major": "o {count} hlavní verzi pozadu (nejnovější: {latest}) | o {count} hlavní verze pozadu (nejnovější: {latest}) | o {count} hlavních verzích pozadu (nejnovější: {latest})",
       "outdated_minor": "o {count} vedlejší verzi pozadu (nejnovější: {latest}) | o {count} vedlejší verze pozadu (nejnovější: {latest}) | o {count} vedlejších verzích pozadu (nejnovější: {latest})",
       "outdated_patch": "Aktualizace záplaty dostupná (nejnovější: {latest})",
       "has_replacement": "Tato závislost má navrhované náhrady"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "Správci",
       "list_label": "Správci balíčku",

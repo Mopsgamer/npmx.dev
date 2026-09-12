@@ -609,12 +609,13 @@
       "title": "Dependență ({count}) | Dependențe ({count})",
       "insights": {},
       "optional": "opțional",
-      "view_vulnerabilities": "Afișează vulnerabilitățile",
       "outdated_major": "{count} versiuni majore în urmă (ultima: {latest}) | {count} versiuni majore în urmă (ultima: {latest})",
       "outdated_minor": "{count} versiuni minore în urmă (ultima: {latest}) | {count} versiuni minore în urmă (ultima: {latest})",
       "outdated_patch": "Patch de actualizare disponibil (ultima versiune: {latest})",
       "has_replacement": "Această dependență are propuneri de înlocuire"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "Menținători",
       "list_label": "Menținători pachet",

@@ -385,12 +385,13 @@
       "title": "Зависимост ({count}) | Зависимости ({count})",
       "insights": {},
       "optional": "опционална",
-      "view_vulnerabilities": "Преглед на уязвимости",
       "outdated_major": "{count} major версия назад (последна: {latest}) | {count} major версии назад (последна: {latest})",
       "outdated_minor": "{count} minor версия назад (последна: {latest}) | {count} minor версии назад (последна: {latest})",
       "outdated_patch": "Налична patch актуализация (последна: {latest})",
       "has_replacement": "Тази зависимост има предложени замени"
     },
+    "peer_dependencies": {},
+    "optional_dependencies": {},
     "maintainers": {
       "title": "Поддържащи",
       "list_label": "Поддържащи на пакета",
