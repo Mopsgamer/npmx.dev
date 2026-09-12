@@ -390,8 +390,6 @@
       "outdated_patch": "Налична patch актуализация (последна: {latest})",
       "has_replacement": "Тази зависимост има предложени замени"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Поддържащи",
       "list_label": "Поддържащи на пакета",

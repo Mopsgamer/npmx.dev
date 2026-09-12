@@ -461,8 +461,6 @@
       "outdated_patch": "पैच अद्यतन उपलब्ध (नवीनतम: {latest})",
       "has_replacement": "इस निर्भरता के सुझाए गए विकल्प हैं"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "अनुरक्षक",
       "list_label": "पैकेज अनुरक्षक",

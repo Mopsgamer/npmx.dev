@@ -438,8 +438,6 @@
       "outdated_patch": "Dostępna poprawka (najnowsza: {latest})",
       "has_replacement": "Ta zależność ma sugerowane zamienniki"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Opiekunowie",
       "list_label": "Opiekunowie pakietu",

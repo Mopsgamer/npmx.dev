@@ -666,8 +666,6 @@
       "outdated_patch": "प्याच अपडेट उपलब्ध (नवीनतम: {latest})",
       "has_replacement": "यस डिपेन्डेन्सीका लागि विकल्पहरू सुझाइएका छन्"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "मेन्टेनरहरू",
       "list_label": "प्याकेज मेन्टेनरहरू",

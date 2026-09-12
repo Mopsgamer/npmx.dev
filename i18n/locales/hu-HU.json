@@ -390,8 +390,6 @@
       "outdated_patch": "Patch frissítés elérhető (legutóbbi: {latest})",
       "has_replacement": "Ennek a függőségnek vannak javasolt helyettesítései"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Karbantartók",
       "list_label": "Csomag karbantartói",

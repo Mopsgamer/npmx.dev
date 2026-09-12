@@ -618,8 +618,6 @@
       "outdated_patch": "有可用的补丁更新（最新：{latest}）",
       "has_replacement": "该依赖有推荐的替代包。"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "维护者",
       "list_label": "包维护者",

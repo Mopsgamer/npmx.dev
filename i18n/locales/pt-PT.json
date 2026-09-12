@@ -606,8 +606,6 @@
       "outdated_patch": "Atualização de patch disponível (mais recente: {latest})",
       "has_replacement": "Esta dependência tem alternativas sugeridas"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Responsáveis",
       "list_label": "Responsáveis pelo pacote",

@@ -666,8 +666,6 @@
       "outdated_patch": "প্যাচ আপডেট উপলব্ধ (সর্বশেষ: {latest})",
       "has_replacement": "এই নির্ভরতা প্রতিস্থাপনের পরামর্শ দিয়েছে"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "রক্ষণাবেক্ষণকারী",
       "list_label": "প্যাকেজ রক্ষণাবেক্ষণকারী",

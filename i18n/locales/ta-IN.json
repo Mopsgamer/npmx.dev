@@ -336,8 +336,6 @@
       "outdated_minor": "{count} சிறு பதிப்பு பின்தங்கியுள்ளது (சமீபத்தியது: {latest}) | {count} சிறு பதிப்புகள் பின்தங்கியுள்ளன (சமீபத்தியது: {latest})",
       "outdated_patch": "திருத்தப்பட்ட புதுப்பிப்பு கிடைக்கிறது (சமீபத்தியது: {latest})"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "பராமரிப்பாளர்கள்",
       "list_label": "தொகுப்பு பராமரிப்பாளர்கள்",

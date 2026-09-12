@@ -268,8 +268,6 @@
       "outdated_minor": "{count} మైనర్ వెర్షన్ వెనుకబడి ఉంది (తాజాది: {latest}) | {count} మైనర్ వెర్షన్‌లు వెనుకబడి ఉన్నాయి (తాజాది: {latest})",
       "outdated_patch": "ప్యాచ్ నవీకరణ అందుబాటులో ఉంది (తాజాది: {latest})"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "నిర్వహకులు",
       "list_label": "ప్యాకేజ్ నిర్వహకులు",

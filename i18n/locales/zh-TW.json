@@ -572,8 +572,6 @@
       "outdated_patch": "有可用的修補更新（最新：{latest}）",
       "has_replacement": "此相依套件有建議的替代方案"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "維護者",
       "list_label": "套件維護者",

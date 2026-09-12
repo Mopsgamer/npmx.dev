@@ -657,8 +657,6 @@
       "outdated_patch": "Aktualizace záplaty dostupná (nejnovější: {latest})",
       "has_replacement": "Tato závislost má navrhované náhrady"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Správci",
       "list_label": "Správci balíčku",

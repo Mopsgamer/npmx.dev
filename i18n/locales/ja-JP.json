@@ -660,8 +660,6 @@
       "outdated_patch": "パッチアップデートがあります (最新: {latest})",
       "has_replacement": "この依存関係には代替の候補があります"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "メンテナ",
       "list_label": "パッケージのメンテナ",

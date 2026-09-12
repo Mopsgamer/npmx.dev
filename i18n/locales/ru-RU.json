@@ -674,8 +674,6 @@
       "outdated_patch": "Доступно патч-обновление (последняя: {latest})",
       "has_replacement": "Для этой зависимости есть рекомендуемые замены"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Мейнтейнеры",
       "list_label": "Мейнтейнеры пакета",

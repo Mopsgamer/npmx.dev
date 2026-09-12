@@ -657,8 +657,6 @@
       "outdated_patch": "Patch-oppdatering tilgjengelig (nyeste: {latest})",
       "has_replacement": "Denne avhengigheten har foreslåtte erstatninger"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Vedlikeholdere",
       "list_label": "Pakkens vedlikeholdere",

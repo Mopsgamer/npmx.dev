@@ -666,8 +666,6 @@
       "outdated_patch": "Actualización de parche disponible (última: {latest})",
       "has_replacement": "Existen sugerencias para reemplazar esta dependencia"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Mantenedores",
       "list_label": "Mantenedores del paquete",

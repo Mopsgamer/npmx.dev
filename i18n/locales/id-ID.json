@@ -475,8 +475,6 @@
       "outdated_patch": "Pembaruan patch tersedia (terbaru: {latest})",
       "has_replacement": "Ketergantungan ini telah menyarankan beberapa alternatif"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Pemelihara",
       "list_label": "Pemelihara paket",

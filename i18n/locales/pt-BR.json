@@ -602,8 +602,6 @@
       "outdated_patch": "Atualização de patch disponível (mais recente: {latest})",
       "has_replacement": "Esta dependência tem substituições sugeridas"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Mantenedores",
       "list_label": "Mantenedores do pacote",

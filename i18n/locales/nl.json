@@ -675,8 +675,6 @@
       "outdated_patch": "Patch update beschikbaar (nieuwste: {latest})",
       "has_replacement": "Deze dependency heeft voorgesteld alternatieven"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Beheerders",
       "list_label": "Pakket beheerders",

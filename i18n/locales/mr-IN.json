@@ -444,8 +444,6 @@
       "outdated_patch": "पॅच अद्यतन उपलब्ध (नवीनतम: {latest})",
       "has_replacement": "या निर्भरतेसाठी पर्यायी सूचना आहेत"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "देखभालकर्ते",
       "list_label": "पॅकेज देखभालकर्ते",

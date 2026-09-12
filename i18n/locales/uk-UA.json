@@ -617,8 +617,6 @@
       "outdated_patch": "Доступне оновлення (остання версія: {latest})",
       "has_replacement": "Ця залежність має рекомендовані заміни"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Супроводжувачі",
       "list_label": "Супроводжувачі пакета",

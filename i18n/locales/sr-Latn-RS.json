@@ -475,8 +475,6 @@
       "outdated_patch": "Dostupno je ažuriranje zakrpe (najnovija: {latest})",
       "has_replacement": "Ova zavisnost ima predložene zamene"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Održavaoci",
       "list_label": "Održavaoci paketa",

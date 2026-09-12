@@ -427,8 +427,6 @@
       "outdated_patch": "Patch yeniləməsi mövcuddur (son: {latest})",
       "has_replacement": "Bu asılılığın tövsiyə olunan əvəzləyiciləri var"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Dəstəkçilər",
       "list_label": "Paket dəstəkçiləri",

@@ -622,8 +622,6 @@
       "outdated_patch": "Patch güncellemesi mevcut (son: {latest})",
       "has_replacement": "Bu bağımlılığın önerilen alternatifleri var"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Geliştiriciler",
       "list_label": "Paket geliştiricileri",

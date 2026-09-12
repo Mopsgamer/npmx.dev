@@ -614,8 +614,6 @@
       "outdated_patch": "Patch de actualizare disponibil (ultima versiune: {latest})",
       "has_replacement": "Această dependență are propuneri de înlocuire"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Menținători",
       "list_label": "Menținători pachet",

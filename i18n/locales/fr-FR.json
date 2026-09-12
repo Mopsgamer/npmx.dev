@@ -623,8 +623,6 @@
       "outdated_patch": "Mise à jour patch disponible (dernière : {latest})",
       "has_replacement": "Cette dépendance a des remplacements suggérés"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "Mainteneurs",
       "list_label": "Mainteneurs du paquet",

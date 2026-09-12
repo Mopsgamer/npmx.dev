@@ -353,8 +353,6 @@
       "outdated_patch": "تحديث تصحيحي متاح (الأحدث: {latest})",
       "has_replacement": "هذه التبعية لها بدائل مقترحة"
     },
-    "peer_dependencies": {},
-    "optional_dependencies": {},
     "maintainers": {
       "title": "المشرفون",
       "list_label": "مشرفو الحزمة",
