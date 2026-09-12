@@ -711,16 +711,6 @@
       "has_replacement": "This dependency has suggested replacements",
       "aliased_to": "Aliased to {name}"
     },
-    "peer_dependencies": {
-      "title": "Peer Dependency ({count}) | Peer Dependencies ({count})",
-      "list_label": "Package peer dependencies",
-      "show_all": "show {count} peer dep | show all {count} peer deps"
-    },
-    "optional_dependencies": {
-      "title": "Optional Dependency ({count}) | Optional Dependencies ({count})",
-      "list_label": "Package optional dependencies",
-      "show_all": "show {count} optional dep | show all {count} optional deps"
-    },
     "maintainers": {
       "title": "Maintainers",
       "list_label": "Package maintainers",

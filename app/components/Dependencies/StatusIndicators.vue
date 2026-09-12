@@ -21,6 +21,8 @@ const structuralMeta = computed<Record<string, { icon: string; text: string }>>(
 
 const realPackageName = computed(() => props.packageName || props.name)
 
+const isAliased = computed(() => !!props.packageName && props.packageName !== props.name)
+
 const isDataLoading = computed(() => {
   if (props.isLoading !== undefined) return props.isLoading
   if (props.insights) {
@@ -81,6 +83,16 @@ const healthStatusAlerts = computed(() => {
 
 <template>
   <div class="inline-flex shrink-0 z-20">
+    <TooltipApp
+      v-if="isAliased"
+      :text="$t('package.dependencies.aliased_to', { name: realPackageName })"
+      class="inline-flex items-center shrink-0"
+    >
+      <div class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
+        <span class="i-lucide:arrow-right-left w-3.5 h-3.5 text-fg-subtle" aria-hidden="true" />
+      </div>
+    </TooltipApp>
+
     <template v-for="attribute in flags" :key="attribute">
       <TooltipApp
         v-if="structuralMeta[attribute]"

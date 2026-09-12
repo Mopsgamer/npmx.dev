@@ -688,16 +688,6 @@
       "outdated_patch": "패치 업데이트 사용 가능(최신: {latest})",
       "has_replacement": "이 의존성에는 권장 대체 항목이 있습니다"
     },
-    "peer_dependencies": {
-      "title": "피어 의존성({count}) | 피어 의존성({count})",
-      "list_label": "패키지 피어 의존성",
-      "show_all": "피어 의존성 {count}개 보기 | 전체 피어 의존성 {count}개 보기"
-    },
-    "optional_dependencies": {
-      "title": "선택 의존성({count}) | 선택 의존성({count})",
-      "list_label": "패키지 선택 의존성",
-      "show_all": "선택 의존성 {count}개 보기 | 전체 선택 의존성 {count}개 보기"
-    },
     "maintainers": {
       "title": "메인테이너",
       "list_label": "패키지 메인테이너",
