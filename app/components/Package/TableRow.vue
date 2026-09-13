@@ -134,7 +134,7 @@ const { selectable } = usePackageSelectionContext()
     </td>
 
     <!-- Version -->
-    <td v-if="isColumnVisible('version')" class="py-2 px-3 font-mono text-xs text-fg-subtle z-10">
+    <td v-if="isColumnVisible('version')" class="py-2 px-3 font-mono text-xs text-fg-subtle">
       <slot name="version" :version="pkg.version">
         <span dir="ltr">{{ pkg.version }}</span>
       </slot>
