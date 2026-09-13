@@ -163,7 +163,7 @@ const numberFormatter = useNumberFormatter()
             >
               <div
                 :class="getVersionClass(result.package.name, insights)"
-                class="inline-flex items-center gap-1 cursor-help py-3 -my-3 z-50 max-w-32"
+                class="inline-flex items-center gap-1 cursor-help py-3 -my-3 z-10 max-w-32"
               >
                 <span class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                 <span class="truncate"
