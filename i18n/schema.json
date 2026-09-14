@@ -2062,7 +2062,7 @@
                 "tooltip_urgent": {
                   "type": "string"
                 },
-                "tooltip_other": {
+                "tooltip_all": {
                   "type": "string"
                 },
                 "major_behind": {

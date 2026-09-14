@@ -685,8 +685,8 @@
       "insights": {
         "title": "Dependency Health",
         "subtitle": "Across all direct dependencies",
-        "tooltip_urgent": "Urgent (prod & bundled)",
-        "tooltip_other": "Total (all sections)",
+        "tooltip_urgent": "Urgent (only prod & bundled)",
+        "tooltip_all": "All (including dev and peer)",
         "major_behind": "Major behind",
         "minor_behind": "Minor behind",
         "patch_behind": "Patch behind",

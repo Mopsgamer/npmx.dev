@@ -178,7 +178,7 @@ function isItemInteractive(item: InsightMetric): boolean {
 }
 
 const tooltipText = computed(() => {
-  return `${$t('package.dependencies.insights.subtitle')} — ${$t('package.dependencies.insights.tooltip_urgent')} / ${$t('package.dependencies.insights.tooltip_other')}`
+  return `${$t('package.dependencies.insights.subtitle')} — ${$t('package.dependencies.insights.tooltip_urgent')} / ${$t('package.dependencies.insights.tooltip_all')}`
 })
 
 const hasDependencies = computed(() => props.sections.some(s => s.items.length > 0))
