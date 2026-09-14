@@ -152,6 +152,13 @@ const sortOptions = computed(() => [
 ])
 
 const showFilteredCount = computed(() => props.filter && props.filteredCount !== props.totalCount)
+
+const filterInputRef = useTemplateRef('filterInputRef')
+
+function clearFilter() {
+  filterValue.value = ''
+  filterInputRef.value?.focus()
+}
 </script>
 
 <template>
@@ -252,7 +259,7 @@ const showFilteredCount = computed(() => props.filter && props.filteredCount !==
       <div class="flex-1" />
 
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-        <div class="flex-1 relative min-w-0">
+        <div class="flex-1 relative min-w-0 flex items-center">
           <label for="deps-filter" class="sr-only">{{ $t('package.list.filter_label') }}</label>
           <div
             class="absolute inset-is-0 h-full w-10 flex items-center justify-center text-fg-subtle pointer-events-none"
@@ -262,12 +269,23 @@ const showFilteredCount = computed(() => props.filter && props.filteredCount !==
           </div>
           <InputBase
             id="deps-filter"
+            ref="filterInputRef"
             v-model="filterValue"
             type="search"
             :placeholder="$t('package.dependencies.filter_placeholder')"
             no-correct
-            class="w-full min-w-25 ps-10"
+            class="w-full min-w-25 ps-10 pe-8"
           />
+          <button
+            v-if="filterValue"
+            type="button"
+            class="absolute inset-ie-2 h-6 w-6 flex items-center justify-center rounded text-fg-muted hover:text-fg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            @click="clearFilter"
+            aria-hidden="true"
+            tabindex="-1"
+          >
+            <span class="i-lucide:circle-x h-4 w-4" />
+          </button>
         </div>
 
         <div class="flex items-center gap-3">
