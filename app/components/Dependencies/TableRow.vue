@@ -87,12 +87,15 @@ const emit = defineEmits<{
     <template #version="{ version }">
       <TooltipApp
         v-if="outdated"
-        class="inline relative z-10 py-3 -my-3"
+        class="after:content-[''] after:absolute after:inset-0 after:cursor-help"
         :text="getOutdatedTooltip(outdated, t)"
         position="bottom"
       >
-        <div :class="versionClass" class="flex items-center gap-1.5 cursor-help">
-          <span class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+        <div
+          :class="versionClass"
+          class="relative z-10 inline-flex items-baseline gap-1.5 cursor-help"
+        >
+          <span class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0 self-center" aria-hidden="true" />
           <span>{{ version }}</span>
         </div>
       </TooltipApp>
@@ -139,7 +142,10 @@ const emit = defineEmits<{
     </td>
 
     <!-- Version -->
-    <td v-if="isColumnVisible('version')" class="py-2 px-3 font-mono text-xs text-fg-subtle">
+    <td
+      v-if="isColumnVisible('version')"
+      class="relative py-2 px-3 font-mono text-xs text-fg-subtle"
+    >
       <span dir="ltr">{{ item.range }}</span>
     </td>
 
