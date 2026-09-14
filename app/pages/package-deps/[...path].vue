@@ -281,15 +281,69 @@ const { viewMode, columns, toggleColumn, resetColumns } = usePackageListPreferen
 const selectedInsights = ref<string[]>([])
 
 const packageMetaCache = usePackageMetaState()
+const { searchProviderValue } = useSearchProvider()
+const { getPackagesByName } = useAlgoliaSearch()
+
+async function fetchNpmMetadataBatch(names: string[]): Promise<void> {
+  await Promise.allSettled(names.map(name => fetchPackageMeta(name)))
+}
+
+async function fetchAlgoliaMetadataBatch(names: string[]): Promise<void> {
+  try {
+    const algoliaResult = await getPackagesByName(names)
+    const newCache = { ...packageMetaCache.value }
+    const fetchedNames = new Set<string>()
+
+    for (const obj of algoliaResult.objects) {
+      const p = obj.package
+      newCache[p.name] = {
+        name: p.name,
+        version: p.version,
+        description: p.description,
+        keywords: p.keywords,
+        license: p.license,
+        date: p.date,
+        links: {
+          npm: p.links.npm || `https://www.npmjs.com/package/${p.name}`,
+          homepage: p.links.homepage,
+          repository: p.links.repository,
+        },
+        author: p.author,
+        maintainers: p.maintainers,
+        weeklyDownloads: obj.downloads?.weekly,
+        deprecated: p.deprecated,
+      }
+      fetchedNames.add(p.name)
+    }
+
+    packageMetaCache.value = newCache
+
+    const remaining = names.filter(name => !fetchedNames.has(name))
+    if (remaining.length > 0) {
+      await fetchNpmMetadataBatch(remaining)
+    }
+  } catch {
+    await fetchNpmMetadataBatch(names)
+  }
+}
 
 watch(
-  allSectionItems,
-  items => {
-    if (!items) return
-    for (const item of items) {
-      const targetName = item.packageName || item.name
-      if (packageMetaCache.value[targetName]) continue
-      fetchPackageMeta(targetName).catch(() => {})
+  [allSectionItems, searchProviderValue],
+  async ([items, provider]) => {
+    if (!items || items.length === 0) return
+    const missingNames = Array.from(
+      new Set(
+        items
+          .map(item => item.packageName || item.name)
+          .filter(name => !packageMetaCache.value[name]),
+      ),
+    )
+    if (missingNames.length === 0) return
+
+    if (provider === 'algolia') {
+      await fetchAlgoliaMetadataBatch(missingNames)
+    } else {
+      await fetchNpmMetadataBatch(missingNames)
     }
   },
   { immediate: true },
@@ -334,29 +388,35 @@ const filteredItems = computed(() => {
     })
   }
 
-  result.sort((a, b) => {
-    const metaA = packageMetaCache.value[a.packageName || a.name]
-    const metaB = packageMetaCache.value[b.packageName || b.name]
+  if (sort.value === 'updated-desc' || sort.value === 'updated-asc') {
+    const mapped = result.map(item => {
+      const meta = packageMetaCache.value[item.packageName || item.name]
+      const timestamp = meta?.date ? Date.parse(meta.date) : 0
+      return { item, timestamp }
+    })
+    mapped.sort((a, b) =>
+      sort.value === 'updated-desc' ? b.timestamp - a.timestamp : a.timestamp - b.timestamp,
+    )
+    return mapped.map(m => m.item)
+  }
 
-    switch (sort.value) {
-      case 'name-desc':
-        return b.name.localeCompare(a.name)
-      case 'downloads-week-desc':
-        return (metaB?.weeklyDownloads ?? 0) - (metaA?.weeklyDownloads ?? 0)
-      case 'downloads-week-asc':
-        return (metaA?.weeklyDownloads ?? 0) - (metaB?.weeklyDownloads ?? 0)
-      case 'updated-desc':
-        return (
-          (metaB?.date ? Date.parse(metaB.date) : 0) - (metaA?.date ? Date.parse(metaA.date) : 0)
-        )
-      case 'updated-asc':
-        return (
-          (metaA?.date ? Date.parse(metaA.date) : 0) - (metaB?.date ? Date.parse(metaB.date) : 0)
-        )
-      default:
-        return a.name.localeCompare(b.name)
-    }
-  })
+  if (sort.value === 'downloads-week-desc' || sort.value === 'downloads-week-asc') {
+    const mapped = result.map(item => {
+      const meta = packageMetaCache.value[item.packageName || item.name]
+      const downloads = meta?.weeklyDownloads ?? 0
+      return { item, downloads }
+    })
+    mapped.sort((a, b) =>
+      sort.value === 'downloads-week-desc' ? b.downloads - a.downloads : a.downloads - b.downloads,
+    )
+    return mapped.map(m => m.item)
+  }
+
+  if (sort.value === 'name-desc') {
+    result.sort((a, b) => b.name.localeCompare(a.name))
+  } else {
+    result.sort((a, b) => a.name.localeCompare(b.name))
+  }
 
   return result
 })

@@ -313,6 +313,8 @@ const showFilteredCount = computed(() => props.filter && props.filteredCount !==
             @reset="emit('resetColumns')"
           />
 
+          <SearchProviderToggle class="shrink-0" />
+
           <ViewModeToggle v-model="viewModeValue" class="shrink-0" />
 
           <div
