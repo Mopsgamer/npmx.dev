@@ -454,6 +454,16 @@ useSeoMeta({
       : 'Dependencies - npmx',
 })
 
+defineOgImage(
+  'Package.takumi',
+  {
+    name: () => packageName.value,
+    version: () => resolvedVersion.value ?? requestedVersion.value,
+    variant: 'dependency-tree',
+  },
+  { alt: () => `Dependencies for ${packageName.value}` },
+)
+
 const showSkeleton = shallowRef(false)
 
 const { model: globalSearchModel } = useGlobalSearch()
