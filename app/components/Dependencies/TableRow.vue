@@ -87,14 +87,11 @@ const emit = defineEmits<{
     <template #version="{ version }">
       <TooltipApp
         v-if="outdated"
-        class="inline"
+        class="inline relative z-10 py-3 -my-3"
         :text="getOutdatedTooltip(outdated, t)"
-        position="top"
+        position="bottom"
       >
-        <div
-          :class="versionClass"
-          class="flex items-center gap-1.5 cursor-help relative z-10 py-3 -my-3"
-        >
+        <div :class="versionClass" class="flex items-center gap-1.5 cursor-help">
           <span class="i-lucide:arrow-up w-3.5 h-3.5 shrink-0" aria-hidden="true" />
           <span>{{ version }}</span>
         </div>

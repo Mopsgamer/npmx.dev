@@ -54,7 +54,7 @@ function getColumnLabel(id: ColumnId): string {
 </script>
 
 <template>
-  <div class="overflow-x-auto">
+  <div class="overflow-x-auto overflow-y-hidden">
     <table class="w-full text-start">
       <thead class="border-b border-border">
         <tr>
