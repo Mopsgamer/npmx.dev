@@ -119,12 +119,12 @@ export function getPackageDependencySections(
     },
     {
       id: 'devDependencies',
-      items: entriesToItems(version.devDependencies, bundledSet),
+      items: entriesToItems(version.devDependencies, bundledSet, () => ['dev']),
     },
     {
       id: 'peerDependencies',
       items: entriesToItems(version.peerDependencies, bundledSet, name => {
-        const flags: DepFlag[] = []
+        const flags: DepFlag[] = ['peer']
         if (version.peerDependenciesMeta?.[name]?.optional) flags.push('optional')
         return flags
       }),

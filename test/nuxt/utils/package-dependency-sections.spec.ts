@@ -35,7 +35,8 @@ describe('package-dependency-sections', () => {
     })
 
     expect(sections.map(s => s.id)).toEqual(['dependencies', 'devDependencies', 'peerDependencies'])
-    expect(sections[2]?.items[0]?.flags).toContain('optional')
+    expect(sections[1]?.items[0]?.flags).toEqual(['dev'])
+    expect(sections[2]?.items[0]?.flags).toEqual(['peer', 'optional'])
   })
 
   it('correctly handles alias dependencies', () => {

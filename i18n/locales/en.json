@@ -700,6 +700,8 @@
       },
       "optional": "optional",
       "bundled": "bundled",
+      "dev": "dev",
+      "peer": "peer",
       "all": "All dependencies",
       "none": "This version has no dependencies.",
       "no_matches": "No dependencies match your filter.",

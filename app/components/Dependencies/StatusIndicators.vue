@@ -17,6 +17,8 @@ const props = defineProps<{
 const structuralMeta = computed<Record<string, { icon: string; text: string }>>(() => ({
   optional: { icon: 'i-lucide:circle-dashed', text: $t('package.dependencies.optional') },
   bundled: { icon: 'i-lucide:package', text: $t('package.dependencies.bundled') },
+  dev: { icon: 'i-lucide:wrench', text: $t('package.dependencies.dev') },
+  peer: { icon: 'i-lucide:blocks', text: $t('package.dependencies.peer') },
 }))
 
 const realPackageName = computed(() => props.packageName || props.name)
@@ -88,7 +90,7 @@ const healthStatusAlerts = computed(() => {
       :text="$t('package.dependencies.aliased_to', { name: realPackageName })"
       class="items-center shrink-0"
     >
-      <span class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
+      <span class="inline-flex items-center justify-center px-1.5 py-3 -my-3 cursor-help">
         <span class="i-lucide:arrow-right-left w-3.5 h-3.5 text-fg-subtle" aria-hidden="true" />
       </span>
     </TooltipApp>
@@ -99,7 +101,7 @@ const healthStatusAlerts = computed(() => {
         :text="structuralMeta[attribute].text"
         class="items-center shrink-0"
       >
-        <span class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
+        <span class="inline-flex items-center justify-center px-1.5 py-3 -my-3 cursor-help">
           <span
             :class="structuralMeta[attribute].icon"
             class="w-3.5 h-3.5 text-fg-subtle"
@@ -110,7 +112,7 @@ const healthStatusAlerts = computed(() => {
     </template>
 
     <TooltipApp v-if="isDataLoading" :text="$t('common.loading')" class="items-center shrink-0">
-      <span class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
+      <span class="inline-flex items-center justify-center px-1.5 py-3 -my-3 cursor-help">
         <span class="i-svg-spinners:ring-resize w-3.5 h-3.5 text-fg-subtle" aria-hidden="true" />
       </span>
     </TooltipApp>
@@ -121,7 +123,7 @@ const healthStatusAlerts = computed(() => {
       :text="alert.tooltipText"
       class="items-center shrink-0"
     >
-      <span class="inline-flex items-center justify-center p-3 -my-3 cursor-help">
+      <span class="inline-flex items-center justify-center px-1.5 py-3 -my-3 cursor-help">
         <span :class="[alert.icon, alert.cssClass]" class="w-3.5 h-3.5" aria-hidden="true" />
       </span>
     </TooltipApp>

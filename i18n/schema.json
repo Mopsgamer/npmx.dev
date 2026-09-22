@@ -2104,6 +2104,12 @@
             "bundled": {
               "type": "string"
             },
+            "dev": {
+              "type": "string"
+            },
+            "peer": {
+              "type": "string"
+            },
             "all": {
               "type": "string"
             },

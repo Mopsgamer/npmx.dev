@@ -9,7 +9,7 @@ export type DepSectionId =
 
 export type DepRegistry = 'npm' | 'jsr'
 
-export type DepFlag = 'optional' | 'bundled'
+export type DepFlag = 'dev' | 'peer' | 'optional' | 'bundled'
 
 export interface PackageDependencyItem {
   name: string
