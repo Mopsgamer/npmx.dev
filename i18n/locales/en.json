@@ -754,7 +754,9 @@
       "outdated_minor": "{count} minor version behind (latest: {latest}) | {count} minor versions behind (latest: {latest})",
       "outdated_patch": "Patch update available (latest: {latest})",
       "has_replacement": "This dependency has suggested replacements",
-      "aliased_to": "Aliased to {name}"
+      "aliased_to": "Aliased to {name}",
+      "view_vulnerabilities": "View vulnerabilities",
+      "vulnerabilities_count": "1 vulnerability | {count} vulnerabilities"
     },
     "maintainers": {
       "title": "Maintainers",

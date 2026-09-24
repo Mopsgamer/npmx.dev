@@ -2268,6 +2268,12 @@
             },
             "aliased_to": {
               "type": "string"
+            },
+            "view_vulnerabilities": {
+              "type": "string"
+            },
+            "vulnerabilities_count": {
+              "type": "string"
             }
           },
           "additionalProperties": false
