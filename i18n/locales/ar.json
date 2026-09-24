@@ -65,24 +65,6 @@
       "view_org_packages": "عرض حزم هذه المؤسسة"
     }
   },
-  "command_palette": {
-    "keyboard_shortcuts": {},
-    "state": {},
-    "groups": {},
-    "actions": {},
-    "connections": {},
-    "navigation": {},
-    "links": {},
-    "package_links": {},
-    "theme": {},
-    "package": {},
-    "package_actions": {},
-    "code": {},
-    "diff": {},
-    "version": {},
-    "status": {},
-    "announcements": {}
-  },
   "nav": {
     "main_navigation": "الصفحة الرئيسية",
     "popular_packages": "الحزم الشائعة",
@@ -98,9 +80,6 @@
   "blog": {
     "author": {},
     "atproto": {}
-  },
-  "noodles": {
-    "missing": {}
   },
   "settings": {
     "title": "الإعدادات",
@@ -138,8 +117,7 @@
     "translation_progress": "تقدم الترجمة",
     "background_themes": {
       "label": "درجة خلفية الصفحة"
-    },
-    "foreground_themes": {}
+    }
   },
   "i18n": {
     "missing_keys": "{count} ترجمات مفقودة | ترجمة واحدة مفقودة | ترجمتان مفقودتان | {count} ترجمات مفقودة | {count} ترجمة مفقودة | {count} ترجمة مفقودة",
@@ -193,7 +171,6 @@
       "no_reason": "لم يتم تقديم سبب"
     },
     "size_increase": {},
-    "size_decrease": {},
     "replacement": {
       "title": "قد لا تحتاج إلى هذه التبعية.",
       "native": "يمكن استبدالها بـ {replacement}، المتوفرة منذ Node {nodeVersion}.",
@@ -268,7 +245,6 @@
       "title": "تشغيل",
       "locally": "تشغيل محليًا"
     },
-    "command": {},
     "readme": {
       "title": "README (إقرأني)",
       "no_readme": "لا يتوفر README.",
@@ -339,19 +315,26 @@
       "no_matches": "لا توجد إصدارات تطابق هذا النطاق",
       "copy_alt": {}
     },
-    "timeline": {
-      "chart": {
-        "copy_alt": {}
-      }
-    },
     "dependencies": {
       "title": "التبعيات ({count})",
-      "insights": {},
+      "list_label": "تبعيات الحزمة",
+      "show_all": "عرض كل التبعيات ({count})",
       "optional": "اختياري",
+      "view_vulnerabilities": "عرض الثغرات",
       "outdated_major": "أقدم بـ{count} إصدار رئيسي (الأحدث: {latest}) | أقدم بإصدار رئيسي واحد (الأحدث: {latest}) | أقدم بإصدارين رئيسيين (الأحدث: {latest}) | أقدم بـ{count} إصدارات رئيسية (الأحدث: {latest}) | أقدم بـ{count} إصدار رئيسي (الأحدث: {latest}) | أقدم بـ{count} إصدار رئيسي (الأحدث: {latest})",
       "outdated_minor": "أقدم بـ{count} إصدار ثانوي (الأحدث: {latest}) | أقدم بإصدار ثانوي واحد (الأحدث: {latest}) | أقدم بإصدارين ثانويين (الأحدث: {latest}) | أقدم بـ{count} إصدارات ثانوية (الأحدث: {latest}) | أقدم بـ{count} إصدار ثانوي (الأحدث: {latest}) | أقدم بـ{count} إصدار ثانوي (الأحدث: {latest})",
       "outdated_patch": "تحديث تصحيحي متاح (الأحدث: {latest})",
       "has_replacement": "هذه التبعية لها بدائل مقترحة"
+    },
+    "peer_dependencies": {
+      "title": "تبعيات النظير ({count})",
+      "list_label": "تبعيات نظير الحزمة",
+      "show_all": "عرض كل تبعيات النظير ({count})"
+    },
+    "optional_dependencies": {
+      "title": "تبعيات اختيارية ({count})",
+      "list_label": "تبعيات الحزمة الاختيارية",
+      "show_all": "عرض كل التبعيات الاختيارية ({count})"
     },
     "maintainers": {
       "title": "المشرفون",
@@ -368,7 +351,6 @@
       "show_less": "(عرض أقل)"
     },
     "trends": {
-      "chart_assistive_text": {},
       "granularity": "مستوى التفصيل",
       "granularity_daily": "يومي",
       "granularity_weekly": "أسبوعي",
@@ -392,8 +374,7 @@
         "likes": "الإعجابات",
         "contributors": "المساهمون"
       },
-      "copy_alt": {},
-      "embedding": {}
+      "copy_alt": {}
     },
     "downloads": {
       "title": "التنزيلات الأسبوعية",
@@ -488,9 +469,6 @@
       "mb": "{size} ميجابايت"
     },
     "download": {}
-  },
-  "leaderboard": {
-    "likes": {}
   },
   "connector": {
     "modal": {
@@ -870,25 +848,6 @@
       }
     }
   },
-  "sponsors_page": {
-    "what_we_do": {},
-    "what_support_means": {},
-    "what_this_means_for_you": {
-      "cards": {
-        "people": {},
-        "visitors": {},
-        "stars": {},
-        "community": {},
-        "adoption": {},
-        "default_source": {}
-      }
-    },
-    "tiers": {
-      "silver": {},
-      "gold": {},
-      "platinum": {}
-    }
-  },
   "account_menu": {
     "connect": "اتصال",
     "account": "الحساب",
@@ -960,9 +919,6 @@
       "remove_package": "إزالة {package}",
       "packages_selected": "{count}/{max} حزمة محددة.",
       "add_hint": "أضف حزمتين على الأقل للمقارنة."
-    },
-    "scatter_chart": {
-      "copy_alt": {}
     },
     "no_dependency": {
       "label": "(بدون تبعية)",
@@ -1038,11 +994,7 @@
         "vulnerabilities": {
           "label": "الثغرات",
           "description": "ثغرات أمنية معروفة"
-        },
-        "githubStars": {},
-        "githubForks": {},
-        "githubIssues": {},
-        "createdAt": {}
+        }
       },
       "values": {
         "any": "أي من",
@@ -1181,23 +1133,5 @@
   "translation_status": {
     "table": {}
   },
-  "vacations": {
-    "what": {},
-    "meantime": {},
-    "return": {},
-    "stats": {
-      "subtitle": {}
-    }
-  },
-  "action_bar": {},
-  "logo_menu": {},
-  "brand": {
-    "logos": {},
-    "customize": {},
-    "typography": {},
-    "guidelines": {}
-  },
-  "changelog": {
-    "error": {}
-  }
+  "action_bar": {}
 }
