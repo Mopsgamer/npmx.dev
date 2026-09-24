@@ -73,6 +73,22 @@ describe('package-dependency-sections', () => {
     ])
   })
 
+  it('includes optionalDependencies section when present', () => {
+    const sections = getPackageDependencySections({
+      dependencies: { lodash: '^4.0.0' },
+      optionalDependencies: { fsevents: '^2.3.0' },
+    })
+
+    expect(sections.map(s => s.id)).toEqual(['dependencies', 'optionalDependencies'])
+    expect(sections[1]?.items[0]).toEqual({
+      name: 'fsevents',
+      packageName: 'fsevents',
+      range: '^2.3.0',
+      registry: 'npm',
+      flags: ['optional'],
+    })
+  })
+
   it('reports whether a version has dependencies', () => {
     expect(hasPackageDependencies({})).toBe(false)
     expect(

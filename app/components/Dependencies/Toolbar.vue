@@ -4,6 +4,7 @@ import type {
   PackageDependencySection,
 } from '#shared/types/package-dependencies'
 import type { ColumnConfig, ColumnId, ViewMode } from '#shared/types/preferences'
+import type { IconClass } from '~/types/icon'
 
 const props = defineProps<{
   filter: string
@@ -76,7 +77,7 @@ const activeSectionsValue = computed({
 
 function getSectionLabel(id: string) {
   const labels: Record<string, string> = {
-    dependencies: t('compare.dependencies'),
+    dependencies: t('compare.prod_dependencies'),
     devDependencies: t('compare.dev_dependencies'),
     peerDependencies: t('compare.peer_dependencies'),
     optionalDependencies: t('compare.optional_dependencies'),
@@ -107,6 +108,25 @@ const sectionTriggerText = computed(() => {
     return getSectionLabel(active[0]!)
   }
   return t('action_bar.selection', { count: active.length }, active.length)
+})
+
+const sectionTriggerIcon = computed<IconClass>(() => {
+  const total = props.sections?.length ?? 0
+  const active = activeSectionsValue.value
+  if (total > 0 && active.length === total) {
+    return 'i-lucide:check-check'
+  }
+  if (active.length === 1) {
+    const sectionIcons: Record<string, IconClass> = {
+      dependencies: 'i-lucide:rocket',
+      devDependencies: 'i-lucide:wrench',
+      peerDependencies: 'i-lucide:users',
+      optionalDependencies: 'i-lucide:circle-help',
+      bundledDependencies: 'i-lucide:package',
+    }
+    return sectionIcons[active[0]!] || 'i-lucide:layers'
+  }
+  return 'i-lucide:layers'
 })
 
 const { selectedPackages, clearSelectedPackages, openSelectionView } = usePackageSelection()
@@ -172,7 +192,7 @@ function clearFilter() {
             aria-haspopup="true"
             :aria-controls="isSectionsOpen ? sectionsMenuId : undefined"
             @click.stop="isSectionsOpen = !isSectionsOpen"
-            classicon="i-lucide:layers"
+            :classicon="sectionTriggerIcon"
           >
             {{ sectionTriggerText }}
           </ButtonBase>

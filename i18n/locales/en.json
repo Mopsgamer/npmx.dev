@@ -1637,6 +1637,7 @@
     "version_selector_title": "Compare with version",
     "summary": "Summary",
     "deps_count": "{count} dep | {count} deps",
+    "prod_dependencies": "Prod Dependencies",
     "dependencies": "Dependencies",
     "dev_dependencies": "Dev Dependencies",
     "peer_dependencies": "Peer Dependencies",

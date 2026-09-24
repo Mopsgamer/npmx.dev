@@ -84,7 +84,7 @@ const healthStatusAlerts = computed(() => {
 </script>
 
 <template>
-  <span class="inline-flex shrink-0 z-20">
+  <span class="inline-flex shrink-0 z-10">
     <TooltipApp
       v-if="isAliased"
       :text="$t('package.dependencies.aliased_to', { name: realPackageName })"

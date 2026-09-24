@@ -4915,6 +4915,9 @@
         "deps_count": {
           "type": "string"
         },
+        "prod_dependencies": {
+          "type": "string"
+        },
         "dependencies": {
           "type": "string"
         },
