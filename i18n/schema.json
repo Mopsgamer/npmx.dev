@@ -1993,6 +1993,9 @@
             "grouping_usage_most_used": {
               "type": "string"
             },
+            "order_by_downloads": {
+              "type": "string"
+            },
             "recent_versions_only_tooltip": {
               "type": "string"
             },
