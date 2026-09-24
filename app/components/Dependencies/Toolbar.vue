@@ -120,8 +120,8 @@ const sectionTriggerIcon = computed<IconClass>(() => {
     const sectionIcons: Record<string, IconClass> = {
       dependencies: 'i-lucide:rocket',
       devDependencies: 'i-lucide:wrench',
-      peerDependencies: 'i-lucide:users',
-      optionalDependencies: 'i-lucide:circle-help',
+      peerDependencies: 'i-lucide:blocks',
+      optionalDependencies: 'i-lucide:circle-dashed',
       bundledDependencies: 'i-lucide:package',
     }
     return sectionIcons[active[0]!] || 'i-lucide:layers'
