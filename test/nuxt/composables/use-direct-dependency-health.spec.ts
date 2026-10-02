@@ -33,6 +33,7 @@ describe('useDirectDependencyHealth', () => {
 
     const firstBatch = fetchMock.mock.calls[0]?.[1]?.body.dependencies
     expect(Object.keys(firstBatch)).toEqual(names.slice(0, DIRECT_DEPS_HEALTH_MAX))
+    expect(Object.values(firstBatch).every(v => typeof v === 'string')).toBe(true)
 
     await result.requestHealth(names[1]!)
     expect(fetchMock).toHaveBeenCalledTimes(1)
@@ -40,6 +41,7 @@ describe('useDirectDependencyHealth', () => {
     await result.requestHealth(names[DIRECT_DEPS_HEALTH_MAX]!)
     const secondBatch = fetchMock.mock.calls[1]?.[1]?.body.dependencies
     expect(Object.keys(secondBatch)).toEqual(names.slice(DIRECT_DEPS_HEALTH_MAX))
+    expect(Object.values(secondBatch).every(v => typeof v === 'string')).toBe(true)
   })
 
   it('does not let a stale failed request clear current settled state', async () => {

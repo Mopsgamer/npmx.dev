@@ -27,23 +27,45 @@ export interface DependencySpec {
   version: string
 }
 
+export function parseProtocolRange(
+  key: string,
+  rawRange: string,
+): { packageName: string; range: string } {
+  if (rawRange.startsWith('npm:') || rawRange.startsWith('jsr:')) {
+    const parsed = parsePackageSpec(rawRange)
+    if (parsed.version !== undefined) {
+      return {
+        packageName: parsed.name,
+        range: parsed.version,
+      }
+    }
+    if (/^[\^~><=0-9]/.test(parsed.name)) {
+      return {
+        packageName: key,
+        range: rawRange,
+      }
+    }
+    return {
+      packageName: parsed.name,
+      range: '*',
+    }
+  }
+  return {
+    packageName: key,
+    range: rawRange,
+  }
+}
+
 export function normalizeDependencies(
   record: Record<string, string> | undefined,
 ): Record<string, DependencySpec> {
   if (!record) return {}
   const normalized: Record<string, DependencySpec> = {}
-  for (const [key, range] of Object.entries(record)) {
-    if (range.startsWith('npm:') || range.startsWith('jsr:')) {
-      const { name, version } = parsePackageSpec(range)
-      normalized[key] = {
-        name,
-        version: version ?? '*',
-      }
-    } else {
-      normalized[key] = {
-        name: key,
-        version: range,
-      }
+  for (const [key, rawRange] of Object.entries(record)) {
+    const { packageName, range } = parseProtocolRange(key, rawRange)
+    normalized[key] = {
+      name: packageName,
+      version: range,
     }
   }
   return normalized
@@ -80,14 +102,7 @@ function entriesToItems(
     .map(([name, rawRange]) => {
       const flags: DepFlag[] = [...(extraFlags?.(name) ?? [])]
       if (bundledSet.has(name) && !flags.includes('bundled')) flags.push('bundled')
-      let packageName = name
-      let range = rawRange
-
-      if (rawRange.startsWith('npm:') || rawRange.startsWith('jsr:')) {
-        const parsed = parsePackageSpec(rawRange)
-        packageName = parsed.name
-        range = parsed.version ?? '*'
-      }
+      const { packageName, range } = parseProtocolRange(name, rawRange)
 
       return {
         name,
@@ -146,14 +161,7 @@ export function getPackageDependencySections(
     })
     .map((name): PackageDependencyItem => {
       const rawRange = version.dependencies?.[name] ?? '*'
-      let packageName = name
-      let range = rawRange
-
-      if (rawRange.startsWith('npm:') || rawRange.startsWith('jsr:')) {
-        const parsed = parsePackageSpec(rawRange)
-        packageName = parsed.name
-        range = parsed.version ?? '*'
-      }
+      const { packageName, range } = parseProtocolRange(name, rawRange)
 
       return {
         name,

@@ -74,7 +74,8 @@ const emit = defineEmits<{
           </NuxtLink>
         </h2>
         <DependenciesStatusIndicators
-          :name="targetName"
+          :name="item.name"
+          :package-name="targetName"
           :flags="item.flags"
           :deprecated="searchResult?.package.deprecated"
           :is-loading="isLoadingData"
@@ -109,7 +110,8 @@ const emit = defineEmits<{
   >
     <template #status-indicators="{ insights }">
       <DependenciesStatusIndicators
-        :name="targetName"
+        :name="item.name"
+        :package-name="targetName"
         :flags="item.flags"
         :deprecated="searchResult?.package.deprecated"
         v-bind="{ insights }"

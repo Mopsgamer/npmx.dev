@@ -38,9 +38,11 @@ const allMaintainersText = computed(() => {
   return pkg.value.maintainers.map(m => m.name || m.email).join(', ')
 })
 
-const standaloneReplacementRes = useModuleReplacement(() => props.result.package.name)
+const standaloneReplacementRes = useModuleReplacement(() =>
+  insights.value ? '' : props.result.package.name,
+)
 const standaloneDepAnalysisRes = useDependencyAnalysis(
-  () => props.result.package.name,
+  () => (insights.value ? '' : props.result.package.name),
   () => props.result.package.version,
 )
 

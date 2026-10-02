@@ -31,26 +31,24 @@ async function fetchReplacements(
 export function useReplacementDependencies(
   dependencies: MaybeRefOrGetter<Record<string, DependencySpec> | undefined>,
 ) {
-  const depsRef = computed(() => toValue(dependencies))
-
   const key = computed(() => {
-    const deps = depsRef.value
+    const deps = toValue(dependencies)
     if (!deps) return 'replacements:none'
     const sorted = Object.keys(deps).sort()
     return sorted.length === 0
       ? 'replacements:none'
-      : `replacements:${sorted.map(k => `${k}@${deps[k]!.version}`).join(',')}`
+      : `replacements:${sorted.map(k => `${k}:${deps[k]!.name}@${deps[k]!.version}`).join(',')}`
   })
 
   return useAsyncData<Record<string, ModuleReplacement>>(
-    key.value,
+    key,
     async () => {
-      const deps = depsRef.value
+      const deps = toValue(dependencies)
       if (!deps || Object.keys(deps).length === 0) return {}
       return await fetchReplacements(deps)
     },
     {
-      watch: [depsRef],
+      watch: [key],
       default: () => ({}),
     },
   )

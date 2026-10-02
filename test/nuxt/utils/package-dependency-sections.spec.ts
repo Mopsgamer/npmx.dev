@@ -13,11 +13,13 @@ describe('package-dependency-sections', () => {
       'vue': '^3.0.0',
       'typescript7': 'npm:typescript@^7.0.2',
       'std-path': 'jsr:@std/path@^1.0.0',
+      '@deno/doc': 'jsr:^0.189.1',
     }
     expect(normalizeDependencies(raw)).toEqual({
       'vue': { name: 'vue', version: '^3.0.0' },
       'typescript7': { name: 'typescript', version: '^7.0.2' },
       'std-path': { name: '@std/path', version: '^1.0.0' },
+      '@deno/doc': { name: '@deno/doc', version: 'jsr:^0.189.1' },
     })
   })
 

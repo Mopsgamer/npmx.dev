@@ -46,7 +46,9 @@ export function useDirectDependencyHealth(
       if (batchNames.length === DIRECT_DEPS_HEALTH_MAX) break
     }
 
-    const batch = Object.fromEntries(batchNames.map(candidate => [candidate, deps[candidate]!]))
+    const batch = Object.fromEntries(
+      batchNames.map(candidate => [candidate, deps[candidate]!.version]),
+    )
     const currentGeneration = generation
 
     try {

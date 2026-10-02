@@ -6,7 +6,7 @@ import type { VulnerabilityTreeResult } from '#shared/types/dependency-analysis'
  * Before: useVulnerabilityTree - but now we use this for both vulnerabilities and deprecated packages.
  */
 export function useDependencyAnalysis(
-  packageName: MaybeRefOrGetter<string>,
+  packageName: MaybeRefOrGetter<string | undefined>,
   version: MaybeRefOrGetter<string | null | undefined>,
 ) {
   const resolvedVersion = computed((): string | undefined => {
@@ -22,7 +22,11 @@ export function useDependencyAnalysis(
       return `/api/registry/vulnerabilities/${encodePackageName(pkg)}/v/${ver}`
     },
     {
-      key: () => `vuln:${toValue(packageName)}:${resolvedVersion.value}`,
+      key: () => {
+        const pkg = toValue(packageName)
+        if (!pkg || !resolvedVersion.value) return 'vuln:none'
+        return `vuln:${pkg}:${resolvedVersion.value}`
+      },
       watch: [() => toValue(packageName), resolvedVersion],
       server: false,
       lazy: true,

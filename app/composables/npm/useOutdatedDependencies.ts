@@ -87,7 +87,7 @@ export function useOutdatedDependencies(
     const sorted = Object.keys(deps).sort()
     return sorted.length === 0
       ? 'outdated:none'
-      : `outdated:${sorted.map(k => `${k}@${deps[k]!.version}`).join(',')}`
+      : `outdated:${sorted.map(k => `${k}:${deps[k]!.name}@${deps[k]!.version}`).join(',')}`
   })
 
   return useAsyncData<Record<string, OutdatedDependencyInfo>>(
