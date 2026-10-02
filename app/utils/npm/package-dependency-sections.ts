@@ -27,10 +27,7 @@ export interface DependencySpec {
   version: string
 }
 
-export function parseProtocolRange(
-  key: string,
-  rawRange: string,
-): { packageName: string; range: string } {
+function parseProtocolRange(key: string, rawRange: string): { packageName: string; range: string } {
   if (rawRange.startsWith('npm:') || rawRange.startsWith('jsr:')) {
     const parsed = parsePackageSpec(rawRange)
     if (parsed.version !== undefined) {

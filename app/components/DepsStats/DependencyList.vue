@@ -41,7 +41,7 @@ const registryDeps = computed(() => {
   const map: Record<string, { name: string; version: string }> = {}
   for (const dep of props.dependencies) {
     if (dep.nonRegistry) continue
-    map[dep.packageName] = { name: dep.packageName, version: dep.range }
+    map[dep.name] = { name: dep.packageName, version: dep.range }
   }
   return map
 })
@@ -50,9 +50,9 @@ const orderedRegistryNames = computed(() => {
   const seen = new Set<string>()
   const names: string[] = []
   for (const dep of props.dependencies) {
-    if (dep.nonRegistry || seen.has(dep.packageName)) continue
-    seen.add(dep.packageName)
-    names.push(dep.packageName)
+    if (dep.nonRegistry || seen.has(dep.name)) continue
+    seen.add(dep.name)
+    names.push(dep.name)
   }
   return names
 })
@@ -89,22 +89,24 @@ const grouped = computed(() => {
 const totalCount = computed(() => props.dependencies.length)
 
 function getVulnerableInfo(dep: PackageJsonDependency): DirectVulnerableDependency | null {
-  return health.value.vulnerable[dep.packageName] ?? null
+  return health.value.vulnerable[dep.name] ?? health.value.vulnerable[dep.packageName] ?? null
 }
 
 function getDeprecatedInfo(dep: PackageJsonDependency): DirectDeprecatedDependency | null {
-  return health.value.deprecated[dep.packageName] ?? null
+  return health.value.deprecated[dep.name] ?? health.value.deprecated[dep.packageName] ?? null
 }
 
 function getDepVersionTooltip(dep: PackageJsonDependency) {
-  const outdated = outdatedDeps.value[dep.packageName]
+  const outdated = outdatedDeps.value[dep.name] ?? outdatedDeps.value[dep.packageName]
   if (outdated) return getOutdatedTooltip(outdated, t)
-  if (replacementDeps.value[dep.packageName]) return t('package.dependencies.has_replacement')
+  if (replacementDeps.value[dep.name] ?? replacementDeps.value[dep.packageName]) {
+    return t('package.dependencies.has_replacement')
+  }
   return dep.range
 }
 
 function getDepVersionClass(dep: PackageJsonDependency) {
-  return getVersionClass(dep.packageName, insights.value)
+  return getVersionClass(dep.name, insights.value)
 }
 
 useIntersectionObserver(
@@ -112,8 +114,8 @@ useIntersectionObserver(
   entries => {
     for (const entry of entries) {
       if (!entry.isIntersecting) continue
-      const packageName = (entry.target as HTMLElement).dataset.packageName
-      if (packageName) requestHealth(packageName)
+      const depKey = (entry.target as HTMLElement).dataset.dependencyKey
+      if (depKey) requestHealth(depKey)
     }
   },
   {
@@ -170,7 +172,7 @@ useIntersectionObserver(
             v-for="dep in group.items"
             :key="dep.name"
             ref="dependencyRows"
-            :data-package-name="dep.nonRegistry ? undefined : dep.packageName"
+            :data-dependency-key="dep.nonRegistry ? undefined : dep.name"
           >
             <div
               class="flex items-start gap-2 px-3 py-2 transition-colors duration-100"

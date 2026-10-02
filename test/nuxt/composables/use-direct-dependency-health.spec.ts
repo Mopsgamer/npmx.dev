@@ -69,4 +69,86 @@ describe('useDirectDependencyHealth', () => {
 
     expect(fetchMock).toHaveBeenCalledTimes(2)
   })
+
+  it('sends target package name from DependencySpec.name for aliases and maps response back to original alias key', async () => {
+    const dependencies = {
+      'my-lodash': { name: 'lodash', version: '^4.17.21' },
+      'express': { name: 'express', version: '^4.18.2' },
+    }
+    const names = ['my-lodash', 'express']
+
+    const mockResponse: DirectDependencyHealthResult = {
+      vulnerable: {
+        lodash: {
+          name: 'lodash',
+          version: '4.17.21',
+          counts: { total: 1, critical: 0, high: 1, moderate: 0, low: 0 },
+        },
+      },
+      deprecated: {
+        express: {
+          name: 'express',
+          version: '4.18.2',
+          message: 'Express is deprecated',
+        },
+      },
+    }
+    fetchMock.mockResolvedValueOnce(mockResponse)
+
+    const result = scope.run(() => useDirectDependencyHealth(dependencies, names))!
+    await result.requestHealth('my-lodash')
+
+    const sentBatch = fetchMock.mock.calls[0]?.[1]?.body.dependencies
+    expect(sentBatch).toEqual({
+      lodash: '^4.17.21',
+      express: '^4.18.2',
+    })
+
+    expect(result.health.value.vulnerable['my-lodash']).toEqual(mockResponse.vulnerable.lodash)
+    expect(result.health.value.deprecated['express']).toEqual(mockResponse.deprecated.express)
+  })
+
+  it('preserves distinct results for aliases targeting different versions of the same package', async () => {
+    const dependencies = {
+      'lodash-v3': { name: 'lodash', version: '^3.10.1' },
+      'lodash-v4': { name: 'lodash', version: '^4.17.21' },
+    }
+    const names = ['lodash-v3', 'lodash-v4']
+
+    const mockResponse1: DirectDependencyHealthResult = {
+      vulnerable: {
+        lodash: {
+          name: 'lodash',
+          version: '3.10.1',
+          counts: { total: 5, critical: 1, high: 2, moderate: 2, low: 0 },
+        },
+      },
+      deprecated: {},
+    }
+
+    const mockResponse2: DirectDependencyHealthResult = {
+      vulnerable: {
+        lodash: {
+          name: 'lodash',
+          version: '4.17.21',
+          counts: { total: 1, critical: 0, high: 1, moderate: 0, low: 0 },
+        },
+      },
+      deprecated: {},
+    }
+
+    fetchMock.mockResolvedValueOnce(mockResponse1).mockResolvedValueOnce(mockResponse2)
+
+    const result = scope.run(() => useDirectDependencyHealth(dependencies, names))!
+
+    await result.requestHealth('lodash-v3')
+
+    expect(fetchMock.mock.calls[0]?.[1]?.body.dependencies).toEqual({ lodash: '^3.10.1' })
+    expect(result.health.value.vulnerable['lodash-v3']).toEqual(mockResponse1.vulnerable.lodash)
+
+    await result.requestHealth('lodash-v4')
+
+    expect(fetchMock.mock.calls[1]?.[1]?.body.dependencies).toEqual({ lodash: '^4.17.21' })
+    expect(result.health.value.vulnerable['lodash-v4']).toEqual(mockResponse2.vulnerable.lodash)
+  })
 })
