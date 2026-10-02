@@ -4,13 +4,17 @@ import type {
   DirectDeprecatedDependency,
   DirectVulnerableDependency,
 } from '#shared/types/dependency-analysis'
-import type { DependencyCategory, PackageJsonDependency } from '~/utils/parse-package-json-deps'
+import {
+  type DependencyCategory,
+  type PackageJsonDependency,
+  getDependencyKey,
+} from '~/utils/parse-package-json-deps'
 import { getOutdatedTooltip, getVersionClass } from '~/utils/npm/problematic-dependencies'
 import { packageRoute } from '~/utils/router'
 
 const props = defineProps<{
   dependencies: PackageJsonDependency[]
-  selectedName: string | null
+  selectedKey: string | null
 }>()
 
 const emit = defineEmits<{
@@ -41,7 +45,8 @@ const registryDeps = computed(() => {
   const map: Record<string, { name: string; version: string }> = {}
   for (const dep of props.dependencies) {
     if (dep.nonRegistry) continue
-    map[dep.name] = { name: dep.packageName, version: dep.range }
+    const key = getDependencyKey(dep)
+    map[key] = { name: dep.packageName, version: dep.range }
   }
   return map
 })
@@ -50,9 +55,11 @@ const orderedRegistryNames = computed(() => {
   const seen = new Set<string>()
   const names: string[] = []
   for (const dep of props.dependencies) {
-    if (dep.nonRegistry || seen.has(dep.name)) continue
-    seen.add(dep.name)
-    names.push(dep.name)
+    if (dep.nonRegistry) continue
+    const key = getDependencyKey(dep)
+    if (seen.has(key)) continue
+    seen.add(key)
+    names.push(key)
   }
   return names
 })
@@ -89,24 +96,25 @@ const grouped = computed(() => {
 const totalCount = computed(() => props.dependencies.length)
 
 function getVulnerableInfo(dep: PackageJsonDependency): DirectVulnerableDependency | null {
-  return health.value.vulnerable[dep.name] ?? null
+  return health.value.vulnerable[getDependencyKey(dep)] ?? null
 }
 
 function getDeprecatedInfo(dep: PackageJsonDependency): DirectDeprecatedDependency | null {
-  return health.value.deprecated[dep.name] ?? null
+  return health.value.deprecated[getDependencyKey(dep)] ?? null
 }
 
 function getDepVersionTooltip(dep: PackageJsonDependency) {
-  const outdated = outdatedDeps.value[dep.name]
+  const key = getDependencyKey(dep)
+  const outdated = outdatedDeps.value[key]
   if (outdated) return getOutdatedTooltip(outdated, t)
-  if (replacementDeps.value[dep.name]) {
+  if (replacementDeps.value[key]) {
     return t('package.dependencies.has_replacement')
   }
   return dep.range
 }
 
 function getDepVersionClass(dep: PackageJsonDependency) {
-  return getVersionClass(dep.name, insights.value)
+  return getVersionClass(getDependencyKey(dep), insights.value)
 }
 
 useIntersectionObserver(
@@ -170,20 +178,22 @@ useIntersectionObserver(
         <ul class="list-none m-0 p-0" :aria-label="group.label">
           <li
             v-for="dep in group.items"
-            :key="dep.name"
+            :key="getDependencyKey(dep)"
             ref="dependencyRows"
-            :data-dependency-key="dep.nonRegistry ? undefined : dep.name"
+            :data-dependency-key="dep.nonRegistry ? undefined : getDependencyKey(dep)"
           >
             <div
               class="flex items-start gap-2 px-3 py-2 transition-colors duration-100"
               :class="
-                selectedName === dep.name ? 'bg-bg-muted text-fg' : 'hover:bg-bg-subtle text-fg'
+                selectedKey === getDependencyKey(dep)
+                  ? 'bg-bg-muted text-fg'
+                  : 'hover:bg-bg-subtle text-fg'
               "
             >
               <button
                 type="button"
                 class="flex-1 min-w-0 text-start border-none bg-transparent cursor-pointer p-0 focus-visible:outline-accent/70 focus-visible:outline-2 focus-visible:outline-offset-2 rounded-sm"
-                :aria-current="selectedName === dep.name ? 'true' : undefined"
+                :aria-current="selectedKey === getDependencyKey(dep) ? 'true' : undefined"
                 @click="emit('select', dep)"
               >
                 <span class="font-mono text-sm truncate block">{{ dep.name }}</span>
@@ -208,21 +218,21 @@ useIntersectionObserver(
                 @click.stop
               >
                 <TooltipApp
-                  v-if="outdatedDeps[dep.name]"
+                  v-if="outdatedDeps[getDependencyKey(dep)]"
                   class="shrink-0"
-                  :class="getVersionClass(dep.name, insights)"
-                  :text="getOutdatedTooltip(outdatedDeps[dep.name]!, $t)"
+                  :class="getDepVersionClass(dep)"
+                  :text="getOutdatedTooltip(outdatedDeps[getDependencyKey(dep)]!, $t)"
                 >
                   <button
                     type="button"
                     class="inline-flex items-center justify-center p-1 -m-1"
-                    :aria-label="getOutdatedTooltip(outdatedDeps[dep.name]!, $t)"
+                    :aria-label="getOutdatedTooltip(outdatedDeps[getDependencyKey(dep)]!, $t)"
                   >
                     <span class="i-lucide:arrow-up w-3 h-3" aria-hidden="true" />
                   </button>
                 </TooltipApp>
                 <TooltipApp
-                  v-if="replacementDeps[dep.name]"
+                  v-if="replacementDeps[getDependencyKey(dep)]"
                   class="shrink-0 text-amber-700 dark:text-amber-500"
                   :text="$t('package.dependencies.has_replacement')"
                 >
@@ -262,8 +272,8 @@ useIntersectionObserver(
                 >
                   {{ dep.range }}
                 </span>
-                <span v-if="outdatedDeps[dep.name]" class="sr-only">
-                  ({{ getOutdatedTooltip(outdatedDeps[dep.name]!, $t) }})
+                <span v-if="outdatedDeps[getDependencyKey(dep)]" class="sr-only">
+                  ({{ getOutdatedTooltip(outdatedDeps[getDependencyKey(dep)]!, $t) }})
                 </span>
                 <span v-if="getVulnerableInfo(dep)" class="sr-only">
                   ({{

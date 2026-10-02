@@ -2732,7 +2732,7 @@ describe('component accessibility audits', () => {
       const component = await mountSuspended(DepsStatsDependencyList, {
         props: {
           dependencies: [],
-          selectedName: null,
+          selectedKey: null,
         },
       })
       const results = await runAxe(component)
@@ -2772,7 +2772,7 @@ describe('component accessibility audits', () => {
               nonRegistry: false,
             },
           ],
-          selectedName: 'vue',
+          selectedKey: 'dependencies:vue',
         },
       })
       const results = await runAxe(component)
