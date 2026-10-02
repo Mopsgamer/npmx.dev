@@ -151,4 +151,25 @@ describe('useDirectDependencyHealth', () => {
     expect(fetchMock.mock.calls[1]?.[1]?.body.dependencies).toEqual({ lodash: '^4.17.21' })
     expect(result.health.value.vulnerable['lodash-v4']).toEqual(mockResponse2.vulnerable.lodash)
   })
+
+  it('handles target package names matching prototype properties like constructor', async () => {
+    const dependencies = {
+      constructor: { name: 'constructor', version: '^1.0.0' },
+    }
+    const names = ['constructor']
+
+    const mockResponse: DirectDependencyHealthResult = {
+      vulnerable: {},
+      deprecated: {},
+    }
+    fetchMock.mockResolvedValueOnce(mockResponse)
+
+    const result = scope.run(() => useDirectDependencyHealth(dependencies, names))!
+    await result.requestHealth('constructor')
+
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+    expect(fetchMock.mock.calls[0]?.[1]?.body.dependencies).toEqual({
+      constructor: '^1.0.0',
+    })
+  })
 })

@@ -89,17 +89,17 @@ const grouped = computed(() => {
 const totalCount = computed(() => props.dependencies.length)
 
 function getVulnerableInfo(dep: PackageJsonDependency): DirectVulnerableDependency | null {
-  return health.value.vulnerable[dep.name] ?? health.value.vulnerable[dep.packageName] ?? null
+  return health.value.vulnerable[dep.name] ?? null
 }
 
 function getDeprecatedInfo(dep: PackageJsonDependency): DirectDeprecatedDependency | null {
-  return health.value.deprecated[dep.name] ?? health.value.deprecated[dep.packageName] ?? null
+  return health.value.deprecated[dep.name] ?? null
 }
 
 function getDepVersionTooltip(dep: PackageJsonDependency) {
-  const outdated = outdatedDeps.value[dep.name] ?? outdatedDeps.value[dep.packageName]
+  const outdated = outdatedDeps.value[dep.name]
   if (outdated) return getOutdatedTooltip(outdated, t)
-  if (replacementDeps.value[dep.name] ?? replacementDeps.value[dep.packageName]) {
+  if (replacementDeps.value[dep.name]) {
     return t('package.dependencies.has_replacement')
   }
   return dep.range
@@ -208,21 +208,21 @@ useIntersectionObserver(
                 @click.stop
               >
                 <TooltipApp
-                  v-if="outdatedDeps[dep.packageName]"
+                  v-if="outdatedDeps[dep.name]"
                   class="shrink-0"
-                  :class="getVersionClass(dep.packageName, insights)"
-                  :text="getOutdatedTooltip(outdatedDeps[dep.packageName]!, $t)"
+                  :class="getVersionClass(dep.name, insights)"
+                  :text="getOutdatedTooltip(outdatedDeps[dep.name]!, $t)"
                 >
                   <button
                     type="button"
                     class="inline-flex items-center justify-center p-1 -m-1"
-                    :aria-label="getOutdatedTooltip(outdatedDeps[dep.packageName]!, $t)"
+                    :aria-label="getOutdatedTooltip(outdatedDeps[dep.name]!, $t)"
                   >
                     <span class="i-lucide:arrow-up w-3 h-3" aria-hidden="true" />
                   </button>
                 </TooltipApp>
                 <TooltipApp
-                  v-if="replacementDeps[dep.packageName]"
+                  v-if="replacementDeps[dep.name]"
                   class="shrink-0 text-amber-700 dark:text-amber-500"
                   :text="$t('package.dependencies.has_replacement')"
                 >
@@ -262,8 +262,8 @@ useIntersectionObserver(
                 >
                   {{ dep.range }}
                 </span>
-                <span v-if="outdatedDeps[dep.packageName]" class="sr-only">
-                  ({{ getOutdatedTooltip(outdatedDeps[dep.packageName]!, $t) }})
+                <span v-if="outdatedDeps[dep.name]" class="sr-only">
+                  ({{ getOutdatedTooltip(outdatedDeps[dep.name]!, $t) }})
                 </span>
                 <span v-if="getVulnerableInfo(dep)" class="sr-only">
                   ({{

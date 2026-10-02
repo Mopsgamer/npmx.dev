@@ -49,7 +49,7 @@ export function useDirectDependencyHealth(
       const targetName = itemSpec.name
       const targetVersion = itemSpec.version
 
-      if (batchPayload[targetName] !== undefined && batchPayload[targetName] !== targetVersion) {
+      if (Object.hasOwn(batchPayload, targetName) && batchPayload[targetName] !== targetVersion) {
         continue
       }
 
